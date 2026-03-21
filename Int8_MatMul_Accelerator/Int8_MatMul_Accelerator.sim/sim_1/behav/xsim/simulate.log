@@ -1,0 +1,36 @@
+Time resolution is 1 ps
+=== BAT DAU BOM DU LIEU MA TRAN 4x4 ===
+[Time: 65000 ns] [PE 0,0] Xong! psum =          10
+[Time: 75000 ns] [PE 0,0] Xong! psum =          30
+[Time: 75000 ns] [PE 0,1] Xong! psum =          20
+[Time: 75000 ns] [PE 1,0] Xong! psum =          10
+[Time: 85000 ns] [PE 0,0] Xong! psum =          60
+[Time: 85000 ns] [PE 0,1] Xong! psum =          60
+[Time: 85000 ns] [PE 1,0] Xong! psum =          30
+[Time: 85000 ns] [PE 1,1] Xong! psum =          20
+[Time: 95000 ns] [PE 0,0] Xong! psum =         100
+[Time: 95000 ns] [PE 0,1] Xong! psum =         120
+[Time: 95000 ns] [PE 1,0] Xong! psum =          60
+[Time: 95000 ns] [PE 1,1] Xong! psum =          60
+[Time: 105000 ns] [PE 0,1] Xong! psum =         200
+[Time: 105000 ns] [PE 1,0] Xong! psum =         100
+[Time: 105000 ns] [PE 1,1] Xong! psum =         120
+[Time: 105000 ns] [PE 2,2] Xong! psum =          30
+[Time: 115000 ns] [PE 2,3] Xong! psum =          40
+[Time: 115000 ns] [PE 3,2] Xong! psum =          30
+[Time: 115000 ns] [PE 1,1] Xong! psum =         200
+[Time: 115000 ns] [PE 2,2] Xong! psum =          90
+[Time: 125000 ns] [PE 3,3] Xong! psum =          40
+[Time: 125000 ns] [PE 2,3] Xong! psum =         120
+[Time: 125000 ns] [PE 3,2] Xong! psum =          90
+[Time: 125000 ns] [PE 2,2] Xong! psum =         180
+[Time: 135000 ns] [PE 3,3] Xong! psum =         120
+[Time: 135000 ns] [PE 2,3] Xong! psum =         240
+[Time: 135000 ns] [PE 3,2] Xong! psum =         180
+[Time: 135000 ns] [PE 2,2] Xong! psum =         300
+[Time: 145000 ns] [PE 3,3] Xong! psum =         240
+[Time: 145000 ns] [PE 2,3] Xong! psum =         400
+[Time: 145000 ns] [PE 3,2] Xong! psum =         300
+[Time: 155000 ns] [PE 3,3] Xong! psum =         400
+=== KET THUC TEST ===
+$finish called at time : 515 ns : File "D:/HK6/Project1/testing/Int8_MatMul_Accelerator/Int8_MatMul_Accelerator.srcs/sim_1/new/tb_matmul_array.v" Line 72

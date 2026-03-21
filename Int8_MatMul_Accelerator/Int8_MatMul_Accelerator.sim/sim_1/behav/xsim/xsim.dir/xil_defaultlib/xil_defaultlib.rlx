@@ -1,0 +1,11 @@
+0.7
+2020.2
+Nov 14 2025
+19:37:27
+D:/HK6/Project1/testing/Int8_MatMul_Accelerator/Int8_MatMul_Accelerator.sim/sim_1/behav/xsim/glbl.v,1756381829,verilog,,,,glbl,,,,,,,,
+D:/HK6/Project1/testing/Int8_MatMul_Accelerator/Int8_MatMul_Accelerator.srcs/sim_1/new/tb_mac_core.v,1774081658,verilog,,,,tb_mac_core,,,../../../../../../../../Apps/Study/Vivado/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/HK6/Project1/testing/Int8_MatMul_Accelerator/Int8_MatMul_Accelerator.srcs/sim_1/new/tb_matmul_array.v,1774100392,verilog,,,,tb_matmul_array,,,../../../../../../../../Apps/Study/Vivado/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/HK6/Project1/testing/Int8_MatMul_Accelerator/Int8_MatMul_Accelerator.srcs/sim_1/new/tb_pe_wrapper.v,1774084675,verilog,,,,tb_pe_wrapper,,,../../../../../../../../Apps/Study/Vivado/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/HK6/Project1/testing/Int8_MatMul_Accelerator/Int8_MatMul_Accelerator.srcs/sources_1/new/mac_core.v,1774082175,verilog,,D:/HK6/Project1/testing/Int8_MatMul_Accelerator/Int8_MatMul_Accelerator.srcs/sources_1/new/matmul_array.v,,mac_core,,,../../../../../../../../Apps/Study/Vivado/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/HK6/Project1/testing/Int8_MatMul_Accelerator/Int8_MatMul_Accelerator.srcs/sources_1/new/matmul_array.v,1774098238,verilog,,D:/HK6/Project1/testing/Int8_MatMul_Accelerator/Int8_MatMul_Accelerator.srcs/sources_1/new/pe_wrapper.v,,matmul_array,,,../../../../../../../../Apps/Study/Vivado/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/HK6/Project1/testing/Int8_MatMul_Accelerator/Int8_MatMul_Accelerator.srcs/sources_1/new/pe_wrapper.v,1774094814,verilog,,D:/HK6/Project1/testing/Int8_MatMul_Accelerator/Int8_MatMul_Accelerator.srcs/sim_1/new/tb_matmul_array.v,,pe_wrapper,,,../../../../../../../../Apps/Study/Vivado/2025.2/Vivado/data/rsb/busdef,,,,,
