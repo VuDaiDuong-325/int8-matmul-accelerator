@@ -1,7 +1,0 @@
-Running: xsim.dir/tb_pe_wrapper_behav/xsimk.exe -simmode gui -wdb tb_pe_wrapper_behav.wdb -simrunnum 0 -socket 51568
-Design successfully loaded
-Design Loading Memory Usage: 11072 KB (Peak: 11072 KB)
-Design Loading CPU Usage: 30 ms
-Simulation completed
-Simulation Memory Usage: 11892 KB (Peak: 11892 KB)
-Simulation CPU Usage: 108 ms

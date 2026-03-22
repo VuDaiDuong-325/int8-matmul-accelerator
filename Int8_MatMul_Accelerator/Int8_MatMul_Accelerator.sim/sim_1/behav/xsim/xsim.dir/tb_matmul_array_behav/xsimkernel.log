@@ -1,4 +1,0 @@
-Running: xsim.dir/tb_matmul_array_behav/xsimk.exe -simmode gui -wdb tb_matmul_array_behav.wdb -simrunnum 0 -socket 50579
-Design successfully loaded
-Design Loading Memory Usage: 11180 KB (Peak: 11180 KB)
-Design Loading CPU Usage: 77 ms
