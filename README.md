@@ -5,4 +5,4 @@ A high-performance INT8 Matrix Multiplication Accelerator implemented in pure Ve
 [3 previous coding file](https://github.com/VuDaiDuong-325/int8-matmul-accelerator/tree/DesktopUIT/matmul_accelerator/matmul_accelerator.srcs/sources_1/imports/new) & [new file](https://github.com/VuDaiDuong-325/int8-matmul-accelerator/tree/DesktopUIT/matmul_accelerator/matmul_accelerator.srcs/sources_1/new)
 
 ## Simulation on KV260
-[.xsa file](https://github.com/VuDaiDuong-325/int8-matmul-accelerator/tree/DesktopUIT/matmul_accelerator/system_wrapper.xsa)
+[bitstream file](https://github.com/VuDaiDuong-325/int8-matmul-accelerator/tree/DesktopUIT/matmul_accelerator/matmul_accelerator.runs/impl_1/system_wrapper.bit) & [C coding folder](https://github.com/VuDaiDuong-325/int8-matmul-accelerator/tree/DesktopUIT/vitis)
