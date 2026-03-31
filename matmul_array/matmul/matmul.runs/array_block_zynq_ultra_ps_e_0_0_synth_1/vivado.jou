@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Sun Mar 29 09:11:39 2026
+# Process ID         : 15604
+# Current directory  : D:/HK6/Project1/testing/matmul_array/matmul/matmul.runs/array_block_zynq_ultra_ps_e_0_0_synth_1
+# Command line       : vivado.exe -log array_block_zynq_ultra_ps_e_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source array_block_zynq_ultra_ps_e_0_0.tcl
+# Log file           : D:/HK6/Project1/testing/matmul_array/matmul/matmul.runs/array_block_zynq_ultra_ps_e_0_0_synth_1/array_block_zynq_ultra_ps_e_0_0.vds
+# Journal file       : D:/HK6/Project1/testing/matmul_array/matmul/matmul.runs/array_block_zynq_ultra_ps_e_0_0_synth_1\vivado.jou
+# Running On         : VuDuong-32
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz
+# CPU Frequency      : 1992 MHz
+# CPU Physical cores : 4
+# CPU Logical cores  : 8
+# Host memory        : 8448 MB
+# Swap memory        : 22246 MB
+# Total Virtual      : 30695 MB
+# Available Virtual  : 22019 MB
+#-----------------------------------------------------------
+source array_block_zynq_ultra_ps_e_0_0.tcl -notrace

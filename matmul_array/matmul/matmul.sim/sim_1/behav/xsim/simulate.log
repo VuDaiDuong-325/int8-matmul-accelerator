@@ -1,0 +1,81 @@
+Time resolution is 1 ps
+===========================================
+ BAT DAU TEST CASE:                                                                                                    NORMAL 1: A x Identity Matrix
+===========================================
+Time = 85000 | PE[0][0] Validated! | Result = 1
+Time = 95000 | PE[0][1] Validated! | Result = 2
+Time = 95000 | PE[1][0] Validated! | Result = 5
+Time = 105000 | PE[0][2] Validated! | Result = 3
+Time = 105000 | PE[1][1] Validated! | Result = 6
+Time = 105000 | PE[2][0] Validated! | Result = 9
+Time = 115000 | PE[0][3] Validated! | Result = 4
+Time = 115000 | PE[1][2] Validated! | Result = 7
+Time = 115000 | PE[2][1] Validated! | Result = 1
+Time = 115000 | PE[3][0] Validated! | Result = 4
+Time = 125000 | PE[1][3] Validated! | Result = 8
+Time = 125000 | PE[2][2] Validated! | Result = 2
+Time = 125000 | PE[3][1] Validated! | Result = 5
+Time = 135000 | PE[2][3] Validated! | Result = 3
+Time = 135000 | PE[3][2] Validated! | Result = 6
+Time = 145000 | PE[3][3] Validated! | Result = 7
+===========================================
+ BAT DAU TEST CASE:                                                                                          NORMAL 2: All 2s x All 3s (Expected 24)
+===========================================
+Time = 325000 | PE[0][0] Validated! | Result = 24
+Time = 335000 | PE[0][1] Validated! | Result = 24
+Time = 335000 | PE[1][0] Validated! | Result = 24
+Time = 345000 | PE[0][2] Validated! | Result = 24
+Time = 345000 | PE[1][1] Validated! | Result = 24
+Time = 345000 | PE[2][0] Validated! | Result = 24
+Time = 355000 | PE[0][3] Validated! | Result = 24
+Time = 355000 | PE[1][2] Validated! | Result = 24
+Time = 355000 | PE[2][1] Validated! | Result = 24
+Time = 355000 | PE[3][0] Validated! | Result = 24
+Time = 365000 | PE[1][3] Validated! | Result = 24
+Time = 365000 | PE[2][2] Validated! | Result = 24
+Time = 365000 | PE[3][1] Validated! | Result = 24
+Time = 375000 | PE[2][3] Validated! | Result = 24
+Time = 375000 | PE[3][2] Validated! | Result = 24
+Time = 385000 | PE[3][3] Validated! | Result = 24
+===========================================
+ BAT DAU TEST CASE:                                                                                              SPECIAL 1: Zero Matrix (Expected 0)
+===========================================
+Time = 565000 | PE[0][0] Validated! | Result = 0
+Time = 575000 | PE[0][1] Validated! | Result = 0
+Time = 575000 | PE[1][0] Validated! | Result = 0
+Time = 585000 | PE[0][2] Validated! | Result = 0
+Time = 585000 | PE[1][1] Validated! | Result = 0
+Time = 585000 | PE[2][0] Validated! | Result = 0
+Time = 595000 | PE[0][3] Validated! | Result = 0
+Time = 595000 | PE[1][2] Validated! | Result = 0
+Time = 595000 | PE[2][1] Validated! | Result = 0
+Time = 595000 | PE[3][0] Validated! | Result = 0
+Time = 605000 | PE[1][3] Validated! | Result = 0
+Time = 605000 | PE[2][2] Validated! | Result = 0
+Time = 605000 | PE[3][1] Validated! | Result = 0
+Time = 615000 | PE[2][3] Validated! | Result = 0
+Time = 615000 | PE[3][2] Validated! | Result = 0
+Time = 625000 | PE[3][3] Validated! | Result = 0
+===========================================
+ BAT DAU TEST CASE:                                                                                        SPECIAL 2: Negative Numbers (Expected -8)
+===========================================
+Time = 805000 | PE[0][0] Validated! | Result = -8
+Time = 815000 | PE[0][1] Validated! | Result = -8
+Time = 815000 | PE[1][0] Validated! | Result = -8
+Time = 825000 | PE[0][2] Validated! | Result = -8
+Time = 825000 | PE[1][1] Validated! | Result = -8
+Time = 825000 | PE[2][0] Validated! | Result = -8
+Time = 835000 | PE[0][3] Validated! | Result = -8
+Time = 835000 | PE[1][2] Validated! | Result = -8
+Time = 835000 | PE[2][1] Validated! | Result = -8
+Time = 835000 | PE[3][0] Validated! | Result = -8
+Time = 845000 | PE[1][3] Validated! | Result = -8
+Time = 845000 | PE[2][2] Validated! | Result = -8
+Time = 845000 | PE[3][1] Validated! | Result = -8
+Time = 855000 | PE[2][3] Validated! | Result = -8
+Time = 855000 | PE[3][2] Validated! | Result = -8
+Time = 865000 | PE[3][3] Validated! | Result = -8
+===========================================
+ TAT CA TEST CASE HOAN THANH!
+===========================================
+$finish called at time : 975 ns : File "D:/HK6/Project1/testing/matmul_array/matmul/matmul.srcs/sim_1/new/tb_matmul_array.v" Line 176

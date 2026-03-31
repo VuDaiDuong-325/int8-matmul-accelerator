@@ -1,0 +1,11 @@
+0.7
+2020.2
+Nov 14 2025
+19:37:27
+D:/HK6/Project1/testing/matmul_array/matmul/matmul.sim/sim_1/behav/xsim/glbl.v,1756381829,verilog,,,,glbl,,,,,,,,
+D:/HK6/Project1/testing/matmul_array/matmul/matmul.srcs/sim_1/new/tb_matmul_array.v,1774708390,verilog,,,,tb_matmul_array,,,../../../../../../../../../Apps/Study/Vivado/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/HK6/Project1/testing/matmul_array/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/mac_core.v,1774274310,verilog,,D:/HK6/Project1/testing/matmul_array/matmul/matmul.srcs/sources_1/imports/sources_1/new/mac_mult_stage.v,,mac_core,,,../../../../../../../../../Apps/Study/Vivado/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/HK6/Project1/testing/matmul_array/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/matmul_array.v,1774169176,verilog,,D:/HK6/Project1/testing/matmul_array/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/pe_wrapper.v,,matmul_array,,,../../../../../../../../../Apps/Study/Vivado/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/HK6/Project1/testing/matmul_array/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/pe_wrapper.v,1774168912,verilog,,D:/HK6/Project1/testing/matmul_array/matmul/matmul.srcs/sim_1/new/tb_matmul_array.v,,pe_wrapper,,,../../../../../../../../../Apps/Study/Vivado/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/HK6/Project1/testing/matmul_array/matmul/matmul.srcs/sources_1/imports/sources_1/new/mac_acc_stage.v,1774707421,verilog,,D:/HK6/Project1/testing/matmul_array/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/mac_core.v,,mac_acc_stage,,,../../../../../../../../../Apps/Study/Vivado/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/HK6/Project1/testing/matmul_array/matmul/matmul.srcs/sources_1/imports/sources_1/new/mac_mult_stage.v,1774168750,verilog,,D:/HK6/Project1/testing/matmul_array/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/matmul_array.v,,mac_mult_stage,,,../../../../../../../../../Apps/Study/Vivado/2025.2/Vivado/data/rsb/busdef,,,,,
