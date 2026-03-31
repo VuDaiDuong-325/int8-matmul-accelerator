@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date         : Mon Mar 30 08:41:22 2026
+| Date         : Wed Apr  1 00:06:31 2026
 | Host         : VuDuong-32 running 64-bit major release  (build 9200)
 | Command      : report_drc -file array_block_wrapper_drc_opted.rpt -pb array_block_wrapper_drc_opted.pb -rpx array_block_wrapper_drc_opted.rpx
 | Design       : array_block_wrapper

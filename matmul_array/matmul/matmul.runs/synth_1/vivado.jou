@@ -3,8 +3,8 @@
 # SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
 # IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
 # SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-# Start of session at: Mon Mar 30 08:37:36 2026
-# Process ID         : 10028
+# Start of session at: Wed Apr  1 00:01:46 2026
+# Process ID         : 2624
 # Current directory  : D:/HK6/Project1/testing/matmul_array/matmul/matmul.runs/synth_1
 # Command line       : vivado.exe -log array_block_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source array_block_wrapper.tcl
 # Log file           : D:/HK6/Project1/testing/matmul_array/matmul/matmul.runs/synth_1/array_block_wrapper.vds
@@ -19,6 +19,6 @@
 # Host memory        : 8448 MB
 # Swap memory        : 22783 MB
 # Total Virtual      : 31231 MB
-# Available Virtual  : 18974 MB
+# Available Virtual  : 14396 MB
 #-----------------------------------------------------------
 source array_block_wrapper.tcl -notrace

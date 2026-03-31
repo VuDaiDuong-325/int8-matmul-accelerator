@@ -13,6 +13,44 @@
 #define MAP_MASK (MAP_SIZE - 1)
 
 int main() {
+    // Khai báo 2 ma trận Input
+    int8_t X[4][4] = {
+        {-4, -41, -12, 42},
+        {66, -61, 20, -26},
+        {57, -84, 11, 127},
+        {70, 27, 0, 73}
+    };
+
+    int8_t W[4][4] = {
+        {23, 42, -38, -26},
+        {-4, 12, -66, 25},
+        {41, 95, 127, -92},
+        {33, 40, 101, 23}
+    };
+
+    // Hiển thị Ma trận X
+    printf("[INPUT 1] - Ma tran ACTIVATION INT8 (X):\n");
+    for (int row = 0; row < 4; row++) {
+        printf("[");
+        for (int col = 0; col < 4; col++) {
+            printf("%4d", X[row][col]);
+            if (col < 3) printf(", ");
+        }
+        printf("]\n");
+    }
+
+    // Hiển thị Ma trận W
+    printf("\n[INPUT 2] - Ma tran WEIGHT INT8 (W):\n");
+    for (int row = 0; row < 4; row++) {
+        printf("[");
+        for (int col = 0; col < 4; col++) {
+            printf("%4d", W[row][col]);
+            if (col < 3) printf(", ");
+        }
+        printf("]\n");
+    }
+    printf("\n");
+
     int mem_fd;
     void *mapped_base;
     volatile uint32_t *gpio_ch1; // Dùng để xuất tín hiệu rst_n, start, read_addr

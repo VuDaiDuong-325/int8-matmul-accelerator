@@ -77,17 +77,15 @@ module array_ctrl #(
     wire [7:0] ROM_A [0:3][0:3];
     wire [7:0] ROM_B [0:3][0:3];
 
-    // Nạp Ma Trận A (Có số âm và dương)
-    assign ROM_A[0][0]= 8'sd1;  assign ROM_A[0][1]=-8'sd2;  assign ROM_A[0][2]= 8'sd3;  assign ROM_A[0][3]=-8'sd1;
-    assign ROM_A[1][0]=-8'sd1;  assign ROM_A[1][1]= 8'sd2;  assign ROM_A[1][2]= 8'sd0;  assign ROM_A[1][3]= 8'sd4;
-    assign ROM_A[2][0]= 8'sd2;  assign ROM_A[2][1]= 8'sd1;  assign ROM_A[2][2]=-8'sd3;  assign ROM_A[2][3]= 8'sd2;
-    assign ROM_A[3][0]= 8'sd0;  assign ROM_A[3][1]=-8'sd1;  assign ROM_A[3][2]= 8'sd1;  assign ROM_A[3][3]=-8'sd2;
+    assign ROM_A[0][0] = -8'sd4;   assign ROM_A[0][1] = -8'sd41;  assign ROM_A[0][2] = -8'sd12;  assign ROM_A[0][3] =  8'sd42;
+    assign ROM_A[1][0] =  8'sd66;  assign ROM_A[1][1] = -8'sd61;  assign ROM_A[1][2] =  8'sd20;  assign ROM_A[1][3] = -8'sd26;
+    assign ROM_A[2][0] =  8'sd57;  assign ROM_A[2][1] = -8'sd84;  assign ROM_A[2][2] =  8'sd11;  assign ROM_A[2][3] =  8'sd127;
+    assign ROM_A[3][0] =  8'sd70;  assign ROM_A[3][1] =  8'sd27;  assign ROM_A[3][2] =  8'sd0;   assign ROM_A[3][3] =  8'sd73;
 
-    // Nạp Ma Trận B (Có số âm và dương)
-    assign ROM_B[0][0]= 8'sd2;  assign ROM_B[0][1]= 8'sd0;  assign ROM_B[0][2]=-8'sd1;  assign ROM_B[0][3]= 8'sd1;
-    assign ROM_B[1][0]=-8'sd1;  assign ROM_B[1][1]= 8'sd3;  assign ROM_B[1][2]= 8'sd2;  assign ROM_B[1][3]= 8'sd0;
-    assign ROM_B[2][0]= 8'sd1;  assign ROM_B[2][1]=-8'sd2;  assign ROM_B[2][2]= 8'sd1;  assign ROM_B[2][3]=-8'sd1;
-    assign ROM_B[3][0]= 8'sd0;  assign ROM_B[3][1]= 8'sd1;  assign ROM_B[3][2]=-8'sd1;  assign ROM_B[3][3]= 8'sd2;
+    assign ROM_B[0][0] =  8'sd23;  assign ROM_B[0][1] =  8'sd42;  assign ROM_B[0][2] = -8'sd38;  assign ROM_B[0][3] = -8'sd26;
+    assign ROM_B[1][0] = -8'sd4;   assign ROM_B[1][1] =  8'sd12;  assign ROM_B[1][2] = -8'sd66;  assign ROM_B[1][3] =  8'sd25;
+    assign ROM_B[2][0] =  8'sd41;  assign ROM_B[2][1] =  8'sd95;  assign ROM_B[2][2] =  8'sd127; assign ROM_B[2][3] = -8'sd92;
+    assign ROM_B[3][0] =  8'sd33;  assign ROM_B[3][1] =  8'sd40;  assign ROM_B[3][2] =  8'sd101; assign ROM_B[3][3] =  8'sd23;
 
     // ==========================================
     // 3. MẠCH SKEW CHO MẢNG SYSTOLIC ARRAY

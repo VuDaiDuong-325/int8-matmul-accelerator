@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-// Date        : Mon Mar 30 08:37:29 2026
+// Date        : Wed Apr  1 00:01:37 2026
 // Host        : VuDuong-32 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               d:/HK6/Project1/testing/matmul_array/matmul/matmul.gen/sources_1/bd/array_block/ip/array_block_array_top_0_0/array_block_array_top_0_0_stub.v
