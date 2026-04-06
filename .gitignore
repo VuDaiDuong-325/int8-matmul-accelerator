@@ -1,0 +1,53 @@
+# --- Vivado / Quartus / FPGA Projects .gitignore ---
+
+# 1. Các file Checkpoint và kết quả Synthesis/Implementation
+*.dcp
+*.bit
+*.bin
+*.ltx
+*.prm
+*.mcs
+
+# 2. Thư mục build và kết quả chạy (Rất nặng, không nên push)
+[0-9]*x[0-9]*/
+*/matmul.runs/
+*/matmul.gen/
+*/matmul.ip_user_files/
+*/matmul.hw/
+*/matmul.sim/
+*.pdi
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+
+# 3. Các file log và journal của Vivado/Quartus
+*.log
+*.jou
+*.str
+*.txt
+*.vds
+*.vdi
+*.rpt
+
+# 4. Các file môi trường và thiết lập cá nhân
+.Xil/
+.srcs/utils_1/imports/
+*.pb
+*.mmi
+*.xpe
+
+# 5. File mô phỏng (ModelSim, Questa, Vivado Simulator)
+work/
+transcript
+vsim.wlf
+*.wdb
+*.wcfg
+
+# 6. Các file rác từ hệ điều hành và IDE (VS Code)
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
