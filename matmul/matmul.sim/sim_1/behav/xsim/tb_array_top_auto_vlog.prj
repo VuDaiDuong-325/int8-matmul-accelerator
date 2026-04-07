@@ -1,0 +1,17 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "E:/vivado/2025.2/Vivado/data/rsb/busdef" \
+"../../../../matmul.srcs/sources_1/new/array_ctrl.v" \
+"../../../../matmul.srcs/sources_1/new/array_top.v" \
+"../../../../matmul.srcs/sources_1/imports/sources_1/new/mac_acc_stage.v" \
+"../../../../matmul.srcs/sources_1/imports/sources_1/imports/new/mac_core.v" \
+"../../../../matmul.srcs/sources_1/imports/sources_1/new/mac_mult_stage.v" \
+"../../../../matmul.srcs/sources_1/imports/sources_1/imports/new/matmul_array.v" \
+"../../../../matmul.srcs/sources_1/imports/sources_1/imports/new/pe_wrapper.v" \
+"../../../../matmul.srcs/sources_1/new/skew_pipe.v" \
+"../../../../matmul.srcs/sim_1/new/tb_array_top_random.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

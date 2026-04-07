@@ -1,0 +1,63 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.548951",
+   "Default View_TopLeft":"0,-253",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 threadsafe
+#  -string -flagsOSRD
+preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 4 -x 1230 -y 420 -defaultsOSRD
+preplace inst axi_cdma_0 -pg 1 -lvl 2 -x 520 -y 630 -defaultsOSRD
+preplace inst axi_bram_ctrl_0 -pg 1 -lvl 6 -x 2010 -y 300 -defaultsOSRD
+preplace inst blk_mem_gen_0 -pg 1 -lvl 7 -x 2350 -y 340 -defaultsOSRD
+preplace inst axi_bram_ctrl_1 -pg 1 -lvl 6 -x 2010 -y 790 -defaultsOSRD
+preplace inst blk_mem_gen_1 -pg 1 -lvl 7 -x 2350 -y 830 -defaultsOSRD
+preplace inst axi_bram_ctrl_2 -pg 1 -lvl 6 -x 2010 -y 160 -defaultsOSRD
+preplace inst blk_mem_gen_2 -pg 1 -lvl 7 -x 2350 -y 120 -defaultsOSRD
+preplace inst array_top_0 -pg 1 -lvl 8 -x 2670 -y 550 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 6 -x 2010 -y 480 -defaultsOSRD
+preplace inst axi_gpio_1 -pg 1 -lvl 6 -x 2010 -y 640 -defaultsOSRD
+preplace inst xlslice_0 -pg 1 -lvl 7 -x 2350 -y 540 -defaultsOSRD
+preplace inst xlslice_1 -pg 1 -lvl 7 -x 2350 -y 640 -defaultsOSRD
+preplace inst axi_smc -pg 1 -lvl 5 -x 1680 -y 430 -defaultsOSRD
+preplace inst rst_ps8_0_99M -pg 1 -lvl 1 -x 190 -y 630 -defaultsOSRD
+preplace inst axi_smc_1 -pg 1 -lvl 3 -x 810 -y 380 -defaultsOSRD
+preplace netloc array_top_0_addr_A 1 6 3 2220 440 2470J 400 2800
+preplace netloc array_top_0_addr_B 1 6 3 2220 450 2480J 410 2830
+preplace netloc array_top_0_addr_C 1 6 3 2210 240 NJ 240 2840
+preplace netloc array_top_0_data_C 1 6 3 2230 10 NJ 10 2850
+preplace netloc array_top_0_done 1 6 3 2170J 460 2520J 420 2810
+preplace netloc array_top_0_we_C 1 6 3 2230 230 NJ 230 2820
+preplace netloc axi_gpio_0_gpio2_io_o 1 6 2 2180 470 2480J
+preplace netloc axi_gpio_0_gpio_io_o 1 6 1 2160 470n
+preplace netloc axi_gpio_1_gpio2_io_o 1 6 2 2210 480 2470J
+preplace netloc blk_mem_gen_0_doutb 1 6 2 2230 700 2510
+preplace netloc blk_mem_gen_1_doutb 1 6 2 2230 720 2530
+preplace netloc rst_ps8_0_99M_peripheral_aresetn 1 1 7 380 400 660 290 NJ 290 1550 290 1870 870 2210J 730 2520J
+preplace netloc xlslice_0_Dout 1 7 1 NJ 540
+preplace netloc xlslice_1_Dout 1 7 1 2500J 560n
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 8 20 530 370 530 680 460 940 320 1530 320 1850 80 2190 710 2490
+preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 0 5 10 300 NJ 300 NJ 300 NJ 300 1520
+preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 6 1 N 300
+preplace netloc axi_bram_ctrl_1_BRAM_PORTA 1 6 1 N 790
+preplace netloc axi_bram_ctrl_2_BRAM_PORTA 1 6 1 2150 70n
+preplace netloc axi_bram_ctrl_2_BRAM_PORTB 1 6 1 2200 170n
+preplace netloc axi_cdma_0_M_AXI 1 2 1 670 360n
+preplace netloc axi_smc_1_M00_AXI 1 3 1 N 380
+preplace netloc axi_smc_M00_AXI 1 5 1 1860 280n
+preplace netloc axi_smc_M01_AXI 1 5 1 1830 400n
+preplace netloc axi_smc_M02_AXI 1 5 1 1820 140n
+preplace netloc axi_smc_M03_AXI 1 1 5 390 280 NJ 280 NJ 280 NJ 280 1810
+preplace netloc axi_smc_M04_AXI 1 5 1 N 460
+preplace netloc axi_smc_M05_AXI 1 5 1 1810 480n
+preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_FPD 1 4 1 1540 380n
+preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM1_FPD 1 4 1 N 400
+levelinfo -pg 1 -10 190 520 810 1230 1680 2010 2350 2670 2880
+pagesize -pg 1 -db -bbox -sgen -10 0 2880 930
+"
+}
+{
+   "da_axi4_cnt":"8",
+   "da_bram_cntlr_cnt":"1",
+   "da_clkrst_cnt":"1",
+   "da_zynq_ultra_ps_e_cnt":"1"
+}

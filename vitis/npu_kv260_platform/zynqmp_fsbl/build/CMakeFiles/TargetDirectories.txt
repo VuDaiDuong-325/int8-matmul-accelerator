@@ -1,4 +1,0 @@
-D:/HK6/Project1/vitis/npu_kv260_platform/zynqmp_fsbl/build/CMakeFiles/fsbl.elf.dir
-D:/HK6/Project1/vitis/npu_kv260_platform/zynqmp_fsbl/build/CMakeFiles/print_build_info.dir
-D:/HK6/Project1/vitis/npu_kv260_platform/zynqmp_fsbl/build/CMakeFiles/edit_cache.dir
-D:/HK6/Project1/vitis/npu_kv260_platform/zynqmp_fsbl/build/CMakeFiles/rebuild_cache.dir
