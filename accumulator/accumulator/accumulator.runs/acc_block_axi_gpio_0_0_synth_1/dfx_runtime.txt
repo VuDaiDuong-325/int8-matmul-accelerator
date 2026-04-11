@@ -1,2 +1,3 @@
-DFXRuntime Profile Report:
-Total Application(DFX) Runtime :                  CPU : 0:0:7 WALL : 0:0:0  0.00 % 
+version https://git-lfs.github.com/spec/v1
+oid sha256:9705efde7640f592435be42060ec2a844de5976aa2429672da3ff336c522e155
+size 111

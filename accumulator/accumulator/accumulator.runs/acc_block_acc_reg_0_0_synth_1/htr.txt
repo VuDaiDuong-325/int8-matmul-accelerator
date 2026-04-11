@@ -1,10 +1,3 @@
-REM
-REM Vivado(TM)
-REM htr.txt: a Vivado-generated description of how-to-repeat the
-REM          the basic steps of a run.  Note that runme.bat/sh needs
-REM          to be invoked for Vivado to track run status.
-REM Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-REM Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
-REM
-
-vivado -log acc_block_acc_reg_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source acc_block_acc_reg_0_0.tcl
+version https://git-lfs.github.com/spec/v1
+oid sha256:bc9d136c1aeb0addaadc1c4a90210475fddc43a7a236ae7908f614bf10c15203
+size 484

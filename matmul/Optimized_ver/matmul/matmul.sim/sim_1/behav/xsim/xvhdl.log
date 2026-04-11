@@ -1,0 +1,12 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HK6/Project1/testing/matmul_array/matmul/matmul.ip_user_files/bd/gemm_block/ip/gemm_block_axi_dma_0_0/sim/gemm_block_axi_dma_0_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'gemm_block_axi_dma_0_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HK6/Project1/testing/matmul_array/matmul/matmul.ip_user_files/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_1/sim/bd_31d6_psr_aclk_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'bd_31d6_psr_aclk_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HK6/Project1/testing/matmul_array/matmul/matmul.ip_user_files/bd/gemm_block/ip/gemm_block_rst_ps8_0_99M_0/sim/gemm_block_rst_ps8_0_99M_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'gemm_block_rst_ps8_0_99M_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HK6/Project1/testing/matmul_array/matmul/matmul.ip_user_files/bd/gemm_block/ip/gemm_block_axi_dma_1_0/sim/gemm_block_axi_dma_1_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'gemm_block_axi_dma_1_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HK6/Project1/testing/matmul_array/matmul/matmul.ip_user_files/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_1/sim/bd_90f7_psr_aclk_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'bd_90f7_psr_aclk_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HK6/Project1/testing/matmul_array/matmul/matmul.ip_user_files/bd/gemm_block/ip/gemm_block_axi_gpio_0_0/sim/gemm_block_axi_gpio_0_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'gemm_block_axi_gpio_0_0'

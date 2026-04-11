@@ -1,0 +1,11 @@
+Time resolution is 1 ps
+[120000 ns] [TB] Bat dau nap du lieu vao NPU...
+[198000 ns] [TB] Da nap xong Chunk 1/2
+[278000 ns] [TB] Da nap xong Chunk 2/2
+[728000 ns] [NPU] Da xu ly va xa hoan tat ma tran C
+============================================
+[728000 ns] [TB] HOAN THANH NHAN MA TRAN PING-PONG (512-BIT)!
+[728000 ns] [TB] So ket qua DUNG: 256 / 256
+=> [RESULT]: PASSED - CHUAN XAC 100%
+============================================
+$finish called at time : 727500 ps : File "D:/HK6/Project1/testing/matmul_array/matmul/matmul.srcs/sim_1/new/tb_gemm_accelerator.v" Line 246
