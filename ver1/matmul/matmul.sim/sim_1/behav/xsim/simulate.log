@@ -1,0 +1,9 @@
+Time resolution is 1 ps
+[145000 ns] [TB] Reset done. N=16 K_BLOCKS=1 K_TOTAL=16 k_dim=16
+[305000 ns] [TB] All data sent. Waiting for result...
+============================================
+[3885000 ns] Nhan du 256 phan tu.
+  DUNG: 256 / 256
+  >>>>> PASSED 100% <<<<<
+============================================
+$finish called at time : 3885 ns : File "D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sim_1/new/tb_gemm_accelerator.v" Line 260
