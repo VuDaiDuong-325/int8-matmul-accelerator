@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date         : Sat Apr 11 20:03:25 2026
+| Date         : Tue Apr 14 01:26:43 2026
 | Host         : ZUYYYY running 64-bit major release  (build 9200)
 | Command      : report_utilization -file gemm_block_v1_gemm_accelerator_0_0_utilization_synth.rpt -pb gemm_block_v1_gemm_accelerator_0_0_utilization_synth.pb
 | Design       : gemm_block_v1_gemm_accelerator_0_0
@@ -32,19 +32,19 @@ Table of Contents
 +----------------------------+-------+-------+------------+-----------+-------+
 |          Site Type         |  Used | Fixed | Prohibited | Available | Util% |
 +----------------------------+-------+-------+------------+-----------+-------+
-| CLB LUTs*                  | 17975 |     0 |          0 |    117120 | 15.35 |
-|   LUT as Logic             |  8218 |     0 |          0 |    117120 |  7.02 |
-|   LUT as Memory            |  9757 |     0 |          0 |     57600 | 16.94 |
-|     LUT as Distributed RAM |  9472 |     0 |            |           |       |
+| CLB LUTs*                  |  5527 |     0 |          0 |    117120 |  4.72 |
+|   LUT as Logic             |  5242 |     0 |          0 |    117120 |  4.48 |
+|   LUT as Memory            |   285 |     0 |          0 |     57600 |  0.49 |
+|     LUT as Distributed RAM |     0 |     0 |            |           |       |
 |     LUT as Shift Register  |   285 |     0 |            |           |       |
-| CLB Registers              | 22171 |     0 |          0 |    234240 |  9.47 |
-|   Register as Flip Flop    | 22171 |     0 |          0 |    234240 |  9.47 |
+| CLB Registers              | 21956 |     0 |          0 |    234240 |  9.37 |
+|   Register as Flip Flop    | 21956 |     0 |          0 |    234240 |  9.37 |
 |   Register as Latch        |     0 |     0 |          0 |    234240 |  0.00 |
 | CARRY8                     |    18 |     0 |          0 |     14640 |  0.12 |
-| F7 Muxes                   |  1024 |     0 |          0 |     58560 |  1.75 |
+| F7 Muxes                   |     0 |     0 |          0 |     58560 |  0.00 |
 | F8 Muxes                   |     0 |     0 |          0 |     29280 |  0.00 |
 | F9 Muxes                   |     0 |     0 |          0 |     14640 |  0.00 |
-| Unique Control Sets        |   593 |       |          0 |     29280 |  2.03 |
+| Unique Control Sets        |   523 |       |          0 |     29280 |  1.79 |
 +----------------------------+-------+-------+------------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
 Warning! LUT value is adjusted to account for LUT combining.
@@ -66,8 +66,8 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
-| 13    |          Yes |         Set |            - |
-| 22158 |          Yes |       Reset |            - |
+| 2     |          Yes |         Set |            - |
+| 21954 |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -77,9 +77,9 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +-------------------+------+-------+------------+-----------+-------+
 |     Site Type     | Used | Fixed | Prohibited | Available | Util% |
 +-------------------+------+-------+------------+-----------+-------+
-| Block RAM Tile    |    1 |     0 |          0 |       144 |  0.69 |
-|   RAMB36/FIFO*    |    1 |     0 |          0 |       144 |  0.69 |
-|     RAMB36E2 only |    1 |       |            |           |       |
+| Block RAM Tile    |   16 |     0 |          0 |       144 | 11.11 |
+|   RAMB36/FIFO*    |   16 |     0 |          0 |       144 | 11.11 |
+|     RAMB36E2 only |   16 |       |            |           |       |
 |   RAMB18          |    0 |     0 |          0 |       288 |  0.00 |
 | URAM              |    0 |     0 |          0 |        64 |  0.00 |
 +-------------------+------+-------+------------+-----------+-------+
@@ -175,30 +175,29 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +----------+-------+---------------------+
 | Ref Name |  Used | Functional Category |
 +----------+-------+---------------------+
-| FDRE     | 22158 |            Register |
-| RAMD64E  |  9472 |                 CLB |
-| LUT3     |  7745 |                 CLB |
-| LUT6     |  2387 |                 CLB |
-| LUT2     |  1406 |                 CLB |
-| MUXF7    |  1024 |                 CLB |
-| LUT5     |   597 |                 CLB |
-| LUT1     |   334 |                 CLB |
-| SRL16E   |   269 |                 CLB |
+| FDRE     | 21954 |            Register |
+| LUT3     |  7963 |                 CLB |
+| LUT2     |  1359 |                 CLB |
+| LUT1     |   325 |                 CLB |
+| SRL16E   |   285 |                 CLB |
 | DSP48E2  |   256 |          Arithmetic |
-| LUT4     |    58 |                 CLB |
+| LUT6     |    43 |                 CLB |
 | CARRY8   |    18 |                 CLB |
-| SRLC32E  |    16 |                 CLB |
-| FDSE     |    13 |            Register |
-| RAMB36E2 |     1 |            BLOCKRAM |
+| RAMB36E2 |    16 |            BLOCKRAM |
+| LUT4     |    15 |                 CLB |
+| LUT5     |    11 |                 CLB |
+| FDSE     |     2 |            Register |
 +----------+-------+---------------------+
 
 
 9. Black Boxes
 --------------
 
-+----------+------+
-| Ref Name | Used |
-+----------+------+
++----------------------------------------------------+------+
+|                      Ref Name                      | Used |
++----------------------------------------------------+------+
+| gemm_block_v1_gemm_accelerator_0_0_fifo_512_to_128 |    1 |
++----------------------------------------------------+------+
 
 
 10. Instantiated Netlists

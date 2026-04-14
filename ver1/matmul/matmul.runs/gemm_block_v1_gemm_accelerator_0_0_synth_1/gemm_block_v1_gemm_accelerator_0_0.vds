@@ -3,8 +3,8 @@
 # SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
 # IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
 # SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-# Start of session at: Sat Apr 11 20:00:29 2026
-# Process ID         : 548
+# Start of session at: Tue Apr 14 01:24:28 2026
+# Process ID         : 18480
 # Current directory  : D:/E/1subject/HK6/doan1/ver1/matmul/matmul.runs/gemm_block_v1_gemm_accelerator_0_0_synth_1
 # Command line       : vivado.exe -log gemm_block_v1_gemm_accelerator_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source gemm_block_v1_gemm_accelerator_0_0.tcl
 # Log file           : D:/E/1subject/HK6/doan1/ver1/matmul/matmul.runs/gemm_block_v1_gemm_accelerator_0_0_synth_1/gemm_block_v1_gemm_accelerator_0_0.vds
@@ -17,13 +17,11 @@
 # CPU Physical cores : 12
 # CPU Logical cores  : 16
 # Host memory        : 16794 MB
-# Swap memory        : 12884 MB
-# Total Virtual      : 29679 MB
-# Available Virtual  : 12586 MB
+# Swap memory        : 13421 MB
+# Total Virtual      : 30216 MB
+# Available Virtual  : 15783 MB
 #-----------------------------------------------------------
-ERROR: [Common 17-1257] Failed to create directory 'C'.
 source gemm_block_v1_gemm_accelerator_0_0.tcl -notrace
-create_project: Time (s): cpu = 00:00:21 ; elapsed = 00:00:12 . Memory (MB): peak = 541.574 ; gain = 219.664
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/vivado/2025.2/Vivado/data/ip'.
@@ -34,9 +32,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
 INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 19996
+INFO: [Synth 8-7075] Helper process launched with PID 16932
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1843.297 ; gain = 212.219
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1844.504 ; gain = 208.934
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'gemm_block_v1_gemm_accelerator_0_0' [d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_gemm_accelerator_0_0/synth/gemm_block_v1_gemm_accelerator_0_0.v:53]
 INFO: [Synth 8-6157] synthesizing module 'gemm_accelerator' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/gemm_accelerator.v:22]
@@ -44,10 +42,10 @@ INFO: [Synth 8-6157] synthesizing module 'gemm_accelerator' [D:/E/1subject/HK6/d
 	Parameter DATA_WIDTH bound to: 8 - type: integer 
 	Parameter FIFO_DEPTH bound to: 1024 - type: integer 
 	Parameter BRAM_DEPTH bound to: 1024 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'bram_input_buffer' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/bram_input_buffer.v:22]
+INFO: [Synth 8-6157] synthesizing module 'bram_input_buffer' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/bram_input_buffer.v:25]
 	Parameter DATA_WIDTH bound to: 128 - type: integer 
 	Parameter DEPTH bound to: 1024 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'bram_input_buffer' (0#1) [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/bram_input_buffer.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'bram_input_buffer' (0#1) [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/bram_input_buffer.v:25]
 INFO: [Synth 8-6157] synthesizing module 'systolic_dataflow_ctrl' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/systolic_dataflow_ctrl.v:22]
 	Parameter N bound to: 16 - type: integer 
 	Parameter DATA_WIDTH bound to: 8 - type: integer 
@@ -194,101 +192,16 @@ INFO: [Synth 8-6155] done synthesizing module 'pe_wrapper' (0#1) [D:/E/1subject/
 INFO: [Synth 8-6155] done synthesizing module 'systolic_array' (0#1) [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/systolic_array.v:23]
 INFO: [Synth 8-6157] synthesizing module 'output_serializer' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/output_serializer.v:21]
 	Parameter N bound to: 16 - type: integer 
-INFO: [Synth 8-155] case statement is not full and has no default [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/output_serializer.v:63]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/output_serializer.v:56]
 INFO: [Synth 8-6155] done synthesizing module 'output_serializer' (0#1) [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/output_serializer.v:21]
-INFO: [Synth 8-6157] synthesizing module 'sc_fifo_fwft' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:22]
-	Parameter DATA_WIDTH bound to: 32 - type: integer 
-	Parameter DEPTH bound to: 1024 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_sync' [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1975]
-	Parameter FIFO_MEMORY_TYPE bound to: block - type: string 
-	Parameter FIFO_WRITE_DEPTH bound to: 1024 - type: integer 
-	Parameter WRITE_DATA_WIDTH bound to: 32 - type: integer 
-	Parameter USE_ADV_FEATURES bound to: 0000 - type: string 
-	Parameter READ_MODE bound to: fwft - type: string 
-	Parameter FIFO_READ_LATENCY bound to: 0 - type: integer 
-	Parameter READ_DATA_WIDTH bound to: 32 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_base' [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:53]
-INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base' [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base' (0#1) [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
-INFO: [Synth 8-226] default block is never used [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1220]
-INFO: [Synth 8-226] default block is never used [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1287]
-INFO: [Synth 8-226] default block is never used [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1309]
-INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_bit' [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1927]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_bit' (0#1) [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1927]
-INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn' [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1879]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn' (0#1) [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1879]
-INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_rst' [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1639]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_rst' (0#1) [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1639]
-INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized0' [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1879]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized0' (0#1) [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1879]
-INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized1' [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1879]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized1' (0#1) [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1879]
-INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized2' [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1879]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized2' (0#1) [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1879]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_base' (0#1) [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:53]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_sync' (0#1) [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1975]
-WARNING: [Synth 8-7071] port 'prog_full' of module 'xpm_fifo_sync' is unconnected for instance 'xpm_fifo_sync_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-WARNING: [Synth 8-7071] port 'wr_data_count' of module 'xpm_fifo_sync' is unconnected for instance 'xpm_fifo_sync_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-WARNING: [Synth 8-7071] port 'overflow' of module 'xpm_fifo_sync' is unconnected for instance 'xpm_fifo_sync_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-WARNING: [Synth 8-7071] port 'wr_rst_busy' of module 'xpm_fifo_sync' is unconnected for instance 'xpm_fifo_sync_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-WARNING: [Synth 8-7071] port 'almost_full' of module 'xpm_fifo_sync' is unconnected for instance 'xpm_fifo_sync_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-WARNING: [Synth 8-7071] port 'wr_ack' of module 'xpm_fifo_sync' is unconnected for instance 'xpm_fifo_sync_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-WARNING: [Synth 8-7071] port 'prog_empty' of module 'xpm_fifo_sync' is unconnected for instance 'xpm_fifo_sync_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-WARNING: [Synth 8-7071] port 'rd_data_count' of module 'xpm_fifo_sync' is unconnected for instance 'xpm_fifo_sync_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-WARNING: [Synth 8-7071] port 'underflow' of module 'xpm_fifo_sync' is unconnected for instance 'xpm_fifo_sync_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-WARNING: [Synth 8-7071] port 'rd_rst_busy' of module 'xpm_fifo_sync' is unconnected for instance 'xpm_fifo_sync_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-WARNING: [Synth 8-7071] port 'almost_empty' of module 'xpm_fifo_sync' is unconnected for instance 'xpm_fifo_sync_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-WARNING: [Synth 8-7071] port 'data_valid' of module 'xpm_fifo_sync' is unconnected for instance 'xpm_fifo_sync_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-WARNING: [Synth 8-7071] port 'sbiterr' of module 'xpm_fifo_sync' is unconnected for instance 'xpm_fifo_sync_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-WARNING: [Synth 8-7071] port 'dbiterr' of module 'xpm_fifo_sync' is unconnected for instance 'xpm_fifo_sync_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-WARNING: [Synth 8-7023] instance 'xpm_fifo_sync_inst' of module 'xpm_fifo_sync' has 25 connections declared, but only 11 given [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:46]
-INFO: [Synth 8-6155] done synthesizing module 'sc_fifo_fwft' (0#1) [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v:22]
+INFO: [Synth 8-6157] synthesizing module 'fifo_512_to_128' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.runs/gemm_block_v1_gemm_accelerator_0_0_synth_1/.Xil/Vivado-18480-ZUYYYY/realtime/fifo_512_to_128_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_512_to_128' (0#1) [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.runs/gemm_block_v1_gemm_accelerator_0_0_synth_1/.Xil/Vivado-18480-ZUYYYY/realtime/fifo_512_to_128_stub.v:6]
+WARNING: [Synth 8-7071] port 'wr_rst_busy' of module 'fifo_512_to_128' is unconnected for instance 'fifo_C_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/gemm_accelerator.v:166]
+WARNING: [Synth 8-7071] port 'rd_rst_busy' of module 'fifo_512_to_128' is unconnected for instance 'fifo_C_inst' [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/gemm_accelerator.v:166]
+WARNING: [Synth 8-7023] instance 'fifo_C_inst' of module 'fifo_512_to_128' has 10 connections declared, but only 8 given [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/gemm_accelerator.v:166]
 INFO: [Synth 8-6155] done synthesizing module 'gemm_accelerator' (0#1) [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/gemm_accelerator.v:22]
 INFO: [Synth 8-6155] done synthesizing module 'gemm_block_v1_gemm_accelerator_0_0' (0#1) [d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_gemm_accelerator_0_0/synth/gemm_block_v1_gemm_accelerator_0_0.v:53]
 WARNING: [Synth 8-6014] Unused sequential element c_reg3_reg was removed.  [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/mac_core.v:50]
-WARNING: [Synth 8-6014] Unused sequential element gen_rd_b.gen_doutb_pipe.enb_pipe_reg[0] was removed.  [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:3087]
-WARNING: [Synth 8-6014] Unused sequential element gen_fwft.empty_fwft_fb_reg was removed.  [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1404]
-INFO: [Synth 8-7129] Port rd_clk in module xpm_fifo_rst is either unconnected or has no load
-INFO: [Synth 8-7129] Port sleep in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port rsta in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port regcea in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port injectsbiterra in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port injectdbiterra in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port clkb in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[31] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[30] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[29] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[28] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[27] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[26] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[25] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[24] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[23] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[22] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[21] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[20] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[19] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[18] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[17] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[16] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[15] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[14] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[13] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[12] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[11] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[10] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[9] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[8] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[7] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[6] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[5] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[4] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[3] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[2] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[1] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[0] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port injectsbiterrb in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port injectdbiterrb in module xpm_memory_base is either unconnected or has no load
 INFO: [Synth 8-7129] Port rst_n in module shift_register_delay__parameterized30 is either unconnected or has no load
 INFO: [Synth 8-7129] Port rst_n in module shift_register_delay__parameterized29 is either unconnected or has no load
 INFO: [Synth 8-7129] Port rst_n in module shift_register_delay__parameterized28 is either unconnected or has no load
@@ -324,35 +237,38 @@ INFO: [Synth 8-7129] Port rst_n in module shift_register_delay__parameterized0 i
 INFO: [Synth 8-7129] Port clk in module shift_register_delay is either unconnected or has no load
 INFO: [Synth 8-7129] Port rst_n in module shift_register_delay is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2001.129 ; gain = 370.051
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2004.535 ; gain = 368.965
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2001.129 ; gain = 370.051
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2004.535 ; gain = 368.965
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2001.129 ; gain = 370.051
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2004.535 ; gain = 368.965
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2001.129 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.635 . Memory (MB): peak = 2004.535 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/vivado/2025.2/Vivado/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/gemm_block_v1_gemm_accelerator_0_0_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/gemm_block_v1_gemm_accelerator_0_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-INFO: [Project 1-1714] 1 XPM XDC files have been applied to the design.
+Parsing XDC File [d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/ip/fifo_512_to_128/fifo_512_to_128/fifo_512_to_128_in_context.xdc] for cell 'inst/fifo_C_inst'
+Finished Parsing XDC File [d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/ip/fifo_512_to_128/fifo_512_to_128/fifo_512_to_128_in_context.xdc] for cell 'inst/fifo_C_inst'
+Parsing XDC File [d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_gemm_accelerator_0_0/gemm_block_v1_gemm_accelerator_0_0_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_gemm_accelerator_0_0/gemm_block_v1_gemm_accelerator_0_0_ooc.xdc] for cell 'inst'
+Parsing XDC File [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.runs/gemm_block_v1_gemm_accelerator_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [D:/E/1subject/HK6/doan1/ver1/matmul/matmul.runs/gemm_block_v1_gemm_accelerator_0_0_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.032 . Memory (MB): peak = 2084.996 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 2101.188 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.734 . Memory (MB): peak = 2084.996 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.568 . Memory (MB): peak = 2101.188 ; gain = 0.000
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 2084.996 ; gain = 453.918
+Finished Constraint Validation : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2101.188 ; gain = 465.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -360,17 +276,16 @@ Start Loading Part and Timing Information
 Loading part: xck26-sfvc784-2LV-c
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 2084.996 ; gain = 453.918
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2101.188 ; gain = 465.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 2084.996 ; gain = 453.918
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2101.188 ; gain = 465.617
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'systolic_dataflow_ctrl'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'output_serializer'
-INFO: [Synth 8-802] inferred FSM for state register 'gen_fwft.curr_fwft_state_reg' in module 'xpm_fifo_base'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -389,61 +304,40 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
                WAIT_DROP |                            10000 |                              100
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'output_serializer'
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-                 invalid |                               00 |                               00
-            stage1_valid |                               01 |                               10
-       both_stages_valid |                               10 |                               11
-            stage2_valid |                               11 |                               01
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'gen_fwft.curr_fwft_state_reg' using encoding 'sequential' in module 'xpm_fifo_base'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 2084.996 ; gain = 453.918
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 2101.188 ; gain = 465.617
 ---------------------------------------------------------------------------------
-No constraint files found.
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input   32 Bit       Adders := 4     
-	   4 Input   11 Bit       Adders := 2     
 	   2 Input   10 Bit       Adders := 3     
-	   4 Input   10 Bit       Adders := 3     
-	   2 Input    9 Bit       Adders := 1     
-	   2 Input    5 Bit       Adders := 2     
-	   4 Input    2 Bit       Adders := 1     
+	   2 Input    7 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 1     
 +---Registers : 
 	              512 Bit    Registers := 1     
-	              128 Bit    Registers := 4     
-	               32 Bit    Registers := 516   
-	               11 Bit    Registers := 2     
-	               10 Bit    Registers := 6     
-	                9 Bit    Registers := 1     
+	              128 Bit    Registers := 2     
+	               64 Bit    Registers := 8     
+	               32 Bit    Registers := 513   
+	               10 Bit    Registers := 3     
 	                8 Bit    Registers := 1008  
-	                5 Bit    Registers := 2     
-	                3 Bit    Registers := 1     
-	                2 Bit    Registers := 2     
-	                1 Bit    Registers := 3458  
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                1 Bit    Registers := 3451  
 +---RAMs : 
-	             128K Bit	(1024 X 128 bit)          RAMs := 4     
-	              32K Bit	(1024 X 32 bit)          RAMs := 1     
+	              64K Bit	(1024 X 64 bit)          RAMs := 8     
 +---Muxes : 
-	   5 Input  512 Bit        Muxes := 1     
 	   2 Input  128 Bit        Muxes := 2     
 	   3 Input   32 Bit        Muxes := 1     
 	   2 Input   32 Bit        Muxes := 256   
 	   3 Input   10 Bit        Muxes := 1     
-	   2 Input    5 Bit        Muxes := 2     
-	   5 Input    5 Bit        Muxes := 3     
-	   2 Input    2 Bit        Muxes := 31    
-	   4 Input    2 Bit        Muxes := 7     
+	   5 Input    5 Bit        Muxes := 2     
+	   2 Input    5 Bit        Muxes := 1     
 	   2 Input    1 Bit        Muxes := 277   
 	   3 Input    1 Bit        Muxes := 3     
-	   5 Input    1 Bit        Muxes := 6     
-	   4 Input    1 Bit        Muxes := 2     
+	   5 Input    1 Bit        Muxes := 4     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -456,7 +350,6 @@ BRAMs: 288 (col length: RAMB18 96 RAMB36 48)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-No constraint files found.
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
@@ -2252,59 +2145,8 @@ DSP Report: register p_reg_reg is absorbed into DSP p_reg_reg.
 DSP Report: register m_reg_reg is absorbed into DSP p_reg_reg.
 DSP Report: operator p_reg0 is absorbed into DSP p_reg_reg.
 DSP Report: operator m_reg0 is absorbed into DSP p_reg_reg.
-INFO: [Synth 8-7129] Port rsta in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port regcea in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port injectsbiterra in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port injectdbiterra in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port clkb in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[31] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[30] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[29] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[28] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[27] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[26] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[25] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[24] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[23] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[22] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[21] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[20] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[19] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[18] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[17] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[16] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[15] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[14] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[13] in module xpm_memory_base is either unconnected or has no load
-INFO: [Synth 8-7129] Port dinb[12] in module xpm_memory_base is either unconnected or has no load
-INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_A/ram_ping_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_A/ram_ping_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_A/ram_ping_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_A/ram_ping_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_A/ram_pong_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_A/ram_pong_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_A/ram_pong_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_A/ram_pong_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_B/ram_ping_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_B/ram_ping_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_B/ram_ping_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_B/ram_ping_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_B/ram_pong_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_B/ram_pong_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_B/ram_pong_reg",trying to implement using LUTRAM
-WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "gemm_block_v1_gemm_accelerator_0_0/inst/bram_B/ram_pong_reg",trying to implement using LUTRAM
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:16 ; elapsed = 00:01:24 . Memory (MB): peak = 2240.148 ; gain = 609.070
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 2167.559 ; gain = 531.988
 ---------------------------------------------------------------------------------
  Sort Area is  p_reg_reg_0 : 0 0 : 662 662 : Used 1 time 100
  Sort Area is  p_reg_reg_10 : 0 0 : 662 662 : Used 1 time 100
@@ -2562,34 +2404,25 @@ Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:16 ; elaps
  Sort Area is  p_reg_reg_fd : 0 0 : 662 662 : Used 1 time 100
  Sort Area is  p_reg_reg_fe : 0 0 : 662 662 : Used 1 time 100
  Sort Area is  p_reg_reg_ff : 0 0 : 662 662 : Used 1 time 100
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 Block RAM: Preliminary Mapping Report (see note below)
-+-------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
-|Module Name                                                                                | RTL Object                       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
-+-------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
-|\inst/fifo_C_inst/xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | 1 K x 32(NO_CHANGE)    | W |   | 1 K x 32(NO_CHANGE)    |   | R | Port A and B     | 0      | 1      | 1               | 
-+-------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
++------------+--------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name | RTL Object                           | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++------------+--------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|inst        | bram_A/gen_bram_bank[0].ram_pong_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
+|inst        | bram_A/gen_bram_bank[1].ram_pong_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
+|inst        | bram_A/gen_bram_bank[0].ram_ping_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
+|inst        | bram_A/gen_bram_bank[1].ram_ping_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
+|inst        | bram_B/gen_bram_bank[0].ram_pong_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
+|inst        | bram_B/gen_bram_bank[1].ram_pong_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
+|inst        | bram_B/gen_bram_bank[0].ram_ping_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
+|inst        | bram_B/gen_bram_bank[1].ram_ping_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
++------------+--------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
 
 Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
-
-Distributed RAM: Preliminary Mapping Report (see note below)
-+-----------------------------------+--------------------------+-----------+----------------------+----------------+
-|Module Name                        | RTL Object               | Inference | Size (Depth x Width) | Primitives     | 
-+-----------------------------------+--------------------------+-----------+----------------------+----------------+
-|gemm_block_v1_gemm_accelerator_0_0 | inst/bram_A/ram_ping_reg | Implied   | 1 K x 128            | RAM64M8 x 304  | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/bram_A/ram_pong_reg | Implied   | 1 K x 128            | RAM64M8 x 304  | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/bram_B/ram_ping_reg | Implied   | 1 K x 128            | RAM64M8 x 304  | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/bram_B/ram_pong_reg | Implied   | 1 K x 128            | RAM64M8 x 304  | 
-+-----------------------------------+--------------------------+-----------+----------------------+----------------+
-
-Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
 
 DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
 +------------+-------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
@@ -2857,37 +2690,43 @@ Note: The table above is a preliminary report that shows the DSPs inferred at th
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
-No constraint files found.
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:47 ; elapsed = 00:00:50 . Memory (MB): peak = 2843.371 ; gain = 1207.801
+---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
-INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5556] The block RAM "inst/bram_A/gen_bram_bank[0].ram_pong_reg" may be mapped as a cascade chain, because it is not timing critical.
+INFO: [Synth 8-5556] The block RAM "inst/bram_A/gen_bram_bank[1].ram_pong_reg" may be mapped as a cascade chain, because it is not timing critical.
+INFO: [Synth 8-5556] The block RAM "inst/bram_A/gen_bram_bank[0].ram_ping_reg" may be mapped as a cascade chain, because it is not timing critical.
+INFO: [Synth 8-5556] The block RAM "inst/bram_A/gen_bram_bank[1].ram_ping_reg" may be mapped as a cascade chain, because it is not timing critical.
+INFO: [Synth 8-5556] The block RAM "inst/bram_B/gen_bram_bank[0].ram_pong_reg" may be mapped as a cascade chain, because it is not timing critical.
+INFO: [Synth 8-5556] The block RAM "inst/bram_B/gen_bram_bank[1].ram_pong_reg" may be mapped as a cascade chain, because it is not timing critical.
+INFO: [Synth 8-5556] The block RAM "inst/bram_B/gen_bram_bank[0].ram_ping_reg" may be mapped as a cascade chain, because it is not timing critical.
+INFO: [Synth 8-5556] The block RAM "inst/bram_B/gen_bram_bank[1].ram_ping_reg" may be mapped as a cascade chain, because it is not timing critical.
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:22 ; elapsed = 00:01:31 . Memory (MB): peak = 2240.148 ; gain = 609.070
+Finished Timing Optimization : Time (s): cpu = 00:01:19 ; elapsed = 00:01:22 . Memory (MB): peak = 3217.605 ; gain = 1582.035
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 Block RAM: Final Mapping Report
-+-------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
-|Module Name                                                                                | RTL Object                       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
-+-------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
-|\inst/fifo_C_inst/xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | 1 K x 32(NO_CHANGE)    | W |   | 1 K x 32(NO_CHANGE)    |   | R | Port A and B     | 0      | 1      | 1               | 
-+-------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
-
-
-Distributed RAM: Final Mapping Report
-+-----------------------------------+--------------------------+-----------+----------------------+----------------+
-|Module Name                        | RTL Object               | Inference | Size (Depth x Width) | Primitives     | 
-+-----------------------------------+--------------------------+-----------+----------------------+----------------+
-|gemm_block_v1_gemm_accelerator_0_0 | inst/bram_A/ram_ping_reg | Implied   | 1 K x 128            | RAM64M8 x 304  | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/bram_A/ram_pong_reg | Implied   | 1 K x 128            | RAM64M8 x 304  | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/bram_B/ram_ping_reg | Implied   | 1 K x 128            | RAM64M8 x 304  | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/bram_B/ram_pong_reg | Implied   | 1 K x 128            | RAM64M8 x 304  | 
-+-----------------------------------+--------------------------+-----------+----------------------+----------------+
++------------+--------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name | RTL Object                           | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++------------+--------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|inst        | bram_A/gen_bram_bank[0].ram_pong_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
+|inst        | bram_A/gen_bram_bank[1].ram_pong_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
+|inst        | bram_A/gen_bram_bank[0].ram_ping_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
+|inst        | bram_A/gen_bram_bank[1].ram_ping_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
+|inst        | bram_B/gen_bram_bank[0].ram_pong_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
+|inst        | bram_B/gen_bram_bank[1].ram_pong_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
+|inst        | bram_B/gen_bram_bank[0].ram_ping_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
+|inst        | bram_B/gen_bram_bank[1].ram_ping_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 2      | 1,1             | 
++------------+--------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -2895,8 +2734,24 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance inst/bram_A/gen_bram_bank[0].ram_pong_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_A/gen_bram_bank[0].ram_pong_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_A/gen_bram_bank[1].ram_pong_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_A/gen_bram_bank[1].ram_pong_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_A/gen_bram_bank[0].ram_ping_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_A/gen_bram_bank[0].ram_ping_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_A/gen_bram_bank[1].ram_ping_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_A/gen_bram_bank[1].ram_ping_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_B/gen_bram_bank[0].ram_pong_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_B/gen_bram_bank[0].ram_pong_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_B/gen_bram_bank[1].ram_pong_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_B/gen_bram_bank[1].ram_pong_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_B/gen_bram_bank[0].ram_ping_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_B/gen_bram_bank[0].ram_ping_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_B/gen_bram_bank[1].ram_ping_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/bram_B/gen_bram_bank[1].ram_ping_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:35 ; elapsed = 00:01:45 . Memory (MB): peak = 2244.312 ; gain = 613.234
+Finished Technology Mapping : Time (s): cpu = 00:01:34 ; elapsed = 00:01:38 . Memory (MB): peak = 3234.750 ; gain = 1599.180
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -2914,63 +2769,63 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:41 ; elapsed = 00:01:52 . Memory (MB): peak = 2365.512 ; gain = 734.434
+Finished IO Insertion : Time (s): cpu = 00:01:38 ; elapsed = 00:01:42 . Memory (MB): peak = 3293.531 ; gain = 1657.961
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:41 ; elapsed = 00:01:52 . Memory (MB): peak = 2365.512 ; gain = 734.434
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:38 ; elapsed = 00:01:42 . Memory (MB): peak = 3293.531 ; gain = 1657.961
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:46 ; elapsed = 00:01:57 . Memory (MB): peak = 2367.195 ; gain = 736.117
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:45 ; elapsed = 00:01:49 . Memory (MB): peak = 3304.621 ; gain = 1669.051
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:46 ; elapsed = 00:01:57 . Memory (MB): peak = 2367.195 ; gain = 736.117
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:45 ; elapsed = 00:01:49 . Memory (MB): peak = 3304.621 ; gain = 1669.051
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:47 ; elapsed = 00:01:58 . Memory (MB): peak = 2367.195 ; gain = 736.117
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:45 ; elapsed = 00:01:49 . Memory (MB): peak = 3304.621 ; gain = 1669.051
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:47 ; elapsed = 00:01:58 . Memory (MB): peak = 2367.195 ; gain = 736.117
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:45 ; elapsed = 00:01:50 . Memory (MB): peak = 3304.621 ; gain = 1669.051
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 Static Shift Register Report:
-+-----------------------------------+--------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|Module Name                        | RTL Name                                                           | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
-+-----------------------------------+--------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[1].delay_A/gen_delay.shift_reg_reg[0][7]   | 3      | 16    | NO           | NO                 | NO                | 16     | 0       | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[2].delay_A/gen_delay.shift_reg_reg[1][7]   | 4      | 16    | NO           | NO                 | NO                | 16     | 0       | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[3].delay_A/gen_delay.shift_reg_reg[2][7]   | 5      | 16    | NO           | NO                 | NO                | 16     | 0       | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[4].delay_A/gen_delay.shift_reg_reg[3][7]   | 6      | 16    | NO           | NO                 | NO                | 16     | 0       | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[5].delay_A/gen_delay.shift_reg_reg[4][7]   | 7      | 16    | NO           | NO                 | NO                | 16     | 0       | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[6].delay_A/gen_delay.shift_reg_reg[5][7]   | 8      | 16    | NO           | NO                 | NO                | 16     | 0       | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[7].delay_A/gen_delay.shift_reg_reg[6][7]   | 9      | 16    | NO           | NO                 | NO                | 16     | 0       | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[8].delay_A/gen_delay.shift_reg_reg[7][7]   | 10     | 16    | NO           | NO                 | NO                | 16     | 0       | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[9].delay_A/gen_delay.shift_reg_reg[8][7]   | 11     | 16    | NO           | NO                 | NO                | 16     | 0       | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[10].delay_A/gen_delay.shift_reg_reg[9][7]  | 12     | 16    | NO           | NO                 | NO                | 16     | 0       | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[11].delay_A/gen_delay.shift_reg_reg[10][7] | 13     | 16    | NO           | NO                 | NO                | 16     | 0       | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[12].delay_A/gen_delay.shift_reg_reg[11][7] | 14     | 16    | NO           | NO                 | NO                | 16     | 0       | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[13].delay_A/gen_delay.shift_reg_reg[12][7] | 15     | 16    | NO           | NO                 | NO                | 16     | 0       | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[14].delay_A/gen_delay.shift_reg_reg[13][7] | 16     | 16    | NO           | NO                 | NO                | 16     | 0       | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[15].delay_A/gen_delay.shift_reg_reg[14][7] | 17     | 16    | NO           | NO                 | NO                | 0      | 16      | 
-|gemm_block_v1_gemm_accelerator_0_0 | inst/skew_inst/skew_gen[1].delay_vld/gen_delay.shift_reg_reg[0][0] | 1      | 45    | NO           | NO                 | NO                | 45     | 0       | 
-+-----------------------------------+--------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
++-----------------+---------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name      | RTL Name                                                      | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++-----------------+---------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|gemm_accelerator | skew_inst/skew_gen[1].delay_A/gen_delay.shift_reg_reg[0][7]   | 2      | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[2].delay_A/gen_delay.shift_reg_reg[1][7]   | 3      | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[3].delay_A/gen_delay.shift_reg_reg[2][7]   | 4      | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[4].delay_A/gen_delay.shift_reg_reg[3][7]   | 5      | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[5].delay_A/gen_delay.shift_reg_reg[4][7]   | 6      | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[6].delay_A/gen_delay.shift_reg_reg[5][7]   | 7      | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[7].delay_A/gen_delay.shift_reg_reg[6][7]   | 8      | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[8].delay_A/gen_delay.shift_reg_reg[7][7]   | 9      | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[9].delay_A/gen_delay.shift_reg_reg[8][7]   | 10     | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[10].delay_A/gen_delay.shift_reg_reg[9][7]  | 11     | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[11].delay_A/gen_delay.shift_reg_reg[10][7] | 12     | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[12].delay_A/gen_delay.shift_reg_reg[11][7] | 13     | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[13].delay_A/gen_delay.shift_reg_reg[12][7] | 14     | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[14].delay_A/gen_delay.shift_reg_reg[13][7] | 15     | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[15].delay_A/gen_delay.shift_reg_reg[14][7] | 16     | 16    | NO           | NO                 | NO                | 16     | 0       | 
+|gemm_accelerator | skew_inst/skew_gen[1].delay_vld/gen_delay.shift_reg_reg[0][0] | 1      | 45    | NO           | NO                 | NO                | 45     | 0       | 
++-----------------+---------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -3243,66 +3098,61 @@ DSP Final Report (the ' indicates corresponding REG is set)
 
 
 Report BlackBoxes: 
-+-+--------------+----------+
-| |BlackBox name |Instances |
-+-+--------------+----------+
-+-+--------------+----------+
++------+----------------+----------+
+|      |BlackBox name   |Instances |
++------+----------------+----------+
+|1     |fifo_512_to_128 |         1|
++------+----------------+----------+
 
 Report Cell Usage: 
 +------+----------------+------+
 |      |Cell            |Count |
 +------+----------------+------+
-|1     |CARRY8          |    18|
-|2     |DSP48E2         |   255|
-|3     |DSP_ALU         |     1|
-|4     |DSP_A_B_DATA    |     1|
-|5     |DSP_C_DATA      |     1|
-|6     |DSP_MULTIPLIER  |     1|
-|7     |DSP_M_DATA      |     1|
-|8     |DSP_OUTPUT      |     1|
-|9     |DSP_PREADD      |     1|
-|10    |DSP_PREADD_DATA |     1|
-|11    |LUT1            |   334|
-|12    |LUT2            |  1406|
-|13    |LUT3            |  7745|
-|14    |LUT4            |    58|
-|15    |LUT5            |   597|
-|16    |LUT6            |  2387|
-|17    |MUXF7           |  1024|
-|18    |RAM64M          |    64|
-|19    |RAM64M8         |  1152|
-|20    |RAMB36E2        |     1|
-|21    |SRL16E          |   269|
-|22    |SRLC32E         |    16|
-|23    |FDRE            | 22158|
-|24    |FDSE            |    13|
+|1     |fifo_512_to     |     1|
+|2     |CARRY8          |    18|
+|3     |DSP_ALU         |   256|
+|4     |DSP_A_B_DATA    |   256|
+|6     |DSP_C_DATA      |   256|
+|7     |DSP_MULTIPLIER  |   256|
+|8     |DSP_M_DATA      |   256|
+|9     |DSP_OUTPUT      |   256|
+|10    |DSP_PREADD      |   256|
+|11    |DSP_PREADD_DATA |   256|
+|12    |LUT1            |   325|
+|13    |LUT2            |  1359|
+|14    |LUT3            |  7963|
+|15    |LUT4            |    15|
+|16    |LUT5            |    11|
+|17    |LUT6            |    43|
+|18    |RAMB36E2        |    16|
+|19    |SRL16E          |   285|
+|20    |FDRE            | 21954|
+|21    |FDSE            |     2|
 +------+----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:47 ; elapsed = 00:01:58 . Memory (MB): peak = 2367.195 ; gain = 736.117
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:45 ; elapsed = 00:01:50 . Memory (MB): peak = 3304.621 ; gain = 1669.051
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 16 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:21 ; elapsed = 00:01:44 . Memory (MB): peak = 2367.195 ; gain = 652.250
-Synthesis Optimization Complete : Time (s): cpu = 00:01:47 ; elapsed = 00:01:58 . Memory (MB): peak = 2367.195 ; gain = 736.117
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:29 ; elapsed = 00:01:39 . Memory (MB): peak = 3304.633 ; gain = 1572.410
+Synthesis Optimization Complete : Time (s): cpu = 00:01:46 ; elapsed = 00:01:50 . Memory (MB): peak = 3304.633 ; gain = 1669.062
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.919 . Memory (MB): peak = 2411.062 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 2514 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 8 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.484 . Memory (MB): peak = 3304.633 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 274 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 2 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.026 . Memory (MB): peak = 2641.027 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 3304.633 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 1472 instances were transformed.
+  A total of 256 instances were transformed.
   DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 256 instances
-  RAM64M => RAM64M (RAMD64E(x4)): 64 instances
-  RAM64M8 => RAM64M8 (RAMD64E(x8)): 1152 instances
 
-Synth Design complete | Checksum: c09146f
+Synth Design complete | Checksum: 6cbd6316
 INFO: [Common 17-83] Releasing license: Synthesis
-251 Infos, 34 Warnings, 0 Critical Warnings and 0 Errors encountered.
+166 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:20 ; elapsed = 00:02:34 . Memory (MB): peak = 2641.027 ; gain = 2042.785
-INFO: [Coretcl 2-1174] Renamed 604 cell refs.
-Write ShapeDB Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.126 . Memory (MB): peak = 2641.027 ; gain = 0.000
+synth_design: Time (s): cpu = 00:02:01 ; elapsed = 00:02:07 . Memory (MB): peak = 3304.633 ; gain = 2708.059
+INFO: [Coretcl 2-1174] Renamed 595 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.032 . Memory (MB): peak = 3304.633 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'D:/E/1subject/HK6/doan1/ver1/matmul/matmul.runs/gemm_block_v1_gemm_accelerator_0_0_synth_1/gemm_block_v1_gemm_accelerator_0_0.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file gemm_block_v1_gemm_accelerator_0_0_utilization_synth.rpt -pb gemm_block_v1_gemm_accelerator_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Apr 11 20:03:31 2026...
+INFO: [Common 17-206] Exiting Vivado at Tue Apr 14 01:26:46 2026...

@@ -128,7 +128,7 @@ ARCHITECTURE gemm_block_v1_rst_ps8_0_99M_0_arch OF gemm_block_v1_rst_ps8_0_99M_0
   ATTRIBUTE X_INTERFACE_PARAMETER OF peripheral_reset: SIGNAL IS "XIL_INTERFACENAME peripheral_high_rst, POLARITY ACTIVE_HIGH, TYPE PERIPHERAL, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF slowest_sync_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clock CLK";
   ATTRIBUTE X_INTERFACE_MODE OF slowest_sync_clk: SIGNAL IS "slave clock";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF slowest_sync_clk: SIGNAL IS "XIL_INTERFACENAME clock, ASSOCIATED_RESET mb_reset:bus_struct_reset:interconnect_aresetn:peripheral_aresetn:peripheral_reset, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_block_v1_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF slowest_sync_clk: SIGNAL IS "XIL_INTERFACENAME clock, ASSOCIATED_RESET mb_reset:bus_struct_reset:interconnect_aresetn:peripheral_aresetn:peripheral_reset, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_block_v1_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
 BEGIN
   U0 : proc_sys_reset
     GENERIC MAP (

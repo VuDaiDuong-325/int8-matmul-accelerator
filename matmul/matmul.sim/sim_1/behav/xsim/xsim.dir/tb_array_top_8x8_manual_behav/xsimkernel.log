@@ -1,7 +1,0 @@
-Running: xsim.dir/tb_array_top_8x8_manual_behav/xsimk.exe -simmode gui -wdb tb_array_top_8x8_manual_behav.wdb -simrunnum 0 -socket 57404
-Design successfully loaded
-Design Loading Memory Usage: 11080 KB (Peak: 11080 KB)
-Design Loading CPU Usage: 0 ms
-Simulation completed
-Simulation Memory Usage: 12048 KB (Peak: 12048 KB)
-Simulation CPU Usage: 31 ms

@@ -135,6 +135,22 @@ int main() {
                 
                 int current_k_chunk = (k + K_MAX_CHUNK <= K_TOTAL) ? K_MAX_CHUNK : (K_TOTAL - k);
 
+                // -----------------------------------------------------------
+                // [THÊM MỚI] RESET DMA ĐỂ DỌN RÁC TRƯỚC MỖI CHUNK K
+                // -----------------------------------------------------------
+                dma_set(dma0_base, MM2S_CR, 4); 
+                dma_set(dma1_base, MM2S_CR, 4); 
+                dma_set(dma0_base, S2MM_CR, 4);
+                
+                // Đợi DMA reset xong (Cờ reset tự động clear về 0)
+                int reset_timeout = 10000;
+                while((dma_get(dma0_base, MM2S_CR) & 4) && reset_timeout > 0) reset_timeout--;
+                
+                // Bật lại DMA sang trạng thái RUN
+                dma_set(dma0_base, MM2S_CR, 1); 
+                dma_set(dma1_base, MM2S_CR, 1); 
+                dma_set(dma0_base, S2MM_CR, 1);
+
                 int idx_a = 0, idx_b = 0;
                 for (int ck = 0; ck < current_k_chunk; ck++) {
                     for (int i = 0; i < M_TILE; i++) tx_a_ram[idx_a++] = master_A[(m + i) * K_TOTAL + (k + ck)];

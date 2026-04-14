@@ -1161,7 +1161,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MAX_BURST_LENGTH</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXI.MAX_BURST_LENGTH">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXI.MAX_BURST_LENGTH">16</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -1367,7 +1367,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1113ded6</spirit:value>
+            <spirit:value>9:bf567c7c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1386,11 +1386,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Apr 11 12:55:05 UTC 2026</spirit:value>
+            <spirit:value>Mon Apr 13 17:30:19 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:3ebcbfde</spirit:value>
+            <spirit:value>9:6d923338</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1406,11 +1406,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Apr 11 14:13:54 UTC 2026</spirit:value>
+            <spirit:value>Mon Apr 13 17:30:29 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:3ebcbfde</spirit:value>
+            <spirit:value>9:6d923338</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1429,11 +1429,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Apr 11 12:55:05 UTC 2026</spirit:value>
+            <spirit:value>Mon Apr 13 17:30:19 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1113ded6</spirit:value>
+            <spirit:value>9:bf567c7c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1449,11 +1449,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Apr 11 14:13:54 UTC 2026</spirit:value>
+            <spirit:value>Mon Apr 13 17:30:29 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1113ded6</spirit:value>
+            <spirit:value>9:bf567c7c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3603,12 +3603,12 @@
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_M_LIMIT_READ_LENGTH</spirit:name>
         <spirit:displayName>C_M_LIMIT_READ_LENGTH</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M_LIMIT_READ_LENGTH" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">4</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M_LIMIT_READ_LENGTH" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">16</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_M_LIMIT_WRITE_LENGTH</spirit:name>
         <spirit:displayName>C_M_LIMIT_WRITE_LENGTH</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M_LIMIT_WRITE_LENGTH" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">4</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M_LIMIT_WRITE_LENGTH" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">16</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_NUM_READ_OUTSTANDING</spirit:name>
@@ -3875,7 +3875,7 @@
     <spirit:parameter>
       <spirit:name>M_MAX_BURST_LENGTH</spirit:name>
       <spirit:displayName>M_MAX_BURST_LENGTH</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.M_MAX_BURST_LENGTH" spirit:order="22" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">4</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.M_MAX_BURST_LENGTH" spirit:order="22" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">16</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ADDR_WIDTH</spirit:name>

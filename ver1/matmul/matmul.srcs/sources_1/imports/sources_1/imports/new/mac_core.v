@@ -47,7 +47,7 @@ module mac_core(
             valid_out <= 1'b0;
             v_reg1 <= 0; v_reg2 <= 0; v_reg3 <= 0;
             l_reg1 <= 0; l_reg2 <= 0; l_reg3 <= 0;
-            c_reg1 <= 0; c_reg2 <= 0; c_reg3 <= 0;
+            c_reg1 <= 0; c_reg2 <= 0;
         end else begin
             // ------------------------------------------------
             // Stage 1: Input Register (A1 & B1 in DSP)

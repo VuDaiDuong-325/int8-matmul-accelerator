@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date             : Sat Apr 11 21:32:16 2026
+| Date             : Tue Apr 14 01:36:43 2026
 | Host             : ZUYYYY running 64-bit major release  (build 9200)
 | Command          : report_power -file gemm_block_v1_wrapper_power_routed.rpt -pb gemm_block_v1_wrapper_power_summary_routed.pb -rpx gemm_block_v1_wrapper_power_routed.rpx
 | Design           : gemm_block_v1_wrapper
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 3.123        |
+| Total On-Chip Power (W)  | 3.179        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 2.820        |
+| Dynamic (W)              | 2.876        |
 | Device Static (W)        | 0.303        |
 | Effective TJA (C/W)      | 2.3          |
-| Max Ambient (C)          | 77.8         |
-| Junction Temperature (C) | 32.2         |
+| Max Ambient (C)          | 77.6         |
+| Junction Temperature (C) | 32.4         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,23 +52,23 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.120 |        4 |       --- |             --- |
-| CLB Logic                |     0.113 |    66570 |       --- |             --- |
-|   LUT as Distributed RAM |     0.091 |    10148 |     57600 |           17.62 |
-|   LUT as Logic           |     0.018 |    13356 |    117120 |           11.40 |
-|   Register               |     0.002 |    32175 |    234240 |           13.74 |
-|   LUT as Shift Register  |     0.001 |      461 |     57600 |            0.80 |
-|   CARRY8                 |    <0.001 |       52 |     14640 |            0.36 |
-|   Others                 |     0.000 |     2202 |       --- |             --- |
-|   F7/F8 Muxes            |     0.000 |     1031 |    117120 |            0.88 |
-| Signals                  |     0.116 |    55646 |       --- |             --- |
-| Block RAM                |     0.003 |        7 |       144 |            4.86 |
-| DSPs                     |     0.044 |      256 |      1248 |           20.51 |
+| Clocks                   |     0.104 |        4 |       --- |             --- |
+| CLB Logic                |     0.058 |    54066 |       --- |             --- |
+|   LUT as Distributed RAM |     0.032 |      692 |     57600 |            1.20 |
+|   LUT as Logic           |     0.018 |    11175 |    117120 |            9.54 |
+|   Register               |     0.004 |    32740 |    234240 |           13.98 |
+|   LUT as Shift Register  |     0.004 |      452 |     57600 |            0.78 |
+|   CARRY8                 |    <0.001 |       54 |     14640 |            0.37 |
+|   Others                 |     0.000 |     1706 |       --- |             --- |
+|   F7/F8 Muxes            |     0.000 |        7 |    117120 |           <0.01 |
+| Signals                  |     0.112 |    47879 |       --- |             --- |
+| Block RAM                |     0.043 |       31 |       144 |           21.53 |
+| DSPs                     |     0.133 |      256 |      1248 |           20.51 |
 | PS8                      |     2.425 |        1 |       --- |             --- |
 | Static Power             |     0.303 |          |           |                 |
 |   PS Static              |     0.000 |          |           |                 |
 |   PL Static              |     0.303 |          |           |                 |
-| Total                    |     3.123 |          |           |                 |
+| Total                    |     3.179 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -78,9 +78,9 @@ Table of Contents
 +------------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source           | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +------------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint           |       0.720 |     0.639 |       0.549 |      0.090 |       NA    | Unspecified | NA         |
+| Vccint           |       0.720 |     0.713 |       0.623 |      0.091 |       NA    | Unspecified | NA         |
 | Vccint_io        |       0.850 |     0.037 |       0.000 |      0.037 |       NA    | Unspecified | NA         |
-| Vccbram          |       0.850 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
+| Vccbram          |       0.850 |     0.005 |       0.003 |      0.001 |       NA    | Unspecified | NA         |
 | Vccaux           |       1.800 |     0.075 |       0.000 |      0.075 |       NA    | Unspecified | NA         |
 | Vccaux_io        |       1.800 |     0.031 |       0.000 |      0.031 |       NA    | Unspecified | NA         |
 | Vcco33           |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -165,18 +165,18 @@ Table of Contents
 +------------------------+-----------+
 | Name                   | Power (W) |
 +------------------------+-----------+
-| gemm_block_v1_wrapper  |     2.820 |
-|   gemm_block_v1_i      |     2.820 |
-|     axi_dma_0          |     0.009 |
-|       U0               |     0.009 |
+| gemm_block_v1_wrapper  |     2.876 |
+|   gemm_block_v1_i      |     2.876 |
+|     axi_dma_0          |     0.013 |
+|       U0               |     0.013 |
 |     axi_dma_1          |     0.004 |
 |       U0               |     0.004 |
-|     axi_smc            |     0.016 |
-|       inst             |     0.016 |
-|     axi_smc_1          |     0.075 |
-|       inst             |     0.075 |
-|     gemm_accelerator_0 |     0.287 |
-|       inst             |     0.287 |
+|     axi_smc            |     0.018 |
+|       inst             |     0.018 |
+|     axi_smc_1          |     0.072 |
+|       inst             |     0.072 |
+|     gemm_accelerator_0 |     0.341 |
+|       inst             |     0.341 |
 |     zynq_ultra_ps_e_0  |     2.427 |
 |       inst             |     2.427 |
 +------------------------+-----------+

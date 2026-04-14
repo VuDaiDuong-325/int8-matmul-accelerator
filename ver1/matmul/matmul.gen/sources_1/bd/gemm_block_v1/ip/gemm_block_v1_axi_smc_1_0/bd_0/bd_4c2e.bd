@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x4C65EAB42E2D63A4",
+      "boundary_crc": "0x944FA4F64501F97C",
       "design_src": "SBD",
       "device": "xck26-sfvc784-2LV-c",
       "name": "bd_4c2e",
@@ -240,7 +240,7 @@
             "value_src": "default_prop"
           },
           "DATA_WIDTH": {
-            "value": "32",
+            "value": "128",
             "value_src": "auto_prop"
           },
           "FREQ_HZ": {
@@ -586,7 +586,7 @@
             "value_src": "default"
           },
           "MAX_BURST_LENGTH": {
-            "value": "4"
+            "value": "16"
           },
           "NUM_READ_OUTSTANDING": {
             "value": "16"
@@ -2685,7 +2685,7 @@
                 "value": "16"
               },
               "RDATA_WIDTH": {
-                "value": "32"
+                "value": "128"
               },
               "READ_WRITE_MODE": {
                 "value": "WRITE_ONLY"
@@ -2751,7 +2751,7 @@
                 "value": "0"
               },
               "WDATA_WIDTH": {
-                "value": "32"
+                "value": "128"
               }
             },
             "interface_ports": {
@@ -2809,7 +2809,7 @@
                 "value": "16"
               },
               "RDATA_WIDTH": {
-                "value": "32"
+                "value": "128"
               },
               "READ_WRITE_MODE": {
                 "value": "WRITE_ONLY"
@@ -2827,7 +2827,7 @@
                 "value": "0"
               },
               "WDATA_WIDTH": {
-                "value": "32"
+                "value": "128"
               }
             },
             "interface_ports": {
@@ -2918,7 +2918,7 @@
                 "value": "1"
               },
               "RDATA_WIDTH": {
-                "value": "32"
+                "value": "128"
               },
               "READ_WRITE_MODE": {
                 "value": "WRITE_ONLY"
@@ -2954,7 +2954,7 @@
                 "value": "0"
               },
               "WDATA_WIDTH": {
-                "value": "32"
+                "value": "128"
               }
             },
             "interface_ports": {
@@ -3046,10 +3046,10 @@
             "value": "2"
           },
           "AXI_RDATA_WIDTH": {
-            "value": "32"
+            "value": "128"
           },
           "AXI_WDATA_WIDTH": {
-            "value": "32"
+            "value": "128"
           },
           "MSC_ROUTE_WIDTH": {
             "value": "1"
@@ -3306,52 +3306,52 @@
                 "value": "140"
               },
               "S00_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S01_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S02_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S03_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S04_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S05_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S06_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S07_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S08_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S09_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S10_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S11_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S12_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S13_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S14_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S15_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "SC_ROUTE_WIDTH": {
                 "value": "1"
@@ -3478,52 +3478,52 @@
                 "value": "160"
               },
               "S00_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S01_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S02_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S03_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S04_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S05_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S06_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S07_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S08_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S09_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S10_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S11_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S12_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S13_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S14_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "S15_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "SC_ROUTE_WIDTH": {
                 "value": "1"
@@ -3584,52 +3584,52 @@
                 "value": "2"
               },
               "M00_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M01_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M02_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M03_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M04_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M05_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M06_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M07_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M08_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M09_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M10_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M11_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M12_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M13_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M14_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "M15_NUM_BYTES": {
-                "value": "4"
+                "value": "16"
               },
               "MAX_PAYLD_BYTES": {
                 "value": "16"
@@ -6083,7 +6083,7 @@
                 "value": "0"
               },
               "M_MAX_BURST_LENGTH": {
-                "value": "4"
+                "value": "16"
               },
               "M_PROTOCOL": {
                 "value": "AXI4"

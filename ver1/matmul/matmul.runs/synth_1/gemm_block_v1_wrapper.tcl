@@ -58,8 +58,6 @@ if {$::dispatch::connected} {
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param general.usePosixSpawnForFork 1
 set_param chipscope.maxJobs 4
-set_param bd.open.in_stealth_mode 2
-set_msg_config -id {HDL-1065} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xck26-sfvc784-2LV-c
 
@@ -81,6 +79,7 @@ read_verilog -library xil_defaultlib D:/E/1subject/HK6/doan1/ver1/matmul/matmul.
 add_files D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/bd/gemm_block_v1/gemm_block_v1.bd
 set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_zynq_ultra_ps_e_0_0/gemm_block_v1_zynq_ultra_ps_e_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_zynq_ultra_ps_e_0_0/gemm_block_v1_zynq_ultra_ps_e_0_0.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_gemm_accelerator_0_0/gemm_block_v1_gemm_accelerator_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_axi_dma_0_0/gemm_block_v1_axi_dma_0_0.xdc]
 set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_axi_dma_0_0/gemm_block_v1_axi_dma_0_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_axi_dma_0_0/gemm_block_v1_axi_dma_0_0_ooc.xdc]
@@ -164,6 +163,10 @@ set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan
 set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_axi_smc_1_0/ooc.xdc]
 set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_axi_smc_1_0/smartconnect.xdc]
 set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/gemm_block_v1_ooc.xdc]
+
+read_ip -quiet D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/ip/fifo_512_to_128/fifo_512_to_128.xci
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/ip/fifo_512_to_128/fifo_512_to_128.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/ip/fifo_512_to_128/fifo_512_to_128_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

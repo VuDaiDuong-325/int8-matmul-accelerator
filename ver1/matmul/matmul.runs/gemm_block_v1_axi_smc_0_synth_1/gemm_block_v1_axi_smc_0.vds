@@ -3,8 +3,8 @@
 # SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
 # IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
 # SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-# Start of session at: Sat Apr 11 21:14:04 2026
-# Process ID         : 2904
+# Start of session at: Tue Apr 14 00:32:48 2026
+# Process ID         : 9384
 # Current directory  : D:/E/1subject/HK6/doan1/ver1/matmul/matmul.runs/gemm_block_v1_axi_smc_0_synth_1
 # Command line       : vivado.exe -log gemm_block_v1_axi_smc_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source gemm_block_v1_axi_smc_0.tcl
 # Log file           : D:/E/1subject/HK6/doan1/ver1/matmul/matmul.runs/gemm_block_v1_axi_smc_0_synth_1/gemm_block_v1_axi_smc_0.vds
@@ -17,12 +17,12 @@
 # CPU Physical cores : 12
 # CPU Logical cores  : 16
 # Host memory        : 16794 MB
-# Swap memory        : 12884 MB
-# Total Virtual      : 29679 MB
-# Available Virtual  : 9674 MB
+# Swap memory        : 13421 MB
+# Total Virtual      : 30216 MB
+# Available Virtual  : 16549 MB
 #-----------------------------------------------------------
 source gemm_block_v1_axi_smc_0.tcl -notrace
-create_project: Time (s): cpu = 00:00:38 ; elapsed = 00:00:24 . Memory (MB): peak = 541.605 ; gain = 221.387
+create_project: Time (s): cpu = 00:00:16 ; elapsed = 00:00:11 . Memory (MB): peak = 541.387 ; gain = 222.430
 Command: synth_design -top gemm_block_v1_axi_smc_0 -part xck26-sfvc784-2LV-c -incremental_mode off -mode out_of_context
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xck26'
@@ -30,9 +30,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
 INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 5048
+INFO: [Synth 8-7075] Helper process launched with PID 19544
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:33 . Memory (MB): peak = 1881.250 ; gain = 209.230
+Starting RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1882.102 ; gain = 209.383
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'gemm_block_v1_axi_smc_0' [d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_axi_smc_0/synth/gemm_block_v1_axi_smc_0.v:53]
 INFO: [Synth 8-6157] synthesizing module 'bd_5f09' [d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_axi_smc_0/bd_0/synth/bd_5f09.v:10]
@@ -332,18 +332,18 @@ INFO: [Synth 8-7129] Port s_axis_arb_tdata[0] in module sc_node_v1_0_19_si_handl
 INFO: [Synth 8-7129] Port m_axis_arb_tready in module sc_node_v1_0_19_si_handler__parameterized7 is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:41 ; elapsed = 00:01:02 . Memory (MB): peak = 2229.762 ; gain = 557.742
+Finished RTL Elaboration : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 2230.395 ; gain = 557.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:41 ; elapsed = 00:01:02 . Memory (MB): peak = 2229.762 ; gain = 557.742
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 2230.395 ; gain = 557.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:41 ; elapsed = 00:01:02 . Memory (MB): peak = 2229.762 ; gain = 557.742
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 2230.395 ; gain = 557.676
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2313.938 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2316.910 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -351,7 +351,7 @@ INFO: [Project 1-570] Preparing netlist for logic optimization
 Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_axi_smc_0/ooc.xdc] for cell 'inst'
-create_clock: Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2590.617 ; gain = 34.180
+create_clock: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2590.902 ; gain = 34.785
 Finished Parsing XDC File [d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_axi_smc_0/ooc.xdc] for cell 'inst'
 Parsing XDC File [d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_axi_smc_0/bd_0/ip/ip_1/bd_5f09_psr_aclk_0_board.xdc] for cell 'inst/clk_map/psr_aclk/U0'
 Finished Parsing XDC File [d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_axi_smc_0/bd_0/ip/ip_1/bd_5f09_psr_aclk_0_board.xdc] for cell 'inst/clk_map/psr_aclk/U0'
@@ -366,15 +366,15 @@ Resolution: To avoid this warning, move constraints listed in [.Xil/gemm_block_v
 INFO: [Project 1-1714] 73 XPM XDC files have been applied to the design.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 2590.617 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 2590.902 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   SRL16 => SRL16E: 1 instance 
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.947 . Memory (MB): peak = 2590.617 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.644 . Memory (MB): peak = 2590.902 ; gain = 0.000
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:01:48 ; elapsed = 00:02:12 . Memory (MB): peak = 2590.617 ; gain = 918.598
+Finished Constraint Validation : Time (s): cpu = 00:01:09 ; elapsed = 00:01:16 . Memory (MB): peak = 2590.902 ; gain = 918.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -382,13 +382,13 @@ Start Loading Part and Timing Information
 Loading part: xck26-sfvc784-2LV-c
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:01:48 ; elapsed = 00:02:12 . Memory (MB): peak = 2590.617 ; gain = 918.598
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:09 ; elapsed = 00:01:16 . Memory (MB): peak = 2590.902 ; gain = 918.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:48 ; elapsed = 00:02:12 . Memory (MB): peak = 2590.617 ; gain = 918.598
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:09 ; elapsed = 00:01:16 . Memory (MB): peak = 2590.902 ; gain = 918.184
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'gen_axi.gen_write.write_cs_reg' in module 'sc_mmu_v1_0_16_decerr_slave'
 INFO: [Synth 8-802] inferred FSM for state register 'gen_endpoint.w_state_reg' in module 'sc_mmu_v1_0_16_top'
@@ -467,7 +467,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'gen_endpoint.w_state_reg' 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'gen_endpoint.r_state_reg' using encoding 'one-hot' in module 'sc_mmu_v1_0_16_top__parameterized0'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:53 ; elapsed = 00:02:17 . Memory (MB): peak = 2590.617 ; gain = 918.598
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:12 ; elapsed = 00:01:20 . Memory (MB): peak = 2590.902 ; gain = 918.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -492,25 +492,25 @@ WARNING: [Synth 8-3332] Sequential element (clk_map/psr_aclk/U0/BSR_OUT_DFF[0].F
 WARNING: [Synth 8-3332] Sequential element (clk_map/psr_aclk/U0/PR_OUT_DFF[0].FDRE_PER) is unused and will be removed from module bd_5f09.
 WARNING: [Synth 8-3332] Sequential element (clk_map/psr_aclk/U0/ACTIVE_LOW_PR_OUT_DFF[0].FDRE_PER_N) is unused and will be removed from module bd_5f09.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:30 ; elapsed = 00:02:56 . Memory (MB): peak = 2590.617 ; gain = 918.598
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:45 ; elapsed = 00:01:54 . Memory (MB): peak = 2590.902 ; gain = 918.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:40 ; elapsed = 00:03:08 . Memory (MB): peak = 2946.320 ; gain = 1274.301
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:55 ; elapsed = 00:02:05 . Memory (MB): peak = 2953.746 ; gain = 1281.027
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:45 ; elapsed = 00:03:13 . Memory (MB): peak = 3037.883 ; gain = 1365.863
+Finished Timing Optimization : Time (s): cpu = 00:02:00 ; elapsed = 00:02:10 . Memory (MB): peak = 3048.043 ; gain = 1375.324
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:47 ; elapsed = 00:03:15 . Memory (MB): peak = 3047.977 ; gain = 1375.957
+Finished Technology Mapping : Time (s): cpu = 00:02:02 ; elapsed = 00:02:12 . Memory (MB): peak = 3058.137 ; gain = 1385.418
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -528,37 +528,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:51 ; elapsed = 00:03:19 . Memory (MB): peak = 3238.617 ; gain = 1566.598
+Finished IO Insertion : Time (s): cpu = 00:02:05 ; elapsed = 00:02:15 . Memory (MB): peak = 3248.688 ; gain = 1575.969
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:51 ; elapsed = 00:03:19 . Memory (MB): peak = 3238.617 ; gain = 1566.598
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:05 ; elapsed = 00:02:15 . Memory (MB): peak = 3248.688 ; gain = 1575.969
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:51 ; elapsed = 00:03:20 . Memory (MB): peak = 3238.617 ; gain = 1566.598
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:05 ; elapsed = 00:02:16 . Memory (MB): peak = 3248.688 ; gain = 1575.969
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:51 ; elapsed = 00:03:20 . Memory (MB): peak = 3238.617 ; gain = 1566.598
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:05 ; elapsed = 00:02:16 . Memory (MB): peak = 3248.688 ; gain = 1575.969
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:52 ; elapsed = 00:03:20 . Memory (MB): peak = 3238.617 ; gain = 1566.598
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:05 ; elapsed = 00:02:16 . Memory (MB): peak = 3248.688 ; gain = 1575.969
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:52 ; elapsed = 00:03:20 . Memory (MB): peak = 3238.617 ; gain = 1566.598
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:05 ; elapsed = 00:02:16 . Memory (MB): peak = 3248.688 ; gain = 1575.969
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -590,18 +590,18 @@ Report Cell Usage:
 |14    |FDSE     |    66|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:52 ; elapsed = 00:03:20 . Memory (MB): peak = 3238.617 ; gain = 1566.598
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:05 ; elapsed = 00:02:16 . Memory (MB): peak = 3248.688 ; gain = 1575.969
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:15 ; elapsed = 00:02:24 . Memory (MB): peak = 3238.617 ; gain = 1205.742
-Synthesis Optimization Complete : Time (s): cpu = 00:02:52 ; elapsed = 00:03:20 . Memory (MB): peak = 3238.617 ; gain = 1566.598
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:05 ; elapsed = 00:01:33 . Memory (MB): peak = 3248.688 ; gain = 1215.461
+Synthesis Optimization Complete : Time (s): cpu = 00:02:06 ; elapsed = 00:02:16 . Memory (MB): peak = 3248.688 ; gain = 1575.969
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.360 . Memory (MB): peak = 3238.617 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.305 . Memory (MB): peak = 3248.688 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 20 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 3238.617 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 3248.688 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 3 instances were transformed.
   RAM16X1D => RAM32X1D (RAMD32(x2)): 2 instances
@@ -611,12 +611,12 @@ Synth Design complete | Checksum: cd0f0c6a
 INFO: [Common 17-83] Releasing license: Synthesis
 306 Infos, 10 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:03:13 ; elapsed = 00:03:50 . Memory (MB): peak = 3238.617 ; gain = 2641.527
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 3238.617 ; gain = 0.000
+synth_design: Time (s): cpu = 00:02:17 ; elapsed = 00:02:31 . Memory (MB): peak = 3248.688 ; gain = 2651.117
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 3248.688 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'D:/E/1subject/HK6/doan1/ver1/matmul/matmul.runs/gemm_block_v1_axi_smc_0_synth_1/gemm_block_v1_axi_smc_0.dcp' has been generated.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP gemm_block_v1_axi_smc_0, cache-ID = f72624c652710933
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP gemm_block_v1_axi_smc_0, cache-ID = 3cf94573c8ba6d68
 INFO: [Coretcl 2-1174] Renamed 306 cell refs.
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 3238.617 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 3248.688 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'D:/E/1subject/HK6/doan1/ver1/matmul/matmul.runs/gemm_block_v1_axi_smc_0_synth_1/gemm_block_v1_axi_smc_0.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file gemm_block_v1_axi_smc_0_utilization_synth.rpt -pb gemm_block_v1_axi_smc_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Apr 11 21:18:53 2026...
+INFO: [Common 17-206] Exiting Vivado at Tue Apr 14 00:35:49 2026...

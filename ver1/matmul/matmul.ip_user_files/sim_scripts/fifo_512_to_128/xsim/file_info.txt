@@ -1,0 +1,2 @@
+fifo_512_to_128.v,verilog,xil_defaultlib,../../../../matmul.gen/sources_1/ip/fifo_512_to_128/sim/fifo_512_to_128.v,incdir="E:/vivado/2025.2/Vivado/data/rsb/busdef"
+glbl.v,Verilog,xil_defaultlib,glbl.v

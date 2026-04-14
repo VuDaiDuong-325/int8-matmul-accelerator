@@ -44,7 +44,7 @@ module gemm_accelerator #(
     input  wire             s_axis_b_tlast,
 
     // AXI-Stream Master Ma trận C (Kết quả)
-    output wire [31:0]      m_axis_c_tdata,
+    output wire [127:0]     m_axis_c_tdata,
     output wire             m_axis_c_tvalid,
     input  wire             m_axis_c_tready,
     output wire             m_axis_c_tlast
@@ -73,7 +73,7 @@ module gemm_accelerator #(
     wire mac_done_trigger;
     
     // Tín hiệu cho Output FIFO
-    wire [31:0] fifo_din;
+    wire [(N*32)-1:0] fifo_din;
     wire fifo_wr_en, fifo_full, fifo_empty;
 
     // =========================================================
@@ -158,36 +158,42 @@ module gemm_accelerator #(
     );
 
     // =========================================================
-    // 7. KHỐI FIFO C (SC FIFO FWFT)
+    // 7. KHỐI FIFO C (ASYMMETRIC FIFO 512 -> 128)
     // =========================================================
     wire safe_fifo_rd = m_axis_c_tready & ~fifo_empty;
 
-    sc_fifo_fwft #(.DATA_WIDTH(32), .DEPTH(FIFO_DEPTH)) fifo_C_inst (
-        .clk(aclk), .rst_n(aresetn),
-        .wr_en(fifo_wr_en), .din(fifo_din), .full(fifo_full),
-        .rd_en(safe_fifo_rd), .dout(m_axis_c_tdata), .empty(fifo_empty)
+    // [XÓA] sc_fifo_fwft cũ và thay bằng IP Xilinx
+    fifo_512_to_128 fifo_C_inst (
+        .clk(aclk),
+        .srst(~aresetn),         // IP Xilinx thường dùng Active-High reset
+        .din(fifo_din),          // 512-bit từ Serializer
+        .wr_en(fifo_wr_en),
+        .rd_en(safe_fifo_rd),
+        .dout(m_axis_c_tdata),   // 128-bit ra DMA
+        .full(fifo_full),
+        .empty(fifo_empty)
     );
 
     // =========================================================
     // 8. LOGIC TẠO CỜ TLAST (CHUẨN AXI-STREAM)
     // =========================================================
     assign m_axis_c_tvalid = ~fifo_empty;
+    localparam TOTAL_OUTPUT_FLITS = (N * N * 32) / 128; // = 64
+
     
-    reg [8:0] out_cnt; 
+    reg [6:0] out_cnt; 
     always @(posedge aclk) begin
         if (!aresetn) begin
             out_cnt <= 0;
         end else if (m_axis_c_tvalid && m_axis_c_tready) begin
-            // Đếm từ 0 đến 255 (256 phần tử cho ma trận 16x16)
-            if (out_cnt == (N*N) - 1) begin
+            if (out_cnt == TOTAL_OUTPUT_FLITS - 1)
                 out_cnt <= 0;
-            end else begin
+            else
                 out_cnt <= out_cnt + 1;
-            end
         end
     end
 
-    // TLAST bật lên 1 cách đồng bộ khi bộ đếm trỏ đúng phần tử cuối cùng (255)
-    assign m_axis_c_tlast = (out_cnt == (N*N) - 1);
+    // tlast lên 1 tại flit cuối cùng (flit thứ 63)
+    assign m_axis_c_tlast = (out_cnt == TOTAL_OUTPUT_FLITS - 1); // = 63
 
 endmodule

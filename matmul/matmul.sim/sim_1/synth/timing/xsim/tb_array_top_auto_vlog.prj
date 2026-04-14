@@ -1,7 +1,0 @@
-# compile verilog/system verilog design source files
-verilog xil_defaultlib  --include "E:/vivado/2025.2/Vivado/data/rsb/busdef" \
-"tb_array_top_auto_time_synth.v" \
-"../../../../../matmul.srcs/sim_1/new/tb_array_top_random.v" \
-
-# Do not sort compile order
-nosort

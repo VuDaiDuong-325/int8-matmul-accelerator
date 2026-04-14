@@ -185,7 +185,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>e19a8be2</spirit:value>
+            <spirit:value>d26ac5fc</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -198,7 +198,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>e19a8be2</spirit:value>
+            <spirit:value>d26ac5fc</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -384,7 +384,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:left spirit:format="long">127</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -517,12 +517,13 @@
       </xilinx:taxonomies>
       <xilinx:displayName>gemm_accelerator_v1_0</xilinx:displayName>
       <xilinx:autoFamilySupportLevel>level_1</xilinx:autoFamilySupportLevel>
+      <xilinx:supportsAutoXDC>dynamic_params</xilinx:supportsAutoXDC>
       <xilinx:definitionSource>module_ref</xilinx:definitionSource>
       <xilinx:designToolContexts>
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-04-11T12:52:54Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2026-04-13T07:17:58Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2025.2</xilinx:xilinxVersion>

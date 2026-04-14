@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-//Date        : Sat Apr 11 19:54:22 2026
+//Date        : Tue Apr 14 00:29:54 2026
 //Host        : ZUYYYY running 64-bit major release  (build 9200)
 //Command     : generate_target gemm_block_v1.bd
 //Design      : gemm_block_v1
@@ -42,10 +42,10 @@ module gemm_block_v1
   wire axi_dma_0_M_AXI_S2MM_BREADY;
   wire [1:0]axi_dma_0_M_AXI_S2MM_BRESP;
   wire axi_dma_0_M_AXI_S2MM_BVALID;
-  wire [31:0]axi_dma_0_M_AXI_S2MM_WDATA;
+  wire [127:0]axi_dma_0_M_AXI_S2MM_WDATA;
   wire axi_dma_0_M_AXI_S2MM_WLAST;
   wire axi_dma_0_M_AXI_S2MM_WREADY;
-  wire [3:0]axi_dma_0_M_AXI_S2MM_WSTRB;
+  wire [15:0]axi_dma_0_M_AXI_S2MM_WSTRB;
   wire axi_dma_0_M_AXI_S2MM_WVALID;
   wire axi_dma_0_mm2s_introut;
   wire axi_dma_0_s2mm_introut;
@@ -150,7 +150,7 @@ module gemm_block_v1
   wire axi_smc_M02_AXI_WREADY;
   wire [3:0]axi_smc_M02_AXI_WSTRB;
   wire axi_smc_M02_AXI_WVALID;
-  wire [31:0]gemm_accelerator_0_m_axis_c_TDATA;
+  wire [127:0]gemm_accelerator_0_m_axis_c_TDATA;
   wire gemm_accelerator_0_m_axis_c_TLAST;
   wire gemm_accelerator_0_m_axis_c_TREADY;
   wire gemm_accelerator_0_m_axis_c_TVALID;
@@ -294,7 +294,7 @@ module gemm_block_v1
         .s_axi_lite_wready(axi_smc_M00_AXI_WREADY),
         .s_axi_lite_wvalid(axi_smc_M00_AXI_WVALID),
         .s_axis_s2mm_tdata(gemm_accelerator_0_m_axis_c_TDATA),
-        .s_axis_s2mm_tkeep({1'b1,1'b1,1'b1,1'b1}),
+        .s_axis_s2mm_tkeep({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
         .s_axis_s2mm_tlast(gemm_accelerator_0_m_axis_c_TLAST),
         .s_axis_s2mm_tready(gemm_accelerator_0_m_axis_c_TREADY),
         .s_axis_s2mm_tvalid(gemm_accelerator_0_m_axis_c_TVALID));

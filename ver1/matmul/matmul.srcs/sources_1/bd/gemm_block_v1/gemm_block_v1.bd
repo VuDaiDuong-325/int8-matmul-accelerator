@@ -1310,7 +1310,7 @@
             "vlnv": "xilinx.com:interface:axis_rtl:1.0",
             "parameters": {
               "TDATA_NUM_BYTES": {
-                "value": "4",
+                "value": "16",
                 "value_src": "constant"
               },
               "TDEST_WIDTH": {
@@ -1354,7 +1354,7 @@
               "TDATA": {
                 "physical_name": "m_axis_c_tdata",
                 "direction": "O",
-                "left": "31",
+                "left": "127",
                 "right": "0"
               },
               "TLAST": {
@@ -1557,7 +1557,13 @@
           "c_include_sg": {
             "value": "0"
           },
+          "c_m_axi_s2mm_data_width": {
+            "value": "128"
+          },
           "c_m_axis_mm2s_tdata_width": {
+            "value": "128"
+          },
+          "c_s_axis_s2mm_tdata_width": {
             "value": "128"
           },
           "c_sg_length_width": {
@@ -1944,7 +1950,7 @@
             "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
             "parameters": {
               "MAX_BURST_LENGTH": {
-                "value": "4"
+                "value": "16"
               },
               "NUM_READ_OUTSTANDING": {
                 "value": "16"

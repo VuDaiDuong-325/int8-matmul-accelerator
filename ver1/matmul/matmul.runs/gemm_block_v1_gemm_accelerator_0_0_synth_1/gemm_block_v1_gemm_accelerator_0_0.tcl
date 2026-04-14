@@ -58,8 +58,6 @@ if {$::dispatch::connected} {
 OPTRACE "gemm_block_v1_gemm_accelerator_0_0_synth_1" START { ROLLUP_AUTO }
 set_param general.usePosixSpawnForFork 1
 set_param chipscope.maxJobs 4
-set_param bd.open.in_stealth_mode 2
-set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 set_param ips.modRefOverrideMrefDirPath d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/mref
@@ -85,14 +83,18 @@ read_verilog -library xil_defaultlib {
   D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/mac_core.v
   D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/output_serializer.v
   D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/pe_wrapper.v
-  D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v
   D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/shift_register_delay.v
   D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/skew_network.v
   D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/systolic_array.v
   D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/systolic_dataflow_ctrl.v
   D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/new/gemm_accelerator.v
 }
+read_ip -quiet D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/ip/fifo_512_to_128/fifo_512_to_128.xci
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/ip/fifo_512_to_128/fifo_512_to_128.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/ip/fifo_512_to_128/fifo_512_to_128_ooc.xdc]
+
 read_ip -quiet D:/E/1subject/HK6/doan1/ver1/matmul/matmul.srcs/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_gemm_accelerator_0_0/gemm_block_v1_gemm_accelerator_0_0.xci
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/ver1/matmul/matmul.gen/sources_1/bd/gemm_block_v1/ip/gemm_block_v1_gemm_accelerator_0_0/gemm_block_v1_gemm_accelerator_0_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -103,6 +105,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc dont_touch.xdc
+set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 

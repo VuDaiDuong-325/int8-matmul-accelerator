@@ -10,6 +10,9 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==gemm_block_
 # IP: bd/gemm_block_v1/ip/gemm_block_v1_gemm_accelerator_0_0/gemm_block_v1_gemm_accelerator_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==gemm_block_v1_gemm_accelerator_0_0 || ORIG_REF_NAME==gemm_block_v1_gemm_accelerator_0_0} -quiet] -quiet
 
+# IP: ip/fifo_512_to_128/fifo_512_to_128.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fifo_512_to_128 || ORIG_REF_NAME==fifo_512_to_128} -quiet] -quiet
+
 # IP: bd/gemm_block_v1/ip/gemm_block_v1_axi_dma_0_0/gemm_block_v1_axi_dma_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==gemm_block_v1_axi_dma_0_0 || ORIG_REF_NAME==gemm_block_v1_axi_dma_0_0} -quiet] -quiet
 

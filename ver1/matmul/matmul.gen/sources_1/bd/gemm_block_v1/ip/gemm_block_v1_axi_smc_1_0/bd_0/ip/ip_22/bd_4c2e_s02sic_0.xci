@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "bd_4c2e_s02sic_0",
-    "cell_name": "s02_si_converter",
+    "cell_name": "s02_entry_pipeline/s02_si_converter",
     "component_reference": "xilinx.com:ip:sc_si_converter:1.0",
     "ip_revision": "16",
     "gen_directory": ".",
@@ -1570,5 +1570,5 @@
       }
     }
   },
-  "checksum": "5c76f674"
+  "checksum": "f0ac2500"
 }
