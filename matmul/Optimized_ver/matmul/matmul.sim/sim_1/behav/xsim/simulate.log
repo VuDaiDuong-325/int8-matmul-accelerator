@@ -1,0 +1,9 @@
+Time resolution is 1 ps
+[155000] [TB] BAT DAU BOM DU LIEU RANDOM CO DAU (K-dim chunks = 4)...
+[1455000] [TB] DA BOM XONG! DANG CHO NPU TINH TOAN...
+============================================
+[4855000] [TB] HOAN THANH NHAN MA TRAN!
+[4855000] [TB] So ket qua DUNG: 256 / 256
+       >>>>> PASSED 100% <<<<<
+============================================
+$finish called at time : 4855 ns : File "D:/HK6/Project1/testing/matmul_array/matmul/matmul.srcs/sim_1/new/tb_gemm_accelerator.v" Line 218

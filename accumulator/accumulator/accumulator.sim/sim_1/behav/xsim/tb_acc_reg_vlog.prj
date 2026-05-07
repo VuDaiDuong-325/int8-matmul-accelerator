@@ -1,0 +1,14 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../../../../Apps/Study/Vivado/2025.2/Vivado/data/rsb/busdef" --include "../../../../accumulator.gen/sources_1/bd/acc_block/ipshared/ec67/hdl" --include "../../../../accumulator.gen/sources_1/bd/acc_block/ipshared/a0fe/hdl" --include "../../../../accumulator.gen/sources_1/bd/acc_block/ipshared/f0b6/hdl/verilog" --include "../../../../accumulator.gen/sources_1/bd/acc_block/ipshared/00fe/hdl/verilog" --include "D:/Apps/Study/Vivado/2025.2/Vivado/data/xilinx_vip/include" \
+"../../../../accumulator.srcs/sources_1/new/acc_ctrl.v" \
+"../../../../accumulator.srcs/sources_1/new/acc_reg.v" \
+"../../../../accumulator.srcs/sources_1/new/acc_stage.v" \
+"../../../../accumulator.srcs/sources_1/new/acc_top.v" \
+"../../../../accumulator.srcs/sources_1/new/mul_stage.v" \
+"../../../../accumulator.srcs/sim_1/new/tb_acc_reg.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

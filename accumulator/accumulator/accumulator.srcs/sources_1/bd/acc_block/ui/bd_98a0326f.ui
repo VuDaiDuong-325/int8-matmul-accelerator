@@ -1,0 +1,36 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.717936",
+   "Default View_TopLeft":"-3,-306",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0
+#  -string -flagsOSRD
+preplace inst acc_reg_0 -pg 1 -lvl 2 -x 830 -y 100 -defaultsOSRD
+preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x 330 -y -110 -defaultsOSRD
+preplace inst xlslice_0 -pg 1 -lvl 1 -x 330 -y 130 -defaultsOSRD
+preplace inst xlslice_1 -pg 1 -lvl 1 -x 330 -y 230 -defaultsOSRD
+preplace inst xlslice_2 -pg 1 -lvl 1 -x 330 -y 30 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 3 -x 1180 -y 110 -defaultsOSRD
+preplace inst axi_smc -pg 1 -lvl 3 -x 1180 -y -70 -defaultsOSRD
+preplace inst rst_ps8_0_99M -pg 1 -lvl 2 -x 830 -y -110 -defaultsOSRD
+preplace netloc acc_reg_0_psum 1 2 2 1010 -160 1340
+preplace netloc axi_gpio_0_gpio_io_o 1 0 4 30 -230 NJ -230 NJ -230 1330
+preplace netloc rst_ps8_0_99M_peripheral_aresetn 1 1 2 660 200 1000
+preplace netloc xlslice_0_Dout 1 1 1 640 60n
+preplace netloc xlslice_1_Dout 1 1 1 650 80n
+preplace netloc xlslice_2_Dout 1 1 1 620 30n
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 3 40 -210 630 0 1030
+preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 1 1 650 -130n
+preplace netloc axi_smc_M00_AXI 1 2 2 1040 20 1320
+preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_FPD 1 1 2 620J -220 1030
+preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM1_FPD 1 1 2 640J -210 1020
+levelinfo -pg 1 -180 330 830 1180 1370
+pagesize -pg 1 -db -bbox -sgen -180 -270 1410 520
+"
+}
+{
+   "da_axi4_cnt":"3",
+   "da_board_cnt":"2",
+   "da_clkrst_cnt":"2",
+   "da_zynq_ultra_ps_e_cnt":"2"
+}

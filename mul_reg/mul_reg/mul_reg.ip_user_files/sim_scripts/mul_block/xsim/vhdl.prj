@@ -1,0 +1,7 @@
+vhdl xil_defaultlib  \
+"../../../bd/mul_block/ip/mul_block_rst_ps8_0_99M_0/sim/mul_block_rst_ps8_0_99M_0.vhd" \
+"../../../bd/mul_block/ip/mul_block_axi_gpio_0_0/sim/mul_block_axi_gpio_0_0.vhd" \
+"../../../bd/mul_block/ip/mul_block_axi_smc_1/bd_0/ip/ip_1/sim/bd_b81e_psr_aclk_0.vhd" \
+
+# Do not sort compile order
+nosort

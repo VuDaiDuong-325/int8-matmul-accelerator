@@ -1,0 +1,222 @@
+
+*** Running vivado
+    with args -log mul_block_mul_pu_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mul_block_mul_pu_0_0.tcl
+
+
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Tue Mar 31 21:15:07 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source mul_block_mul_pu_0_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:29 ; elapsed = 00:00:21 . Memory (MB): peak = 552.270 ; gain = 219.133
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Apps/Study/Vivado/2025.2/Vivado/data/ip'.
+Command: synth_design -top mul_block_mul_pu_0_0 -part xck26-sfvc784-2LV-c -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 20392
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 1857.141 ; gain = 210.141
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'mul_block_mul_pu_0_0' [d:/HK6/Project1/testing/mul_reg/mul_reg/mul_reg.gen/sources_1/bd/mul_block/ip/mul_block_mul_pu_0_0/synth/mul_block_mul_pu_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'mul_pu' [D:/HK6/Project1/testing/mul_reg/mul_reg/mul_reg.srcs/sources_1/new/mul_pu.v:23]
+	Parameter ARRAY_SIZE bound to: 4 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'mul_ctrl' [D:/HK6/Project1/testing/mul_reg/mul_reg/mul_reg.srcs/sources_1/new/mul_ctrl.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'mul_ctrl' (0#1) [D:/HK6/Project1/testing/mul_reg/mul_reg/mul_reg.srcs/sources_1/new/mul_ctrl.v:23]
+INFO: [Synth 8-6157] synthesizing module 'mul_reg' [D:/HK6/Project1/testing/mul_reg/mul_reg/mul_reg.srcs/sources_1/new/mul_reg.v:22]
+	Parameter ARRAY_SIZE bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mul_reg' (0#1) [D:/HK6/Project1/testing/mul_reg/mul_reg/mul_reg.srcs/sources_1/new/mul_reg.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'mul_pu' (0#1) [D:/HK6/Project1/testing/mul_reg/mul_reg/mul_reg.srcs/sources_1/new/mul_pu.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'mul_block_mul_pu_0_0' (0#1) [d:/HK6/Project1/testing/mul_reg/mul_reg/mul_reg.gen/sources_1/bd/mul_block/ip/mul_block_mul_pu_0_0/synth/mul_block_mul_pu_0_0.v:53]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 1981.305 ; gain = 334.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 1981.305 ; gain = 334.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:20 . Memory (MB): peak = 1981.305 ; gain = 334.305
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1981.305 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2009.562 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.088 . Memory (MB): peak = 2010.148 ; gain = 0.586
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 2010.148 ; gain = 363.148
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xck26-sfvc784-2LV-c
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 2010.148 ; gain = 363.148
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 2010.148 ; gain = 363.148
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:32 ; elapsed = 00:00:38 . Memory (MB): peak = 2010.148 ; gain = 363.148
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1248 (col length:96)
+BRAMs: 288 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:43 . Memory (MB): peak = 2033.016 ; gain = 386.016
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:43 . Memory (MB): peak = 2033.016 ; gain = 386.016
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:37 ; elapsed = 00:00:43 . Memory (MB): peak = 2033.016 ; gain = 386.016
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:48 ; elapsed = 00:00:56 . Memory (MB): peak = 2262.586 ; gain = 615.586
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:48 ; elapsed = 00:00:56 . Memory (MB): peak = 2262.586 ; gain = 615.586
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:48 ; elapsed = 00:00:56 . Memory (MB): peak = 2262.586 ; gain = 615.586
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:48 ; elapsed = 00:00:56 . Memory (MB): peak = 2262.586 ; gain = 615.586
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:48 ; elapsed = 00:00:56 . Memory (MB): peak = 2262.586 ; gain = 615.586
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:48 ; elapsed = 00:00:56 . Memory (MB): peak = 2262.586 ; gain = 615.586
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+------+------+
+|      |Cell  |Count |
++------+------+------+
+|1     |LUT1  |     1|
+|2     |LUT2  |     2|
+|3     |LUT3  |     1|
+|4     |LUT4  |     2|
+|5     |LUT5  |     1|
+|6     |LUT6  |    15|
+|7     |MUXF7 |     6|
+|8     |MUXF8 |     3|
+|9     |FDCE  |     8|
++------+------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:48 ; elapsed = 00:00:56 . Memory (MB): peak = 2262.586 ; gain = 615.586
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:29 ; elapsed = 00:00:52 . Memory (MB): peak = 2262.586 ; gain = 586.742
+Synthesis Optimization Complete : Time (s): cpu = 00:00:48 ; elapsed = 00:00:56 . Memory (MB): peak = 2262.586 ; gain = 615.586
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 2276.059 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 9 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2365.512 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 52bb087c
+INFO: [Common 17-83] Releasing license: Synthesis
+27 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:06 ; elapsed = 00:01:25 . Memory (MB): peak = 2365.512 ; gain = 1752.215
+INFO: [Coretcl 2-1174] Renamed 2 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 2365.512 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/HK6/Project1/testing/mul_reg/mul_reg/mul_reg.runs/mul_block_mul_pu_0_0_synth_1/mul_block_mul_pu_0_0.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file mul_block_mul_pu_0_0_utilization_synth.rpt -pb mul_block_mul_pu_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Mar 31 21:17:10 2026...
