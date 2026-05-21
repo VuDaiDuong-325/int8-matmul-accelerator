@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="gemm_block_synth_1" LaunchPart="xck26-sfvc784-2LV-c" LaunchTime="1778732589">
-  <File Type="PA-TCL" Name="gemm_block.tcl"/>
   <File Type="REPORTS-TCL" Name="gemm_block_reports.tcl"/>
-  <File Type="RDS-RDS" Name="gemm_block.vds"/>
-  <File Type="RDS-PROPCONSTRS" Name="gemm_block_drc_synth.rpt"/>
   <File Type="RDS-UTIL" Name="gemm_block_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="gemm_block_utilization_synth.pb"/>
+  <File Type="PA-TCL" Name="gemm_block.tcl"/>
+  <File Type="RDS-RDS" Name="gemm_block.vds"/>
   <File Type="RDS-DCP" Name="gemm_block.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="gemm_block_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="gemm_block_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/gemm_block" RelGenDir="$PGENDIR/gemm_block">
     <File Path="$PSRCDIR/sources_1/bd/gemm_block/gemm_block.bd">
       <FileInfo>

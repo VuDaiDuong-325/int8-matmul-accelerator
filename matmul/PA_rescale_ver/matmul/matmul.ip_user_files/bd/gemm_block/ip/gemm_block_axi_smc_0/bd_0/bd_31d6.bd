@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x25288F0D501A39F0",
+      "boundary_crc": "0x25288F0DA7D47FB6",
       "design_src": "SBD",
       "device": "xck26-sfvc784-2LV-c",
       "name": "bd_31d6",
@@ -137,7 +137,7 @@
             "value_src": "auto_prop"
           },
           "FREQ_HZ": {
-            "value": "199998001",
+            "value": "99999001",
             "value_src": "user_prop"
           },
           "HAS_BRESP": {
@@ -284,7 +284,7 @@
             "value_src": "auto_prop"
           },
           "FREQ_HZ": {
-            "value": "199998001",
+            "value": "99999001",
             "value_src": "user_prop"
           },
           "HAS_BRESP": {
@@ -431,7 +431,7 @@
             "value_src": "default"
           },
           "FREQ_HZ": {
-            "value": "199998001",
+            "value": "99999001",
             "value_src": "user_prop"
           },
           "HAS_BRESP": {
@@ -563,7 +563,7 @@
             "value_src": "default"
           },
           "FREQ_HZ": {
-            "value": "199998001",
+            "value": "99999001",
             "value_src": "user_prop"
           },
           "HAS_BRESP": {
@@ -695,7 +695,7 @@
             "value_src": "default"
           },
           "FREQ_HZ": {
-            "value": "199998001",
+            "value": "99999001",
             "value_src": "user_prop"
           },
           "HAS_BRESP": {
@@ -827,7 +827,7 @@
             "value_src": "default"
           },
           "FREQ_HZ": {
-            "value": "199998001",
+            "value": "99999001",
             "value_src": "user_prop"
           },
           "HAS_BRESP": {
@@ -947,7 +947,7 @@
             "value_src": "default_prop"
           },
           "FREQ_HZ": {
-            "value": "199998001",
+            "value": "99999001",
             "value_src": "user_prop"
           },
           "FREQ_TOLERANCE_HZ": {

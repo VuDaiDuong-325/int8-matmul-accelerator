@@ -3,22 +3,22 @@
 # SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
 # IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
 # SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-# Start of session at: Thu May 14 11:37:22 2026
-# Process ID         : 5212
-# Current directory  : D:/HK6/Project1/matmul/matmul.runs/synth_1
+# Start of session at: Wed May 20 11:22:37 2026
+# Process ID         : 27008
+# Current directory  : D:/E/1subject/HK6/doan1/ver4/matmul/matmul.runs/synth_1
 # Command line       : vivado.exe -log gemm_block_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source gemm_block_wrapper.tcl
-# Log file           : D:/HK6/Project1/matmul/matmul.runs/synth_1/gemm_block_wrapper.vds
-# Journal file       : D:/HK6/Project1/matmul/matmul.runs/synth_1\vivado.jou
-# Running On         : VuDuong-32
+# Log file           : D:/E/1subject/HK6/doan1/ver4/matmul/matmul.runs/synth_1/gemm_block_wrapper.vds
+# Journal file       : D:/E/1subject/HK6/doan1/ver4/matmul/matmul.runs/synth_1\vivado.jou
+# Running On         : ZUYYYY
 # Platform           : Windows Server 2016 or Windows 10
 # Operating System   : 26200
-# Processor Detail   : Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz
-# CPU Frequency      : 1992 MHz
-# CPU Physical cores : 4
-# CPU Logical cores  : 8
-# Host memory        : 8448 MB
-# Swap memory        : 24394 MB
-# Total Virtual      : 32842 MB
-# Available Virtual  : 19353 MB
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i5-13500H
+# CPU Frequency      : 3187 MHz
+# CPU Physical cores : 12
+# CPU Logical cores  : 16
+# Host memory        : 16794 MB
+# Swap memory        : 14862 MB
+# Total Virtual      : 31657 MB
+# Available Virtual  : 1777 MB
 #-----------------------------------------------------------
 source gemm_block_wrapper.tcl -notrace

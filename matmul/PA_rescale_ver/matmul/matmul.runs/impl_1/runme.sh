@@ -12,9 +12,9 @@ echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executi
 exit
 
 if [ -z "$PATH" ]; then
-  PATH=D:/Apps/Study/Vivado/2025.2/Vitis/bin;D:/Apps/Study/Vivado/2025.2/Vivado/ids_lite/ISE/bin/nt64;D:/Apps/Study/Vivado/2025.2/Vivado/ids_lite/ISE/lib/nt64:D:/Apps/Study/Vivado/2025.2/Vivado/bin
+  PATH=E:/vivado/2025.2/Vitis/bin;E:/vivado/2025.2/Vivado/ids_lite/ISE/bin/nt64;E:/vivado/2025.2/Vivado/ids_lite/ISE/lib/nt64:E:/vivado/2025.2/Vivado/bin
 else
-  PATH=D:/Apps/Study/Vivado/2025.2/Vitis/bin;D:/Apps/Study/Vivado/2025.2/Vivado/ids_lite/ISE/bin/nt64;D:/Apps/Study/Vivado/2025.2/Vivado/ids_lite/ISE/lib/nt64:D:/Apps/Study/Vivado/2025.2/Vivado/bin:$PATH
+  PATH=E:/vivado/2025.2/Vitis/bin;E:/vivado/2025.2/Vivado/ids_lite/ISE/bin/nt64;E:/vivado/2025.2/Vivado/ids_lite/ISE/lib/nt64:E:/vivado/2025.2/Vivado/bin:$PATH
 fi
 export PATH
 
@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/HK6/Project1/matmul/matmul.runs/impl_1'
+HD_PWD='D:/E/1subject/HK6/doan1/ver4/matmul/matmul.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -42,7 +42,7 @@ EAStep()
 }
 
 # pre-commands:
-/bin/touch .write_bitstream.begin.rst
+/bin/touch .init_design.begin.rst
 EAStep vivado -log gemm_block_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source gemm_block_wrapper.tcl -notrace
 
 
