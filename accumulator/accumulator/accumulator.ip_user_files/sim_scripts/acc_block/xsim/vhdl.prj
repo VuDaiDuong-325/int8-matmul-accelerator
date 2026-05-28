@@ -1,7 +1,0 @@
-vhdl xil_defaultlib  \
-"../../../bd/acc_block/ip/acc_block_axi_gpio_0_0/sim/acc_block_axi_gpio_0_0.vhd" \
-"../../../bd/acc_block/ip/acc_block_axi_smc_0/bd_0/ip/ip_1/sim/bd_961d_psr_aclk_0.vhd" \
-"../../../bd/acc_block/ip/acc_block_rst_ps8_0_99M_0/sim/acc_block_rst_ps8_0_99M_0.vhd" \
-
-# Do not sort compile order
-nosort
