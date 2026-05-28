@@ -30,6 +30,7 @@ To overcome on-chip memory constraints when handling massive LLM matrices, the s
 ## Project Structure & Source Code
 
 * **Hardware (RTL):** Fully described in synthesizable Verilog (includes PE, MAC Pipeline, Data Skew Network, Dataflow Controller, and Rescale Pipeline).
+* **Target Model:** Based on the **Qwen2-Audio** implementation from [Audio_Speech_Conversation](https://github.com/tranquangchung/Audio_Speech_Conversation).
 * **Software & Verification:** The end-to-end evaluation and data feeding pipeline is available here:
   * **Python Notebook:** [Kaggle Notebook](https://www.kaggle.com/code/duynguynngphng/testmodel?scriptVersionId=322782601)
 
