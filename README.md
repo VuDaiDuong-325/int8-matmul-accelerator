@@ -31,4 +31,8 @@ To overcome on-chip memory constraints when handling massive LLM matrices, the s
 
 * **Hardware (RTL):** Fully described in synthesizable Verilog (includes PE, MAC Pipeline, Data Skew Network, Dataflow Controller, and Rescale Pipeline).
 * **Software & Verification:** The end-to-end evaluation and data feeding pipeline is available here:
-  * **Python Notebook:** [Kaggle Notebook](https://www.kaggle.com/code/duynguynngphng/testmodel)
+  * **Python Notebook:** [Kaggle Notebook](https://www.kaggle.com/code/duynguynngphng/testmodel?scriptVersionId=322782601)
+
+*Project by:*
+* **Nguyen Dang Phuong Duy** - [DuyNDP](https://github.com/DuyNDP)
+* **Vu Dai Duong** - [VuDaiDuong_325](https://github.com/VuDaiDuong-325)
