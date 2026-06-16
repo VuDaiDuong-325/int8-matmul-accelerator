@@ -133,7 +133,7 @@
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "." } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
-        "SHAREDDIR": [ { "value": "../../../../../../../../../matmul.srcs/sources_1/bd/gemm_block/ipshared" } ],
+        "SHAREDDIR": [ { "value": "../../../../../ipshared" } ],
         "SWVERSION": [ { "value": "2025.2" } ],
         "SYNTHESISFLOW": [ { "value": "GLOBAL" } ]
       }
@@ -245,5 +245,5 @@
       }
     }
   },
-  "checksum": "c46327ae"
+  "checksum": "de32a25c"
 }

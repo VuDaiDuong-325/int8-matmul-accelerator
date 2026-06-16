@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/HK6/Project1/matmul/matmul.runs/gemm_block_synth_1'
+HD_PWD='D:/int8-matmul-accelerator/matmul/matmul.runs/gemm_block_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

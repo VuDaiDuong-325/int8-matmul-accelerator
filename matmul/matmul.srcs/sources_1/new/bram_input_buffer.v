@@ -100,28 +100,45 @@ module bram_input_buffer #(
         end
     end
 
-    // ====================================================
+// ====================================================
     // BRAM INFERENCE (2 MEMORY BLOCKS CHO PING-PONG)
     // ====================================================
     (* ram_style = "block" *) reg [DATA_WIDTH-1:0] ram_0 [0:DEPTH-1];
     (* ram_style = "block" *) reg [DATA_WIDTH-1:0] ram_1 [0:DEPTH-1];
     
-    reg [DATA_WIDTH-1:0] bram_out_reg;
-    reg [DATA_WIDTH-1:0] pipeline_reg; // [FIX] KHÔI PHỤC THANH GHI TẠO ĐỘ TRỄ 2 NHỊP
+    // Tách thành 2 thanh ghi đầu ra độc lập cho từng RAM
+    reg [DATA_WIDTH-1:0] ram0_out_reg;
+    reg [DATA_WIDTH-1:0] ram1_out_reg;
+    
+    wire [DATA_WIDTH-1:0] mux_out;
+    reg  [DATA_WIDTH-1:0] pipeline_reg; 
 
+    // Cấu trúc chuẩn Simple Dual-Port RAM cho RAM 0
     always @(posedge clk) begin
         // Port A: Ghi dữ liệu
-        if (s_axis_tvalid && s_axis_tready) begin
-            if (wr_bank == 1'b0) ram_0[wr_ptr] <= s_axis_tdata;
-            else                 ram_1[wr_ptr] <= s_axis_tdata;
+        if (s_axis_tvalid && s_axis_tready && (wr_bank == 1'b0)) begin
+            ram_0[wr_ptr] <= s_axis_tdata;
         end
-        
-        // Port B: Đọc dữ liệu ra NPU
-        if (rd_bank == 1'b0) bram_out_reg <= ram_0[rd_addr];
-        else                 bram_out_reg <= ram_1[rd_addr];
-        
-        // Trễ thêm 1 nhịp để đồng bộ tuyệt đối với valid_delay của FSM
-        pipeline_reg <= bram_out_reg; 
+        // Port B: Đọc đồng bộ liên tục (Bắt buộc để infer ra BRAM)
+        ram0_out_reg <= ram_0[rd_addr];
+    end
+
+    // Cấu trúc chuẩn Simple Dual-Port RAM cho RAM 1
+    always @(posedge clk) begin
+        // Port A: Ghi dữ liệu
+        if (s_axis_tvalid && s_axis_tready && (wr_bank == 1'b1)) begin
+            ram_1[wr_ptr] <= s_axis_tdata;
+        end
+        // Port B: Đọc đồng bộ liên tục (Bắt buộc để infer ra BRAM)
+        ram1_out_reg <= ram_1[rd_addr];
+    end
+
+    // Mux chọn kết quả tổ hợp (Combinational Mux) ĐẰNG SAU thanh ghi đọc RAM
+    assign mux_out = (rd_bank == 1'b0) ? ram0_out_reg : ram1_out_reg;
+
+    // Thanh ghi tạo độ trễ nhịp thứ 2 (Giữ nguyên đồng bộ cho FSM của bạn)
+    always @(posedge clk) begin
+        pipeline_reg <= mux_out;
     end
 
     assign rd_data = pipeline_reg;

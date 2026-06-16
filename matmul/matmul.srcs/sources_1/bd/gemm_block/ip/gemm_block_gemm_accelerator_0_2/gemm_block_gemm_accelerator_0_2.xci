@@ -22,7 +22,7 @@
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynquplus", "resolve_type": "generated", "usage": "all" } ],
-        "BASE_BOARD_PART": [ { "value": "xilinx.com:kr260_som:part0:1.1", "resolve_type": "generated", "usage": "all" } ],
+        "BASE_BOARD_PART": [ { "value": "xilinx.com:kv260_som:part0:1.4", "resolve_type": "generated", "usage": "all" } ],
         "BOARD_CONNECTIONS": [ { "value": "", "resolve_type": "generated", "usage": "all" } ],
         "DEVICE": [ { "value": "xck26", "resolve_type": "generated", "usage": "all" } ],
         "PACKAGE": [ { "value": "sfvc784", "resolve_type": "generated", "usage": "all" } ],
@@ -179,5 +179,5 @@
       }
     }
   },
-  "checksum": "5e982bc1"
+  "checksum": "8ce76ae3"
 }

@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "D:/HK6/Project1/matmul/matmul.runs/gemm_block_synth_1/gemm_block.tcl"
+  variable script "D:/int8-matmul-accelerator/matmul/matmul.runs/gemm_block_synth_1/gemm_block.tcl"
   variable category "vivado_synth"
 }
 
@@ -57,8 +57,8 @@ if {$::dispatch::connected} {
 
 OPTRACE "gemm_block_synth_1" START { ROLLUP_AUTO }
 set_param general.usePosixSpawnForFork 1
-set_param chipscope.maxJobs 2
 set_param bd.open.in_stealth_mode 2
+set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xck26-sfvc784-2LV-c
@@ -67,123 +67,123 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir D:/HK6/Project1/matmul/matmul.cache/wt [current_project]
-set_property parent.project_path D:/HK6/Project1/matmul/matmul.xpr [current_project]
+set_property webtalk.parent_dir D:/int8-matmul-accelerator/matmul/matmul.cache/wt [current_project]
+set_property parent.project_path D:/int8-matmul-accelerator/matmul/matmul.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part xilinx.com:kv260_som:part0:1.4 [current_project]
-set_property ip_repo_paths d:/HK6/Project1/matmul [current_project]
+set_property ip_repo_paths d:/int8-matmul-accelerator/matmul [current_project]
 update_ip_catalog
-set_property ip_output_repo d:/HK6/Project1/matmul/matmul.cache/ip [current_project]
+set_property ip_output_repo d:/int8-matmul-accelerator/matmul/matmul.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  D:/HK6/Project1/matmul/matmul.srcs/sources_1/new/bram_input_buffer.v
-  D:/HK6/Project1/matmul/matmul.srcs/sources_1/new/int32_int8_rescale.v
-  D:/HK6/Project1/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/mac_core.v
-  D:/HK6/Project1/matmul/matmul.srcs/sources_1/new/output_serializer.v
-  D:/HK6/Project1/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/pe_wrapper.v
-  D:/HK6/Project1/matmul/matmul.srcs/sources_1/new/post_accumulator.v
-  D:/HK6/Project1/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v
-  D:/HK6/Project1/matmul/matmul.srcs/sources_1/new/shift_register_delay.v
-  D:/HK6/Project1/matmul/matmul.srcs/sources_1/new/skew_network.v
-  D:/HK6/Project1/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/systolic_array_os.v
-  D:/HK6/Project1/matmul/matmul.srcs/sources_1/new/systolic_dataflow_ctrl.v
-  D:/HK6/Project1/matmul/matmul.srcs/sources_1/new/gemm_accelerator.v
+  D:/int8-matmul-accelerator/matmul/matmul.srcs/sources_1/new/bram_input_buffer.v
+  D:/int8-matmul-accelerator/matmul/matmul.srcs/sources_1/new/int32_int8_rescale.v
+  D:/int8-matmul-accelerator/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/mac_core.v
+  D:/int8-matmul-accelerator/matmul/matmul.srcs/sources_1/new/output_serializer.v
+  D:/int8-matmul-accelerator/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/pe_wrapper.v
+  D:/int8-matmul-accelerator/matmul/matmul.srcs/sources_1/new/post_accumulator.v
+  D:/int8-matmul-accelerator/matmul/matmul.srcs/sources_1/new/sc_fifo_fwft.v
+  D:/int8-matmul-accelerator/matmul/matmul.srcs/sources_1/new/shift_register_delay.v
+  D:/int8-matmul-accelerator/matmul/matmul.srcs/sources_1/new/skew_network.v
+  D:/int8-matmul-accelerator/matmul/matmul.srcs/sources_1/imports/sources_1/imports/new/systolic_array_os.v
+  D:/int8-matmul-accelerator/matmul/matmul.srcs/sources_1/new/systolic_dataflow_ctrl.v
+  D:/int8-matmul-accelerator/matmul/matmul.srcs/sources_1/new/gemm_accelerator.v
 }
-add_files D:/HK6/Project1/matmul/matmul.srcs/sources_1/bd/gemm_block/gemm_block.bd
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_zynq_ultra_ps_e_0_0/gemm_block_zynq_ultra_ps_e_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_zynq_ultra_ps_e_0_0/gemm_block_zynq_ultra_ps_e_0_0.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_dma_0_0/gemm_block_axi_dma_0_0.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_dma_0_0/gemm_block_axi_dma_0_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_1/bd_31d6_psr_aclk_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_2/bd_31d6_arinsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_3/bd_31d6_rinsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_4/bd_31d6_awinsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_5/bd_31d6_winsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_6/bd_31d6_binsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_7/bd_31d6_aroutsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_8/bd_31d6_routsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_9/bd_31d6_awoutsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_10/bd_31d6_woutsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_11/bd_31d6_boutsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_12/bd_31d6_arni_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_13/bd_31d6_rni_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_14/bd_31d6_awni_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_15/bd_31d6_wni_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_16/bd_31d6_bni_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_20/bd_31d6_s00a2s_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_21/bd_31d6_sarn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_22/bd_31d6_srn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_23/bd_31d6_sawn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_24/bd_31d6_swn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_25/bd_31d6_sbn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_29/bd_31d6_s01a2s_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_30/bd_31d6_sarn_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_31/bd_31d6_srn_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_32/bd_31d6_sawn_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_33/bd_31d6_swn_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_34/bd_31d6_sbn_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_35/bd_31d6_m00s2a_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_36/bd_31d6_m00arn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_37/bd_31d6_m00rn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_38/bd_31d6_m00awn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_39/bd_31d6_m00wn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_40/bd_31d6_m00bn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_42/bd_31d6_m01s2a_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_43/bd_31d6_m01arn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_44/bd_31d6_m01rn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_45/bd_31d6_m01awn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_46/bd_31d6_m01wn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_47/bd_31d6_m01bn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_49/bd_31d6_m02s2a_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_50/bd_31d6_m02arn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_51/bd_31d6_m02rn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_52/bd_31d6_m02awn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_53/bd_31d6_m02wn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_54/bd_31d6_m02bn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_56/bd_31d6_m03s2a_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_57/bd_31d6_m03arn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_58/bd_31d6_m03rn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_59/bd_31d6_m03awn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_60/bd_31d6_m03wn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_61/bd_31d6_m03bn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/smartconnect.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_rst_ps8_0_99M_0/gemm_block_rst_ps8_0_99M_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_dma_1_0/gemm_block_axi_dma_1_0.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_dma_1_0/gemm_block_axi_dma_1_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_1/bd_90f7_psr_aclk_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_2/bd_90f7_arsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_3/bd_90f7_rsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_4/bd_90f7_awsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_5/bd_90f7_wsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_6/bd_90f7_bsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_10/bd_90f7_s00a2s_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_11/bd_90f7_sarn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_12/bd_90f7_srn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_16/bd_90f7_s02a2s_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_17/bd_90f7_sarn_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_18/bd_90f7_srn_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_22/bd_90f7_s03a2s_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_23/bd_90f7_sawn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_24/bd_90f7_swn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_25/bd_90f7_sbn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_26/bd_90f7_m00s2a_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_27/bd_90f7_m00arn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_28/bd_90f7_m00rn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_29/bd_90f7_m00awn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_30/bd_90f7_m00wn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_31/bd_90f7_m00bn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/smartconnect.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_gpio_0_0/gemm_block_axi_gpio_0_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_gpio_0_0/gemm_block_axi_gpio_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_gpio_1_0/gemm_block_axi_gpio_1_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_gpio_1_0/gemm_block_axi_gpio_1_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block_ooc.xdc]
+add_files D:/int8-matmul-accelerator/matmul/matmul.srcs/sources_1/bd/gemm_block/gemm_block.bd
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_zynq_ultra_ps_e_0_0/gemm_block_zynq_ultra_ps_e_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_zynq_ultra_ps_e_0_0/gemm_block_zynq_ultra_ps_e_0_0.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_dma_0_0/gemm_block_axi_dma_0_0.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_dma_0_0/gemm_block_axi_dma_0_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_1/bd_31d6_psr_aclk_0_board.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_2/bd_31d6_arinsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_3/bd_31d6_rinsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_4/bd_31d6_awinsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_5/bd_31d6_winsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_6/bd_31d6_binsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_7/bd_31d6_aroutsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_8/bd_31d6_routsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_9/bd_31d6_awoutsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_10/bd_31d6_woutsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_11/bd_31d6_boutsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_12/bd_31d6_arni_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_13/bd_31d6_rni_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_14/bd_31d6_awni_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_15/bd_31d6_wni_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_16/bd_31d6_bni_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_20/bd_31d6_s00a2s_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_21/bd_31d6_sarn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_22/bd_31d6_srn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_23/bd_31d6_sawn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_24/bd_31d6_swn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_25/bd_31d6_sbn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_29/bd_31d6_s01a2s_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_30/bd_31d6_sarn_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_31/bd_31d6_srn_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_32/bd_31d6_sawn_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_33/bd_31d6_swn_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_34/bd_31d6_sbn_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_35/bd_31d6_m00s2a_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_36/bd_31d6_m00arn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_37/bd_31d6_m00rn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_38/bd_31d6_m00awn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_39/bd_31d6_m00wn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_40/bd_31d6_m00bn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_42/bd_31d6_m01s2a_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_43/bd_31d6_m01arn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_44/bd_31d6_m01rn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_45/bd_31d6_m01awn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_46/bd_31d6_m01wn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_47/bd_31d6_m01bn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_49/bd_31d6_m02s2a_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_50/bd_31d6_m02arn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_51/bd_31d6_m02rn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_52/bd_31d6_m02awn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_53/bd_31d6_m02wn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_54/bd_31d6_m02bn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_56/bd_31d6_m03s2a_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_57/bd_31d6_m03arn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_58/bd_31d6_m03rn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_59/bd_31d6_m03awn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_60/bd_31d6_m03wn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/bd_0/ip/ip_61/bd_31d6_m03bn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_0/smartconnect.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_rst_ps8_0_99M_0/gemm_block_rst_ps8_0_99M_0_board.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_dma_1_0/gemm_block_axi_dma_1_0.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_dma_1_0/gemm_block_axi_dma_1_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_1/bd_90f7_psr_aclk_0_board.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_2/bd_90f7_arsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_3/bd_90f7_rsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_4/bd_90f7_awsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_5/bd_90f7_wsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_6/bd_90f7_bsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_10/bd_90f7_s00a2s_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_11/bd_90f7_sarn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_12/bd_90f7_srn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_16/bd_90f7_s02a2s_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_17/bd_90f7_sarn_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_18/bd_90f7_srn_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_22/bd_90f7_s03a2s_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_23/bd_90f7_sawn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_24/bd_90f7_swn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_25/bd_90f7_sbn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_26/bd_90f7_m00s2a_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_27/bd_90f7_m00arn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_28/bd_90f7_m00rn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_29/bd_90f7_m00awn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_30/bd_90f7_m00wn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/bd_0/ip/ip_31/bd_90f7_m00bn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_smc_1_0/smartconnect.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_gpio_0_0/gemm_block_axi_gpio_0_0_board.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_gpio_0_0/gemm_block_axi_gpio_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_gpio_1_0/gemm_block_axi_gpio_1_0_board.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/ip/gemm_block_axi_gpio_1_0/gemm_block_axi_gpio_1_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -218,45 +218,45 @@ generate_parallel_reports -reports { "report_utilization -file gemm_block_utiliz
 OPTRACE "synth reports" END { }
 
 if { [catch {
-  file copy -force D:/HK6/Project1/matmul/matmul.runs/gemm_block_synth_1/gemm_block.dcp d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block.dcp
+  file copy -force D:/int8-matmul-accelerator/matmul/matmul.runs/gemm_block_synth_1/gemm_block.dcp d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block.dcp
 } _RESULT ] } { 
   send_msg_id runtcl-3 status "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
-  write_verilog -force -mode synth_stub d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block_stub.v
+  write_verilog -force -mode synth_stub d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block_stub.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode synth_stub d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block_stub.vhdl
+  write_vhdl -force -mode synth_stub d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block_stub.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_verilog -force -mode funcsim d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block_sim_netlist.v
+  write_verilog -force -mode funcsim d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block_sim_netlist.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode funcsim d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block_sim_netlist.vhdl
+  write_vhdl -force -mode funcsim d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block_sim_netlist.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
-if {[file isdir D:/HK6/Project1/matmul/matmul.ip_user_files/bd/gemm_block]} {
+if {[file isdir D:/int8-matmul-accelerator/matmul/matmul.ip_user_files/bd/gemm_block]} {
   catch { 
-    file copy -force d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block_stub.v D:/HK6/Project1/matmul/matmul.ip_user_files/bd/gemm_block
+    file copy -force d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block_stub.v D:/int8-matmul-accelerator/matmul/matmul.ip_user_files/bd/gemm_block
   }
 }
 
-if {[file isdir D:/HK6/Project1/matmul/matmul.ip_user_files/bd/gemm_block]} {
+if {[file isdir D:/int8-matmul-accelerator/matmul/matmul.ip_user_files/bd/gemm_block]} {
   catch { 
-    file copy -force d:/HK6/Project1/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block_stub.vhdl D:/HK6/Project1/matmul/matmul.ip_user_files/bd/gemm_block
+    file copy -force d:/int8-matmul-accelerator/matmul/matmul.gen/sources_1/bd/gemm_block/gemm_block_stub.vhdl D:/int8-matmul-accelerator/matmul/matmul.ip_user_files/bd/gemm_block
   }
 }
 file delete __synthesis_is_running__

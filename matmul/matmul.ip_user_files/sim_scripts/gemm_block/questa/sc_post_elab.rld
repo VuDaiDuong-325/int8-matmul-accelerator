@@ -61,7 +61,7 @@
 /config/ip/num_si/value=5
 /config/ip/num_mi/value=1
 /config/ip/num_clks/value=1
-/config/aclk/csk/value=gemm_block_zynq_ultra_ps_e_0_0_pl_clk0:199:0.0
+/config/aclk/csk/value=gemm_block_zynq_ultra_ps_e_0_0_pl_clk0:99:0.0
 /clocking/S00_Entry/ASSOCIATED_CLK/value=aclk;range=aclk;editable=0
 /clocking/S01_Entry/ASSOCIATED_CLK/value=aclk;range=aclk;editable=0
 /clocking/S02_Entry/ASSOCIATED_CLK/value=aclk;range=aclk;editable=0

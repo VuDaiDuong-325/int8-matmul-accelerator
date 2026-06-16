@@ -2,11 +2,11 @@
 <Root MajorVersion="0" MinorVersion="43">
   <CompositeFile CompositeFileTopName="bd_31d6" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1778732583"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1778732583"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1778732583"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1778732583"/>
-    <Generation Name="INSTANTIATION_TEMPLATE" State="STALE" Timestamp="1778732436"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1781619321"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1781619321"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1781619321"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1781619321"/>
+    <Generation Name="INSTANTIATION_TEMPLATE" State="GENERATED" Timestamp="1781619321"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="synth\bd_31d6.v" Type="Verilog">
         <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
@@ -16,12 +16,6 @@
         <ProcessingOrder Val="NORMAL"/>
       </File>
       <File Name="sim\bd_31d6.v" Type="Verilog">
-        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
-        <ProcessingOrder Val="NORMAL"/>
-      </File>
-      <File Name="sim\bd_31d6.protoinst">
         <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
@@ -37,6 +31,12 @@
         <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="HW_HANDOFF"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="sim\bd_31d6.protoinst">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
         <ProcessingOrder Val="NORMAL"/>
       </File>
     </FileCollection>
