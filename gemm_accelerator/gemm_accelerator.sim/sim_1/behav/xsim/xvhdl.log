@@ -1,0 +1,10 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/gemm_accelerator/gemm_accelerator.ip_user_files/bd/gemm_system/ip/gemm_system_axi_datamover_0_0/sim/gemm_system_axi_datamover_0_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'gemm_system_axi_datamover_0_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/gemm_accelerator/gemm_accelerator.ip_user_files/bd/gemm_system/ip/gemm_system_rst_ps8_0_99M_1/sim/gemm_system_rst_ps8_0_99M_1.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'gemm_system_rst_ps8_0_99M_1'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/gemm_accelerator/gemm_accelerator.ip_user_files/bd/gemm_system/ip/gemm_system_smartconnect_0_1/bd_0/ip/ip_1/sim/bd_6dc6_psr_aclk_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'bd_6dc6_psr_aclk_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/gemm_accelerator/gemm_accelerator.ip_user_files/bd/gemm_system/ip/gemm_system_smartconnect_1_0/bd_0/ip/ip_1/sim/bd_6d56_psr_aclk_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'bd_6d56_psr_aclk_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/gemm_accelerator/gemm_accelerator.ip_user_files/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_1/sim/bd_9f0d_psr_aclk_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'bd_9f0d_psr_aclk_0'

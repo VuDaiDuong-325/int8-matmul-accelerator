@@ -1,0 +1,406 @@
+
+*** Running vivado
+    with args -log gemm_system_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source gemm_system_wrapper.tcl
+
+
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Thu Jun 25 13:52:04 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source gemm_system_wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:18 ; elapsed = 00:00:16 . Memory (MB): peak = 555.547 ; gain = 221.145
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Apps/Study/Vivado/2025.2/Vivado/data/ip'.
+INFO: [Project 1-5698] Found the below utility IPs instantiated in block design D:/gemm_accelerator/gemm_accelerator.srcs/sources_1/bd/gemm_system/gemm_system.bd which have equivalent inline hdl with improved performance and reduced diskspace.
+It is recommended to migrate these utility IPs to inline hdl  using the command upgrade_project -migrate_to_inline_hdl.  The utility IPs may be deprecated in future releases.
+More information on inline hdl is available in UG994.
+Utility IP Component Instances:
+ gemm_system_xlconcat_0_0
+add_files: Time (s): cpu = 00:00:14 ; elapsed = 00:00:24 . Memory (MB): peak = 620.445 ; gain = 64.898
+Command: read_checkpoint -auto_incremental -incremental D:/gemm_accelerator/gemm_accelerator.srcs/utils_1/imports/synth_1/gemm_system_wrapper.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from D:/gemm_accelerator/gemm_accelerator.srcs/utils_1/imports/synth_1/gemm_system_wrapper.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top gemm_system_wrapper -part xck26-sfvc784-2LV-c
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 12904
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1904.621 ; gain = 211.375
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'gemm_system_wrapper' [D:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/hdl/gemm_system_wrapper.v:13]
+INFO: [Synth 8-6157] synthesizing module 'gemm_system' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:13]
+INFO: [Synth 8-6157] synthesizing module 'gemm_system_axi_datamover_0_0' [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_axi_datamover_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'gemm_system_axi_datamover_0_0' (0#1) [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_axi_datamover_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mm2s_err' of module 'gemm_system_axi_datamover_0_0' is unconnected for instance 'axi_datamover_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:181]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_sts_tvalid' of module 'gemm_system_axi_datamover_0_0' is unconnected for instance 'axi_datamover_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:181]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_sts_tdata' of module 'gemm_system_axi_datamover_0_0' is unconnected for instance 'axi_datamover_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:181]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_sts_tkeep' of module 'gemm_system_axi_datamover_0_0' is unconnected for instance 'axi_datamover_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:181]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_sts_tlast' of module 'gemm_system_axi_datamover_0_0' is unconnected for instance 'axi_datamover_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:181]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_tkeep' of module 'gemm_system_axi_datamover_0_0' is unconnected for instance 'axi_datamover_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:181]
+WARNING: [Synth 8-7071] port 's2mm_err' of module 'gemm_system_axi_datamover_0_0' is unconnected for instance 'axi_datamover_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:181]
+WARNING: [Synth 8-7071] port 'm_axis_s2mm_sts_tkeep' of module 'gemm_system_axi_datamover_0_0' is unconnected for instance 'axi_datamover_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:181]
+WARNING: [Synth 8-7071] port 'm_axis_s2mm_sts_tlast' of module 'gemm_system_axi_datamover_0_0' is unconnected for instance 'axi_datamover_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:181]
+WARNING: [Synth 8-7023] instance 'axi_datamover_0' of module 'gemm_system_axi_datamover_0_0' has 69 connections declared, but only 60 given [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:181]
+INFO: [Synth 8-6157] synthesizing module 'gemm_system_axi_smc_2' [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_axi_smc_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'gemm_system_axi_smc_2' (0#1) [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_axi_smc_2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'gemm_system_gemm_l2_axi_lite_regs_0_0' [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_gemm_l2_axi_lite_regs_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'gemm_system_gemm_l2_axi_lite_regs_0_0' (0#1) [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_gemm_l2_axi_lite_regs_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'gemm_system_gemm_top_l2_0_0' [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_gemm_top_l2_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'gemm_system_gemm_top_l2_0_0' (0#1) [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_gemm_top_l2_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'gemm_system_rst_ps8_0_99M_1' [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_rst_ps8_0_99M_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'gemm_system_rst_ps8_0_99M_1' (0#1) [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_rst_ps8_0_99M_1_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'gemm_system_rst_ps8_0_99M_1' is unconnected for instance 'rst_ps8_0_99M' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:375]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'gemm_system_rst_ps8_0_99M_1' is unconnected for instance 'rst_ps8_0_99M' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:375]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'gemm_system_rst_ps8_0_99M_1' is unconnected for instance 'rst_ps8_0_99M' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:375]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'gemm_system_rst_ps8_0_99M_1' is unconnected for instance 'rst_ps8_0_99M' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:375]
+WARNING: [Synth 8-7023] instance 'rst_ps8_0_99M' of module 'gemm_system_rst_ps8_0_99M_1' has 10 connections declared, but only 6 given [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:375]
+INFO: [Synth 8-6157] synthesizing module 'gemm_system_smartconnect_0_1' [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_smartconnect_0_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'gemm_system_smartconnect_0_1' (0#1) [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_smartconnect_0_1_stub.v:6]
+WARNING: [Synth 8-7071] port 'S00_AXI_rid' of module 'gemm_system_smartconnect_0_1' is unconnected for instance 'smartconnect_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:382]
+WARNING: [Synth 8-7023] instance 'smartconnect_0' of module 'gemm_system_smartconnect_0_1' has 36 connections declared, but only 35 given [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:382]
+INFO: [Synth 8-6157] synthesizing module 'gemm_system_smartconnect_1_0' [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_smartconnect_1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'gemm_system_smartconnect_1_0' (0#1) [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_smartconnect_1_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'S00_AXI_bid' of module 'gemm_system_smartconnect_1_0' is unconnected for instance 'smartconnect_1' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:418]
+WARNING: [Synth 8-7023] instance 'smartconnect_1' of module 'gemm_system_smartconnect_1_0' has 42 connections declared, but only 41 given [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:418]
+INFO: [Synth 8-6157] synthesizing module 'gemm_system_xlconcat_0_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_xlconcat_0_0/synth/gemm_system_xlconcat_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_7_xlconcat' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ipshared/9c1a/hdl/xlconcat_v2_1_vl_rfs.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'xlconcat_v2_1_7_xlconcat' (0#1) [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ipshared/9c1a/hdl/xlconcat_v2_1_vl_rfs.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'gemm_system_xlconcat_0_0' (0#1) [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_xlconcat_0_0/synth/gemm_system_xlconcat_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gemm_system_zynq_ultra_ps_e_0_0' [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_zynq_ultra_ps_e_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'gemm_system_zynq_ultra_ps_e_0_0' (0#1) [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/.Xil/Vivado-14764-VuDuong-32/realtime/gemm_system_zynq_ultra_ps_e_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'saxigp0_awready' of module 'gemm_system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+WARNING: [Synth 8-7071] port 'saxigp0_wready' of module 'gemm_system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+WARNING: [Synth 8-7071] port 'saxigp0_bid' of module 'gemm_system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+WARNING: [Synth 8-7071] port 'saxigp0_bresp' of module 'gemm_system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+WARNING: [Synth 8-7071] port 'saxigp0_bvalid' of module 'gemm_system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+WARNING: [Synth 8-7071] port 'saxigp0_rid' of module 'gemm_system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+WARNING: [Synth 8-7071] port 'saxigp1_bid' of module 'gemm_system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+WARNING: [Synth 8-7071] port 'saxigp1_arready' of module 'gemm_system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+WARNING: [Synth 8-7071] port 'saxigp1_rid' of module 'gemm_system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+WARNING: [Synth 8-7071] port 'saxigp1_rdata' of module 'gemm_system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+WARNING: [Synth 8-7071] port 'saxigp1_rresp' of module 'gemm_system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+WARNING: [Synth 8-7071] port 'saxigp1_rlast' of module 'gemm_system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+WARNING: [Synth 8-7071] port 'saxigp1_rvalid' of module 'gemm_system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+WARNING: [Synth 8-7071] port 'pl_clk1' of module 'gemm_system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+WARNING: [Synth 8-7023] instance 'zynq_ultra_ps_e_0' of module 'gemm_system_zynq_ultra_ps_e_0_0' has 124 connections declared, but only 110 given [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:463]
+INFO: [Synth 8-6155] done synthesizing module 'gemm_system' (0#1) [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/synth/gemm_system.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'gemm_system_wrapper' (0#1) [D:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/hdl/gemm_system_wrapper.v:13]
+WARNING: [Synth 8-7129] Port In1[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In2[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In3[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In4[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In5[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In6[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In7[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In8[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In9[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In10[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In11[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In12[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In13[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In14[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In15[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In16[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In17[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In18[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In19[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In20[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In21[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In22[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In23[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In24[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In25[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In26[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In27[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In28[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In29[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In30[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In31[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In32[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In33[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In34[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In35[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In36[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In37[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In38[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In39[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In40[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In41[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In42[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In43[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In44[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In45[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In46[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In47[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In48[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In49[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In50[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In51[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In52[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In53[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In54[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In55[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In56[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In57[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In58[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In59[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In60[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In61[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In62[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In63[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In64[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In65[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In66[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In67[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In68[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In69[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In70[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In71[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In72[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In73[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In74[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In75[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In76[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In77[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In78[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In79[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In80[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In81[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In82[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In83[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In84[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In85[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In86[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In87[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In88[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In89[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In90[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In91[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In92[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In93[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In94[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In95[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In96[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In97[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In98[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In99[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In100[0] in module xlconcat_v2_1_7_xlconcat is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 2036.094 ; gain = 342.848
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 2036.094 ; gain = 342.848
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 2036.094 ; gain = 342.848
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 2036.094 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_top_l2_0_0/gemm_system_gemm_top_l2_0_0/gemm_system_gemm_top_l2_0_0_in_context.xdc] for cell 'gemm_system_i/gemm_top_l2_0'
+Finished Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_top_l2_0_0/gemm_system_gemm_top_l2_0_0/gemm_system_gemm_top_l2_0_0_in_context.xdc] for cell 'gemm_system_i/gemm_top_l2_0'
+Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_in_context.xdc] for cell 'gemm_system_i/gemm_l2_axi_lite_regs_0'
+Finished Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_in_context.xdc] for cell 'gemm_system_i/gemm_l2_axi_lite_regs_0'
+Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_zynq_ultra_ps_e_0_0/gemm_system_zynq_ultra_ps_e_0_0/gemm_system_zynq_ultra_ps_e_0_0_in_context.xdc] for cell 'gemm_system_i/zynq_ultra_ps_e_0'
+create_clock: Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 2036.094 ; gain = 0.000
+Finished Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_zynq_ultra_ps_e_0_0/gemm_system_zynq_ultra_ps_e_0_0/gemm_system_zynq_ultra_ps_e_0_0_in_context.xdc] for cell 'gemm_system_i/zynq_ultra_ps_e_0'
+Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_datamover_0_0/gemm_system_axi_datamover_0_0/gemm_system_axi_datamover_0_0_in_context.xdc] for cell 'gemm_system_i/axi_datamover_0'
+Finished Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_datamover_0_0/gemm_system_axi_datamover_0_0/gemm_system_axi_datamover_0_0_in_context.xdc] for cell 'gemm_system_i/axi_datamover_0'
+Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_rst_ps8_0_99M_1/gemm_system_rst_ps8_0_99M_1/gemm_system_rst_ps8_0_99M_1_in_context.xdc] for cell 'gemm_system_i/rst_ps8_0_99M'
+Finished Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_rst_ps8_0_99M_1/gemm_system_rst_ps8_0_99M_1/gemm_system_rst_ps8_0_99M_1_in_context.xdc] for cell 'gemm_system_i/rst_ps8_0_99M'
+Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/gemm_system_smartconnect_0_1/gemm_system_smartconnect_0_1_in_context.xdc] for cell 'gemm_system_i/smartconnect_0'
+Finished Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/gemm_system_smartconnect_0_1/gemm_system_smartconnect_0_1_in_context.xdc] for cell 'gemm_system_i/smartconnect_0'
+Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/gemm_system_smartconnect_1_0/gemm_system_smartconnect_1_0_in_context.xdc] for cell 'gemm_system_i/smartconnect_1'
+Finished Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/gemm_system_smartconnect_1_0/gemm_system_smartconnect_1_0_in_context.xdc] for cell 'gemm_system_i/smartconnect_1'
+Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/gemm_system_axi_smc_2/gemm_system_axi_smc_2_in_context.xdc] for cell 'gemm_system_i/axi_smc'
+Finished Parsing XDC File [d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/gemm_system_axi_smc_2/gemm_system_axi_smc_2_in_context.xdc] for cell 'gemm_system_i/axi_smc'
+Parsing XDC File [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [D:/gemm_accelerator/gemm_accelerator.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2036.094 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.032 . Memory (MB): peak = 2036.094 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:39 ; elapsed = 00:00:47 . Memory (MB): peak = 2036.094 ; gain = 342.848
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xck26-sfvc784-2LV-c
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:39 ; elapsed = 00:00:47 . Memory (MB): peak = 2036.094 ; gain = 342.848
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:39 ; elapsed = 00:00:47 . Memory (MB): peak = 2036.094 ; gain = 342.848
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:39 ; elapsed = 00:00:48 . Memory (MB): peak = 2036.094 ; gain = 342.848
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1248 (col length:96)
+BRAMs: 288 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:42 ; elapsed = 00:00:52 . Memory (MB): peak = 2038.578 ; gain = 345.332
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:07 ; elapsed = 00:01:30 . Memory (MB): peak = 2757.375 ; gain = 1064.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:07 ; elapsed = 00:01:30 . Memory (MB): peak = 2757.375 ; gain = 1064.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:07 ; elapsed = 00:01:30 . Memory (MB): peak = 2769.305 ; gain = 1076.059
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:22 ; elapsed = 00:01:51 . Memory (MB): peak = 3018.438 ; gain = 1325.191
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:22 ; elapsed = 00:01:51 . Memory (MB): peak = 3018.438 ; gain = 1325.191
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:22 ; elapsed = 00:01:51 . Memory (MB): peak = 3018.438 ; gain = 1325.191
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:22 ; elapsed = 00:01:51 . Memory (MB): peak = 3018.438 ; gain = 1325.191
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:22 ; elapsed = 00:01:51 . Memory (MB): peak = 3018.438 ; gain = 1325.191
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:22 ; elapsed = 00:01:51 . Memory (MB): peak = 3018.438 ; gain = 1325.191
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------------------------------+----------+
+|      |BlackBox name                         |Instances |
++------+--------------------------------------+----------+
+|1     |gemm_system_axi_datamover_0_0         |         1|
+|2     |gemm_system_axi_smc_2                 |         1|
+|3     |gemm_system_gemm_l2_axi_lite_regs_0_0 |         1|
+|4     |gemm_system_gemm_top_l2_0_0           |         1|
+|5     |gemm_system_rst_ps8_0_99M_1           |         1|
+|6     |gemm_system_smartconnect_0_1          |         1|
+|7     |gemm_system_smartconnect_1_0          |         1|
+|8     |gemm_system_zynq_ultra_ps_e_0_0       |         1|
++------+--------------------------------------+----------+
+
+Report Cell Usage: 
++------+------------------------------------+------+
+|      |Cell                                |Count |
++------+------------------------------------+------+
+|1     |gemm_system_axi_datamover_0         |     1|
+|2     |gemm_system_axi_smc                 |     1|
+|3     |gemm_system_gemm_l2_axi_lite_regs_0 |     1|
+|4     |gemm_system_gemm_top_l2_0           |     1|
+|5     |gemm_system_rst_ps8_0_99M           |     1|
+|6     |gemm_system_smartconnect_0          |     1|
+|7     |gemm_system_smartconnect_1          |     1|
+|8     |gemm_system_zynq_ultra_ps_e_0       |     1|
++------+------------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:22 ; elapsed = 00:01:51 . Memory (MB): peak = 3018.438 ; gain = 1325.191
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:56 ; elapsed = 00:01:36 . Memory (MB): peak = 3018.438 ; gain = 1325.191
+Synthesis Optimization Complete : Time (s): cpu = 00:01:24 ; elapsed = 00:01:53 . Memory (MB): peak = 3018.438 ; gain = 1325.191
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.066 . Memory (MB): peak = 3018.438 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3018.438 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 4ac81220
+INFO: [Common 17-83] Releasing license: Synthesis
+48 Infos, 134 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:46 ; elapsed = 00:02:40 . Memory (MB): peak = 3018.438 ; gain = 2397.992
+INFO: [Common 17-1381] The checkpoint 'D:/gemm_accelerator/gemm_accelerator.runs/synth_1/gemm_system_wrapper.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file gemm_system_wrapper_utilization_synth.rpt -pb gemm_system_wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Jun 25 13:55:33 2026...
