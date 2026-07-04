@@ -205,8 +205,8 @@
 				"/gemm_top_l2_0/mm2s": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
-						"ACLK": { "actual": "aclk"},
-						"ARESETN": { "actual": "aresetn"},
+						"ACLK": { "actual": "CLK_i"},
+						"ARESETN": { "actual": "RST_i"},
 						"TDATA": { "actual": "mm2s_tdata[127:0]"},
 						"TLAST": { "actual": "mm2s_tlast"},
 						"TREADY": { "actual": "mm2s_tready"},
@@ -216,8 +216,8 @@
 				"/gemm_top_l2_0/mm2s_cmd": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
-						"ACLK": { "actual": "aclk"},
-						"ARESETN": { "actual": "aresetn"},
+						"ACLK": { "actual": "CLK_i"},
+						"ARESETN": { "actual": "RST_i"},
 						"TDATA": { "actual": "mm2s_cmd_tdata[71:0]"},
 						"TREADY": { "actual": "mm2s_cmd_tready"},
 						"TVALID": { "actual": "mm2s_cmd_tvalid"}
@@ -226,8 +226,8 @@
 				"/gemm_top_l2_0/s2mm": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
-						"ACLK": { "actual": "aclk"},
-						"ARESETN": { "actual": "aresetn"},
+						"ACLK": { "actual": "CLK_i"},
+						"ARESETN": { "actual": "RST_i"},
 						"TDATA": { "actual": "s2mm_tdata[127:0]"},
 						"TKEEP": { "actual": "s2mm_tkeep[15:0]"},
 						"TLAST": { "actual": "s2mm_tlast"},
@@ -238,8 +238,8 @@
 				"/gemm_top_l2_0/s2mm_cmd": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
-						"ACLK": { "actual": "aclk"},
-						"ARESETN": { "actual": "aresetn"},
+						"ACLK": { "actual": "CLK_i"},
+						"ARESETN": { "actual": "RST_i"},
 						"TDATA": { "actual": "s2mm_cmd_tdata[71:0]"},
 						"TREADY": { "actual": "s2mm_cmd_tready"},
 						"TVALID": { "actual": "s2mm_cmd_tvalid"}
@@ -248,8 +248,8 @@
 				"/gemm_top_l2_0/s2mm_sts": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
-						"ACLK": { "actual": "aclk"},
-						"ARESETN": { "actual": "aresetn"},
+						"ACLK": { "actual": "CLK_i"},
+						"ARESETN": { "actual": "RST_i"},
 						"TDATA": { "actual": "s2mm_sts_tdata[7:0]"},
 						"TREADY": { "actual": "s2mm_sts_tready"},
 						"TVALID": { "actual": "s2mm_sts_tvalid"}

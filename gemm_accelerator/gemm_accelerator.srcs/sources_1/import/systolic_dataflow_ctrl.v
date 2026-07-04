@@ -24,22 +24,22 @@ module systolic_dataflow_ctrl #(
     parameter DATA_WIDTH = 8,
     parameter BRAM_DEPTH = 1024
 )(
-    input  wire        clk,
-    input  wire        rst_n,
-    input  wire [31:0] k_dim_config, 
-    input  wire        bram_ready_A,
-    input  wire        bram_ready_B,
-    input  wire        serializer_busy,
-    output reg         clear_bram_ready,
-    output reg  [$clog2(BRAM_DEPTH)-1:0] bram_rd_addr,
-    input  wire [(N*DATA_WIDTH)-1:0] bram_data_A, 
-    input  wire [(N*DATA_WIDTH)-1:0] bram_data_B, 
+    input  wire        CLK_i,
+    input  wire        RST_i,
+    input  wire [31:0] k_dim_config_i, 
+    input  wire        bram_ready_A_i,
+    input  wire        bram_ready_B_i,
+    input  wire        serializer_busy_i,
+    output reg         clear_bram_ready_o,
+    output reg  [$clog2(BRAM_DEPTH)-1:0] bram_rd_addr_o,
+    input  wire [(N*DATA_WIDTH)-1:0] bram_data_A_i, 
+    input  wire [(N*DATA_WIDTH)-1:0] bram_data_B_i, 
     
-    output wire [(N*DATA_WIDTH)-1:0] skewed_data_A,
-    output wire [(N*DATA_WIDTH)-1:0] skewed_data_B,
-    output reg         valid_delay,
-    output reg         clear_delay,
-    output reg         last_mac_delay
+    output wire [(N*DATA_WIDTH)-1:0] skewed_data_A_o,
+    output wire [(N*DATA_WIDTH)-1:0] skewed_data_B_o,
+    output reg         valid_delay_o,
+    output reg         clear_delay_o,
+    output reg         last_mac_delay_o
 );
 
     // Bổ sung 2 trạng thái Chờ (Stall) cực kỳ quan trọng
@@ -49,72 +49,72 @@ module systolic_dataflow_ctrl #(
     localparam WAIT_SER_HIGH = 3'd3; 
     localparam WAIT_SER_LOW  = 3'd4; 
 
-    reg [2:0] state;
-    reg [31:0] k_cnt;
+    reg [2:0] state_r;
+    reg [31:0] k_cnt_r;
 
     // Logic tạo cờ chỉ kích hoạt khi State == RUN
-    wire curr_vld = (state == RUN);
-    wire curr_clr = (state == RUN && k_cnt == 0);
-    wire curr_lst = (state == RUN && k_cnt == k_dim_config - 1);
+    wire curr_vld_w = (state_r == RUN);
+    wire curr_clr_w = (state_r == RUN && k_cnt_r == 0);
+    wire curr_lst_w = (state_r == RUN && k_cnt_r == k_dim_config_i - 1);
 
-    reg vld_d1, clr_d1, lst_d1;
+    reg vld_d1_r, clr_d1_r, lst_d1_r;
 
-    assign skewed_data_A = bram_data_A;
-    assign skewed_data_B = bram_data_B;
+    assign skewed_data_A_o = bram_data_A_i;
+    assign skewed_data_B_o = bram_data_B_i;
 
-    always @(posedge clk) begin
-        if (!rst_n) begin
-            state <= IDLE;
-            k_cnt <= 0;
-            bram_rd_addr <= 0;
-            clear_bram_ready <= 0;
+    always @(posedge CLK_i) begin
+        if (!RST_i) begin
+            state_r <= IDLE;
+            k_cnt_r <= 0;
+            bram_rd_addr_o <= 0;
+            clear_bram_ready_o <= 0;
             
-            vld_d1 <= 0; valid_delay <= 0;
-            clr_d1 <= 0; clear_delay <= 0;
-            lst_d1 <= 0; last_mac_delay <= 0;
+            vld_d1_r <= 0; valid_delay_o <= 0;
+            clr_d1_r <= 0; clear_delay_o <= 0;
+            lst_d1_r <= 0; last_mac_delay_o <= 0;
         end else begin
-            vld_d1 <= curr_vld; valid_delay <= vld_d1;
-            clr_d1 <= curr_clr; clear_delay <= clr_d1;
-            lst_d1 <= curr_lst; last_mac_delay <= lst_d1;
+            vld_d1_r <= curr_vld_w; valid_delay_o <= vld_d1_r;
+            clr_d1_r <= curr_clr_w; clear_delay_o <= clr_d1_r;
+            lst_d1_r <= curr_lst_w; last_mac_delay_o <= lst_d1_r;
             
-            clear_bram_ready <= 0;
+            clear_bram_ready_o <= 0;
 
-            case (state)
+            case (state_r)
                 IDLE: begin
-                    k_cnt <= 0;
-                    bram_rd_addr <= 0;
-                    if (bram_ready_A && bram_ready_B) begin
-                        state <= RUN;
+                    k_cnt_r <= 0;
+                    bram_rd_addr_o <= 0;
+                    if (bram_ready_A_i && bram_ready_B_i) begin
+                        state_r <= RUN;
                     end
                 end
                 
                 RUN: begin
-                    if (k_cnt == k_dim_config - 1) begin
-                        state <= DONE;
-                        clear_bram_ready <= 1'b1; 
+                    if (k_cnt_r == k_dim_config_i - 1) begin
+                        state_r <= DONE;
+                        clear_bram_ready_o <= 1'b1; 
                     end else begin
-                        k_cnt <= k_cnt + 1;
-                        bram_rd_addr <= bram_rd_addr + 1;
+                        k_cnt_r <= k_cnt_r + 1;
+                        bram_rd_addr_o <= bram_rd_addr_o + 1;
                     end
                 end
                 
                 DONE: begin
-                    state <= WAIT_SER_HIGH;
+                    state_r <= WAIT_SER_HIGH;
                 end
                 
                 WAIT_SER_HIGH: begin
-                    if (serializer_busy) begin
-                        state <= WAIT_SER_LOW;
+                    if (serializer_busy_i) begin
+                        state_r <= WAIT_SER_LOW;
                     end
                 end
                 
                 WAIT_SER_LOW: begin
-                    if (!serializer_busy) begin
-                        state <= IDLE;
+                    if (!serializer_busy_i) begin
+                        state_r <= IDLE;
                     end
                 end
                 
-                default: state <= IDLE;
+                default: state_r <= IDLE;
             endcase
         end
     end

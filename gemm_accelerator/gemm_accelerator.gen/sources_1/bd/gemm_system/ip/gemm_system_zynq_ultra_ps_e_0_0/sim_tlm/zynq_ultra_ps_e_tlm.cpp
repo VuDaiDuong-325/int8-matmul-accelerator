@@ -149,7 +149,7 @@ void add_extensions_to_tlm(const xtlm::aximm_payload* xtlm_pay, tlm::tlm_generic
     ,S_AXI_HPC0_FPD_xtlm_brdg("S_AXI_HPC0_FPD_xtlm_brdg")
     ,S_AXI_HPC1_FPD_xtlm_brdg("S_AXI_HPC1_FPD_xtlm_brdg")
     ,m_rp_bridge_M_AXI_HPM0_FPD("m_rp_bridge_M_AXI_HPM0_FPD")
-        ,pl_clk0_clk("pl_clk0_clk", sc_time(10.000099900998011,sc_core::SC_NS))//clock period in nanoseconds = 1000/freq(in MZ)
+        ,pl_clk0_clk("pl_clk0_clk", sc_time(6.000060252605056,sc_core::SC_NS))//clock period in nanoseconds = 1000/freq(in MZ)
         ,pl_clk1_clk("pl_clk1_clk", sc_time(10.000099900998011,sc_core::SC_NS))//clock period in nanoseconds = 1000/freq(in MZ)
     {
         //creating instances of xtlm slave sockets

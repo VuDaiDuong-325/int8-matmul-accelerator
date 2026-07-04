@@ -31,4 +31,4 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==gemm_system
 # IP: bd/gemm_system/ip/gemm_system_axi_smc_2/gemm_system_axi_smc_2.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==gemm_system_axi_smc_2 || ORIG_REF_NAME==gemm_system_axi_smc_2} -quiet] -quiet
 
-# XDC: d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/gemm_system_ooc.xdc
+# XDC: d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/gemm_system_ooc.xdc

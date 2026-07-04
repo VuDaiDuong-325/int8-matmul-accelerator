@@ -26,151 +26,151 @@ module gemm_compute_core #(
     parameter FIFO_DEPTH = 1024,
     parameter BRAM_DEPTH = 1024
 )(
-    input  wire        aclk,
-    input  wire        aresetn,
+    input  wire        CLK_i,
+    input  wire        RST_i,
  
     // ── Config ────────────────────────────────────────────────────────────
-    input  wire [31:0] k_dim,          // Số bước K mỗi systolic pass
-    input  wire [31:0] num_k_tiles,    // Số tiles tích lũy TRONG MỘT K-BLOCK
+    input  wire [31:0] k_dim_i,          // Số bước K mỗi systolic pass
+    input  wire [31:0] num_k_tiles_i,    // Số tiles tích lũy TRONG MỘT K-BLOCK
                                         // (= K_BLK / k_dim, KHÔNG phải K_total/k_dim)
  
     // ── AXI-Stream Slave A ───────────────────────────────────────────────
-    input  wire [(N*DATA_WIDTH)-1:0] s_axis_a_tdata,
-    input  wire                      s_axis_a_tvalid,
-    output wire                      s_axis_a_tready,
-    input  wire                      s_axis_a_tlast,
+    input  wire [(N*DATA_WIDTH)-1:0] s_axis_a_tdata_i,
+    input  wire                      s_axis_a_tvalid_i,
+    output wire                      s_axis_a_tready_o,
+    input  wire                      s_axis_a_tlast_i,
  
     // ── AXI-Stream Slave B ───────────────────────────────────────────────
-    input  wire [(N*DATA_WIDTH)-1:0] s_axis_b_tdata,
-    input  wire                      s_axis_b_tvalid,
-    output wire                      s_axis_b_tready,
-    input  wire                      s_axis_b_tlast,
+    input  wire [(N*DATA_WIDTH)-1:0] s_axis_b_tdata_i,
+    input  wire                      s_axis_b_tvalid_i,
+    output wire                      s_axis_b_tready_o,
+    input  wire                      s_axis_b_tlast_i,
  
     // ── AXI-Stream Master C32 (INT32, TRƯỚC rescale) ────────────────────
-    output wire [(N*32)-1:0]         m_axis_c32_tdata,
-    output wire                      m_axis_c32_tvalid,
-    input  wire                      m_axis_c32_tready,
-    output wire                      m_axis_c32_tlast,   // 1 ở hàng cuối (hàng 15 trong thứ tự xuất)
-    output wire                      m_axis_c32_tuser    // 1 ở hàng đầu (SOF)
+    output wire [(N*32)-1:0]         m_axis_c32_tdata_o,
+    output wire                      m_axis_c32_tvalid_o,
+    input  wire                      m_axis_c32_tready_i,
+    output wire                      m_axis_c32_tlast_o,   // 1 ở hàng cuối (hàng 15 trong thứ tự xuất)
+    output wire                      m_axis_c32_tuser_o    // 1 ở hàng đầu (SOF)
 );
  
     // =========================================================================
     // INTERNAL WIRES (giống hệt gemm_accelerator.v stage 1-7)
     // =========================================================================
-    wire bram_ready_A, bram_ready_B, clear_bram_ready;
-    wire [$clog2(BRAM_DEPTH)-1:0] bram_rd_addr;
-    wire [(N*DATA_WIDTH)-1:0] bram_data_A, bram_data_B;
+    wire bram_ready_A_w, bram_ready_B_w, clear_bram_ready_w;
+    wire [$clog2(BRAM_DEPTH)-1:0] bram_rd_addr_w;
+    wire [(N*DATA_WIDTH)-1:0] bram_data_A_w, bram_data_B_w;
  
-    wire [(N*DATA_WIDTH)-1:0] pre_skew_A, pre_skew_B;
-    wire  pre_skew_valid, pre_skew_clear, pre_skew_last;
+    wire [(N*DATA_WIDTH)-1:0] pre_skew_A_w, pre_skew_B_w;
+    wire  pre_skew_valid_w, pre_skew_clear_w, pre_skew_last_w;
  
-    wire [(N*DATA_WIDTH)-1:0] array_data_A, array_data_B;
-    wire [N-1:0] array_valid, array_clear, array_last_mac;
+    wire [(N*DATA_WIDTH)-1:0] array_data_A_w, array_data_B_w;
+    wire [N-1:0] array_valid_w, array_clear_w, array_last_mac_w;
  
-    wire drain_en_array;
-    wire [(N*32)-1:0] bottom_row_out;
-    wire mac_done_trigger;
+    wire drain_en_array_w;
+    wire [(N*32)-1:0] bottom_row_w;
+    wire mac_done_trigger_w;
  
-    wire [(N*32)-1:0] fifo_din, fifo_dout;
-    wire fifo_wr_en, fifo_full, fifo_empty;
-    wire serializer_busy;
+    wire [(N*32)-1:0] fifo_din_w, fifo_dout_w;
+    wire fifo_wr_en_w, fifo_full_w, fifo_empty_w;
+    wire serializer_busy_w;
  
-    wire post_acc_s_tready;
-    wire safe_fifo_rd = post_acc_s_tready & ~fifo_empty;
+    wire post_acc_s_tready_w;
+    wire safe_fifo_rd_w = post_acc_s_tready_w & ~fifo_empty_w;
  
     // =========================================================================
     // 1. BRAM INPUT BUFFER A & B (Ping-Pong Double Buffer)
     // =========================================================================
     bram_input_buffer #(
         .DATA_WIDTH(N*DATA_WIDTH), .DEPTH(BRAM_DEPTH)
-    ) bram_A (
-        .clk(aclk), .rst_n(aresetn), .chunk_len(k_dim[29:0]),
-        .s_axis_tdata(s_axis_a_tdata), .s_axis_tvalid(s_axis_a_tvalid),
-        .s_axis_tready(s_axis_a_tready), .s_axis_tlast(s_axis_a_tlast),
-        .rd_addr(bram_rd_addr), .rd_data(bram_data_A),
-        .block_ready(bram_ready_A), .clear_ready(clear_bram_ready));
+    ) u_bram_input_buffer_a (
+        .CLK_i(CLK_i), .RST_i(RST_i), .chunk_len_i(k_dim_i[29:0]),
+        .s_axis_tdata_i(s_axis_a_tdata_i), .s_axis_tvalid_i(s_axis_a_tvalid_i),
+        .s_axis_tready_o(s_axis_a_tready_o), .s_axis_tlast_i(s_axis_a_tlast_i),
+        .rd_addr_i(bram_rd_addr_w), .rd_data_o(bram_data_A_w),
+        .block_ready_o(bram_ready_A_w), .clear_ready_i(clear_bram_ready_w));
  
     bram_input_buffer #(
         .DATA_WIDTH(N*DATA_WIDTH), .DEPTH(BRAM_DEPTH)
-    ) bram_B (
-        .clk(aclk), .rst_n(aresetn), .chunk_len(k_dim[29:0]),
-        .s_axis_tdata(s_axis_b_tdata), .s_axis_tvalid(s_axis_b_tvalid),
-        .s_axis_tready(s_axis_b_tready), .s_axis_tlast(s_axis_b_tlast),
-        .rd_addr(bram_rd_addr), .rd_data(bram_data_B),
-        .block_ready(bram_ready_B), .clear_ready(clear_bram_ready));
+    ) u_bram_input_buffer_b (
+        .CLK_i(CLK_i), .RST_i(RST_i), .chunk_len_i(k_dim_i[29:0]),
+        .s_axis_tdata_i(s_axis_b_tdata_i), .s_axis_tvalid_i(s_axis_b_tvalid_i),
+        .s_axis_tready_o(s_axis_b_tready_o), .s_axis_tlast_i(s_axis_b_tlast_i),
+        .rd_addr_i(bram_rd_addr_w), .rd_data_o(bram_data_B_w),
+        .block_ready_o(bram_ready_B_w), .clear_ready_i(clear_bram_ready_w));
  
     // =========================================================================
     // 2. SYSTOLIC DATAFLOW CONTROLLER
     // =========================================================================
     systolic_dataflow_ctrl #(
         .N(N), .DATA_WIDTH(DATA_WIDTH), .BRAM_DEPTH(BRAM_DEPTH)
-    ) ctrl_inst (
-        .clk(aclk), .rst_n(aresetn), .k_dim_config(k_dim),
-        .bram_ready_A(bram_ready_A), .bram_ready_B(bram_ready_B),
-        .serializer_busy(serializer_busy),
-        .clear_bram_ready(clear_bram_ready),
-        .bram_rd_addr(bram_rd_addr),
-        .bram_data_A(bram_data_A), .bram_data_B(bram_data_B),
-        .skewed_data_A(pre_skew_A), .skewed_data_B(pre_skew_B),
-        .valid_delay(pre_skew_valid),
-        .clear_delay(pre_skew_clear),
-        .last_mac_delay(pre_skew_last));
+    ) u_systolic_dataflow_ctrl (
+        .CLK_i(CLK_i), .RST_i(RST_i), .k_dim_config_i(k_dim_i),
+        .bram_ready_A_i(bram_ready_A_w), .bram_ready_B_i(bram_ready_B_w),
+        .serializer_busy_i(serializer_busy_w),
+        .clear_bram_ready_o(clear_bram_ready_w),
+        .bram_rd_addr_o(bram_rd_addr_w),
+        .bram_data_A_i(bram_data_A_w), .bram_data_B_i(bram_data_B_w),
+        .skewed_data_A_o(pre_skew_A_w), .skewed_data_B_o(pre_skew_B_w),
+        .valid_delay_o(pre_skew_valid_w),
+        .clear_delay_o(pre_skew_clear_w),
+        .last_mac_delay_o(pre_skew_last_w));
  
     // =========================================================================
     // 3. SKEW NETWORK
     // =========================================================================
     skew_network #(
         .N(N), .DATA_WIDTH(DATA_WIDTH)
-    ) skew_inst (
-        .clk(aclk), .rst_n(aresetn),
-        .data_A_in(pre_skew_A), .data_B_in(pre_skew_B),
-        .valid_in(pre_skew_valid),
-        .clear_in(pre_skew_clear),
-        .last_mac_in(pre_skew_last),
-        .data_A_out(array_data_A), .data_B_out(array_data_B),
-        .valid_out(array_valid), .clear_out(array_clear),
-        .last_mac_out(array_last_mac));
+    ) u_skew_network (
+        .CLK_i(CLK_i), .RST_i(RST_i),
+        .data_A_i(pre_skew_A_w), .data_B_i(pre_skew_B_w),
+        .valid_i(pre_skew_valid_w),
+        .clear_i(pre_skew_clear_w),
+        .last_mac_i(pre_skew_last_w),
+        .data_A_o(array_data_A_w), .data_B_o(array_data_B_w),
+        .valid_o(array_valid_w), .clear_o(array_clear_w),
+        .last_mac_o(array_last_mac_w));
  
     // =========================================================================
     // 4. SYSTOLIC ARRAY 16×16
     // =========================================================================
     systolic_array_os #(
         .ARRAY_SIZE(N)
-    ) systolic_array_inst (
-        .clk(aclk), .rst_n(aresetn),
-        .valid_in_left(array_valid),
-        .clear_acc_left(array_clear),
-        .last_mac_in_left(array_last_mac),
-        .act_in_left(array_data_A),
-        .weight_in_top(array_data_B),
-        .drain_en_array(drain_en_array),
-        .bottom_row_out(bottom_row_out),
-        .mac_done_trigger(mac_done_trigger));
+    ) u_systolic_array_os (
+        .CLK_i(CLK_i), .RST_i(RST_i),
+        .valid_left_i(array_valid_w),
+        .clear_acc_left_i(array_clear_w),
+        .last_mac_left_i(array_last_mac_w),
+        .act_left_i(array_data_A_w),
+        .weight_top_i(array_data_B_w),
+        .drain_en_array_i(drain_en_array_w),
+        .bottom_row_o(bottom_row_w),
+        .mac_done_trigger_o(mac_done_trigger_w));
  
     // =========================================================================
     // 5. OUTPUT SERIALIZER (drain systolic → FIFO C)
     // =========================================================================
     output_serializer #(
         .N(N)
-    ) serializer_inst (
-        .clk(aclk), .rst_n(aresetn),
-        .mac_done_trigger(mac_done_trigger),
-        .bottom_row_in(bottom_row_out),
-        .fifo_full(fifo_full),
-        .drain_en_array(drain_en_array),
-        .fifo_din(fifo_din),
-        .fifo_wr_en(fifo_wr_en),
-        .serializer_busy(serializer_busy));
+    ) u_output_serializer (
+        .CLK_i(CLK_i), .RST_i(RST_i),
+        .mac_done_trigger_i(mac_done_trigger_w),
+        .bottom_row_i(bottom_row_w),
+        .fifo_full_i(fifo_full_w),
+        .drain_en_array_o(drain_en_array_w),
+        .fifo_din_o(fifo_din_w),
+        .fifo_wr_en_o(fifo_wr_en_w),
+        .serializer_busy_o(serializer_busy_w));
  
     // =========================================================================
     // 6. FIFO C
     // =========================================================================
     sc_fifo_fwft #(
         .DATA_WIDTH(N*32), .DEPTH(FIFO_DEPTH)
-    ) fifo_C_inst (
-        .clk(aclk), .rst_n(aresetn),
-        .wr_en(fifo_wr_en), .din(fifo_din), .full(fifo_full),
-        .rd_en(safe_fifo_rd), .dout(fifo_dout), .empty(fifo_empty));
+    ) u_sc_fifo_fwft_c (
+        .CLK_i(CLK_i), .RST_i(RST_i),
+        .wr_en_i(fifo_wr_en_w), .din_i(fifo_din_w), .full_o(fifo_full_w),
+        .rd_en_i(safe_fifo_rd_w), .dout_o(fifo_dout_w), .empty_o(fifo_empty_w));
  
     // =========================================================================
     // 7. POST ACCUMULATOR - tích lũy num_k_tiles tiles INT32
@@ -179,20 +179,20 @@ module gemm_compute_core #(
     // =========================================================================
     post_accumulator #(
         .N(N), .DATA_W(32)
-    ) post_acc_inst (
-        .clk(aclk), .rst_n(aresetn),
-        .num_k_tiles(num_k_tiles),
+    ) u_post_accumulator (
+        .CLK_i(CLK_i), .RST_i(RST_i),
+        .num_k_tiles_i(num_k_tiles_i),
  
-        .s_axis_tdata (fifo_dout),
-        .s_axis_tvalid(~fifo_empty),
-        .s_axis_tready(post_acc_s_tready),
-        .s_axis_tlast (1'b0),
+        .s_axis_tdata_i (fifo_dout_w),
+        .s_axis_tvalid_i(~fifo_empty_w),
+        .s_axis_tready_o(post_acc_s_tready_w),
+        .s_axis_tlast_i (1'b0),
  
         // Master - XUẤT THẲNG ra ngoài module (không có stage 8 rescale)
-        .m_axis_tdata (m_axis_c32_tdata),
-        .m_axis_tvalid(m_axis_c32_tvalid),
-        .m_axis_tready(m_axis_c32_tready),
-        .m_axis_tlast (m_axis_c32_tlast),
-        .m_axis_tuser (m_axis_c32_tuser));
+        .m_axis_tdata_o (m_axis_c32_tdata_o),
+        .m_axis_tvalid_o(m_axis_c32_tvalid_o),
+        .m_axis_tready_i(m_axis_c32_tready_i),
+        .m_axis_tlast_o (m_axis_c32_tlast_o),
+        .m_axis_tuser_o (m_axis_c32_tuser_o));
  
 endmodule

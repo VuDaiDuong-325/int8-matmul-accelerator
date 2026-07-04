@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
--- Date        : Thu Jun 25 13:44:05 2026
--- Host        : VuDuong-32 running 64-bit major release  (build 9200)
+-- Date        : Sat Jul  4 13:27:15 2026
+-- Host        : ZUYYYY running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
---               d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_stub.vhdl
+--               d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_stub.vhdl
 -- Design      : gemm_system_gemm_l2_axi_lite_regs_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xck26-sfvc784-2LV-c
@@ -36,21 +36,21 @@ entity gemm_system_gemm_l2_axi_lite_regs_0_0 is
     S_AXI_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
     S_AXI_RVALID : out STD_LOGIC;
     S_AXI_RREADY : in STD_LOGIC;
-    cfg_m_total : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    cfg_n_total : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    cfg_k_total : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    cfg_k_dim : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    cfg_num_k_tiles_per_block : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    cfg_base_a : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    cfg_base_b : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    cfg_base_c : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    cfg_n_stride : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    cfg_scale_shift : out STD_LOGIC_VECTOR ( 4 downto 0 );
-    cfg_zero_point : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    start : out STD_LOGIC;
-    busy : in STD_LOGIC;
-    done : in STD_LOGIC;
-    irq : out STD_LOGIC
+    cfg_m_total_o : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    cfg_n_total_o : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    cfg_k_total_o : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    cfg_k_dim_o : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    cfg_num_k_tiles_per_block_o : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    cfg_base_a_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    cfg_base_b_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    cfg_base_c_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    cfg_n_stride_o : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    cfg_scale_shift_o : out STD_LOGIC_VECTOR ( 4 downto 0 );
+    cfg_zero_point_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    start_o : out STD_LOGIC;
+    busy_i : in STD_LOGIC;
+    done_i : in STD_LOGIC;
+    irq_o : out STD_LOGIC
   );
 
   attribute CHECK_LICENSE_TYPE : string;
@@ -67,19 +67,19 @@ architecture stub of gemm_system_gemm_l2_axi_lite_regs_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "S_AXI_ACLK,S_AXI_ARESETN,S_AXI_AWADDR[7:0],S_AXI_AWPROT[2:0],S_AXI_AWVALID,S_AXI_AWREADY,S_AXI_WDATA[31:0],S_AXI_WSTRB[3:0],S_AXI_WVALID,S_AXI_WREADY,S_AXI_BRESP[1:0],S_AXI_BVALID,S_AXI_BREADY,S_AXI_ARADDR[7:0],S_AXI_ARPROT[2:0],S_AXI_ARVALID,S_AXI_ARREADY,S_AXI_RDATA[31:0],S_AXI_RRESP[1:0],S_AXI_RVALID,S_AXI_RREADY,cfg_m_total[15:0],cfg_n_total[15:0],cfg_k_total[15:0],cfg_k_dim[15:0],cfg_num_k_tiles_per_block[15:0],cfg_base_a[31:0],cfg_base_b[31:0],cfg_base_c[31:0],cfg_n_stride[15:0],cfg_scale_shift[4:0],cfg_zero_point[7:0],start,busy,done,irq";
+  attribute black_box_pad_pin of stub : architecture is "S_AXI_ACLK,S_AXI_ARESETN,S_AXI_AWADDR[7:0],S_AXI_AWPROT[2:0],S_AXI_AWVALID,S_AXI_AWREADY,S_AXI_WDATA[31:0],S_AXI_WSTRB[3:0],S_AXI_WVALID,S_AXI_WREADY,S_AXI_BRESP[1:0],S_AXI_BVALID,S_AXI_BREADY,S_AXI_ARADDR[7:0],S_AXI_ARPROT[2:0],S_AXI_ARVALID,S_AXI_ARREADY,S_AXI_RDATA[31:0],S_AXI_RRESP[1:0],S_AXI_RVALID,S_AXI_RREADY,cfg_m_total_o[15:0],cfg_n_total_o[15:0],cfg_k_total_o[15:0],cfg_k_dim_o[15:0],cfg_num_k_tiles_per_block_o[15:0],cfg_base_a_o[31:0],cfg_base_b_o[31:0],cfg_base_c_o[31:0],cfg_n_stride_o[15:0],cfg_scale_shift_o[4:0],cfg_zero_point_o[7:0],start_o,busy_i,done_i,irq_o";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of S_AXI_ACLK : signal is "xilinx.com:signal:clock:1.0 S_AXI_ACLK CLK";
   attribute X_INTERFACE_MODE : string;
   attribute X_INTERFACE_MODE of S_AXI_ACLK : signal is "slave";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of S_AXI_ACLK : signal is "XIL_INTERFACENAME S_AXI_ACLK, ASSOCIATED_BUSIF S_AXI, ASSOCIATED_RESET S_AXI_ARESETN, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of S_AXI_ACLK : signal is "XIL_INTERFACENAME S_AXI_ACLK, ASSOCIATED_BUSIF S_AXI, ASSOCIATED_RESET S_AXI_ARESETN, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of S_AXI_ARESETN : signal is "xilinx.com:signal:reset:1.0 S_AXI_ARESETN RST";
   attribute X_INTERFACE_MODE of S_AXI_ARESETN : signal is "slave";
   attribute X_INTERFACE_PARAMETER of S_AXI_ARESETN : signal is "XIL_INTERFACENAME S_AXI_ARESETN, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of S_AXI_AWADDR : signal is "xilinx.com:interface:aximm:1.0 S_AXI AWADDR";
   attribute X_INTERFACE_MODE of S_AXI_AWADDR : signal is "slave";
-  attribute X_INTERFACE_PARAMETER of S_AXI_AWADDR : signal is "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 99999001, ID_WIDTH 0, ADDR_WIDTH 8, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of S_AXI_AWADDR : signal is "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 199998001, ID_WIDTH 0, ADDR_WIDTH 8, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of S_AXI_AWPROT : signal is "xilinx.com:interface:aximm:1.0 S_AXI AWPROT";
   attribute X_INTERFACE_INFO of S_AXI_AWVALID : signal is "xilinx.com:interface:aximm:1.0 S_AXI AWVALID";
   attribute X_INTERFACE_INFO of S_AXI_AWREADY : signal is "xilinx.com:interface:aximm:1.0 S_AXI AWREADY";
@@ -98,9 +98,6 @@ architecture stub of gemm_system_gemm_l2_axi_lite_regs_0_0 is
   attribute X_INTERFACE_INFO of S_AXI_RRESP : signal is "xilinx.com:interface:aximm:1.0 S_AXI RRESP";
   attribute X_INTERFACE_INFO of S_AXI_RVALID : signal is "xilinx.com:interface:aximm:1.0 S_AXI RVALID";
   attribute X_INTERFACE_INFO of S_AXI_RREADY : signal is "xilinx.com:interface:aximm:1.0 S_AXI RREADY";
-  attribute X_INTERFACE_INFO of irq : signal is "xilinx.com:signal:interrupt:1.0 irq INTERRUPT";
-  attribute X_INTERFACE_MODE of irq : signal is "master";
-  attribute X_INTERFACE_PARAMETER of irq : signal is "XIL_INTERFACENAME irq, SENSITIVITY LEVEL_HIGH, PortWidth 1";
   attribute X_CORE_INFO : string;
   attribute X_CORE_INFO of stub : architecture is "gemm_l2_axi_lite_regs,Vivado 2025.2";
 begin

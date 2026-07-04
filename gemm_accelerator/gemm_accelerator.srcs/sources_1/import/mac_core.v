@@ -14,84 +14,84 @@
 
 (* use_dsp = "yes" *)
 module mac_core(
-    input                       clk,
-    input                       rst_n,
-    input                       valid_in,
-    input                       clear_acc,
-    input                       last_mac_in,
-    input signed        [7:0]   w_in,
-    input signed        [7:0]   x_in,
-    output reg signed   [31:0]  psum_out,
-    output reg                  valid_out
+    input                       CLK_i,
+    input                       RST_i,
+    input                       valid_i,
+    input                       clear_acc_i,
+    input                       last_mac_i,
+    input signed        [7:0]   w_i,
+    input signed        [7:0]   x_i,
+    output reg signed   [31:0]  psum_o,
+    output reg                  valid_o
 );
     
     // ====================================================
     // DATA PATH: KHÔNG ĐƯỢC RESET
     // Vivado sẽ tự động "hút" các thanh ghi này vào trong DSP48E2
     // ====================================================
-    reg signed [7:0]  a_reg, b_reg;
-    reg signed [15:0] m_reg;
-    reg signed [31:0] p_reg;
+    reg signed [7:0]  a_r, b_r;
+    reg signed [15:0] m_r;
+    reg signed [31:0] p_r;
     
     // ====================================================
     // CONTROL PATH: BẮT BUỘC PHẢI RESET
     // ====================================================
-    reg v_reg1, v_reg2, v_reg3;
-    reg l_reg1, l_reg2, l_reg3;
-    reg c_reg1, c_reg2, c_reg3;
+    reg v_r1, v_r2, v_r3;
+    reg l_r1, l_r2, l_r3;
+    reg c_r1, c_r2, c_r3;
 
-    always @(posedge clk) begin
-        if (!rst_n) begin
+    always @(posedge CLK_i) begin
+        if (!RST_i) begin
             // CHỈ reset tín hiệu điều khiển & kết quả cuối cùng
-            psum_out  <= 32'd0;
-            valid_out <= 1'b0;
-            v_reg1 <= 0; v_reg2 <= 0; v_reg3 <= 0;
-            l_reg1 <= 0; l_reg2 <= 0; l_reg3 <= 0;
-            c_reg1 <= 0; c_reg2 <= 0; c_reg3 <= 0;
+            psum_o  <= 32'd0;
+            valid_o <= 1'b0;
+            v_r1 <= 0; v_r2 <= 0; v_r3 <= 0;
+            l_r1 <= 0; l_r2 <= 0; l_r3 <= 0;
+            c_r1 <= 0; c_r2 <= 0; c_r3 <= 0;
         end else begin
             // ------------------------------------------------
             // Stage 1: Input Register (A1 & B1 in DSP)
             // ------------------------------------------------
-            v_reg1 <= valid_in;
-            l_reg1 <= last_mac_in;
-            c_reg1 <= clear_acc;
+            v_r1 <= valid_i;
+            l_r1 <= last_mac_i;
+            c_r1 <= clear_acc_i;
             
-            if (valid_in) begin
-                a_reg <= w_in;
-                b_reg <= x_in;
+            if (valid_i) begin
+                a_r <= w_i;
+                b_r <= x_i;
             end
             
             // ------------------------------------------------
             // Stage 2: Multiplier Register (MREG in DSP)
             // ------------------------------------------------
-            v_reg2 <= v_reg1;
-            l_reg2 <= l_reg1;
-            c_reg2 <= c_reg1;
+            v_r2 <= v_r1;
+            l_r2 <= l_r1;
+            c_r2 <= c_r1;
             
-            if (v_reg1) begin
-                m_reg <= a_reg * b_reg;
+            if (v_r1) begin
+                m_r <= a_r * b_r;
             end
             
             // ------------------------------------------------
             // Stage 3: Accumulator Register (PREG in DSP)
             // ------------------------------------------------
-            v_reg3 <= v_reg2;
-            l_reg3 <= l_reg2;
+            v_r3 <= v_r2;
+            l_r3 <= l_r2;
             
-            if (v_reg2) begin
-                if (c_reg2) 
-                    p_reg <= m_reg; 
+            if (v_r2) begin
+                if (c_r2) 
+                    p_r <= m_r; 
                 else 
-                    p_reg <= p_reg + m_reg; 
+                    p_r <= p_r + m_r; 
             end
             
             // ------------------------------------------------
             // Output Stage
             // ------------------------------------------------
-            valid_out <= 1'b0;
-            if (v_reg3 && l_reg3) begin
-                psum_out <= p_reg;
-                valid_out <= 1'b1;
+            valid_o <= 1'b0;
+            if (v_r3 && l_r3) begin
+                psum_o <= p_r;
+                valid_o <= 1'b1;
             end
         end
     end

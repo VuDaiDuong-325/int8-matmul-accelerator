@@ -23,16 +23,16 @@ module sc_fifo_fwft #(
     parameter DATA_WIDTH = 32,  
     parameter DEPTH      = 1024  
 )(
-    input  wire                  clk,
-    input  wire                  rst_n,
-    input  wire                  wr_en,
-    input  wire [DATA_WIDTH-1:0] din,
-    output wire                  full,
-    input  wire                  rd_en,
-    output wire [DATA_WIDTH-1:0] dout, 
-    output wire                  empty
+    input  wire                  CLK_i,
+    input  wire                  RST_i,
+    input  wire                  wr_en_i,
+    input  wire [DATA_WIDTH-1:0] din_i,
+    output wire                  full_o,
+    input  wire                  rd_en_i,
+    output wire [DATA_WIDTH-1:0] dout_o, 
+    output wire                  empty_o
 );
-    wire rst_high = ~rst_n;
+    wire rst_high_w = ~RST_i;
 
     // Gọi Hard IP FIFO của Xilinx (0 FF, 100% BRAM)
     xpm_fifo_sync #(
@@ -44,14 +44,14 @@ module sc_fifo_fwft #(
         .FIFO_READ_LATENCY   (0),
         .USE_ADV_FEATURES    ("0000")      // Tắt các cờ rườm rà để tiết kiệm LUT
     ) xpm_fifo_sync_inst (
-        .dout            (dout),
-        .empty           (empty),
-        .full            (full),
-        .din             (din),
-        .rd_en           (rd_en),
-        .wr_clk          (clk),
-        .wr_en           (wr_en),
-        .rst             (rst_high),
+        .dout            (dout_o),
+        .empty           (empty_o),
+        .full            (full_o),
+        .din             (din_i),
+        .rd_en           (rd_en_i),
+        .wr_clk          (CLK_i),
+        .wr_en           (wr_en_i),
+        .rst             (rst_high_w),
         .injectdbiterr   (1'b0), .injectsbiterr   (1'b0), .sleep           (1'b0)
     );
 endmodule

@@ -65,73 +65,73 @@ module gemm_l2_axi_lite_regs #(
     input  wire                              S_AXI_RREADY,
 
     // ===== Ket noi sang gemm_top_l2_v3 =====
-    output wire [DIM_W-1:0]  cfg_m_total,
-    output wire [DIM_W-1:0]  cfg_n_total,
-    output wire [DIM_W-1:0]  cfg_k_total,
-    output wire [DIM_W-1:0]  cfg_k_dim,
-    output wire [DIM_W-1:0]  cfg_num_k_tiles_per_block,
-    output wire [ADDR_W-1:0] cfg_base_a,
-    output wire [ADDR_W-1:0] cfg_base_b,
-    output wire [ADDR_W-1:0] cfg_base_c,
-    output wire [DIM_W-1:0]  cfg_n_stride,
-    output wire [4:0]         cfg_scale_shift,
-    output wire [7:0]         cfg_zero_point,
+    output wire [DIM_W-1:0]  cfg_m_total_o,
+    output wire [DIM_W-1:0]  cfg_n_total_o,
+    output wire [DIM_W-1:0]  cfg_k_total_o,
+    output wire [DIM_W-1:0]  cfg_k_dim_o,
+    output wire [DIM_W-1:0]  cfg_num_k_tiles_per_block_o,
+    output wire [ADDR_W-1:0] cfg_base_a_o,
+    output wire [ADDR_W-1:0] cfg_base_b_o,
+    output wire [ADDR_W-1:0] cfg_base_c_o,
+    output wire [DIM_W-1:0]  cfg_n_stride_o,
+    output wire [4:0]         cfg_scale_shift_o,
+    output wire [7:0]         cfg_zero_point_o,
 
-    output wire   start,
-    input  wire   busy,
-    input  wire   done,
-    output wire   irq
+    output wire   start_o,
+    input  wire   busy_i,
+    input  wire   done_i,
+    output wire   irq_o
 );
 
     // ===== Thanh ghi luu tru cfg (RW, phan mem ghi 1 lan truoc moi GEMM) =====
-    reg [DIM_W-1:0]  r_m_total, r_n_total, r_k_total, r_k_dim, r_numkt;
-    reg [ADDR_W-1:0] r_base_a, r_base_b, r_base_c;
-    reg [DIM_W-1:0]  r_n_stride;
-    reg [4:0]         r_scale_shift;
-    reg [7:0]         r_zero_point;
+    reg [DIM_W-1:0]  r_m_total_r, r_n_total_r, r_k_total_r, r_k_dim_r, r_numkt_r;
+    reg [ADDR_W-1:0] r_base_a_r, r_base_b_r, r_base_c_r;
+    reg [DIM_W-1:0]  r_n_stride_r;
+    reg [4:0]         r_scale_shift_r;
+    reg [7:0]         r_zero_point_r;
 
-    assign cfg_m_total = r_m_total;
-    assign cfg_n_total = r_n_total;
-    assign cfg_k_total = r_k_total;
-    assign cfg_k_dim   = r_k_dim;
-    assign cfg_num_k_tiles_per_block = r_numkt;
-    assign cfg_base_a  = r_base_a;
-    assign cfg_base_b  = r_base_b;
-    assign cfg_base_c  = r_base_c;
-    assign cfg_n_stride = r_n_stride;
-    assign cfg_scale_shift = r_scale_shift;
-    assign cfg_zero_point  = r_zero_point;
+    assign cfg_m_total_o = r_m_total_r;
+    assign cfg_n_total_o = r_n_total_r;
+    assign cfg_k_total_o = r_k_total_r;
+    assign cfg_k_dim_o   = r_k_dim_r;
+    assign cfg_num_k_tiles_per_block_o = r_numkt_r;
+    assign cfg_base_a_o  = r_base_a_r;
+    assign cfg_base_b_o  = r_base_b_r;
+    assign cfg_base_c_o  = r_base_c_r;
+    assign cfg_n_stride_o = r_n_stride_r;
+    assign cfg_scale_shift_o = r_scale_shift_r;
+    assign cfg_zero_point_o  = r_zero_point_r;
 
     // ===== start pulse + done sticky =====
-    reg start_pulse_reg;
-    reg done_sticky;
-    assign start = start_pulse_reg;
-    assign irq   = done_sticky;
+    reg start_pulse_r;
+    reg done_sticky_r;
+    assign start_o = start_pulse_r;
+    assign irq_o   = done_sticky_r;
 
     // Co bao "vua ghi start" / "vua doc status" - tinh to hop, dung chung
     // cho ca logic ghi thanh ghi (always block khac) VA always block rieng
     // duoi day quan ly done_sticky - tranh multi-driver tren done_sticky.
-    wire write_start_pulse_now =
+    wire write_start_pulse_now_w =
         S_AXI_WREADY && S_AXI_WVALID && S_AXI_AWREADY && S_AXI_AWVALID &&
-        (axi_awaddr[7:2] == 6'h0B) && S_AXI_WSTRB[0] && S_AXI_WDATA[0];
-    wire read_status_now =
+        (axi_awaddr_r[7:2] == 6'h0B) && S_AXI_WSTRB[0] && S_AXI_WDATA[0];
+    wire read_status_now_w =
         S_AXI_ARREADY && S_AXI_ARVALID && !S_AXI_RVALID &&
-        (axi_araddr[7:2] == 6'h0B);
+        (axi_araddr_r[7:2] == 6'h0B);
 
     // MOT always block DUY NHAT so huu done_sticky - tranh "multiple drivers"
     always @(posedge S_AXI_ACLK) begin
         if (!S_AXI_ARESETN) begin
-            done_sticky <= 1'b0;
-        end else if (done) begin
-            done_sticky <= 1'b1;          // uu tien cao nhat: xung done moi toi
-        end else if (write_start_pulse_now || read_status_now) begin
-            done_sticky <= 1'b0;          // ghi start moi HOAC vua doc status
+            done_sticky_r <= 1'b0;
+        end else if (done_i) begin
+            done_sticky_r <= 1'b1;          // uu tien cao nhat: xung done moi toi
+        end else if (write_start_pulse_now_w || read_status_now_w) begin
+            done_sticky_r <= 1'b0;          // ghi start moi HOAC vua doc status
         end
     end
 
     // ===== AXI4-Lite WRITE FSM (kieu chap nhan dong thoi AW+W) =====
-    reg [C_S_AXI_ADDR_WIDTH-1:0] axi_awaddr;
-    wire write_en = S_AXI_WREADY && S_AXI_WVALID && S_AXI_AWREADY && S_AXI_AWVALID;
+    reg [C_S_AXI_ADDR_WIDTH-1:0] axi_awaddr_r;
+    wire write_en_w = S_AXI_WREADY && S_AXI_WVALID && S_AXI_AWREADY && S_AXI_AWVALID;
 
     always @(posedge S_AXI_ACLK) begin
         if (!S_AXI_ARESETN) begin
@@ -139,49 +139,49 @@ module gemm_l2_axi_lite_regs #(
             S_AXI_WREADY  <= 1'b0;
             S_AXI_BVALID  <= 1'b0;
             S_AXI_BRESP   <= 2'b00;
-            axi_awaddr    <= {C_S_AXI_ADDR_WIDTH{1'b0}};
-            r_m_total <= {DIM_W{1'b0}};
-            r_n_total <= {DIM_W{1'b0}};
-            r_k_total <= {DIM_W{1'b0}};
-            r_k_dim   <= {DIM_W{1'b0}};
-            r_numkt   <= {DIM_W{1'b0}};
-            r_base_a  <= {ADDR_W{1'b0}};
-            r_base_b  <= {ADDR_W{1'b0}};
-            r_base_c  <= {ADDR_W{1'b0}};
-            r_n_stride <= {DIM_W{1'b0}};
-            r_scale_shift <= 5'd0;
-            r_zero_point  <= 8'd0;
-            start_pulse_reg <= 1'b0;
+            axi_awaddr_r    <= {C_S_AXI_ADDR_WIDTH{1'b0}};
+            r_m_total_r <= {DIM_W{1'b0}};
+            r_n_total_r <= {DIM_W{1'b0}};
+            r_k_total_r <= {DIM_W{1'b0}};
+            r_k_dim_r   <= {DIM_W{1'b0}};
+            r_numkt_r   <= {DIM_W{1'b0}};
+            r_base_a_r  <= {ADDR_W{1'b0}};
+            r_base_b_r  <= {ADDR_W{1'b0}};
+            r_base_c_r  <= {ADDR_W{1'b0}};
+            r_n_stride_r <= {DIM_W{1'b0}};
+            r_scale_shift_r <= 5'd0;
+            r_zero_point_r  <= 8'd0;
+            start_pulse_r <= 1'b0;
             // done_sticky: reset rieng o always block so huu (tranh multi-driver)
         end else begin
-            start_pulse_reg <= 1'b0;   // mac dinh - chi = 1 dung 1 chu ky khi ghi
+            start_pulse_r <= 1'b0;   // mac dinh - chi = 1 dung 1 chu ky khi ghi
 
             // Chap nhan dia chi/du lieu ghi DONG THOI (don gian, hop le AXI4-Lite)
             if (!S_AXI_AWREADY && S_AXI_AWVALID && S_AXI_WVALID) begin
                 S_AXI_AWREADY <= 1'b1;
                 S_AXI_WREADY  <= 1'b1;
-                axi_awaddr    <= S_AXI_AWADDR;
+                axi_awaddr_r    <= S_AXI_AWADDR;
             end else begin
                 S_AXI_AWREADY <= 1'b0;
                 S_AXI_WREADY  <= 1'b0;
             end
 
-            if (write_en) begin
-                case (axi_awaddr[7:2])  // word-aligned, bo qua 2 bit thap
-                    6'h00: if (S_AXI_WSTRB[0]) r_m_total <= S_AXI_WDATA[DIM_W-1:0];
-                    6'h01: if (S_AXI_WSTRB[0]) r_n_total <= S_AXI_WDATA[DIM_W-1:0];
-                    6'h02: if (S_AXI_WSTRB[0]) r_k_total <= S_AXI_WDATA[DIM_W-1:0];
-                    6'h03: if (S_AXI_WSTRB[0]) r_k_dim   <= S_AXI_WDATA[DIM_W-1:0];
-                    6'h04: if (S_AXI_WSTRB[0]) r_numkt   <= S_AXI_WDATA[DIM_W-1:0];
-                    6'h05: r_base_a <= S_AXI_WDATA;
-                    6'h06: r_base_b <= S_AXI_WDATA;
-                    6'h07: r_base_c <= S_AXI_WDATA;
-                    6'h08: if (S_AXI_WSTRB[0]) r_n_stride <= S_AXI_WDATA[DIM_W-1:0];
-                    6'h09: if (S_AXI_WSTRB[0]) r_scale_shift <= S_AXI_WDATA[4:0];
-                    6'h0A: if (S_AXI_WSTRB[0]) r_zero_point  <= S_AXI_WDATA[7:0];
+            if (write_en_w) begin
+                case (axi_awaddr_r[7:2])  // word-aligned, bo qua 2 bit thap
+                    6'h00: if (S_AXI_WSTRB[0]) r_m_total_r <= S_AXI_WDATA[DIM_W-1:0];
+                    6'h01: if (S_AXI_WSTRB[0]) r_n_total_r <= S_AXI_WDATA[DIM_W-1:0];
+                    6'h02: if (S_AXI_WSTRB[0]) r_k_total_r <= S_AXI_WDATA[DIM_W-1:0];
+                    6'h03: if (S_AXI_WSTRB[0]) r_k_dim_r   <= S_AXI_WDATA[DIM_W-1:0];
+                    6'h04: if (S_AXI_WSTRB[0]) r_numkt_r   <= S_AXI_WDATA[DIM_W-1:0];
+                    6'h05: r_base_a_r <= S_AXI_WDATA;
+                    6'h06: r_base_b_r <= S_AXI_WDATA;
+                    6'h07: r_base_c_r <= S_AXI_WDATA;
+                    6'h08: if (S_AXI_WSTRB[0]) r_n_stride_r <= S_AXI_WDATA[DIM_W-1:0];
+                    6'h09: if (S_AXI_WSTRB[0]) r_scale_shift_r <= S_AXI_WDATA[4:0];
+                    6'h0A: if (S_AXI_WSTRB[0]) r_zero_point_r  <= S_AXI_WDATA[7:0];
                     6'h0B: begin // 0x2C control/status
                         if (S_AXI_WSTRB[0] && S_AXI_WDATA[0]) begin
-                            start_pulse_reg <= 1'b1;
+                            start_pulse_r <= 1'b1;
                             // done_sticky clear: xu ly tap trung o always block rieng (tranh multi-driver)
                         end
                     end
@@ -201,18 +201,18 @@ module gemm_l2_axi_lite_regs #(
     end
 
     // ===== AXI4-Lite READ FSM =====
-    reg [C_S_AXI_ADDR_WIDTH-1:0] axi_araddr;
+    reg [C_S_AXI_ADDR_WIDTH-1:0] axi_araddr_r;
 
     always @(posedge S_AXI_ACLK) begin
         if (!S_AXI_ARESETN) begin
             S_AXI_ARREADY <= 1'b0;
             S_AXI_RVALID  <= 1'b0;
             S_AXI_RRESP   <= 2'b00;
-            axi_araddr    <= {C_S_AXI_ADDR_WIDTH{1'b0}};
+            axi_araddr_r    <= {C_S_AXI_ADDR_WIDTH{1'b0}};
         end else begin
             if (!S_AXI_ARREADY && S_AXI_ARVALID) begin
                 S_AXI_ARREADY <= 1'b1;
-                axi_araddr    <= S_AXI_ARADDR;
+                axi_araddr_r    <= S_AXI_ARADDR;
             end else begin
                 S_AXI_ARREADY <= 1'b0;
             end
@@ -220,20 +220,20 @@ module gemm_l2_axi_lite_regs #(
             if (S_AXI_ARREADY && S_AXI_ARVALID && !S_AXI_RVALID) begin
                 S_AXI_RVALID <= 1'b1;
                 S_AXI_RRESP  <= 2'b00;
-                case (axi_araddr[7:2])
-                    6'h00: S_AXI_RDATA <= {{(32-DIM_W){1'b0}}, r_m_total};
-                    6'h01: S_AXI_RDATA <= {{(32-DIM_W){1'b0}}, r_n_total};
-                    6'h02: S_AXI_RDATA <= {{(32-DIM_W){1'b0}}, r_k_total};
-                    6'h03: S_AXI_RDATA <= {{(32-DIM_W){1'b0}}, r_k_dim};
-                    6'h04: S_AXI_RDATA <= {{(32-DIM_W){1'b0}}, r_numkt};
-                    6'h05: S_AXI_RDATA <= r_base_a;
-                    6'h06: S_AXI_RDATA <= r_base_b;
-                    6'h07: S_AXI_RDATA <= r_base_c;
-                    6'h08: S_AXI_RDATA <= {{(32-DIM_W){1'b0}}, r_n_stride};
-                    6'h09: S_AXI_RDATA <= {27'b0, r_scale_shift};
-                    6'h0A: S_AXI_RDATA <= {24'b0, r_zero_point};
+                case (axi_araddr_r[7:2])
+                    6'h00: S_AXI_RDATA <= {{(32-DIM_W){1'b0}}, r_m_total_r};
+                    6'h01: S_AXI_RDATA <= {{(32-DIM_W){1'b0}}, r_n_total_r};
+                    6'h02: S_AXI_RDATA <= {{(32-DIM_W){1'b0}}, r_k_total_r};
+                    6'h03: S_AXI_RDATA <= {{(32-DIM_W){1'b0}}, r_k_dim_r};
+                    6'h04: S_AXI_RDATA <= {{(32-DIM_W){1'b0}}, r_numkt_r};
+                    6'h05: S_AXI_RDATA <= r_base_a_r;
+                    6'h06: S_AXI_RDATA <= r_base_b_r;
+                    6'h07: S_AXI_RDATA <= r_base_c_r;
+                    6'h08: S_AXI_RDATA <= {{(32-DIM_W){1'b0}}, r_n_stride_r};
+                    6'h09: S_AXI_RDATA <= {27'b0, r_scale_shift_r};
+                    6'h0A: S_AXI_RDATA <= {24'b0, r_zero_point_r};
                     6'h0B: begin
-                        S_AXI_RDATA <= {29'b0, done_sticky, busy, 1'b0};
+                        S_AXI_RDATA <= {29'b0, done_sticky_r, busy_i, 1'b0};
                         // done_sticky clear: xu ly tap trung o always block rieng (tranh multi-driver)
                     end
                     default: S_AXI_RDATA <= 32'h0;

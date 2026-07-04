@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "D:/gemm_accelerator/gemm_accelerator.runs/synth_1/gemm_system_wrapper.tcl"
+  variable script "D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.runs/synth_1/gemm_system_wrapper.tcl"
   variable category "vivado_synth"
 }
 
@@ -56,9 +56,14 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param power.BramSDPPropagationFix 1
 set_param general.usePosixSpawnForFork 1
-set_param chipscope.maxJobs 2
+set_param chipscope.maxJobs 4
+set_param physdb.placeDBImplUsesPlaceStorage 0
+set_param power.enableUnconnectedCarry8PinPower 1
 set_param bd.open.in_stealth_mode 3
+set_param power.enableCarry8RouteBelPower 1
+set_param power.enableLutRouteBelPower 1
 set_msg_config -id {HDL-1065} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xck26-sfvc784-2LV-c
@@ -67,51 +72,51 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir D:/gemm_accelerator/gemm_accelerator.cache/wt [current_project]
-set_property parent.project_path D:/gemm_accelerator/gemm_accelerator.xpr [current_project]
+set_property webtalk.parent_dir D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.cache/wt [current_project]
+set_property parent.project_path D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part xilinx.com:kv260_som:part0:1.4 [current_project]
-set_property ip_output_repo d:/gemm_accelerator/gemm_accelerator.cache/ip [current_project]
+set_property ip_output_repo d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog -library xil_defaultlib D:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/hdl/gemm_system_wrapper.v
-add_files D:/gemm_accelerator/gemm_accelerator.srcs/sources_1/bd/gemm_system/gemm_system.bd
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_zynq_ultra_ps_e_0_0/gemm_system_zynq_ultra_ps_e_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_zynq_ultra_ps_e_0_0/gemm_system_zynq_ultra_ps_e_0_0.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_datamover_0_0/gemm_system_axi_datamover_0_0.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_datamover_0_0/gemm_system_axi_datamover_0_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_datamover_0_0/gemm_system_axi_datamover_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_rst_ps8_0_99M_1/gemm_system_rst_ps8_0_99M_1_board.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_rst_ps8_0_99M_1/gemm_system_rst_ps8_0_99M_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/bd_0/ip/ip_1/bd_6dc6_psr_aclk_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/bd_0/ip/ip_5/bd_6dc6_s00a2s_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/bd_0/ip/ip_6/bd_6dc6_sarn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/bd_0/ip/ip_7/bd_6dc6_srn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/bd_0/ip/ip_8/bd_6dc6_m00s2a_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/smartconnect.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/bd_0/ip/ip_1/bd_6d56_psr_aclk_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/bd_0/ip/ip_5/bd_6d56_s00a2s_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/bd_0/ip/ip_6/bd_6d56_sawn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/bd_0/ip/ip_7/bd_6d56_swn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/bd_0/ip/ip_8/bd_6d56_sbn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/bd_0/ip/ip_9/bd_6d56_m00s2a_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/smartconnect.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_1/bd_9f0d_psr_aclk_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_5/bd_9f0d_s00a2s_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_6/bd_9f0d_sarn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_7/bd_9f0d_srn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_8/bd_9f0d_sawn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_9/bd_9f0d_swn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_10/bd_9f0d_sbn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_11/bd_9f0d_m00s2a_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/smartconnect.xdc]
-set_property used_in_implementation false [get_files -all d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/gemm_system_ooc.xdc]
+read_verilog -library xil_defaultlib D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/hdl/gemm_system_wrapper.v
+add_files D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.srcs/sources_1/bd/gemm_system/gemm_system.bd
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_zynq_ultra_ps_e_0_0/gemm_system_zynq_ultra_ps_e_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_zynq_ultra_ps_e_0_0/gemm_system_zynq_ultra_ps_e_0_0.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_datamover_0_0/gemm_system_axi_datamover_0_0.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_datamover_0_0/gemm_system_axi_datamover_0_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_datamover_0_0/gemm_system_axi_datamover_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_rst_ps8_0_99M_1/gemm_system_rst_ps8_0_99M_1_board.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_rst_ps8_0_99M_1/gemm_system_rst_ps8_0_99M_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/bd_0/ip/ip_1/bd_6dc6_psr_aclk_0_board.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/bd_0/ip/ip_5/bd_6dc6_s00a2s_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/bd_0/ip/ip_6/bd_6dc6_sarn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/bd_0/ip/ip_7/bd_6dc6_srn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/bd_0/ip/ip_8/bd_6dc6_m00s2a_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_0_1/smartconnect.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/bd_0/ip/ip_1/bd_6d56_psr_aclk_0_board.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/bd_0/ip/ip_5/bd_6d56_s00a2s_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/bd_0/ip/ip_6/bd_6d56_sawn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/bd_0/ip/ip_7/bd_6d56_swn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/bd_0/ip/ip_8/bd_6d56_sbn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/bd_0/ip/ip_9/bd_6d56_m00s2a_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_smartconnect_1_0/smartconnect.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_1/bd_9f0d_psr_aclk_0_board.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_5/bd_9f0d_s00a2s_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_6/bd_9f0d_sarn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_7/bd_9f0d_srn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_8/bd_9f0d_sawn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_9/bd_9f0d_swn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_10/bd_9f0d_sbn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/bd_0/ip/ip_11/bd_9f0d_m00s2a_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_smc_2/smartconnect.xdc]
+set_property used_in_implementation false [get_files -all d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/gemm_system_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -126,7 +131,7 @@ read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental D:/gemm_accelerator/gemm_accelerator.srcs/utils_1/imports/synth_1/gemm_system_wrapper.dcp
+read_checkpoint -auto_incremental -incremental D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.srcs/utils_1/imports/synth_1/gemm_system_wrapper.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

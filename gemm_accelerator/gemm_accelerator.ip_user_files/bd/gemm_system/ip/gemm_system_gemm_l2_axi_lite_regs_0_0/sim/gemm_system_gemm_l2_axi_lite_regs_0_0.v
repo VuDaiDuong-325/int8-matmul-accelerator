@@ -76,26 +76,26 @@ module gemm_system_gemm_l2_axi_lite_regs_0_0 (
   S_AXI_RRESP,
   S_AXI_RVALID,
   S_AXI_RREADY,
-  cfg_m_total,
-  cfg_n_total,
-  cfg_k_total,
-  cfg_k_dim,
-  cfg_num_k_tiles_per_block,
-  cfg_base_a,
-  cfg_base_b,
-  cfg_base_c,
-  cfg_n_stride,
-  cfg_scale_shift,
-  cfg_zero_point,
-  start,
-  busy,
-  done,
-  irq
+  cfg_m_total_o,
+  cfg_n_total_o,
+  cfg_k_total_o,
+  cfg_k_dim_o,
+  cfg_num_k_tiles_per_block_o,
+  cfg_base_a_o,
+  cfg_base_b_o,
+  cfg_base_c_o,
+  cfg_n_stride_o,
+  cfg_scale_shift_o,
+  cfg_zero_point_o,
+  start_o,
+  busy_i,
+  done_i,
+  irq_o
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 S_AXI_ACLK CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI_ACLK, ASSOCIATED_BUSIF S_AXI, ASSOCIATED_RESET S_AXI_ARESETN, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI_ACLK, ASSOCIATED_BUSIF S_AXI, ASSOCIATED_RESET S_AXI_ARESETN, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
 input wire S_AXI_ACLK;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 S_AXI_ARESETN RST" *)
 (* X_INTERFACE_MODE = "slave" *)
@@ -103,8 +103,8 @@ input wire S_AXI_ACLK;
 input wire S_AXI_ARESETN;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWADDR" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 99999001, ID_WIDTH 0, ADDR_WIDTH 8, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS 1, N\
-UM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 199998001, ID_WIDTH 0, ADDR_WIDTH 8, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS 1, \
+NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *)
 input wire [7 : 0] S_AXI_AWADDR;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWPROT" *)
 input wire [2 : 0] S_AXI_AWPROT;
@@ -142,24 +142,21 @@ output wire [1 : 0] S_AXI_RRESP;
 output wire S_AXI_RVALID;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI RREADY" *)
 input wire S_AXI_RREADY;
-output wire [15 : 0] cfg_m_total;
-output wire [15 : 0] cfg_n_total;
-output wire [15 : 0] cfg_k_total;
-output wire [15 : 0] cfg_k_dim;
-output wire [15 : 0] cfg_num_k_tiles_per_block;
-output wire [31 : 0] cfg_base_a;
-output wire [31 : 0] cfg_base_b;
-output wire [31 : 0] cfg_base_c;
-output wire [15 : 0] cfg_n_stride;
-output wire [4 : 0] cfg_scale_shift;
-output wire [7 : 0] cfg_zero_point;
-output wire start;
-input wire busy;
-input wire done;
-(* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 irq INTERRUPT" *)
-(* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME irq, SENSITIVITY LEVEL_HIGH, PortWidth 1" *)
-output wire irq;
+output wire [15 : 0] cfg_m_total_o;
+output wire [15 : 0] cfg_n_total_o;
+output wire [15 : 0] cfg_k_total_o;
+output wire [15 : 0] cfg_k_dim_o;
+output wire [15 : 0] cfg_num_k_tiles_per_block_o;
+output wire [31 : 0] cfg_base_a_o;
+output wire [31 : 0] cfg_base_b_o;
+output wire [31 : 0] cfg_base_c_o;
+output wire [15 : 0] cfg_n_stride_o;
+output wire [4 : 0] cfg_scale_shift_o;
+output wire [7 : 0] cfg_zero_point_o;
+output wire start_o;
+input wire busy_i;
+input wire done_i;
+output wire irq_o;
 
   gemm_l2_axi_lite_regs #(
     .C_S_AXI_ADDR_WIDTH(8),
@@ -188,20 +185,20 @@ output wire irq;
     .S_AXI_RRESP(S_AXI_RRESP),
     .S_AXI_RVALID(S_AXI_RVALID),
     .S_AXI_RREADY(S_AXI_RREADY),
-    .cfg_m_total(cfg_m_total),
-    .cfg_n_total(cfg_n_total),
-    .cfg_k_total(cfg_k_total),
-    .cfg_k_dim(cfg_k_dim),
-    .cfg_num_k_tiles_per_block(cfg_num_k_tiles_per_block),
-    .cfg_base_a(cfg_base_a),
-    .cfg_base_b(cfg_base_b),
-    .cfg_base_c(cfg_base_c),
-    .cfg_n_stride(cfg_n_stride),
-    .cfg_scale_shift(cfg_scale_shift),
-    .cfg_zero_point(cfg_zero_point),
-    .start(start),
-    .busy(busy),
-    .done(done),
-    .irq(irq)
+    .cfg_m_total_o(cfg_m_total_o),
+    .cfg_n_total_o(cfg_n_total_o),
+    .cfg_k_total_o(cfg_k_total_o),
+    .cfg_k_dim_o(cfg_k_dim_o),
+    .cfg_num_k_tiles_per_block_o(cfg_num_k_tiles_per_block_o),
+    .cfg_base_a_o(cfg_base_a_o),
+    .cfg_base_b_o(cfg_base_b_o),
+    .cfg_base_c_o(cfg_base_c_o),
+    .cfg_n_stride_o(cfg_n_stride_o),
+    .cfg_scale_shift_o(cfg_scale_shift_o),
+    .cfg_zero_point_o(cfg_zero_point_o),
+    .start_o(start_o),
+    .busy_i(busy_i),
+    .done_i(done_i),
+    .irq_o(irq_o)
   );
 endmodule

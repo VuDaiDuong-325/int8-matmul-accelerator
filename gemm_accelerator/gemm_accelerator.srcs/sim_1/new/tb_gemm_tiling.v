@@ -125,22 +125,22 @@ module tb_gemm_tiling();
 
     // Gán cờ giám sát quá trình Tiling Chunks
     always @(posedge aclk) begin
-        if (u_dut.u_l2_v3.compute_state == 4'd2 && u_dut.u_l2_v3.a_col_k == 0 && u_dut.u_l2_v3.b_step_k == 0 && u_dut.u_l2_v3.core_a_tvalid_d1 == 0) begin
+        if (u_dut.u_l2_tiling_agu.compute_state_r == 4'd2 && u_dut.u_l2_tiling_agu.a_col_k_r == 0 && u_dut.u_l2_tiling_agu.b_step_k_r == 0 && u_dut.u_l2_tiling_agu.core_a_tvalid_d1_r == 0) begin
             chunk_idx = chunk_idx + 1;
             
             // Tính toán địa chỉ lý thuyết dựa trên cấu hình bộ đếm khối của FSM
-            expected_addr_a = cfg_base_a + (u_dut.u_l2_v3.c_m_blk_cnt * 256 * cfg_k_total) + (u_dut.u_l2_v3.c_k_blk_cnt * 256);
-            expected_addr_b = cfg_base_b + (u_dut.u_l2_v3.c_k_blk_cnt * 256 * cfg_n_total) + (u_dut.u_l2_v3.c_n_blk_cnt * 256);
+            expected_addr_a = cfg_base_a + (u_dut.u_l2_tiling_agu.c_m_blk_cnt_r * 256 * cfg_k_total) + (u_dut.u_l2_tiling_agu.c_k_blk_cnt_r * 256);
+            expected_addr_b = cfg_base_b + (u_dut.u_l2_tiling_agu.c_k_blk_cnt_r * 256 * cfg_n_total) + (u_dut.u_l2_tiling_agu.c_n_blk_cnt_r * 256);
             
             // Kiểm tra tính hợp lệ của việc nhảy địa chỉ phân rã ma trận
-            chunk_valid = (u_dut.u_l2_v3.f_addr_a_mblk == expected_addr_a) || (chunk_idx > 1); 
+            chunk_valid = (u_dut.u_l2_tiling_agu.f_addr_a_mblk_r == expected_addr_a) || (chunk_idx > 1); 
             if (!chunk_valid) failed_chunks = failed_chunks + 1;
 
             $display("[TIMING] --- Bắt đầu xử lý Chunk #%0d tại thời điểm %0t ns ---", chunk_idx, $time);
             $display("[STATUS] Kiểm tra Tiling Chunk #%0d: %s", chunk_idx, chunk_valid ? "VALID" : "INVALID (Lỗi lệch địa chỉ base!)");
         end
 
-        if (u_dut.u_l2_v3.compute_state == 4'd4 && u_dut.u_l2_v3.c_k_blk_cnt == u_dut.u_l2_v3.k_blk_tiles_m1) begin
+        if (u_dut.u_l2_tiling_agu.compute_state_r == 4'd4 && u_dut.u_l2_tiling_agu.c_k_blk_cnt_r == u_dut.u_l2_tiling_agu.k_blk_tiles_m1_w) begin
             $display("[TIMING] --- Hoàn tất tính toán & giải phóng Chunk tại thời điểm %0t ns ---", $time);
         end
     end
@@ -182,6 +182,7 @@ module tb_gemm_tiling();
                 $finish;
             end
         join_any
+    end
     end
 
 endmodule

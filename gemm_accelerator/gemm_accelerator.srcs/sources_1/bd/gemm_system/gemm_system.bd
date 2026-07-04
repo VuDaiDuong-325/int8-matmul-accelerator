@@ -73,7 +73,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "99999001",
+                "value": "166664993",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
@@ -140,7 +140,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "99999001",
+                "value": "166664993",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
@@ -203,7 +203,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "99999001",
+                "value": "166664993",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
@@ -276,7 +276,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "99999001",
+                "value": "166664993",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
@@ -339,7 +339,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "99999001",
+                "value": "166664993",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
@@ -366,20 +366,20 @@
           }
         },
         "ports": {
-          "aclk": {
+          "CLK_i": {
             "type": "clk",
             "direction": "I",
             "parameters": {
-              "ASSOCIATED_BUSIF": {
-                "value": "mm2s:mm2s_cmd:s2mm:s2mm_cmd:s2mm_sts",
+              "ASSOCIATED_RESET": {
+                "value": "RST_i",
                 "value_src": "constant"
               },
-              "ASSOCIATED_RESET": {
-                "value": "aresetn",
+              "ASSOCIATED_BUSIF": {
+                "value": "mm2s_cmd:mm2s:s2mm_cmd:s2mm:s2mm_sts",
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "99999001",
+                "value": "166664993",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
@@ -388,78 +388,78 @@
               }
             }
           },
-          "aresetn": {
+          "RST_i": {
             "type": "rst",
             "direction": "I",
             "parameters": {
               "POLARITY": {
                 "value": "ACTIVE_LOW",
-                "value_src": "constant"
+                "value_src": "const_prop"
               }
             }
           },
-          "cfg_m_total": {
+          "cfg_m_total_i": {
             "direction": "I",
             "left": "15",
             "right": "0"
           },
-          "cfg_n_total": {
+          "cfg_n_total_i": {
             "direction": "I",
             "left": "15",
             "right": "0"
           },
-          "cfg_k_total": {
+          "cfg_k_total_i": {
             "direction": "I",
             "left": "15",
             "right": "0"
           },
-          "cfg_k_dim": {
+          "cfg_k_dim_i": {
             "direction": "I",
             "left": "15",
             "right": "0"
           },
-          "cfg_num_k_tiles_per_block": {
+          "cfg_num_k_tiles_per_block_i": {
             "direction": "I",
             "left": "15",
             "right": "0"
           },
-          "cfg_base_a": {
+          "cfg_base_a_i": {
             "direction": "I",
             "left": "31",
             "right": "0"
           },
-          "cfg_base_b": {
+          "cfg_base_b_i": {
             "direction": "I",
             "left": "31",
             "right": "0"
           },
-          "cfg_base_c": {
+          "cfg_base_c_i": {
             "direction": "I",
             "left": "31",
             "right": "0"
           },
-          "cfg_n_stride": {
+          "cfg_n_stride_i": {
             "direction": "I",
             "left": "15",
             "right": "0"
           },
-          "cfg_scale_shift": {
+          "cfg_scale_shift_i": {
             "direction": "I",
             "left": "4",
             "right": "0"
           },
-          "cfg_zero_point": {
+          "cfg_zero_point_i": {
             "direction": "I",
             "left": "7",
             "right": "0"
           },
-          "start": {
+          "start_i": {
             "direction": "I"
           },
-          "busy": {
+          "busy_o": {
             "direction": "O"
           },
-          "done": {
+          "done_o": {
             "direction": "O"
           }
         }
@@ -491,7 +491,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "99999001",
+                "value": "166664993",
                 "value_src": "user_prop"
               },
               "ID_WIDTH": {
@@ -712,7 +712,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "99999001",
+                "value": "166664993",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {
@@ -731,81 +731,88 @@
               }
             }
           },
-          "cfg_m_total": {
+          "cfg_m_total_o": {
             "direction": "O",
             "left": "15",
             "right": "0"
           },
-          "cfg_n_total": {
+          "cfg_n_total_o": {
             "direction": "O",
             "left": "15",
             "right": "0"
           },
-          "cfg_k_total": {
+          "cfg_k_total_o": {
             "direction": "O",
             "left": "15",
             "right": "0"
           },
-          "cfg_k_dim": {
+          "cfg_k_dim_o": {
             "direction": "O",
             "left": "15",
             "right": "0"
           },
-          "cfg_num_k_tiles_per_block": {
+          "cfg_num_k_tiles_per_block_o": {
             "direction": "O",
             "left": "15",
             "right": "0"
           },
-          "cfg_base_a": {
+          "cfg_base_a_o": {
             "direction": "O",
             "left": "31",
             "right": "0"
           },
-          "cfg_base_b": {
+          "cfg_base_b_o": {
             "direction": "O",
             "left": "31",
             "right": "0"
           },
-          "cfg_base_c": {
+          "cfg_base_c_o": {
             "direction": "O",
             "left": "31",
             "right": "0"
           },
-          "cfg_n_stride": {
+          "cfg_n_stride_o": {
             "direction": "O",
             "left": "15",
             "right": "0"
           },
-          "cfg_scale_shift": {
+          "cfg_scale_shift_o": {
             "direction": "O",
             "left": "4",
             "right": "0"
           },
-          "cfg_zero_point": {
+          "cfg_zero_point_o": {
             "direction": "O",
             "left": "7",
             "right": "0"
           },
-          "start": {
+          "start_o": {
             "direction": "O"
           },
-          "busy": {
+          "busy_i": {
             "direction": "I"
           },
-          "done": {
+          "done_i": {
             "direction": "I"
           },
-          "irq": {
-            "type": "intr",
+          "irq_o": {
             "direction": "O",
             "parameters": {
               "SENSITIVITY": {
                 "value": "LEVEL_HIGH",
-                "value_src": "constant"
+                "value_src": "const_prop"
               },
               "PortWidth": {
                 "value": "1",
                 "value_src": "default_prop"
+              },
+              "PortType": {
+                "value": "intr",
+                "value_src": "ip_prop"
+              },
+              "PortType.PROP_SRC": {
+                "value": "false",
+                "value_src": "ip_prop"
               }
             }
           }
@@ -1541,10 +1548,10 @@
             "value": "IOPLL"
           },
           "PSU__CRL_APB__PL0_REF_CTRL__ACT_FREQMHZ": {
-            "value": "99.999001"
+            "value": "166.664993"
           },
           "PSU__CRL_APB__PL0_REF_CTRL__FREQMHZ": {
-            "value": "100"
+            "value": "170"
           },
           "PSU__CRL_APB__PL0_REF_CTRL__SRCSEL": {
             "value": "IOPLL"
@@ -2462,94 +2469,94 @@
       }
     },
     "nets": {
-      "gemm_l2_axi_lite_regs_0_cfg_base_a": {
+      "gemm_l2_axi_lite_regs_0_cfg_base_a_o1": {
         "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_base_a",
-          "gemm_top_l2_0/cfg_base_a"
+          "gemm_l2_axi_lite_regs_0/cfg_base_a_o",
+          "gemm_top_l2_0/cfg_base_a_i"
         ]
       },
-      "gemm_l2_axi_lite_regs_0_cfg_base_b": {
+      "gemm_l2_axi_lite_regs_0_cfg_base_b_o1": {
         "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_base_b",
-          "gemm_top_l2_0/cfg_base_b"
+          "gemm_l2_axi_lite_regs_0/cfg_base_b_o",
+          "gemm_top_l2_0/cfg_base_b_i"
         ]
       },
-      "gemm_l2_axi_lite_regs_0_cfg_base_c": {
+      "gemm_l2_axi_lite_regs_0_cfg_base_c_o1": {
         "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_base_c",
-          "gemm_top_l2_0/cfg_base_c"
+          "gemm_l2_axi_lite_regs_0/cfg_base_c_o",
+          "gemm_top_l2_0/cfg_base_c_i"
         ]
       },
-      "gemm_l2_axi_lite_regs_0_cfg_k_dim": {
+      "gemm_l2_axi_lite_regs_0_cfg_k_dim_o1": {
         "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_k_dim",
-          "gemm_top_l2_0/cfg_k_dim"
+          "gemm_l2_axi_lite_regs_0/cfg_k_dim_o",
+          "gemm_top_l2_0/cfg_k_dim_i"
         ]
       },
-      "gemm_l2_axi_lite_regs_0_cfg_k_total": {
+      "gemm_l2_axi_lite_regs_0_cfg_k_total_o1": {
         "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_k_total",
-          "gemm_top_l2_0/cfg_k_total"
+          "gemm_l2_axi_lite_regs_0/cfg_k_total_o",
+          "gemm_top_l2_0/cfg_k_total_i"
         ]
       },
-      "gemm_l2_axi_lite_regs_0_cfg_m_total": {
+      "gemm_l2_axi_lite_regs_0_cfg_m_total_o1": {
         "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_m_total",
-          "gemm_top_l2_0/cfg_m_total"
+          "gemm_l2_axi_lite_regs_0/cfg_m_total_o",
+          "gemm_top_l2_0/cfg_m_total_i"
         ]
       },
-      "gemm_l2_axi_lite_regs_0_cfg_n_stride": {
+      "gemm_l2_axi_lite_regs_0_cfg_n_stride_o1": {
         "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_n_stride",
-          "gemm_top_l2_0/cfg_n_stride"
+          "gemm_l2_axi_lite_regs_0/cfg_n_stride_o",
+          "gemm_top_l2_0/cfg_n_stride_i"
         ]
       },
-      "gemm_l2_axi_lite_regs_0_cfg_n_total": {
+      "gemm_l2_axi_lite_regs_0_cfg_n_total_o1": {
         "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_n_total",
-          "gemm_top_l2_0/cfg_n_total"
+          "gemm_l2_axi_lite_regs_0/cfg_n_total_o",
+          "gemm_top_l2_0/cfg_n_total_i"
         ]
       },
-      "gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block": {
+      "gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block_o1": {
         "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_num_k_tiles_per_block",
-          "gemm_top_l2_0/cfg_num_k_tiles_per_block"
+          "gemm_l2_axi_lite_regs_0/cfg_num_k_tiles_per_block_o",
+          "gemm_top_l2_0/cfg_num_k_tiles_per_block_i"
         ]
       },
-      "gemm_l2_axi_lite_regs_0_cfg_scale_shift": {
+      "gemm_l2_axi_lite_regs_0_cfg_scale_shift_o1": {
         "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_scale_shift",
-          "gemm_top_l2_0/cfg_scale_shift"
+          "gemm_l2_axi_lite_regs_0/cfg_scale_shift_o",
+          "gemm_top_l2_0/cfg_scale_shift_i"
         ]
       },
-      "gemm_l2_axi_lite_regs_0_cfg_zero_point": {
+      "gemm_l2_axi_lite_regs_0_cfg_zero_point_o1": {
         "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_zero_point",
-          "gemm_top_l2_0/cfg_zero_point"
+          "gemm_l2_axi_lite_regs_0/cfg_zero_point_o",
+          "gemm_top_l2_0/cfg_zero_point_i"
         ]
       },
       "gemm_l2_axi_lite_regs_0_irq": {
         "ports": [
-          "gemm_l2_axi_lite_regs_0/irq",
+          "gemm_l2_axi_lite_regs_0/irq_o",
           "xlconcat_0/In0"
         ]
       },
-      "gemm_l2_axi_lite_regs_0_start": {
+      "gemm_l2_axi_lite_regs_0_start_o1": {
         "ports": [
-          "gemm_l2_axi_lite_regs_0/start",
-          "gemm_top_l2_0/start"
+          "gemm_l2_axi_lite_regs_0/start_o",
+          "gemm_top_l2_0/start_i"
         ]
       },
-      "gemm_top_l2_0_busy": {
+      "gemm_top_l2_0_busy_o1": {
         "ports": [
-          "gemm_top_l2_0/busy",
-          "gemm_l2_axi_lite_regs_0/busy"
+          "gemm_top_l2_0/busy_o",
+          "gemm_l2_axi_lite_regs_0/busy_i"
         ]
       },
-      "gemm_top_l2_0_done": {
+      "gemm_top_l2_0_done_o1": {
         "ports": [
-          "gemm_top_l2_0/done",
-          "gemm_l2_axi_lite_regs_0/done"
+          "gemm_top_l2_0/done_o",
+          "gemm_l2_axi_lite_regs_0/done_i"
         ]
       },
       "rst_ps8_0_99M_peripheral_aresetn": {
@@ -2558,12 +2565,12 @@
           "axi_datamover_0/m_axi_mm2s_aresetn",
           "axi_datamover_0/m_axi_s2mm_aresetn",
           "axi_datamover_0/m_axis_s2mm_cmdsts_aresetn",
-          "gemm_l2_axi_lite_regs_0/S_AXI_ARESETN",
           "axi_smc/aresetn",
           "smartconnect_0/aresetn",
           "smartconnect_1/aresetn",
           "axi_datamover_0/m_axis_mm2s_cmdsts_aresetn",
-          "gemm_top_l2_0/aresetn"
+          "gemm_l2_axi_lite_regs_0/S_AXI_ARESETN",
+          "gemm_top_l2_0/RST_i"
         ]
       },
       "xlconcat_0_dout": {
@@ -2576,18 +2583,18 @@
         "ports": [
           "zynq_ultra_ps_e_0/pl_clk0",
           "axi_datamover_0/m_axi_mm2s_aclk",
+          "smartconnect_0/aclk",
+          "gemm_top_l2_0/CLK_i",
           "axi_datamover_0/m_axi_s2mm_aclk",
+          "smartconnect_1/aclk",
           "axi_datamover_0/m_axis_s2mm_cmdsts_awclk",
           "gemm_l2_axi_lite_regs_0/S_AXI_ACLK",
-          "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk",
-          "rst_ps8_0_99M/slowest_sync_clk",
-          "axi_datamover_0/m_axis_mm2s_cmdsts_aclk",
           "axi_smc/aclk",
+          "rst_ps8_0_99M/slowest_sync_clk",
+          "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk",
           "zynq_ultra_ps_e_0/saxihpc0_fpd_aclk",
-          "smartconnect_0/aclk",
           "zynq_ultra_ps_e_0/saxihpc1_fpd_aclk",
-          "smartconnect_1/aclk",
-          "gemm_top_l2_0/aclk"
+          "axi_datamover_0/m_axis_mm2s_cmdsts_aclk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

@@ -7,61 +7,61 @@
 module output_serializer #(
     parameter N = 16
 )(
-    input wire clk,
-    input wire rst_n,
-    input wire mac_done_trigger,
-    input wire [(N*32)-1:0] bottom_row_in,
-    input wire fifo_full,
+    input wire CLK_i,
+    input wire RST_i,
+    input wire mac_done_trigger_i,
+    input wire [(N*32)-1:0] bottom_row_i,
+    input wire fifo_full_i,
  
-    output reg drain_en_array,
-    output reg [(N*32)-1:0] fifo_din,
-    output reg fifo_wr_en,
-    output wire serializer_busy
+    output reg drain_en_array_o,
+    output reg [(N*32)-1:0] fifo_din_o,
+    output reg fifo_wr_en_o,
+    output wire serializer_busy_o
 );
  
     localparam IDLE    = 1'd0;
     localparam WRITING = 1'd1;
  
-    reg        state;
-    reg [4:0]  row_cnt;
+    reg        state_r;
+    reg [4:0]  row_cnt_r;
  
-    assign serializer_busy = (state != IDLE) || mac_done_trigger;
+    assign serializer_busy_o = (state_r != IDLE) || mac_done_trigger_i;
  
-    always @(posedge clk) begin
-        if (!rst_n) begin
-            state          <= IDLE;
-            drain_en_array <= 1'b0;
-            fifo_wr_en     <= 1'b0;
-            fifo_din       <= 0;
-            row_cnt        <= 5'd0;
+    always @(posedge CLK_i) begin
+        if (!RST_i) begin
+            state_r          <= IDLE;
+            drain_en_array_o <= 1'b0;
+            fifo_wr_en_o     <= 1'b0;
+            fifo_din_o       <= 0;
+            row_cnt_r        <= 5'd0;
         end else begin
-            case (state)
+            case (state_r)
                 IDLE: begin
-                    if (mac_done_trigger) begin
-                        drain_en_array <= 1'b1;
-                        fifo_wr_en     <= 1'b0;  // FIX: Đợi 1 nhịp, không ghi ngay để tránh lặp Row 15
-                        row_cnt        <= 5'd0;
-                        state          <= WRITING;
+                    if (mac_done_trigger_i) begin
+                        drain_en_array_o <= 1'b1;
+                        fifo_wr_en_o     <= 1'b0;  // FIX: Đợi 1 nhịp, không ghi ngay để tránh lặp Row 15
+                        row_cnt_r        <= 5'd0;
+                        state_r          <= WRITING;
                     end else begin
-                        drain_en_array <= 1'b0;
-                        fifo_wr_en     <= 1'b0;
+                        drain_en_array_o <= 1'b0;
+                        fifo_wr_en_o     <= 1'b0;
                     end
                 end
  
                 WRITING: begin
-                    fifo_din   <= bottom_row_in;
-                    fifo_wr_en <= 1'b1;          // FIX: Bắt đầu ghi từ đây
+                    fifo_din_o   <= bottom_row_i;
+                    fifo_wr_en_o <= 1'b1;          // FIX: Bắt đầu ghi từ đây
  
                     // Chạy từ 0 đến 15 (đủ 16 hàng)
-                    if (row_cnt == N[4:0] - 1) begin
-                        drain_en_array <= 1'b0;
-                        state          <= IDLE;
+                    if (row_cnt_r == N[4:0] - 1) begin
+                        drain_en_array_o <= 1'b0;
+                        state_r          <= IDLE;
                     end else begin
-                        row_cnt <= row_cnt + 5'd1;
+                        row_cnt_r <= row_cnt_r + 5'd1;
                     end
                 end
                 
-                default: state <= IDLE;
+                default: state_r <= IDLE;
             endcase
         end
     end

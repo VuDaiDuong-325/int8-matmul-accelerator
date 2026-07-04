@@ -12,9 +12,9 @@ echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executi
 exit
 
 if [ -z "$PATH" ]; then
-  PATH=D:/Apps/Study/Vivado/2025.2/Vitis/bin;D:/Apps/Study/Vivado/2025.2/Vivado/ids_lite/ISE/bin/nt64;D:/Apps/Study/Vivado/2025.2/Vivado/ids_lite/ISE/lib/nt64:D:/Apps/Study/Vivado/2025.2/Vivado/bin
+  PATH=E:/vivado/2025.2/Vitis/bin;E:/vivado/2025.2/Vivado/ids_lite/ISE/bin/nt64;E:/vivado/2025.2/Vivado/ids_lite/ISE/lib/nt64:E:/vivado/2025.2/Vivado/bin
 else
-  PATH=D:/Apps/Study/Vivado/2025.2/Vitis/bin;D:/Apps/Study/Vivado/2025.2/Vivado/ids_lite/ISE/bin/nt64;D:/Apps/Study/Vivado/2025.2/Vivado/ids_lite/ISE/lib/nt64:D:/Apps/Study/Vivado/2025.2/Vivado/bin:$PATH
+  PATH=E:/vivado/2025.2/Vitis/bin;E:/vivado/2025.2/Vivado/ids_lite/ISE/bin/nt64;E:/vivado/2025.2/Vivado/ids_lite/ISE/lib/nt64:E:/vivado/2025.2/Vivado/bin:$PATH
 fi
 export PATH
 
@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/gemm_accelerator/gemm_accelerator.runs/synth_1'
+HD_PWD='D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

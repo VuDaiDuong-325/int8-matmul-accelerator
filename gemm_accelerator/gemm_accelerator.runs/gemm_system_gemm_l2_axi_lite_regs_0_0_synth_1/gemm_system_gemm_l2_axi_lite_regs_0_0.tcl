@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "D:/gemm_accelerator/gemm_accelerator.runs/gemm_system_gemm_l2_axi_lite_regs_0_0_synth_1/gemm_system_gemm_l2_axi_lite_regs_0_0.tcl"
+  variable script "D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.runs/gemm_system_gemm_l2_axi_lite_regs_0_0_synth_1/gemm_system_gemm_l2_axi_lite_regs_0_0.tcl"
   variable category "vivado_synth"
 }
 
@@ -56,32 +56,37 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "gemm_system_gemm_l2_axi_lite_regs_0_0_synth_1" START { ROLLUP_AUTO }
+set_param power.BramSDPPropagationFix 1
 set_param general.usePosixSpawnForFork 1
-set_param chipscope.maxJobs 2
+set_param chipscope.maxJobs 4
+set_param physdb.placeDBImplUsesPlaceStorage 0
+set_param power.enableUnconnectedCarry8PinPower 1
 set_param bd.open.in_stealth_mode 3
+set_param power.enableCarry8RouteBelPower 1
+set_param power.enableLutRouteBelPower 1
 set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
-set_param ips.modRefOverrideMrefDirPath d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/mref
+set_param ips.modRefOverrideMrefDirPath d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/mref
 create_project -in_memory -part xck26-sfvc784-2LV-c
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir D:/gemm_accelerator/gemm_accelerator.cache/wt [current_project]
-set_property parent.project_path D:/gemm_accelerator/gemm_accelerator.xpr [current_project]
+set_property webtalk.parent_dir D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.cache/wt [current_project]
+set_property parent.project_path D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part xilinx.com:kv260_som:part0:1.4 [current_project]
 update_ip_catalog
-set_property ip_output_repo d:/gemm_accelerator/gemm_accelerator.cache/ip [current_project]
+set_property ip_output_repo d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog -library xil_defaultlib D:/gemm_accelerator/gemm_accelerator.srcs/sources_1/new/gemm_l2_axi_lite_regs.v
-read_ip -quiet D:/gemm_accelerator/gemm_accelerator.srcs/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0.xci
+read_verilog -library xil_defaultlib D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.srcs/sources_1/new/gemm_l2_axi_lite_regs.v
+read_ip -quiet D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.srcs/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0.xci
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -114,45 +119,45 @@ generate_parallel_reports -reports { "report_utilization -file gemm_system_gemm_
 OPTRACE "synth reports" END { }
 
 if { [catch {
-  file copy -force D:/gemm_accelerator/gemm_accelerator.runs/gemm_system_gemm_l2_axi_lite_regs_0_0_synth_1/gemm_system_gemm_l2_axi_lite_regs_0_0.dcp d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0.dcp
+  file copy -force D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.runs/gemm_system_gemm_l2_axi_lite_regs_0_0_synth_1/gemm_system_gemm_l2_axi_lite_regs_0_0.dcp d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0.dcp
 } _RESULT ] } { 
   send_msg_id runtcl-3 status "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
-  write_verilog -force -mode synth_stub d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_stub.v
+  write_verilog -force -mode synth_stub d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_stub.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode synth_stub d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_stub.vhdl
+  write_vhdl -force -mode synth_stub d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_stub.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_verilog -force -mode funcsim d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_sim_netlist.v
+  write_verilog -force -mode funcsim d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_sim_netlist.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode funcsim d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_sim_netlist.vhdl
+  write_vhdl -force -mode funcsim d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_sim_netlist.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
-if {[file isdir D:/gemm_accelerator/gemm_accelerator.ip_user_files/ip/gemm_system_gemm_l2_axi_lite_regs_0_0]} {
+if {[file isdir D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.ip_user_files/ip/gemm_system_gemm_l2_axi_lite_regs_0_0]} {
   catch { 
-    file copy -force d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_stub.v D:/gemm_accelerator/gemm_accelerator.ip_user_files/ip/gemm_system_gemm_l2_axi_lite_regs_0_0
+    file copy -force d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_stub.v D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.ip_user_files/ip/gemm_system_gemm_l2_axi_lite_regs_0_0
   }
 }
 
-if {[file isdir D:/gemm_accelerator/gemm_accelerator.ip_user_files/ip/gemm_system_gemm_l2_axi_lite_regs_0_0]} {
+if {[file isdir D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.ip_user_files/ip/gemm_system_gemm_l2_axi_lite_regs_0_0]} {
   catch { 
-    file copy -force d:/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_stub.vhdl D:/gemm_accelerator/gemm_accelerator.ip_user_files/ip/gemm_system_gemm_l2_axi_lite_regs_0_0
+    file copy -force d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_gemm_l2_axi_lite_regs_0_0/gemm_system_gemm_l2_axi_lite_regs_0_0_stub.vhdl D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.ip_user_files/ip/gemm_system_gemm_l2_axi_lite_regs_0_0
   }
 }
 file delete __synthesis_is_running__

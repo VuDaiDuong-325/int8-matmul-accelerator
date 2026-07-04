@@ -215,28 +215,6 @@
         </spirit:parameter>
       </spirit:parameters>
     </spirit:busInterface>
-    <spirit:busInterface>
-      <spirit:name>irq</spirit:name>
-      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="interrupt" spirit:version="1.0"/>
-      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="interrupt_rtl" spirit:version="1.0"/>
-      <spirit:master/>
-      <spirit:portMaps>
-        <spirit:portMap>
-          <spirit:logicalPort>
-            <spirit:name>INTERRUPT</spirit:name>
-          </spirit:logicalPort>
-          <spirit:physicalPort>
-            <spirit:name>irq</spirit:name>
-          </spirit:physicalPort>
-        </spirit:portMap>
-      </spirit:portMaps>
-      <spirit:parameters>
-        <spirit:parameter>
-          <spirit:name>SENSITIVITY</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.IRQ.SENSITIVITY" spirit:choiceRef="choice_list_9ca20931">LEVEL_HIGH</spirit:value>
-        </spirit:parameter>
-      </spirit:parameters>
-    </spirit:busInterface>
   </spirit:busInterfaces>
   <spirit:memoryMaps>
     <spirit:memoryMap>
@@ -263,7 +241,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>8052df4c</spirit:value>
+            <spirit:value>a7975c69</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -276,7 +254,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>8052df4c</spirit:value>
+            <spirit:value>a7975c69</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -633,7 +611,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>cfg_m_total</spirit:name>
+        <spirit:name>cfg_m_total_o</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -650,7 +628,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>cfg_n_total</spirit:name>
+        <spirit:name>cfg_n_total_o</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -667,7 +645,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>cfg_k_total</spirit:name>
+        <spirit:name>cfg_k_total_o</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -684,7 +662,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>cfg_k_dim</spirit:name>
+        <spirit:name>cfg_k_dim_o</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -701,7 +679,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>cfg_num_k_tiles_per_block</spirit:name>
+        <spirit:name>cfg_num_k_tiles_per_block_o</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -718,7 +696,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>cfg_base_a</spirit:name>
+        <spirit:name>cfg_base_a_o</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -735,7 +713,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>cfg_base_b</spirit:name>
+        <spirit:name>cfg_base_b_o</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -752,7 +730,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>cfg_base_c</spirit:name>
+        <spirit:name>cfg_base_c_o</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -769,7 +747,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>cfg_n_stride</spirit:name>
+        <spirit:name>cfg_n_stride_o</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -786,7 +764,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>cfg_scale_shift</spirit:name>
+        <spirit:name>cfg_scale_shift_o</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -803,7 +781,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>cfg_zero_point</spirit:name>
+        <spirit:name>cfg_zero_point_o</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -820,7 +798,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>start</spirit:name>
+        <spirit:name>start_o</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -833,7 +811,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>busy</spirit:name>
+        <spirit:name>busy_i</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -846,7 +824,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>done</spirit:name>
+        <spirit:name>done_i</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -859,7 +837,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>irq</spirit:name>
+        <spirit:name>irq_o</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -900,13 +878,6 @@
       <spirit:name>choice_list_74b5137e</spirit:name>
       <spirit:enumeration>ACTIVE_HIGH</spirit:enumeration>
       <spirit:enumeration>ACTIVE_LOW</spirit:enumeration>
-    </spirit:choice>
-    <spirit:choice>
-      <spirit:name>choice_list_9ca20931</spirit:name>
-      <spirit:enumeration>LEVEL_HIGH</spirit:enumeration>
-      <spirit:enumeration>LEVEL_LOW</spirit:enumeration>
-      <spirit:enumeration>EDGE_RISING</spirit:enumeration>
-      <spirit:enumeration>EDGE_FALLING</spirit:enumeration>
     </spirit:choice>
   </spirit:choices>
   <spirit:fileSets>
@@ -962,7 +933,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-06-22T04:53:31Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2026-06-30T09:52:24Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2025.2</xilinx:xilinxVersion>

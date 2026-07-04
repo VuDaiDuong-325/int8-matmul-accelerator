@@ -1,5 +1,5 @@
 namespace eval ::optrace {
-  variable script "D:/gemm_accelerator/gemm_accelerator.runs/impl_1/gemm_system_wrapper.tcl"
+  variable script "D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.runs/impl_1/gemm_system_wrapper.tcl"
   variable category "vivado_impl"
 }
 
@@ -106,12 +106,17 @@ start_step write_bitstream
 set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
+  set_param power.BramSDPPropagationFix 1
   set_param general.usePosixSpawnForFork 1
-  set_param chipscope.maxJobs 2
+  set_param chipscope.maxJobs 4
+  set_param physdb.placeDBImplUsesPlaceStorage 0
+  set_param power.enableUnconnectedCarry8PinPower 1
   set_param bd.open.in_stealth_mode 3
-  set_param runs.launchOptions { -jobs 8  }
+  set_param power.enableCarry8RouteBelPower 1
+  set_param power.enableLutRouteBelPower 1
+  set_param runs.launchOptions { -jobs 16  }
   open_checkpoint gemm_system_wrapper_routed.dcp
-  set_property webtalk.parent_dir D:/gemm_accelerator/gemm_accelerator.cache/wt [current_project]
+  set_property webtalk.parent_dir D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.cache/wt [current_project]
 set_property TOP gemm_system_wrapper [current_fileset]
 OPTRACE "read constraints: write_bitstream" START { }
 OPTRACE "read constraints: write_bitstream" END { }

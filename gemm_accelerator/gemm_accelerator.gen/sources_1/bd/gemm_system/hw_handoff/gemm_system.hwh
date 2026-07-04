@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jun 25 13:41:59 2026" VIVADOVERSION="2025.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Jul  4 15:10:00 2026" VIVADOVERSION="2025.2">
 
   <SYSTEMINFO ARCH="zynquplus" BOARD="xilinx.com:kv260_som:part0:1.4" DEVICE="xck26" NAME="gemm_system" PACKAGE="sfvc784" SPEEDGRADE="-2LV"/>
 
@@ -91,7 +91,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="m_axi_mm2s_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="m_axi_mm2s_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
@@ -176,7 +176,7 @@
             <CONNECTION INSTANCE="smartconnect_0" PORT="S00_AXI_rvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="m_axi_s2mm_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="m_axi_s2mm_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
@@ -276,7 +276,7 @@
             <CONNECTION INSTANCE="smartconnect_1" PORT="S00_AXI_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="m_axis_mm2s_cmdsts_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="m_axis_mm2s_cmdsts_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
@@ -316,7 +316,7 @@
             <CONNECTION INSTANCE="rst_ps8_0_99M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="m_axis_s2mm_cmdsts_awclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="m_axis_s2mm_cmdsts_awclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
@@ -402,7 +402,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
           <PARAMETER NAME="HAS_BURST" VALUE="0"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -452,7 +452,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
           <PARAMETER NAME="HAS_BURST" VALUE="1"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -500,7 +500,7 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="gemm_top_l2_0_s2mm" NAME="S_AXIS_S2MM" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="1"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
@@ -522,7 +522,7 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="gemm_top_l2_0_s2mm_cmd" NAME="S_AXIS_S2MM_CMD" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
@@ -542,7 +542,7 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="axi_datamover_0_M_AXIS_S2MM_STS" NAME="M_AXIS_S2MM_STS" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="1"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
@@ -562,7 +562,7 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="gemm_top_l2_0_mm2s_cmd" NAME="S_AXIS_MM2S_CMD" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
@@ -582,7 +582,7 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="M_AXIS_MM2S_STS" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="1"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
@@ -604,7 +604,7 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="axi_datamover_0_M_AXIS_MM2S" NAME="M_AXIS_MM2S" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="1"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
@@ -942,7 +942,7 @@
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="maxigp0_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
@@ -961,7 +961,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
           <PARAMETER NAME="HAS_BURST" VALUE="1"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -1035,7 +1035,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
           <PARAMETER NAME="HAS_BURST" VALUE="0"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="0"/>
@@ -1100,7 +1100,7 @@
         <PARAMETER NAME="C_HIGHADDR" VALUE="0xA0000FFF"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="S_AXI_ACLK" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="S_AXI_ACLK" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
@@ -1205,79 +1205,79 @@
             <CONNECTION INSTANCE="axi_smc" PORT="M00_AXI_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="busy" SIGIS="undef" SIGNAME="gemm_top_l2_0_busy">
+        <PORT DIR="I" NAME="busy_i" SIGIS="undef" SIGNAME="gemm_top_l2_0_busy_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="busy"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="busy_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="cfg_base_a" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_base_a">
+        <PORT DIR="O" LEFT="31" NAME="cfg_base_a_o" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_base_a_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_base_a"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_base_a_i"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="cfg_base_b" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_base_b">
+        <PORT DIR="O" LEFT="31" NAME="cfg_base_b_o" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_base_b_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_base_b"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_base_b_i"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="cfg_base_c" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_base_c">
+        <PORT DIR="O" LEFT="31" NAME="cfg_base_c_o" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_base_c_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_base_c"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_base_c_i"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="cfg_k_dim" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_k_dim">
+        <PORT DIR="O" LEFT="15" NAME="cfg_k_dim_o" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_k_dim_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_k_dim"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_k_dim_i"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="cfg_k_total" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_k_total">
+        <PORT DIR="O" LEFT="15" NAME="cfg_k_total_o" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_k_total_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_k_total"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_k_total_i"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="cfg_m_total" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_m_total">
+        <PORT DIR="O" LEFT="15" NAME="cfg_m_total_o" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_m_total_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_m_total"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_m_total_i"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="cfg_n_stride" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_n_stride">
+        <PORT DIR="O" LEFT="15" NAME="cfg_n_stride_o" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_n_stride_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_n_stride"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_n_stride_i"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="cfg_n_total" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_n_total">
+        <PORT DIR="O" LEFT="15" NAME="cfg_n_total_o" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_n_total_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_n_total"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_n_total_i"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="cfg_num_k_tiles_per_block" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block">
+        <PORT DIR="O" LEFT="15" NAME="cfg_num_k_tiles_per_block_o" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_num_k_tiles_per_block"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_num_k_tiles_per_block_i"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="4" NAME="cfg_scale_shift" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_scale_shift">
+        <PORT DIR="O" LEFT="4" NAME="cfg_scale_shift_o" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_scale_shift_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_scale_shift"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_scale_shift_i"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="7" NAME="cfg_zero_point" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_zero_point">
+        <PORT DIR="O" LEFT="7" NAME="cfg_zero_point_o" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_zero_point_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_zero_point"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="cfg_zero_point_i"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="done" SIGIS="undef" SIGNAME="gemm_top_l2_0_done">
+        <PORT DIR="I" NAME="done_i" SIGIS="undef" SIGNAME="gemm_top_l2_0_done_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="done"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="done_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="irq" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="gemm_l2_axi_lite_regs_0_irq">
+        <PORT DIR="O" NAME="irq_o" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_irq_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlconcat_0" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="start" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_start">
+        <PORT DIR="O" NAME="start_o" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_start_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="start"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="start_i"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1289,7 +1289,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
           <PARAMETER NAME="HAS_BURST" VALUE="0"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="0"/>
@@ -1353,79 +1353,79 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="CLK_i" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="rst_ps8_0_99M_peripheral_aresetn">
+        <PORT DIR="I" NAME="RST_i" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="rst_ps8_0_99M_peripheral_aresetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_ps8_0_99M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="busy" SIGIS="undef" SIGNAME="gemm_top_l2_0_busy">
+        <PORT DIR="O" NAME="busy_o" SIGIS="undef" SIGNAME="gemm_top_l2_0_busy_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="busy"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="busy_i"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="cfg_base_a" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_base_a">
+        <PORT DIR="I" LEFT="31" NAME="cfg_base_a_i" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_base_a_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_base_a"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_base_a_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="cfg_base_b" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_base_b">
+        <PORT DIR="I" LEFT="31" NAME="cfg_base_b_i" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_base_b_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_base_b"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_base_b_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="cfg_base_c" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_base_c">
+        <PORT DIR="I" LEFT="31" NAME="cfg_base_c_i" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_base_c_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_base_c"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_base_c_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="cfg_k_dim" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_k_dim">
+        <PORT DIR="I" LEFT="15" NAME="cfg_k_dim_i" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_k_dim_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_k_dim"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_k_dim_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="cfg_k_total" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_k_total">
+        <PORT DIR="I" LEFT="15" NAME="cfg_k_total_i" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_k_total_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_k_total"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_k_total_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="cfg_m_total" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_m_total">
+        <PORT DIR="I" LEFT="15" NAME="cfg_m_total_i" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_m_total_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_m_total"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_m_total_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="cfg_n_stride" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_n_stride">
+        <PORT DIR="I" LEFT="15" NAME="cfg_n_stride_i" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_n_stride_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_n_stride"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_n_stride_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="cfg_n_total" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_n_total">
+        <PORT DIR="I" LEFT="15" NAME="cfg_n_total_i" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_n_total_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_n_total"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_n_total_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="cfg_num_k_tiles_per_block" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block">
+        <PORT DIR="I" LEFT="15" NAME="cfg_num_k_tiles_per_block_i" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_num_k_tiles_per_block"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_num_k_tiles_per_block_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="4" NAME="cfg_scale_shift" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_scale_shift">
+        <PORT DIR="I" LEFT="4" NAME="cfg_scale_shift_i" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_scale_shift_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_scale_shift"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_scale_shift_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="cfg_zero_point" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_zero_point">
+        <PORT DIR="I" LEFT="7" NAME="cfg_zero_point_i" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_cfg_zero_point_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_zero_point"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="cfg_zero_point_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="done" SIGIS="undef" SIGNAME="gemm_top_l2_0_done">
+        <PORT DIR="O" NAME="done_o" SIGIS="undef" SIGNAME="gemm_top_l2_0_done_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="done"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="done_i"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="71" NAME="mm2s_cmd_tdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_datamover_0_s_axis_mm2s_cmd_tdata">
@@ -1518,16 +1518,16 @@
             <CONNECTION INSTANCE="axi_datamover_0" PORT="s_axis_s2mm_tvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="start" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_start">
+        <PORT DIR="I" NAME="start_i" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_start_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="start"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="start_o"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="axi_datamover_0_M_AXIS_MM2S" NAME="mm2s" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
@@ -1548,7 +1548,7 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="gemm_top_l2_0_mm2s_cmd" NAME="mm2s_cmd" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
@@ -1568,7 +1568,7 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="gemm_top_l2_0_s2mm" NAME="s2mm" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="1"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
@@ -1590,7 +1590,7 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="gemm_top_l2_0_s2mm_cmd" NAME="s2mm_cmd" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
@@ -1610,7 +1610,7 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="axi_datamover_0_M_AXIS_S2MM_STS" NAME="s2mm_sts" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
@@ -1666,16 +1666,16 @@
             <CONNECTION INSTANCE="axi_datamover_0" PORT="m_axi_mm2s_aresetn"/>
             <CONNECTION INSTANCE="axi_datamover_0" PORT="m_axi_s2mm_aresetn"/>
             <CONNECTION INSTANCE="axi_datamover_0" PORT="m_axis_s2mm_cmdsts_aresetn"/>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="S_AXI_ARESETN"/>
             <CONNECTION INSTANCE="axi_smc" PORT="aresetn"/>
             <CONNECTION INSTANCE="smartconnect_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="smartconnect_1" PORT="aresetn"/>
             <CONNECTION INSTANCE="axi_datamover_0" PORT="m_axis_mm2s_cmdsts_aresetn"/>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="S_AXI_ARESETN"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="RST_i"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="peripheral_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="slowest_sync_clk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="slowest_sync_clk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
@@ -1855,7 +1855,7 @@
             <CONNECTION INSTANCE="axi_datamover_0" PORT="m_axi_mm2s_rvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
@@ -1874,7 +1874,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
           <PARAMETER NAME="HAS_BURST" VALUE="0"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -1924,7 +1924,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
           <PARAMETER NAME="HAS_BURST" VALUE="1"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -2172,7 +2172,7 @@
             <CONNECTION INSTANCE="axi_datamover_0" PORT="m_axi_s2mm_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
@@ -2191,7 +2191,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
           <PARAMETER NAME="HAS_BURST" VALUE="1"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -2244,7 +2244,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
           <PARAMETER NAME="HAS_BURST" VALUE="1"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -2430,9 +2430,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_irq">
+        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="gemm_l2_axi_lite_regs_0_irq_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="irq"/>
+            <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="irq_o"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_0_dout">
@@ -2448,6 +2448,9 @@
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=zynq_ultra_ps_e;v=v3_5;d=pg201-zynq-ultrascale-plus-processing-system.pdf"/>
       </DOCUMENTS>
       <ADDRESSBLOCKS>
+        <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_LPS_OCM" RANGE="0x1000000" USAGE="register"/>
+      </ADDRESSBLOCKS>
+      <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_DDR_HIGH" RANGE="0x800000000" USAGE="memory"/>
       </ADDRESSBLOCKS>
       <ADDRESSBLOCKS>
@@ -2455,9 +2458,6 @@
       </ADDRESSBLOCKS>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_QSPI" RANGE="0x20000000" USAGE="memory"/>
-      </ADDRESSBLOCKS>
-      <ADDRESSBLOCKS>
-        <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_LPS_OCM" RANGE="0x1000000" USAGE="register"/>
       </ADDRESSBLOCKS>
       <PARAMETERS>
         <PARAMETER NAME="C_DP_USE_AUDIO" VALUE="0"/>
@@ -3259,10 +3259,10 @@
         <PARAMETER NAME="PSU__CRL_APB__PCAP_CTRL__DIVISOR0" VALUE="5"/>
         <PARAMETER NAME="PSU__CRL_APB__PCAP_CTRL__FREQMHZ" VALUE="200"/>
         <PARAMETER NAME="PSU__CRL_APB__PCAP_CTRL__SRCSEL" VALUE="IOPLL"/>
-        <PARAMETER NAME="PSU__CRL_APB__PL0_REF_CTRL__ACT_FREQMHZ" VALUE="99.999001"/>
-        <PARAMETER NAME="PSU__CRL_APB__PL0_REF_CTRL__DIVISOR0" VALUE="10"/>
+        <PARAMETER NAME="PSU__CRL_APB__PL0_REF_CTRL__ACT_FREQMHZ" VALUE="166.664993"/>
+        <PARAMETER NAME="PSU__CRL_APB__PL0_REF_CTRL__DIVISOR0" VALUE="6"/>
         <PARAMETER NAME="PSU__CRL_APB__PL0_REF_CTRL__DIVISOR1" VALUE="1"/>
-        <PARAMETER NAME="PSU__CRL_APB__PL0_REF_CTRL__FREQMHZ" VALUE="100"/>
+        <PARAMETER NAME="PSU__CRL_APB__PL0_REF_CTRL__FREQMHZ" VALUE="170"/>
         <PARAMETER NAME="PSU__CRL_APB__PL0_REF_CTRL__SRCSEL" VALUE="IOPLL"/>
         <PARAMETER NAME="PSU__CRL_APB__PL1_REF_CTRL__ACT_FREQMHZ" VALUE="99.999001"/>
         <PARAMETER NAME="PSU__CRL_APB__PL1_REF_CTRL__DIVISOR0" VALUE="10"/>
@@ -3747,7 +3747,7 @@
         <PARAMETER NAME="PSU__MAXIGP1__DATA_WIDTH" VALUE="128"/>
         <PARAMETER NAME="PSU__MAXIGP2__DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="PSU__M_AXI_GP0_SUPPORTS_NARROW_BURST" VALUE="1"/>
-        <PARAMETER NAME="PSU__M_AXI_GP0__FREQMHZ" VALUE="99.999001"/>
+        <PARAMETER NAME="PSU__M_AXI_GP0__FREQMHZ" VALUE="166.664993"/>
         <PARAMETER NAME="PSU__M_AXI_GP1_SUPPORTS_NARROW_BURST" VALUE="1"/>
         <PARAMETER NAME="PSU__M_AXI_GP1__FREQMHZ" VALUE="99.999001"/>
         <PARAMETER NAME="PSU__M_AXI_GP2_SUPPORTS_NARROW_BURST" VALUE="1"/>
@@ -4041,8 +4041,8 @@
         <PARAMETER NAME="PSU__SWDT1__PERIPHERAL__IO" VALUE="NA"/>
         <PARAMETER NAME="PSU__SWDT1__RESET__ENABLE" VALUE="0"/>
         <PARAMETER NAME="PSU__SWDT1__RESET__IO" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PSU__S_AXI_GP0__FREQMHZ" VALUE="99.999001"/>
-        <PARAMETER NAME="PSU__S_AXI_GP1__FREQMHZ" VALUE="99.999001"/>
+        <PARAMETER NAME="PSU__S_AXI_GP0__FREQMHZ" VALUE="166.664993"/>
+        <PARAMETER NAME="PSU__S_AXI_GP1__FREQMHZ" VALUE="166.664993"/>
         <PARAMETER NAME="PSU__S_AXI_GP2__FREQMHZ" VALUE="10"/>
         <PARAMETER NAME="PSU__S_AXI_GP3__FREQMHZ" VALUE="10"/>
         <PARAMETER NAME="PSU__S_AXI_GP4__FREQMHZ" VALUE="10"/>
@@ -4389,26 +4389,26 @@
             <CONNECTION INSTANCE="axi_smc" PORT="S00_AXI_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="maxihpm0_fpd_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="maxihpm0_fpd_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="99999001" DIR="O" NAME="pl_clk0" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+        <PORT CLKFREQUENCY="166664993" DIR="O" NAME="pl_clk0" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_datamover_0" PORT="m_axi_mm2s_aclk"/>
+            <CONNECTION INSTANCE="smartconnect_0" PORT="aclk"/>
+            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="CLK_i"/>
             <CONNECTION INSTANCE="axi_datamover_0" PORT="m_axi_s2mm_aclk"/>
+            <CONNECTION INSTANCE="smartconnect_1" PORT="aclk"/>
             <CONNECTION INSTANCE="axi_datamover_0" PORT="m_axis_s2mm_cmdsts_awclk"/>
             <CONNECTION INSTANCE="gemm_l2_axi_lite_regs_0" PORT="S_AXI_ACLK"/>
-            <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="maxihpm0_fpd_aclk"/>
-            <CONNECTION INSTANCE="rst_ps8_0_99M" PORT="slowest_sync_clk"/>
-            <CONNECTION INSTANCE="axi_datamover_0" PORT="m_axis_mm2s_cmdsts_aclk"/>
             <CONNECTION INSTANCE="axi_smc" PORT="aclk"/>
+            <CONNECTION INSTANCE="rst_ps8_0_99M" PORT="slowest_sync_clk"/>
+            <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="maxihpm0_fpd_aclk"/>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="saxihpc0_fpd_aclk"/>
-            <CONNECTION INSTANCE="smartconnect_0" PORT="aclk"/>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="saxihpc1_fpd_aclk"/>
-            <CONNECTION INSTANCE="smartconnect_1" PORT="aclk"/>
-            <CONNECTION INSTANCE="gemm_top_l2_0" PORT="aclk"/>
+            <CONNECTION INSTANCE="axi_datamover_0" PORT="m_axis_mm2s_cmdsts_aclk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="99999001" DIR="O" NAME="pl_clk1" SIGIS="clk"/>
@@ -4597,12 +4597,12 @@
             <CONNECTION INSTANCE="smartconnect_1" PORT="M00_AXI_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="saxihpc0_fpd_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="saxihpc0_fpd_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="saxihpc1_fpd_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="saxihpc1_fpd_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
@@ -4616,7 +4616,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
           <PARAMETER NAME="HAS_BURST" VALUE="1"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -4690,7 +4690,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
           <PARAMETER NAME="HAS_BURST" VALUE="1"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -4741,7 +4741,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
           <PARAMETER NAME="HAS_BURST" VALUE="1"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>

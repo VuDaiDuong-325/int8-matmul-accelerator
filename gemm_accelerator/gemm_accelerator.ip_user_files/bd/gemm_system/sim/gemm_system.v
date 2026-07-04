@@ -2,15 +2,15 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-//Date        : Thu Jun 25 13:40:48 2026
-//Host        : VuDuong-32 running 64-bit major release  (build 9200)
+//Date        : Sat Jul  4 14:46:20 2026
+//Host        : ZUYYYY running 64-bit major release  (build 9200)
 //Command     : generate_target gemm_system.bd
 //Design      : gemm_system
 //Purpose     : IP block netlist
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "gemm_system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=gemm_system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=9,numReposBlks=9,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_clkrst_cnt=5,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "gemm_system.hwdef" *) 
+(* CORE_GENERATION_INFO = "gemm_system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=gemm_system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=9,numReposBlks=9,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_clkrst_cnt=13,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "gemm_system.hwdef" *) 
 module gemm_system
    ();
 
@@ -73,21 +73,21 @@ module gemm_system
   wire axi_smc_M00_AXI_WREADY;
   wire [3:0]axi_smc_M00_AXI_WSTRB;
   wire axi_smc_M00_AXI_WVALID;
-  wire [31:0]gemm_l2_axi_lite_regs_0_cfg_base_a;
-  wire [31:0]gemm_l2_axi_lite_regs_0_cfg_base_b;
-  wire [31:0]gemm_l2_axi_lite_regs_0_cfg_base_c;
-  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_k_dim;
-  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_k_total;
-  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_m_total;
-  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_n_stride;
-  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_n_total;
-  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block;
-  wire [4:0]gemm_l2_axi_lite_regs_0_cfg_scale_shift;
-  wire [7:0]gemm_l2_axi_lite_regs_0_cfg_zero_point;
+  wire [31:0]gemm_l2_axi_lite_regs_0_cfg_base_a_o1;
+  wire [31:0]gemm_l2_axi_lite_regs_0_cfg_base_b_o1;
+  wire [31:0]gemm_l2_axi_lite_regs_0_cfg_base_c_o1;
+  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_k_dim_o1;
+  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_k_total_o1;
+  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_m_total_o1;
+  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_n_stride_o1;
+  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_n_total_o1;
+  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block_o1;
+  wire [4:0]gemm_l2_axi_lite_regs_0_cfg_scale_shift_o1;
+  wire [7:0]gemm_l2_axi_lite_regs_0_cfg_zero_point_o1;
   wire gemm_l2_axi_lite_regs_0_irq;
-  wire gemm_l2_axi_lite_regs_0_start;
-  wire gemm_top_l2_0_busy;
-  wire gemm_top_l2_0_done;
+  wire gemm_l2_axi_lite_regs_0_start_o1;
+  wire gemm_top_l2_0_busy_o1;
+  wire gemm_top_l2_0_done_o1;
   wire [71:0]gemm_top_l2_0_mm2s_cmd_TDATA;
   wire gemm_top_l2_0_mm2s_cmd_TREADY;
   wire gemm_top_l2_0_mm2s_cmd_TVALID;
@@ -322,37 +322,37 @@ module gemm_system
         .S_AXI_WREADY(axi_smc_M00_AXI_WREADY),
         .S_AXI_WSTRB(axi_smc_M00_AXI_WSTRB),
         .S_AXI_WVALID(axi_smc_M00_AXI_WVALID),
-        .busy(gemm_top_l2_0_busy),
-        .cfg_base_a(gemm_l2_axi_lite_regs_0_cfg_base_a),
-        .cfg_base_b(gemm_l2_axi_lite_regs_0_cfg_base_b),
-        .cfg_base_c(gemm_l2_axi_lite_regs_0_cfg_base_c),
-        .cfg_k_dim(gemm_l2_axi_lite_regs_0_cfg_k_dim),
-        .cfg_k_total(gemm_l2_axi_lite_regs_0_cfg_k_total),
-        .cfg_m_total(gemm_l2_axi_lite_regs_0_cfg_m_total),
-        .cfg_n_stride(gemm_l2_axi_lite_regs_0_cfg_n_stride),
-        .cfg_n_total(gemm_l2_axi_lite_regs_0_cfg_n_total),
-        .cfg_num_k_tiles_per_block(gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block),
-        .cfg_scale_shift(gemm_l2_axi_lite_regs_0_cfg_scale_shift),
-        .cfg_zero_point(gemm_l2_axi_lite_regs_0_cfg_zero_point),
-        .done(gemm_top_l2_0_done),
-        .irq(gemm_l2_axi_lite_regs_0_irq),
-        .start(gemm_l2_axi_lite_regs_0_start));
+        .busy_i(gemm_top_l2_0_busy_o1),
+        .cfg_base_a_o(gemm_l2_axi_lite_regs_0_cfg_base_a_o1),
+        .cfg_base_b_o(gemm_l2_axi_lite_regs_0_cfg_base_b_o1),
+        .cfg_base_c_o(gemm_l2_axi_lite_regs_0_cfg_base_c_o1),
+        .cfg_k_dim_o(gemm_l2_axi_lite_regs_0_cfg_k_dim_o1),
+        .cfg_k_total_o(gemm_l2_axi_lite_regs_0_cfg_k_total_o1),
+        .cfg_m_total_o(gemm_l2_axi_lite_regs_0_cfg_m_total_o1),
+        .cfg_n_stride_o(gemm_l2_axi_lite_regs_0_cfg_n_stride_o1),
+        .cfg_n_total_o(gemm_l2_axi_lite_regs_0_cfg_n_total_o1),
+        .cfg_num_k_tiles_per_block_o(gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block_o1),
+        .cfg_scale_shift_o(gemm_l2_axi_lite_regs_0_cfg_scale_shift_o1),
+        .cfg_zero_point_o(gemm_l2_axi_lite_regs_0_cfg_zero_point_o1),
+        .done_i(gemm_top_l2_0_done_o1),
+        .irq_o(gemm_l2_axi_lite_regs_0_irq),
+        .start_o(gemm_l2_axi_lite_regs_0_start_o1));
   gemm_system_gemm_top_l2_0_0 gemm_top_l2_0
-       (.aclk(zynq_ultra_ps_e_0_pl_clk0),
-        .aresetn(rst_ps8_0_99M_peripheral_aresetn),
-        .busy(gemm_top_l2_0_busy),
-        .cfg_base_a(gemm_l2_axi_lite_regs_0_cfg_base_a),
-        .cfg_base_b(gemm_l2_axi_lite_regs_0_cfg_base_b),
-        .cfg_base_c(gemm_l2_axi_lite_regs_0_cfg_base_c),
-        .cfg_k_dim(gemm_l2_axi_lite_regs_0_cfg_k_dim),
-        .cfg_k_total(gemm_l2_axi_lite_regs_0_cfg_k_total),
-        .cfg_m_total(gemm_l2_axi_lite_regs_0_cfg_m_total),
-        .cfg_n_stride(gemm_l2_axi_lite_regs_0_cfg_n_stride),
-        .cfg_n_total(gemm_l2_axi_lite_regs_0_cfg_n_total),
-        .cfg_num_k_tiles_per_block(gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block),
-        .cfg_scale_shift(gemm_l2_axi_lite_regs_0_cfg_scale_shift),
-        .cfg_zero_point(gemm_l2_axi_lite_regs_0_cfg_zero_point),
-        .done(gemm_top_l2_0_done),
+       (.CLK_i(zynq_ultra_ps_e_0_pl_clk0),
+        .RST_i(rst_ps8_0_99M_peripheral_aresetn),
+        .busy_o(gemm_top_l2_0_busy_o1),
+        .cfg_base_a_i(gemm_l2_axi_lite_regs_0_cfg_base_a_o1),
+        .cfg_base_b_i(gemm_l2_axi_lite_regs_0_cfg_base_b_o1),
+        .cfg_base_c_i(gemm_l2_axi_lite_regs_0_cfg_base_c_o1),
+        .cfg_k_dim_i(gemm_l2_axi_lite_regs_0_cfg_k_dim_o1),
+        .cfg_k_total_i(gemm_l2_axi_lite_regs_0_cfg_k_total_o1),
+        .cfg_m_total_i(gemm_l2_axi_lite_regs_0_cfg_m_total_o1),
+        .cfg_n_stride_i(gemm_l2_axi_lite_regs_0_cfg_n_stride_o1),
+        .cfg_n_total_i(gemm_l2_axi_lite_regs_0_cfg_n_total_o1),
+        .cfg_num_k_tiles_per_block_i(gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block_o1),
+        .cfg_scale_shift_i(gemm_l2_axi_lite_regs_0_cfg_scale_shift_o1),
+        .cfg_zero_point_i(gemm_l2_axi_lite_regs_0_cfg_zero_point_o1),
+        .done_o(gemm_top_l2_0_done_o1),
         .mm2s_cmd_tdata(gemm_top_l2_0_mm2s_cmd_TDATA),
         .mm2s_cmd_tready(gemm_top_l2_0_mm2s_cmd_TREADY),
         .mm2s_cmd_tvalid(gemm_top_l2_0_mm2s_cmd_TVALID),
@@ -371,7 +371,7 @@ module gemm_system
         .s2mm_tlast(gemm_top_l2_0_s2mm_TLAST),
         .s2mm_tready(gemm_top_l2_0_s2mm_TREADY),
         .s2mm_tvalid(gemm_top_l2_0_s2mm_TVALID),
-        .start(gemm_l2_axi_lite_regs_0_start));
+        .start_i(gemm_l2_axi_lite_regs_0_start_o1));
   gemm_system_rst_ps8_0_99M_1 rst_ps8_0_99M
        (.aux_reset_in(1'b1),
         .dcm_locked(1'b1),

@@ -20,77 +20,77 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module pe_wrapper(
-    input                       clk,
-    input                       rst_n,
+    input                       CLK_i,
+    input                       RST_i,
     
     // Giao tiếp theo chiều ngang (Act & Control)
-    input                       valid_in,
-    input                       clear_acc,
-    input                       last_mac_in,
-    input signed        [7:0]   act_in,
+    input                       valid_i,
+    input                       clear_acc_i,
+    input                       last_mac_i,
+    input signed        [7:0]   act_i,
     
     // Giao tiếp theo chiều dọc (Weight)
-    input signed        [7:0]   weight_in,
+    input signed        [7:0]   weight_i,
     
     // Đẩy dữ liệu đi tiếp (Forwarding)
-    output reg signed   [7:0]   weight_out,
-    output reg signed   [7:0]   act_out,
-    output reg                  valid_out_fwd,
-    output reg                  clear_acc_fwd,
-    output reg                  last_mac_out_fwd,
+    output reg signed   [7:0]   weight_o,
+    output reg signed   [7:0]   act_o,
+    output reg                  valid_fwd_o,
+    output reg                  clear_acc_fwd_o,
+    output reg                  last_mac_fwd_o,
     
     // ----------------------------------------------------
     // [NEW] CỔNG DÀNH CHO CHẾ ĐỘ BĂNG CHUYỀN (SYSTOLIC DRAIN)
     // ----------------------------------------------------
-    input                       drain_en,       // Tín hiệu cho phép dịch dữ liệu
-    input signed        [31:0]  psum_in_top,    // Lấy kết quả từ PE hàng trên
-    output wire signed  [31:0]  psum_out_down,  // Đẩy kết quả xuống PE hàng dưới
-    output wire                 mac_valid_out   // Báo hiệu MAC đã tính xong
+    input                       drain_en_i,       // Tín hiệu cho phép dịch dữ liệu
+    input signed        [31:0]  psum_top_i,    // Lấy kết quả từ PE hàng trên
+    output wire signed  [31:0]  psum_down_o,  // Đẩy kết quả xuống PE hàng dưới
+    output wire                 mac_valid_o   // Báo hiệu MAC đã tính xong
 );
     
-    wire signed [31:0] mac_psum_out;
+    wire signed [31:0] mac_psum_w;
     
     // Lõi DSP tính toán nguyên bản của bạn
-    mac_core u_mac (
-        .clk(clk),
-        .rst_n(rst_n),
-        .valid_in(valid_in),
-        .clear_acc(clear_acc),
-        .last_mac_in(last_mac_in),
-        .w_in(weight_in),
-        .x_in(act_in),
-        .psum_out(mac_psum_out),
-        .valid_out(mac_valid_out)
+    mac_core u_mac_core (
+        .CLK_i(CLK_i),
+        .RST_i(RST_i),
+        .valid_i(valid_i),
+        .clear_acc_i(clear_acc_i),
+        .last_mac_i(last_mac_i),
+        .w_i(weight_i),
+        .x_i(act_i),
+        .psum_o(mac_psum_w),
+        .valid_o(mac_valid_o)
     );
      
     // Thanh ghi giữ kết quả và tạo luồng băng chuyền
-    reg signed [31:0] hold_psum;
-    always @(posedge clk) begin
-        if (!rst_n) begin
-            hold_psum <= 32'd0;
+    reg signed [31:0] hold_psum_r;
+    always @(posedge CLK_i) begin
+        if (!RST_i) begin
+            hold_psum_r <= 32'd0;
         end
-        else if (mac_valid_out) begin
-            hold_psum <= mac_psum_out;  // Chốt kết quả ngay khi NPU tính xong
+        else if (mac_valid_o) begin
+            hold_psum_r <= mac_psum_w;  // Chốt kết quả ngay khi NPU tính xong
         end
-        else if (drain_en) begin
-            hold_psum <= psum_in_top;   // Lấy dữ liệu từ PE trên đẩy xuống!
+        else if (drain_en_i) begin
+            hold_psum_r <= psum_top_i;   // Lấy dữ liệu từ PE trên đẩy xuống!
         end
     end
     
-    assign psum_out_down = hold_psum;
+    assign psum_down_o = hold_psum_r;
 
     // Pipeline đẩy dữ liệu qua PE tiếp theo (
-    always @(posedge clk) begin
-        if (!rst_n) begin
-            weight_out <= 8'd0; act_out <= 8'd0;
-            valid_out_fwd <= 1'b0; clear_acc_fwd <= 1'b0; last_mac_out_fwd <= 1'b0;
+    always @(posedge CLK_i) begin
+        if (!RST_i) begin
+            weight_o <= 8'd0; act_o <= 8'd0;
+            valid_fwd_o <= 1'b0; clear_acc_fwd_o <= 1'b0; last_mac_fwd_o <= 1'b0;
         end
         else begin
-            weight_out <= weight_in;
-            act_out <= act_in;
-            valid_out_fwd <= valid_in;
-            clear_acc_fwd <= clear_acc;
-            last_mac_out_fwd <= last_mac_in;
+            weight_o <= weight_i;
+            act_o <= act_i;
+            valid_fwd_o <= valid_i;
+            clear_acc_fwd_o <= clear_acc_i;
+            last_mac_fwd_o <= last_mac_i;
         end
     end
 endmodule

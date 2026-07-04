@@ -55,22 +55,22 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module gemm_system_gemm_top_l2_0_0 (
-  aclk,
-  aresetn,
-  cfg_m_total,
-  cfg_n_total,
-  cfg_k_total,
-  cfg_k_dim,
-  cfg_num_k_tiles_per_block,
-  cfg_base_a,
-  cfg_base_b,
-  cfg_base_c,
-  cfg_n_stride,
-  cfg_scale_shift,
-  cfg_zero_point,
-  start,
-  busy,
-  done,
+  CLK_i,
+  RST_i,
+  cfg_m_total_i,
+  cfg_n_total_i,
+  cfg_k_total_i,
+  cfg_k_dim_i,
+  cfg_num_k_tiles_per_block_i,
+  cfg_base_a_i,
+  cfg_base_b_i,
+  cfg_base_c_i,
+  cfg_n_stride_i,
+  cfg_scale_shift_i,
+  cfg_zero_point_i,
+  start_i,
+  busy_o,
+  done_o,
   mm2s_cmd_tdata,
   mm2s_cmd_tvalid,
   mm2s_cmd_tready,
@@ -91,31 +91,31 @@ module gemm_system_gemm_top_l2_0_0 (
   s2mm_sts_tready
 );
 
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 aclk CLK" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK_i CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aclk, ASSOCIATED_BUSIF mm2s:mm2s_cmd:s2mm:s2mm_cmd:s2mm_sts, ASSOCIATED_RESET aresetn, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
-input wire aclk;
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 aresetn RST" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK_i, ASSOCIATED_RESET RST_i, ASSOCIATED_BUSIF mm2s_cmd:mm2s:s2mm_cmd:s2mm:s2mm_sts, FREQ_HZ 142855713, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
+input wire CLK_i;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST_i RST" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
-input wire aresetn;
-input wire [15 : 0] cfg_m_total;
-input wire [15 : 0] cfg_n_total;
-input wire [15 : 0] cfg_k_total;
-input wire [15 : 0] cfg_k_dim;
-input wire [15 : 0] cfg_num_k_tiles_per_block;
-input wire [31 : 0] cfg_base_a;
-input wire [31 : 0] cfg_base_b;
-input wire [31 : 0] cfg_base_c;
-input wire [15 : 0] cfg_n_stride;
-input wire [4 : 0] cfg_scale_shift;
-input wire [7 : 0] cfg_zero_point;
-input wire start;
-output wire busy;
-output wire done;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST_i, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+input wire RST_i;
+input wire [15 : 0] cfg_m_total_i;
+input wire [15 : 0] cfg_n_total_i;
+input wire [15 : 0] cfg_k_total_i;
+input wire [15 : 0] cfg_k_dim_i;
+input wire [15 : 0] cfg_num_k_tiles_per_block_i;
+input wire [31 : 0] cfg_base_a_i;
+input wire [31 : 0] cfg_base_b_i;
+input wire [31 : 0] cfg_base_c_i;
+input wire [15 : 0] cfg_n_stride_i;
+input wire [4 : 0] cfg_scale_shift_i;
+input wire [7 : 0] cfg_zero_point_i;
+input wire start_i;
+output wire busy_o;
+output wire done_o;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 mm2s_cmd TDATA" *)
 (* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME mm2s_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99999001, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME mm2s_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 142855713, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0" *)
 output wire [71 : 0] mm2s_cmd_tdata;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 mm2s_cmd TVALID" *)
 output wire mm2s_cmd_tvalid;
@@ -123,7 +123,7 @@ output wire mm2s_cmd_tvalid;
 input wire mm2s_cmd_tready;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 mm2s TDATA" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME mm2s, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 99999001, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME mm2s, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 142855713, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0" *)
 input wire [127 : 0] mm2s_tdata;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 mm2s TVALID" *)
 input wire mm2s_tvalid;
@@ -133,7 +133,7 @@ output wire mm2s_tready;
 input wire mm2s_tlast;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s2mm_cmd TDATA" *)
 (* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s2mm_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99999001, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s2mm_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 142855713, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0" *)
 output wire [71 : 0] s2mm_cmd_tdata;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s2mm_cmd TVALID" *)
 output wire s2mm_cmd_tvalid;
@@ -141,7 +141,7 @@ output wire s2mm_cmd_tvalid;
 input wire s2mm_cmd_tready;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s2mm TDATA" *)
 (* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s2mm, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 99999001, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s2mm, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 142855713, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0" *)
 output wire [127 : 0] s2mm_tdata;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s2mm TVALID" *)
 output wire s2mm_tvalid;
@@ -153,7 +153,7 @@ output wire s2mm_tlast;
 output wire [15 : 0] s2mm_tkeep;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s2mm_sts TDATA" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s2mm_sts, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99999001, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s2mm_sts, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 142855713, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0" *)
 input wire [7 : 0] s2mm_sts_tdata;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s2mm_sts TVALID" *)
 input wire s2mm_sts_tvalid;
@@ -170,22 +170,22 @@ output wire s2mm_sts_tready;
     .FIFO_DEPTH(1024),
     .BRAM_DEPTH(1024)
   ) inst (
-    .aclk(aclk),
-    .aresetn(aresetn),
-    .cfg_m_total(cfg_m_total),
-    .cfg_n_total(cfg_n_total),
-    .cfg_k_total(cfg_k_total),
-    .cfg_k_dim(cfg_k_dim),
-    .cfg_num_k_tiles_per_block(cfg_num_k_tiles_per_block),
-    .cfg_base_a(cfg_base_a),
-    .cfg_base_b(cfg_base_b),
-    .cfg_base_c(cfg_base_c),
-    .cfg_n_stride(cfg_n_stride),
-    .cfg_scale_shift(cfg_scale_shift),
-    .cfg_zero_point(cfg_zero_point),
-    .start(start),
-    .busy(busy),
-    .done(done),
+    .CLK_i(CLK_i),
+    .RST_i(RST_i),
+    .cfg_m_total_i(cfg_m_total_i),
+    .cfg_n_total_i(cfg_n_total_i),
+    .cfg_k_total_i(cfg_k_total_i),
+    .cfg_k_dim_i(cfg_k_dim_i),
+    .cfg_num_k_tiles_per_block_i(cfg_num_k_tiles_per_block_i),
+    .cfg_base_a_i(cfg_base_a_i),
+    .cfg_base_b_i(cfg_base_b_i),
+    .cfg_base_c_i(cfg_base_c_i),
+    .cfg_n_stride_i(cfg_n_stride_i),
+    .cfg_scale_shift_i(cfg_scale_shift_i),
+    .cfg_zero_point_i(cfg_zero_point_i),
+    .start_i(start_i),
+    .busy_o(busy_o),
+    .done_o(done_o),
     .mm2s_cmd_tdata(mm2s_cmd_tdata),
     .mm2s_cmd_tvalid(mm2s_cmd_tvalid),
     .mm2s_cmd_tready(mm2s_cmd_tready),

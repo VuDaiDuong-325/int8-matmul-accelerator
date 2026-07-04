@@ -3,22 +3,22 @@
 # SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
 # IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
 # SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-# Start of session at: Thu Jun 25 13:52:04 2026
-# Process ID         : 14764
-# Current directory  : D:/gemm_accelerator/gemm_accelerator.runs/synth_1
+# Start of session at: Sat Jul  4 15:11:51 2026
+# Process ID         : 9304
+# Current directory  : D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.runs/synth_1
 # Command line       : vivado.exe -log gemm_system_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source gemm_system_wrapper.tcl
-# Log file           : D:/gemm_accelerator/gemm_accelerator.runs/synth_1/gemm_system_wrapper.vds
-# Journal file       : D:/gemm_accelerator/gemm_accelerator.runs/synth_1\vivado.jou
-# Running On         : VuDuong-32
+# Log file           : D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.runs/synth_1/gemm_system_wrapper.vds
+# Journal file       : D:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.runs/synth_1\vivado.jou
+# Running On         : ZUYYYY
 # Platform           : Windows Server 2016 or Windows 10
 # Operating System   : 26200
-# Processor Detail   : Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz
-# CPU Frequency      : 1992 MHz
-# CPU Physical cores : 4
-# CPU Logical cores  : 8
-# Host memory        : 8448 MB
-# Swap memory        : 25467 MB
-# Total Virtual      : 33916 MB
-# Available Virtual  : 20744 MB
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i5-13500H
+# CPU Frequency      : 3187 MHz
+# CPU Physical cores : 12
+# CPU Logical cores  : 16
+# Host memory        : 16794 MB
+# Swap memory        : 11811 MB
+# Total Virtual      : 28605 MB
+# Available Virtual  : 9324 MB
 #-----------------------------------------------------------
 source gemm_system_wrapper.tcl -notrace

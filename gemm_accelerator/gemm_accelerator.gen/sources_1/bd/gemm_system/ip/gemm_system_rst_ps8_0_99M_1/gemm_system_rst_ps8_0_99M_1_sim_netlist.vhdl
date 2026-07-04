@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
--- Date        : Mon Jun 22 16:08:13 2026
--- Host        : VuDuong-32 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top gemm_system_rst_ps8_0_99M_1 -prefix
---               gemm_system_rst_ps8_0_99M_1_ gemm_system_rst_ps8_0_99M_1_sim_netlist.vhdl
+-- Date        : Sat Jul  4 15:11:15 2026
+-- Host        : ZUYYYY running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim
+--               d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_rst_ps8_0_99M_1/gemm_system_rst_ps8_0_99M_1_sim_netlist.vhdl
 -- Design      : gemm_system_rst_ps8_0_99M_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -22,6 +22,8 @@ entity gemm_system_rst_ps8_0_99M_1_upcnt_n is
     seq_cnt_en : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of gemm_system_rst_ps8_0_99M_1_upcnt_n : entity is "upcnt_n";
 end gemm_system_rst_ps8_0_99M_1_upcnt_n;
 
 architecture STRUCTURE of gemm_system_rst_ps8_0_99M_1_upcnt_n is
@@ -188,6 +190,8 @@ entity gemm_system_rst_ps8_0_99M_1_xpm_cdc_single is
   attribute DEST_SYNC_FF of gemm_system_rst_ps8_0_99M_1_xpm_cdc_single : entity is 4;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of gemm_system_rst_ps8_0_99M_1_xpm_cdc_single : entity is 0;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of gemm_system_rst_ps8_0_99M_1_xpm_cdc_single : entity is "xpm_cdc_single";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of gemm_system_rst_ps8_0_99M_1_xpm_cdc_single : entity is 0;
   attribute SRC_INPUT_REG : integer;
@@ -358,6 +362,8 @@ entity gemm_system_rst_ps8_0_99M_1_lpf is
     ext_reset_in : in STD_LOGIC;
     aux_reset_in : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of gemm_system_rst_ps8_0_99M_1_lpf : entity is "lpf";
 end gemm_system_rst_ps8_0_99M_1_lpf;
 
 architecture STRUCTURE of gemm_system_rst_ps8_0_99M_1_lpf is
@@ -601,6 +607,8 @@ entity gemm_system_rst_ps8_0_99M_1_sequence_psr is
     lpf_int : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of gemm_system_rst_ps8_0_99M_1_sequence_psr : entity is "sequence_psr";
 end gemm_system_rst_ps8_0_99M_1_sequence_psr;
 
 architecture STRUCTURE of gemm_system_rst_ps8_0_99M_1_sequence_psr is
@@ -939,6 +947,8 @@ entity gemm_system_rst_ps8_0_99M_1_proc_sys_reset is
   attribute C_NUM_PERP_ARESETN of gemm_system_rst_ps8_0_99M_1_proc_sys_reset : entity is 1;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of gemm_system_rst_ps8_0_99M_1_proc_sys_reset : entity is 1;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of gemm_system_rst_ps8_0_99M_1_proc_sys_reset : entity is "proc_sys_reset";
 end gemm_system_rst_ps8_0_99M_1_proc_sys_reset;
 
 architecture STRUCTURE of gemm_system_rst_ps8_0_99M_1_proc_sys_reset is
@@ -1108,7 +1118,7 @@ architecture STRUCTURE of gemm_system_rst_ps8_0_99M_1 is
   attribute x_interface_parameter of mb_reset : signal is "XIL_INTERFACENAME mb_rst, POLARITY ACTIVE_HIGH, TYPE PROCESSOR, INSERT_VIP 0";
   attribute x_interface_info of slowest_sync_clk : signal is "xilinx.com:signal:clock:1.0 clock CLK";
   attribute x_interface_mode of slowest_sync_clk : signal is "slave clock";
-  attribute x_interface_parameter of slowest_sync_clk : signal is "XIL_INTERFACENAME clock, ASSOCIATED_RESET mb_reset:bus_struct_reset:interconnect_aresetn:peripheral_aresetn:peripheral_reset, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute x_interface_parameter of slowest_sync_clk : signal is "XIL_INTERFACENAME clock, ASSOCIATED_RESET mb_reset:bus_struct_reset:interconnect_aresetn:peripheral_aresetn:peripheral_reset, FREQ_HZ 166664993, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
   attribute x_interface_info of bus_struct_reset : signal is "xilinx.com:signal:reset:1.0 bus_struct_reset RST";
   attribute x_interface_mode of bus_struct_reset : signal is "master bus_struct_reset";
   attribute x_interface_parameter of bus_struct_reset : signal is "XIL_INTERFACENAME bus_struct_reset, POLARITY ACTIVE_HIGH, TYPE INTERCONNECT, INSERT_VIP 0";
