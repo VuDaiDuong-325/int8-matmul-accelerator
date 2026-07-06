@@ -1,0 +1,73 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Addressing View_Layers":"/zynq_ultra_ps_e_0_pl_clk0:false|/rst_ps8_0_99M_peripheral_aresetn:false|/zynq_ultra_ps_e_0_pl_resetn0:false|",
+   "Addressing View_ScaleFactor":"0.645846",
+   "Addressing View_TopLeft":"74,-218",
+   "Color Coded_Layers":"/zynq_ultra_ps_e_0_pl_clk0:true|/rst_ps8_0_99M_peripheral_aresetn:true|/zynq_ultra_ps_e_0_pl_resetn0:true|",
+   "Color Coded_ScaleFactor":"0.394444",
+   "Color Coded_TopLeft":"71,-276",
+   "Default View_Layers":"/zynq_ultra_ps_e_0_pl_clk0:true|/rst_ps8_0_99M_peripheral_aresetn:true|/zynq_ultra_ps_e_0_pl_resetn0:true|",
+   "Default View_Layout":"",
+   "Default View_ScaleFactor":"1.20625",
+   "Default View_TopLeft":"85,497",
+   "Display-PortTypeClock":"true",
+   "Display-PortTypeOthers":"true",
+   "Display-PortTypeReset":"true",
+   "ExpandedHierarchyInLayout":"",
+   "Interfaces View_Layers":"/zynq_ultra_ps_e_0_pl_clk0:false|/rst_ps8_0_99M_peripheral_aresetn:false|/zynq_ultra_ps_e_0_pl_resetn0:false|",
+   "Interfaces View_ScaleFactor":"0.536794",
+   "Interfaces View_TopLeft":"97,-229",
+   "No Loops_ScaleFactor":"0.419291",
+   "No Loops_TopLeft":"0,-110",
+   "Reduced Jogs_ScaleFactor":"0.320783",
+   "Reduced Jogs_TopLeft":"9,-47",
+   "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0
+#  -string -flagsOSRD
+preplace inst gemm_top_l2_0 -pg 1 -lvl 3 -x 1350 -y 610 -defaultsOSRD
+preplace inst gemm_l2_axi_lite_regs_0 -pg 1 -lvl 2 -x 840 -y 660 -defaultsOSRD
+preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x 290 -y 680 -defaultsOSRD
+preplace inst axi_datamover_0 -pg 1 -lvl 4 -x 1780 -y 690 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 2 -x 840 -y 950 -defaultsOSRD
+preplace inst rst_ps8_0_99M -pg 1 -lvl 2 -x 840 -y 400 -defaultsOSRD
+preplace inst smartconnect_0 -pg 1 -lvl 5 -x 2140 -y 650 -defaultsOSRD
+preplace inst smartconnect_1 -pg 1 -lvl 5 -x 2140 -y 790 -defaultsOSRD
+preplace inst axi_smc -pg 1 -lvl 3 -x 1350 -y 310 -defaultsOSRD
+preplace netloc gemm_l2_axi_lite_regs_0_cfg_base_a_o1 1 2 1 N 640
+preplace netloc gemm_l2_axi_lite_regs_0_cfg_base_b_o1 1 2 1 N 660
+preplace netloc gemm_l2_axi_lite_regs_0_cfg_base_c_o1 1 2 1 N 680
+preplace netloc gemm_l2_axi_lite_regs_0_cfg_k_dim_o1 1 2 1 N 600
+preplace netloc gemm_l2_axi_lite_regs_0_cfg_k_total_o1 1 2 1 N 580
+preplace netloc gemm_l2_axi_lite_regs_0_cfg_m_total_o1 1 2 1 N 540
+preplace netloc gemm_l2_axi_lite_regs_0_cfg_n_stride_o1 1 2 1 N 700
+preplace netloc gemm_l2_axi_lite_regs_0_cfg_n_total_o1 1 2 1 N 560
+preplace netloc gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block_o1 1 2 1 N 620
+preplace netloc gemm_l2_axi_lite_regs_0_cfg_scale_shift_o1 1 2 1 N 720
+preplace netloc gemm_l2_axi_lite_regs_0_cfg_zero_point_o1 1 2 1 N 740
+preplace netloc gemm_l2_axi_lite_regs_0_irq 1 1 2 620 1010 1060J
+preplace netloc gemm_l2_axi_lite_regs_0_start_o1 1 2 1 N 760
+preplace netloc gemm_top_l2_0_busy_o1 1 1 3 610 880 N 880 1570
+preplace netloc gemm_top_l2_0_done_o1 1 1 3 630 870 N 870 1550
+preplace netloc rst_ps8_0_99M_peripheral_aresetn 1 1 4 590 850 1120J 820 1600 880 2010
+preplace netloc xlconcat_0_dout 1 0 3 -20 1020 N 1020 1050J
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 5 0 790 600 300 1130 400 1590 870 2000
+preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 1 1 610 380n
+preplace netloc axi_datamover_0_M_AXIS_MM2S 1 2 3 1140 860 N 860 1960
+preplace netloc axi_datamover_0_M_AXIS_S2MM_STS 1 2 3 1150 850 N 850 1970
+preplace netloc axi_datamover_0_M_AXI_MM2S 1 4 1 N 630
+preplace netloc axi_datamover_0_M_AXI_S2MM 1 4 1 1980 650n
+preplace netloc axi_smc_M00_AXI 1 1 3 620 840 N 840 1560
+preplace netloc gemm_top_l2_0_mm2s_cmd 1 3 1 1580 570n
+preplace netloc gemm_top_l2_0_s2mm 1 3 1 N 590
+preplace netloc gemm_top_l2_0_s2mm_cmd 1 3 1 N 610
+preplace netloc smartconnect_0_M00_AXI 1 0 6 -30 890 N 890 N 890 N 890 N 890 2280
+preplace netloc smartconnect_1_M00_AXI 1 0 6 -10 860 N 860 1070 900 N 900 N 900 2270
+preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_FPD 1 1 2 580 290 N
+levelinfo -pg 1 -50 290 840 1350 1780 2140 3070
+pagesize -pg 1 -db -bbox -sgen -50 -30 3230 1270
+"
+}
+{
+   "da_axi4_cnt":"7",
+   "da_clkrst_cnt":"21",
+   "da_zynq_ultra_ps_e_cnt":"1"
+}

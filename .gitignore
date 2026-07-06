@@ -1,0 +1,5 @@
+# Block Vivado simulation outputs
+*.wdb
+*.xdbg
+*.wcfg
+/**/gemm_accelerator.sim/
