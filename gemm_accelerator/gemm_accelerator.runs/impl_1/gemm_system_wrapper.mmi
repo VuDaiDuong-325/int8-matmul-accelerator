@@ -12,7 +12,7 @@
 <MemInfo Version="1" Minor="9">
   <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/u_gemm_compute_core/u_sc_fifo_fwft_c/xpm_fifo_sync_inst/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
     <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/u_gemm_compute_core/u_sc_fifo_fwft_c/xpm_fifo_sync_inst/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst" CoreMemory_Width="512" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X1Y2" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X0Y15" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="35" LSB="0"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -21,7 +21,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X1Y3" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y12" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="71" LSB="36"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -30,7 +30,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y10" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y4" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="395" LSB="360"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -39,7 +39,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y11" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y1" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="431" LSB="396"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -48,7 +48,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y12" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y0" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="467" LSB="432"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -57,7 +57,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y19" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y2" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="503" LSB="468"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -66,7 +66,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB18" Placement="X2Y40" Read_Width_A="18" Read_Width_B="18" SLR_INDEX="0">
+      <BRAM MemType="RAMB18" Placement="X1Y8" Read_Width_A="18" Read_Width_B="18" SLR_INDEX="0">
         <DataWidth_PortA MSB="511" LSB="504"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p0_d8"/>
@@ -75,7 +75,7 @@
         <BitLayout_PortB pattern="p0_d8"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X1Y4" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y10" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="107" LSB="72"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -84,7 +84,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X1Y5" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X0Y8" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="143" LSB="108"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -93,7 +93,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y6" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X0Y7" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="179" LSB="144"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -102,7 +102,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y5" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y8" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="215" LSB="180"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -111,7 +111,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X1Y6" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y11" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="251" LSB="216"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -120,7 +120,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y7" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X0Y11" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="287" LSB="252"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -129,7 +129,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y17" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y9" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="323" LSB="288"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -138,7 +138,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y8" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y7" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="359" LSB="324"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -151,7 +151,7 @@
   </MemoryArray>
   <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/u_gbufB/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
     <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/u_gbufB/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X2Y22" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y15" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="35" LSB="0"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -160,7 +160,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y23" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y16" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="35" LSB="0"/>
         <AddressRange_PortA Begin="1024" End="2047"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -169,7 +169,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X0Y32" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y15" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="71" LSB="36"/>
         <AddressRange_PortA Begin="2048" End="3071"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -178,7 +178,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X0Y33" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y16" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="71" LSB="36"/>
         <AddressRange_PortA Begin="3072" End="4095"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -187,7 +187,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X0Y34" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y17" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="71" LSB="36"/>
         <AddressRange_PortA Begin="4096" End="5119"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -196,7 +196,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X0Y35" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y18" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="71" LSB="36"/>
         <AddressRange_PortA Begin="5120" End="6143"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -205,7 +205,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X0Y36" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y19" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="71" LSB="36"/>
         <AddressRange_PortA Begin="6144" End="7167"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -214,7 +214,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X0Y37" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y20" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="71" LSB="36"/>
         <AddressRange_PortA Begin="7168" End="8191"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -223,7 +223,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y36" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y5" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="107" LSB="72"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -232,7 +232,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y37" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y6" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="107" LSB="72"/>
         <AddressRange_PortA Begin="1024" End="2047"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -241,7 +241,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y38" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y7" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="107" LSB="72"/>
         <AddressRange_PortA Begin="2048" End="3071"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -250,7 +250,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y39" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y8" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="107" LSB="72"/>
         <AddressRange_PortA Begin="3072" End="4095"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -259,7 +259,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y24" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y17" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="35" LSB="0"/>
         <AddressRange_PortA Begin="2048" End="3071"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -268,7 +268,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y40" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y9" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="107" LSB="72"/>
         <AddressRange_PortA Begin="4096" End="5119"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -277,7 +277,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y41" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y10" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="107" LSB="72"/>
         <AddressRange_PortA Begin="5120" End="6143"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -286,7 +286,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y42" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y11" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="107" LSB="72"/>
         <AddressRange_PortA Begin="6144" End="7167"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -295,7 +295,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y43" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y12" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="107" LSB="72"/>
         <AddressRange_PortA Begin="7168" End="8191"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -304,7 +304,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X1Y30" Read_Width_A="18" Read_Width_B="18" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y0" Read_Width_A="18" Read_Width_B="18" SLR_INDEX="0">
         <DataWidth_PortA MSB="125" LSB="108"/>
         <AddressRange_PortA Begin="0" End="2047"/>
         <BitLayout_PortA pattern="p2_d16"/>
@@ -313,7 +313,7 @@
         <BitLayout_PortB pattern="p2_d16"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X1Y31" Read_Width_A="18" Read_Width_B="18" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y1" Read_Width_A="18" Read_Width_B="18" SLR_INDEX="0">
         <DataWidth_PortA MSB="125" LSB="108"/>
         <AddressRange_PortA Begin="2048" End="4095"/>
         <BitLayout_PortA pattern="p2_d16"/>
@@ -322,7 +322,7 @@
         <BitLayout_PortB pattern="p2_d16"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X1Y32" Read_Width_A="18" Read_Width_B="18" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y2" Read_Width_A="18" Read_Width_B="18" SLR_INDEX="0">
         <DataWidth_PortA MSB="125" LSB="108"/>
         <AddressRange_PortA Begin="4096" End="6143"/>
         <BitLayout_PortA pattern="p2_d16"/>
@@ -331,7 +331,7 @@
         <BitLayout_PortB pattern="p2_d16"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X1Y33" Read_Width_A="18" Read_Width_B="18" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y3" Read_Width_A="18" Read_Width_B="18" SLR_INDEX="0">
         <DataWidth_PortA MSB="125" LSB="108"/>
         <AddressRange_PortA Begin="6144" End="8191"/>
         <BitLayout_PortA pattern="p2_d16"/>
@@ -340,7 +340,7 @@
         <BitLayout_PortB pattern="p2_d16"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB18" Placement="X1Y58" Read_Width_A="2" Read_Width_B="2" SLR_INDEX="0">
+      <BRAM MemType="RAMB18" Placement="X0Y10" Read_Width_A="2" Read_Width_B="2" SLR_INDEX="0">
         <DataWidth_PortA MSB="127" LSB="126"/>
         <AddressRange_PortA Begin="0" End="8191"/>
         <BitLayout_PortA pattern="p0_d2"/>
@@ -349,7 +349,7 @@
         <BitLayout_PortB pattern="p0_d2"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y25" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y18" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="35" LSB="0"/>
         <AddressRange_PortA Begin="3072" End="4095"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -358,7 +358,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y26" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y19" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="35" LSB="0"/>
         <AddressRange_PortA Begin="4096" End="5119"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -367,7 +367,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y27" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y20" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="35" LSB="0"/>
         <AddressRange_PortA Begin="5120" End="6143"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -376,7 +376,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y28" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y21" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="35" LSB="0"/>
         <AddressRange_PortA Begin="6144" End="7167"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -385,7 +385,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y29" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X2Y22" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="35" LSB="0"/>
         <AddressRange_PortA Begin="7168" End="8191"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -394,7 +394,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X0Y30" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y13" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="71" LSB="36"/>
         <AddressRange_PortA Begin="0" End="1023"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -403,7 +403,7 @@
         <BitLayout_PortB pattern="p4_d32"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X0Y31" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X1Y14" Read_Width_A="36" Read_Width_B="36" SLR_INDEX="0">
         <DataWidth_PortA MSB="71" LSB="36"/>
         <AddressRange_PortA Begin="1024" End="2047"/>
         <BitLayout_PortA pattern="p4_d32"/>
@@ -416,7 +416,271 @@
   </MemoryArray>
   <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[9].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
     <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[9].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X0Y19" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X0Y23" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="71" LSB="0"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p8_d64"/>
+        <DataWidth_PortB MSB="71" LSB="0"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p8_d64"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+      <BRAM MemType="RAMB36" Placement="X0Y17" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="127" LSB="72"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p0_d56"/>
+        <DataWidth_PortB MSB="127" LSB="72"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p0_d56"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+    </MemoryLayout>
+  </MemoryArray>
+  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[8].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
+    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[8].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
+      <BRAM MemType="RAMB36" Placement="X0Y32" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="71" LSB="0"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p8_d64"/>
+        <DataWidth_PortB MSB="71" LSB="0"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p8_d64"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+      <BRAM MemType="RAMB36" Placement="X0Y28" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="127" LSB="72"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p0_d56"/>
+        <DataWidth_PortB MSB="127" LSB="72"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p0_d56"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+    </MemoryLayout>
+  </MemoryArray>
+  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[7].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
+    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[7].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
+      <BRAM MemType="RAMB36" Placement="X0Y39" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="71" LSB="0"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p8_d64"/>
+        <DataWidth_PortB MSB="71" LSB="0"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p8_d64"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+      <BRAM MemType="RAMB36" Placement="X0Y38" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="127" LSB="72"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p0_d56"/>
+        <DataWidth_PortB MSB="127" LSB="72"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p0_d56"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+    </MemoryLayout>
+  </MemoryArray>
+  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[6].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
+    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[6].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
+      <BRAM MemType="RAMB36" Placement="X0Y41" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="71" LSB="0"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p8_d64"/>
+        <DataWidth_PortB MSB="71" LSB="0"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p8_d64"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+      <BRAM MemType="RAMB36" Placement="X0Y40" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="127" LSB="72"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p0_d56"/>
+        <DataWidth_PortB MSB="127" LSB="72"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p0_d56"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+    </MemoryLayout>
+  </MemoryArray>
+  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[5].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
+    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[5].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
+      <BRAM MemType="RAMB36" Placement="X0Y31" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="71" LSB="0"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p8_d64"/>
+        <DataWidth_PortB MSB="71" LSB="0"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p8_d64"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+      <BRAM MemType="RAMB36" Placement="X0Y16" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="127" LSB="72"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p0_d56"/>
+        <DataWidth_PortB MSB="127" LSB="72"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p0_d56"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+    </MemoryLayout>
+  </MemoryArray>
+  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[4].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
+    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[4].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
+      <BRAM MemType="RAMB36" Placement="X0Y24" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="71" LSB="0"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p8_d64"/>
+        <DataWidth_PortB MSB="71" LSB="0"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p8_d64"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+      <BRAM MemType="RAMB36" Placement="X1Y24" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="127" LSB="72"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p0_d56"/>
+        <DataWidth_PortB MSB="127" LSB="72"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p0_d56"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+    </MemoryLayout>
+  </MemoryArray>
+  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[3].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
+    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[3].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
+      <BRAM MemType="RAMB36" Placement="X0Y25" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="71" LSB="0"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p8_d64"/>
+        <DataWidth_PortB MSB="71" LSB="0"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p8_d64"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+      <BRAM MemType="RAMB36" Placement="X0Y21" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="127" LSB="72"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p0_d56"/>
+        <DataWidth_PortB MSB="127" LSB="72"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p0_d56"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+    </MemoryLayout>
+  </MemoryArray>
+  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[2].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
+    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[2].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
+      <BRAM MemType="RAMB36" Placement="X0Y30" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="71" LSB="0"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p8_d64"/>
+        <DataWidth_PortB MSB="71" LSB="0"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p8_d64"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+      <BRAM MemType="RAMB36" Placement="X1Y31" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="127" LSB="72"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p0_d56"/>
+        <DataWidth_PortB MSB="127" LSB="72"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p0_d56"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+    </MemoryLayout>
+  </MemoryArray>
+  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[1].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
+    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[1].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
+      <BRAM MemType="RAMB36" Placement="X0Y43" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="71" LSB="0"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p8_d64"/>
+        <DataWidth_PortB MSB="71" LSB="0"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p8_d64"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+      <BRAM MemType="RAMB36" Placement="X0Y42" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="127" LSB="72"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p0_d56"/>
+        <DataWidth_PortB MSB="127" LSB="72"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p0_d56"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+    </MemoryLayout>
+  </MemoryArray>
+  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[15].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
+    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[15].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
+      <BRAM MemType="RAMB36" Placement="X0Y37" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="71" LSB="0"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p8_d64"/>
+        <DataWidth_PortB MSB="71" LSB="0"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p8_d64"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+      <BRAM MemType="RAMB36" Placement="X0Y36" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="127" LSB="72"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p0_d56"/>
+        <DataWidth_PortB MSB="127" LSB="72"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p0_d56"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+    </MemoryLayout>
+  </MemoryArray>
+  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[14].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
+    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[14].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
+      <BRAM MemType="RAMB36" Placement="X0Y33" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="71" LSB="0"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p8_d64"/>
+        <DataWidth_PortB MSB="71" LSB="0"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p8_d64"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+      <BRAM MemType="RAMB36" Placement="X0Y29" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="127" LSB="72"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p0_d56"/>
+        <DataWidth_PortB MSB="127" LSB="72"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p0_d56"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+    </MemoryLayout>
+  </MemoryArray>
+  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[13].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
+    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[13].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
+      <BRAM MemType="RAMB36" Placement="X1Y30" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="71" LSB="0"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p8_d64"/>
+        <DataWidth_PortB MSB="71" LSB="0"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p8_d64"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+      <BRAM MemType="RAMB36" Placement="X1Y29" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+        <DataWidth_PortA MSB="127" LSB="72"/>
+        <AddressRange_PortA Begin="0" End="511"/>
+        <BitLayout_PortA pattern="p0_d56"/>
+        <DataWidth_PortB MSB="127" LSB="72"/>
+        <AddressRange_PortB Begin="0" End="511"/>
+        <BitLayout_PortB pattern="p0_d56"/>
+        <Parity ON="false" NumBits="0"/>
+      </BRAM>
+    </MemoryLayout>
+  </MemoryArray>
+  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[12].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
+    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[12].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
+      <BRAM MemType="RAMB36" Placement="X0Y20" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
         <DataWidth_PortA MSB="71" LSB="0"/>
         <AddressRange_PortA Begin="0" End="511"/>
         <BitLayout_PortA pattern="p8_d64"/>
@@ -436,163 +700,9 @@
       </BRAM>
     </MemoryLayout>
   </MemoryArray>
-  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[8].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
-    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[8].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X1Y13" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="71" LSB="0"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p8_d64"/>
-        <DataWidth_PortB MSB="71" LSB="0"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p8_d64"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y13" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="127" LSB="72"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p0_d56"/>
-        <DataWidth_PortB MSB="127" LSB="72"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p0_d56"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-    </MemoryLayout>
-  </MemoryArray>
-  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[7].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
-    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[7].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X1Y11" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="71" LSB="0"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p8_d64"/>
-        <DataWidth_PortB MSB="71" LSB="0"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p8_d64"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-      <BRAM MemType="RAMB36" Placement="X1Y10" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="127" LSB="72"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p0_d56"/>
-        <DataWidth_PortB MSB="127" LSB="72"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p0_d56"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-    </MemoryLayout>
-  </MemoryArray>
-  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[6].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
-    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[6].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X1Y8" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="71" LSB="0"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p8_d64"/>
-        <DataWidth_PortB MSB="71" LSB="0"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p8_d64"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y9" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="127" LSB="72"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p0_d56"/>
-        <DataWidth_PortB MSB="127" LSB="72"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p0_d56"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-    </MemoryLayout>
-  </MemoryArray>
-  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[5].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
-    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[5].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X1Y9" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="71" LSB="0"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p8_d64"/>
-        <DataWidth_PortB MSB="71" LSB="0"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p8_d64"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-      <BRAM MemType="RAMB36" Placement="X1Y7" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="127" LSB="72"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p0_d56"/>
-        <DataWidth_PortB MSB="127" LSB="72"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p0_d56"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-    </MemoryLayout>
-  </MemoryArray>
-  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[4].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
-    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[4].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X1Y15" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="71" LSB="0"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p8_d64"/>
-        <DataWidth_PortB MSB="71" LSB="0"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p8_d64"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y16" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="127" LSB="72"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p0_d56"/>
-        <DataWidth_PortB MSB="127" LSB="72"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p0_d56"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-    </MemoryLayout>
-  </MemoryArray>
-  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[3].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
-    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[3].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X1Y22" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="71" LSB="0"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p8_d64"/>
-        <DataWidth_PortB MSB="71" LSB="0"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p8_d64"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-      <BRAM MemType="RAMB36" Placement="X1Y23" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="127" LSB="72"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p0_d56"/>
-        <DataWidth_PortB MSB="127" LSB="72"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p0_d56"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-    </MemoryLayout>
-  </MemoryArray>
-  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[2].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
-    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[2].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X1Y20" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="71" LSB="0"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p8_d64"/>
-        <DataWidth_PortB MSB="71" LSB="0"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p8_d64"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-      <BRAM MemType="RAMB36" Placement="X1Y19" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="127" LSB="72"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p0_d56"/>
-        <DataWidth_PortB MSB="127" LSB="72"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p0_d56"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-    </MemoryLayout>
-  </MemoryArray>
-  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[1].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
-    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[1].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X0Y25" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[11].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
+    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[11].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
+      <BRAM MemType="RAMB36" Placement="X0Y27" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
         <DataWidth_PortA MSB="71" LSB="0"/>
         <AddressRange_PortA Begin="0" End="511"/>
         <BitLayout_PortA pattern="p8_d64"/>
@@ -612,119 +722,9 @@
       </BRAM>
     </MemoryLayout>
   </MemoryArray>
-  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[15].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
-    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[15].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X1Y14" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="71" LSB="0"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p8_d64"/>
-        <DataWidth_PortB MSB="71" LSB="0"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p8_d64"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-      <BRAM MemType="RAMB36" Placement="X1Y12" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="127" LSB="72"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p0_d56"/>
-        <DataWidth_PortB MSB="127" LSB="72"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p0_d56"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-    </MemoryLayout>
-  </MemoryArray>
-  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[14].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
-    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[14].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X0Y13" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="71" LSB="0"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p8_d64"/>
-        <DataWidth_PortB MSB="71" LSB="0"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p8_d64"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-      <BRAM MemType="RAMB36" Placement="X0Y11" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="127" LSB="72"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p0_d56"/>
-        <DataWidth_PortB MSB="127" LSB="72"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p0_d56"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-    </MemoryLayout>
-  </MemoryArray>
-  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[13].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
-    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[13].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X0Y14" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="71" LSB="0"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p8_d64"/>
-        <DataWidth_PortB MSB="71" LSB="0"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p8_d64"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-      <BRAM MemType="RAMB36" Placement="X0Y12" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="127" LSB="72"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p0_d56"/>
-        <DataWidth_PortB MSB="127" LSB="72"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p0_d56"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-    </MemoryLayout>
-  </MemoryArray>
-  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[12].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
-    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[12].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X0Y23" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="71" LSB="0"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p8_d64"/>
-        <DataWidth_PortB MSB="71" LSB="0"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p8_d64"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-      <BRAM MemType="RAMB36" Placement="X0Y22" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="127" LSB="72"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p0_d56"/>
-        <DataWidth_PortB MSB="127" LSB="72"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p0_d56"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-    </MemoryLayout>
-  </MemoryArray>
-  <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[11].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
-    <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[11].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X1Y18" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="71" LSB="0"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p8_d64"/>
-        <DataWidth_PortB MSB="71" LSB="0"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p8_d64"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-      <BRAM MemType="RAMB36" Placement="X2Y18" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
-        <DataWidth_PortA MSB="127" LSB="72"/>
-        <AddressRange_PortA Begin="0" End="511"/>
-        <BitLayout_PortA pattern="p0_d56"/>
-        <DataWidth_PortB MSB="127" LSB="72"/>
-        <AddressRange_PortB Begin="0" End="511"/>
-        <BitLayout_PortB pattern="p0_d56"/>
-        <Parity ON="false" NumBits="0"/>
-      </BRAM>
-    </MemoryLayout>
-  </MemoryArray>
   <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[10].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
     <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[10].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X0Y21" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X0Y22" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
         <DataWidth_PortA MSB="71" LSB="0"/>
         <AddressRange_PortA Begin="0" End="511"/>
         <BitLayout_PortA pattern="p8_d64"/>
@@ -733,7 +733,7 @@
         <BitLayout_PortB pattern="p8_d64"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X0Y20" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X0Y19" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
         <DataWidth_PortA MSB="127" LSB="72"/>
         <AddressRange_PortA Begin="0" End="511"/>
         <BitLayout_PortA pattern="p0_d56"/>
@@ -746,7 +746,7 @@
   </MemoryArray>
   <MemoryArray InstPath="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[0].u_gbufA/xpm_memory_base_inst" MemoryPrimitive="block" MemoryConfiguration="enabled_configuration">
     <MemoryLayout Name="gemm_system_i/gemm_top_l2_0/inst/u_l2_tiling_agu/GBUFA_BANKS[0].u_gbufA/xpm_memory_base_inst" CoreMemory_Width="128" MemoryType="RAM_SDP">
-      <BRAM MemType="RAMB36" Placement="X0Y16" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X0Y35" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
         <DataWidth_PortA MSB="71" LSB="0"/>
         <AddressRange_PortA Begin="0" End="511"/>
         <BitLayout_PortA pattern="p8_d64"/>
@@ -755,7 +755,7 @@
         <BitLayout_PortB pattern="p8_d64"/>
         <Parity ON="false" NumBits="0"/>
       </BRAM>
-      <BRAM MemType="RAMB36" Placement="X0Y15" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X0Y34" Read_Width_A="72" Read_Width_B="0" SLR_INDEX="0">
         <DataWidth_PortA MSB="127" LSB="72"/>
         <AddressRange_PortA Begin="0" End="511"/>
         <BitLayout_PortA pattern="p0_d56"/>

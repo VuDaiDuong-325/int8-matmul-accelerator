@@ -1,35 +1,10 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ADMIN" Host="ZUYYYY" Pid="3220" HostCore="16" HostMemory="016794714112">
+    <Process Command="vivado.bat" Owner="ADMIN" Host="ZUYYYY" Pid="4000" HostCore="16" HostMemory="016794714112">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ADMIN" Host="ZUYYYY" Pid="9364" HostCore="16" HostMemory="016794714112">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ADMIN" Host="ZUYYYY" Pid="18332" HostCore="16" HostMemory="016794714112">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ADMIN" Host="ZUYYYY" Pid="17784" HostCore="16" HostMemory="016794714112">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ADMIN" Host="ZUYYYY" Pid="19296" HostCore="16" HostMemory="016794714112">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ADMIN" Host="ZUYYYY" Pid="3112" HostCore="16" HostMemory="016794714112">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ADMIN" Host="ZUYYYY" Pid="28660" HostCore="16" HostMemory="016794714112">
+    <Process Command="vivado.bat" Owner="ADMIN" Host="ZUYYYY" Pid="29832" HostCore="16" HostMemory="016794714112">
     </Process>
 </ProcessHandle>

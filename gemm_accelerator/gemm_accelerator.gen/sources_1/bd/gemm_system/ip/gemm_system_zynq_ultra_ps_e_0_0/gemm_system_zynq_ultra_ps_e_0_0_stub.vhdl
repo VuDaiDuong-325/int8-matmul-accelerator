@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
--- Date        : Sat Jul  4 15:11:18 2026
+-- Date        : Sat Jul  4 13:27:46 2026
 -- Host        : ZUYYYY running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_zynq_ultra_ps_e_0_0/gemm_system_zynq_ultra_ps_e_0_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top gemm_system_zynq_ultra_ps_e_0_0 -prefix
+--               gemm_system_zynq_ultra_ps_e_0_0_ gemm_system_zynq_ultra_ps_e_0_0_stub.vhdl
 -- Design      : gemm_system_zynq_ultra_ps_e_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xck26-sfvc784-2LV-c
@@ -159,10 +159,10 @@ architecture stub of gemm_system_zynq_ultra_ps_e_0_0 is
   attribute X_INTERFACE_MODE : string;
   attribute X_INTERFACE_MODE of maxihpm0_fpd_aclk : signal is "slave";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of maxihpm0_fpd_aclk : signal is "XIL_INTERFACENAME M_AXI_HPM0_FPD_ACLK, ASSOCIATED_BUSIF M_AXI_HPM0_FPD, FREQ_HZ 166664993, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of maxihpm0_fpd_aclk : signal is "XIL_INTERFACENAME M_AXI_HPM0_FPD_ACLK, ASSOCIATED_BUSIF M_AXI_HPM0_FPD, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of maxigp0_awid : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM0_FPD AWID";
   attribute X_INTERFACE_MODE of maxigp0_awid : signal is "master";
-  attribute X_INTERFACE_PARAMETER of maxigp0_awid : signal is "XIL_INTERFACENAME M_AXI_HPM0_FPD, NUM_WRITE_OUTSTANDING 8, NUM_READ_OUTSTANDING 8, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 166664993, ID_WIDTH 16, ADDR_WIDTH 40, AWUSER_WIDTH 16, ARUSER_WIDTH 16, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 1, MAX_BURST_LENGTH 256, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS 4, NUM_WRITE_THREADS 4, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of maxigp0_awid : signal is "XIL_INTERFACENAME M_AXI_HPM0_FPD, NUM_WRITE_OUTSTANDING 8, NUM_READ_OUTSTANDING 8, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 199998001, ID_WIDTH 16, ADDR_WIDTH 40, AWUSER_WIDTH 16, ARUSER_WIDTH 16, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 1, MAX_BURST_LENGTH 256, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS 4, NUM_WRITE_THREADS 4, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of maxigp0_awaddr : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM0_FPD AWADDR";
   attribute X_INTERFACE_INFO of maxigp0_awlen : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM0_FPD AWLEN";
   attribute X_INTERFACE_INFO of maxigp0_awsize : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM0_FPD AWSIZE";
@@ -203,10 +203,10 @@ architecture stub of gemm_system_zynq_ultra_ps_e_0_0 is
   attribute X_INTERFACE_INFO of maxigp0_arqos : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM0_FPD ARQOS";
   attribute X_INTERFACE_INFO of saxihpc0_fpd_aclk : signal is "xilinx.com:signal:clock:1.0 S_AXI_HPC0_FPD_ACLK CLK";
   attribute X_INTERFACE_MODE of saxihpc0_fpd_aclk : signal is "slave";
-  attribute X_INTERFACE_PARAMETER of saxihpc0_fpd_aclk : signal is "XIL_INTERFACENAME S_AXI_HPC0_FPD_ACLK, ASSOCIATED_BUSIF S_AXI_HPC0_FPD, FREQ_HZ 166664993, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of saxihpc0_fpd_aclk : signal is "XIL_INTERFACENAME S_AXI_HPC0_FPD_ACLK, ASSOCIATED_BUSIF S_AXI_HPC0_FPD, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of saxigp0_aruser : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HPC0_FPD ARUSER";
   attribute X_INTERFACE_MODE of saxigp0_aruser : signal is "slave";
-  attribute X_INTERFACE_PARAMETER of saxigp0_aruser : signal is "XIL_INTERFACENAME S_AXI_HPC0_FPD, NUM_WRITE_OUTSTANDING 16, NUM_READ_OUTSTANDING 16, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 166664993, ID_WIDTH 6, ADDR_WIDTH 49, AWUSER_WIDTH 1, ARUSER_WIDTH 1, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, MAX_BURST_LENGTH 16, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of saxigp0_aruser : signal is "XIL_INTERFACENAME S_AXI_HPC0_FPD, NUM_WRITE_OUTSTANDING 16, NUM_READ_OUTSTANDING 16, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 199998001, ID_WIDTH 6, ADDR_WIDTH 49, AWUSER_WIDTH 1, ARUSER_WIDTH 1, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, MAX_BURST_LENGTH 16, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of saxigp0_awuser : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HPC0_FPD AWUSER";
   attribute X_INTERFACE_INFO of saxigp0_awid : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HPC0_FPD AWID";
   attribute X_INTERFACE_INFO of saxigp0_awaddr : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HPC0_FPD AWADDR";
@@ -247,10 +247,10 @@ architecture stub of gemm_system_zynq_ultra_ps_e_0_0 is
   attribute X_INTERFACE_INFO of saxigp0_arqos : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HPC0_FPD ARQOS";
   attribute X_INTERFACE_INFO of saxihpc1_fpd_aclk : signal is "xilinx.com:signal:clock:1.0 S_AXI_HPC1_FPD_ACLK CLK";
   attribute X_INTERFACE_MODE of saxihpc1_fpd_aclk : signal is "slave";
-  attribute X_INTERFACE_PARAMETER of saxihpc1_fpd_aclk : signal is "XIL_INTERFACENAME S_AXI_HPC1_FPD_ACLK, ASSOCIATED_BUSIF S_AXI_HPC1_FPD, FREQ_HZ 166664993, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of saxihpc1_fpd_aclk : signal is "XIL_INTERFACENAME S_AXI_HPC1_FPD_ACLK, ASSOCIATED_BUSIF S_AXI_HPC1_FPD, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of saxigp1_aruser : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HPC1_FPD ARUSER";
   attribute X_INTERFACE_MODE of saxigp1_aruser : signal is "slave";
-  attribute X_INTERFACE_PARAMETER of saxigp1_aruser : signal is "XIL_INTERFACENAME S_AXI_HPC1_FPD, NUM_WRITE_OUTSTANDING 16, NUM_READ_OUTSTANDING 16, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 166664993, ID_WIDTH 6, ADDR_WIDTH 49, AWUSER_WIDTH 1, ARUSER_WIDTH 1, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, MAX_BURST_LENGTH 16, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of saxigp1_aruser : signal is "XIL_INTERFACENAME S_AXI_HPC1_FPD, NUM_WRITE_OUTSTANDING 16, NUM_READ_OUTSTANDING 16, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 199998001, ID_WIDTH 6, ADDR_WIDTH 49, AWUSER_WIDTH 1, ARUSER_WIDTH 1, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, MAX_BURST_LENGTH 16, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of saxigp1_awuser : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HPC1_FPD AWUSER";
   attribute X_INTERFACE_INFO of saxigp1_awid : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HPC1_FPD AWID";
   attribute X_INTERFACE_INFO of saxigp1_awaddr : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HPC1_FPD AWADDR";
@@ -297,7 +297,7 @@ architecture stub of gemm_system_zynq_ultra_ps_e_0_0 is
   attribute X_INTERFACE_PARAMETER of pl_resetn0 : signal is "XIL_INTERFACENAME PL_RESETN0, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of pl_clk0 : signal is "xilinx.com:signal:clock:1.0 PL_CLK0 CLK";
   attribute X_INTERFACE_MODE of pl_clk0 : signal is "master";
-  attribute X_INTERFACE_PARAMETER of pl_clk0 : signal is "XIL_INTERFACENAME PL_CLK0, FREQ_HZ 166664993, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of pl_clk0 : signal is "XIL_INTERFACENAME PL_CLK0, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of pl_clk1 : signal is "xilinx.com:signal:clock:1.0 PL_CLK1 CLK";
   attribute X_INTERFACE_MODE of pl_clk1 : signal is "master";
   attribute X_INTERFACE_PARAMETER of pl_clk1 : signal is "XIL_INTERFACENAME PL_CLK1, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk1, INSERT_VIP 0";

@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
--- Date        : Sat Jul  4 15:11:34 2026
+-- Date        : Sat Jul  4 13:28:05 2026
 -- Host        : ZUYYYY running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               d:/E/1subject/HK6/doan1/int8-matmul-accelerator/gemm_accelerator/gemm_accelerator.gen/sources_1/bd/gemm_system/ip/gemm_system_axi_datamover_0_0/gemm_system_axi_datamover_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top gemm_system_axi_datamover_0_0 -prefix
+--               gemm_system_axi_datamover_0_0_ gemm_system_axi_datamover_0_0_sim_netlist.vhdl
 -- Design      : gemm_system_axi_datamover_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -42,8 +42,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_mssai_skid_buf is
     sig_mmap_rst_reg_n : in STD_LOGIC;
     \sig_data_skid_reg_reg[127]_0\ : in STD_LOGIC_VECTOR ( 127 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_mssai_skid_buf : entity is "axi_datamover_mssai_skid_buf";
 end gemm_system_axi_datamover_0_0_axi_datamover_mssai_skid_buf;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_mssai_skid_buf is
@@ -5073,8 +5071,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_pcc is
     sig_init_done : in STD_LOGIC;
     sig_init_done_2 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_pcc : entity is "axi_datamover_pcc";
 end gemm_system_axi_datamover_0_0_axi_datamover_pcc;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_pcc is
@@ -17203,8 +17199,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_rd_status_cntl is
     sig_data2rsc_decerr : in STD_LOGIC;
     D : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_rd_status_cntl : entity is "axi_datamover_rd_status_cntl";
 end gemm_system_axi_datamover_0_0_axi_datamover_rd_status_cntl;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_rd_status_cntl is
@@ -17359,8 +17353,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_reset is
     m_axi_s2mm_aresetn : in STD_LOGIC;
     m_axi_s2mm_aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_reset : entity is "axi_datamover_reset";
 end gemm_system_axi_datamover_0_0_axi_datamover_reset;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_reset is
@@ -17581,8 +17573,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_skid2mm_buf is
     \sig_strb_skid_reg_reg[15]_0\ : in STD_LOGIC_VECTOR ( 15 downto 0 );
     \sig_strb_reg_out_reg[15]_0\ : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_skid2mm_buf : entity is "axi_datamover_skid2mm_buf";
 end gemm_system_axi_datamover_0_0_axi_datamover_skid2mm_buf;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_skid2mm_buf is
@@ -22203,8 +22193,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_skid_buf is
     s_axis_s2mm_tdata : in STD_LOGIC_VECTOR ( 127 downto 0 );
     s_axis_s2mm_tkeep : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_skid_buf : entity is "axi_datamover_skid_buf";
 end gemm_system_axi_datamover_0_0_axi_datamover_skid_buf;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_skid_buf is
@@ -31774,8 +31762,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_slice is
     sig_mmap_rst : in STD_LOGIC;
     \storage_data_reg[19]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_slice : entity is "axi_datamover_slice";
 end gemm_system_axi_datamover_0_0_axi_datamover_slice;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_slice is
@@ -32325,8 +32311,6 @@ entity gemm_system_axi_datamover_0_0_srl_fifo is
     sig_calc_error_pushed : in STD_LOGIC;
     s_axis_s2mm_cmd_tdata : in STD_LOGIC_VECTOR ( 53 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_srl_fifo : entity is "srl_fifo";
 end gemm_system_axi_datamover_0_0_srl_fifo;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_srl_fifo is
@@ -43236,8 +43220,6 @@ entity gemm_system_axi_datamover_0_0_xpm_fifo_reg_bit is
     wr_clk : in STD_LOGIC;
     rst : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_xpm_fifo_reg_bit : entity is "xpm_fifo_reg_bit";
 end gemm_system_axi_datamover_0_0_xpm_fifo_reg_bit;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_xpm_fifo_reg_bit is
@@ -43364,8 +43346,6 @@ entity gemm_system_axi_datamover_0_0_xpm_fifo_rst is
     rst_d1 : in STD_LOGIC;
     wr_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_xpm_fifo_rst : entity is "xpm_fifo_rst";
 end gemm_system_axi_datamover_0_0_xpm_fifo_rst;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_xpm_fifo_rst is
@@ -43742,8 +43722,6 @@ entity gemm_system_axi_datamover_0_0_xpm_memory_base is
   attribute MESSAGE_CONTROL of gemm_system_axi_datamover_0_0_xpm_memory_base : entity is 0;
   attribute NUM_CHAR_LOC : integer;
   attribute NUM_CHAR_LOC of gemm_system_axi_datamover_0_0_xpm_memory_base : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_xpm_memory_base : entity is "xpm_memory_base";
   attribute P_ECC_MODE : integer;
   attribute P_ECC_MODE of gemm_system_axi_datamover_0_0_xpm_memory_base : entity is 0;
   attribute P_ENABLE_BYTE_WRITE_A : integer;
@@ -46224,8 +46202,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_fifo is
     sig_init_done : in STD_LOGIC;
     s_axis_s2mm_cmd_tdata : in STD_LOGIC_VECTOR ( 53 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_fifo : entity is "axi_datamover_fifo";
 end gemm_system_axi_datamover_0_0_axi_datamover_fifo;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_fifo is
@@ -47570,8 +47546,6 @@ entity gemm_system_axi_datamover_0_0_xpm_fifo_base is
   attribute FULL_RESET_VALUE of gemm_system_axi_datamover_0_0_xpm_fifo_base : entity is 1;
   attribute FULL_RST_VAL : string;
   attribute FULL_RST_VAL of gemm_system_axi_datamover_0_0_xpm_fifo_base : entity is "1'b1";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_xpm_fifo_base : entity is "xpm_fifo_base";
   attribute PE_THRESH_ADJ : integer;
   attribute PE_THRESH_ADJ of gemm_system_axi_datamover_0_0_xpm_fifo_base : entity is 8;
   attribute PE_THRESH_MAX : integer;
@@ -49479,8 +49453,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_addr_cntl is
     sig_mstr2addr_cmd_valid : in STD_LOGIC;
     \in\ : in STD_LOGIC_VECTOR ( 37 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_addr_cntl : entity is "axi_datamover_addr_cntl";
 end gemm_system_axi_datamover_0_0_axi_datamover_addr_cntl;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_addr_cntl is
@@ -50641,8 +50613,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_cmd_status is
     s_axis_s2mm_cmd_tdata : in STD_LOGIC_VECTOR ( 53 downto 0 );
     \in\ : in STD_LOGIC_VECTOR ( 0 to 7 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_cmd_status : entity is "axi_datamover_cmd_status";
 end gemm_system_axi_datamover_0_0_axi_datamover_cmd_status;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_cmd_status is
@@ -50790,8 +50760,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_rddata_cntl is
     m_axi_mm2s_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     sig_next_calc_error_reg_reg_0 : in STD_LOGIC_VECTOR ( 43 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_rddata_cntl : entity is "axi_datamover_rddata_cntl";
 end gemm_system_axi_datamover_0_0_axi_datamover_rddata_cntl;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_rddata_cntl is
@@ -52081,8 +52049,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_wr_status_cntl is
     m_axi_s2mm_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \GEN_OMIT_INDET_BTT.sig_coelsc_tag_reg_reg[3]_0\ : in STD_LOGIC_VECTOR ( 0 to 6 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_wr_status_cntl : entity is "axi_datamover_wr_status_cntl";
 end gemm_system_axi_datamover_0_0_axi_datamover_wr_status_cntl;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_wr_status_cntl is
@@ -52386,8 +52352,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_wrdata_cntl is
     Q : in STD_LOGIC_VECTOR ( 15 downto 0 );
     sig_next_calc_error_reg_reg_0 : in STD_LOGIC_VECTOR ( 42 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_wrdata_cntl : entity is "axi_datamover_wrdata_cntl";
 end gemm_system_axi_datamover_0_0_axi_datamover_wrdata_cntl;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_wrdata_cntl is
@@ -53989,8 +53953,6 @@ entity gemm_system_axi_datamover_0_0_xpm_fifo_sync is
   attribute FIFO_WRITE_DEPTH of gemm_system_axi_datamover_0_0_xpm_fifo_sync : entity is 128;
   attribute FULL_RESET_VALUE : integer;
   attribute FULL_RESET_VALUE of gemm_system_axi_datamover_0_0_xpm_fifo_sync : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_xpm_fifo_sync : entity is "xpm_fifo_sync";
   attribute PROG_EMPTY_THRESH : integer;
   attribute PROG_EMPTY_THRESH of gemm_system_axi_datamover_0_0_xpm_fifo_sync : entity is 10;
   attribute PROG_FULL_THRESH : integer;
@@ -54829,8 +54791,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_sfifo_autord is
     sig_ok_to_post_rd_addr_reg_0 : in STD_LOGIC;
     sig_ok_to_post_rd_addr_reg_1 : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_sfifo_autord : entity is "axi_datamover_sfifo_autord";
 end gemm_system_axi_datamover_0_0_axi_datamover_sfifo_autord;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_sfifo_autord is
@@ -55725,8 +55685,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_rd_sf is
     sig_last_skid_reg : in STD_LOGIC;
     sig_mmap_rst_reg_n : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_rd_sf : entity is "axi_datamover_rd_sf";
 end gemm_system_axi_datamover_0_0_axi_datamover_rd_sf;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_rd_sf is
@@ -55959,8 +55917,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_wr_sf is
     Q : in STD_LOGIC_VECTOR ( 3 downto 0 );
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_wr_sf : entity is "axi_datamover_wr_sf";
 end gemm_system_axi_datamover_0_0_axi_datamover_wr_sf;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_wr_sf is
@@ -56288,8 +56244,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_mm2s_full_wrap is
     m_axi_mm2s_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     m_axis_mm2s_tready : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_mm2s_full_wrap : entity is "axi_datamover_mm2s_full_wrap";
 end gemm_system_axi_datamover_0_0_axi_datamover_mm2s_full_wrap;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_mm2s_full_wrap is
@@ -56624,8 +56578,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_s2mm_scatter is
     D : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \sig_data_skid_reg_reg[127]\ : in STD_LOGIC_VECTOR ( 127 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_s2mm_scatter : entity is "axi_datamover_s2mm_scatter";
 end gemm_system_axi_datamover_0_0_axi_datamover_s2mm_scatter;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_s2mm_scatter is
@@ -58302,8 +58254,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_s2mm_realign is
     \in\ : in STD_LOGIC_VECTOR ( 18 downto 0 );
     D : in STD_LOGIC_VECTOR ( 127 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_s2mm_realign : entity is "axi_datamover_s2mm_realign";
 end gemm_system_axi_datamover_0_0_axi_datamover_s2mm_realign;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_s2mm_realign is
@@ -58446,8 +58396,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover_s2mm_full_wrap is
     m_axi_s2mm_bvalid : in STD_LOGIC;
     m_axi_s2mm_wready : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover_s2mm_full_wrap : entity is "axi_datamover_s2mm_full_wrap";
 end gemm_system_axi_datamover_0_0_axi_datamover_s2mm_full_wrap;
 
 architecture STRUCTURE of gemm_system_axi_datamover_0_0_axi_datamover_s2mm_full_wrap is
@@ -59037,8 +58985,6 @@ entity gemm_system_axi_datamover_0_0_axi_datamover is
   attribute C_S2MM_SUPPORT_INDET_BTT of gemm_system_axi_datamover_0_0_axi_datamover : entity is 0;
   attribute C_S_AXIS_S2MM_TDATA_WIDTH : integer;
   attribute C_S_AXIS_S2MM_TDATA_WIDTH of gemm_system_axi_datamover_0_0_axi_datamover : entity is 128;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of gemm_system_axi_datamover_0_0_axi_datamover : entity is "axi_datamover";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of gemm_system_axi_datamover_0_0_axi_datamover : entity is "yes";
 end gemm_system_axi_datamover_0_0_axi_datamover;
@@ -59465,7 +59411,7 @@ architecture STRUCTURE of gemm_system_axi_datamover_0_0 is
   attribute x_interface_mode : string;
   attribute x_interface_mode of m_axi_mm2s_aclk : signal is "slave M_AXI_MM2S_ACLK";
   attribute x_interface_parameter : string;
-  attribute x_interface_parameter of m_axi_mm2s_aclk : signal is "XIL_INTERFACENAME M_AXI_MM2S_ACLK, ASSOCIATED_BUSIF M_AXI_MM2S:M_AXIS_MM2S:M_AXI, ASSOCIATED_RESET m_axi_mm2s_aresetn, FREQ_HZ 166664993, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute x_interface_parameter of m_axi_mm2s_aclk : signal is "XIL_INTERFACENAME M_AXI_MM2S_ACLK, ASSOCIATED_BUSIF M_AXI_MM2S:M_AXIS_MM2S:M_AXI, ASSOCIATED_RESET m_axi_mm2s_aresetn, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
   attribute x_interface_info of m_axi_mm2s_aresetn : signal is "xilinx.com:signal:reset:1.0 M_AXI_MM2S_ARESETN RST";
   attribute x_interface_mode of m_axi_mm2s_aresetn : signal is "slave M_AXI_MM2S_ARESETN";
   attribute x_interface_parameter of m_axi_mm2s_aresetn : signal is "XIL_INTERFACENAME M_AXI_MM2S_ARESETN, POLARITY ACTIVE_LOW, INSERT_VIP 0";
@@ -59476,7 +59422,7 @@ architecture STRUCTURE of gemm_system_axi_datamover_0_0 is
   attribute x_interface_info of m_axi_mm2s_rvalid : signal is "xilinx.com:interface:aximm:1.0 M_AXI_MM2S RVALID";
   attribute x_interface_info of m_axi_s2mm_aclk : signal is "xilinx.com:signal:clock:1.0 M_AXI_S2MM_ACLK CLK";
   attribute x_interface_mode of m_axi_s2mm_aclk : signal is "slave M_AXI_S2MM_ACLK";
-  attribute x_interface_parameter of m_axi_s2mm_aclk : signal is "XIL_INTERFACENAME M_AXI_S2MM_ACLK, ASSOCIATED_BUSIF M_AXI_S2MM:S_AXIS_S2MM, ASSOCIATED_RESET m_axi_s2mm_aresetn, FREQ_HZ 166664993, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute x_interface_parameter of m_axi_s2mm_aclk : signal is "XIL_INTERFACENAME M_AXI_S2MM_ACLK, ASSOCIATED_BUSIF M_AXI_S2MM:S_AXIS_S2MM, ASSOCIATED_RESET m_axi_s2mm_aresetn, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
   attribute x_interface_info of m_axi_s2mm_aresetn : signal is "xilinx.com:signal:reset:1.0 M_AXI_S2MM_ARESETN RST";
   attribute x_interface_mode of m_axi_s2mm_aresetn : signal is "slave M_AXI_S2MM_ARESETN";
   attribute x_interface_parameter of m_axi_s2mm_aresetn : signal is "XIL_INTERFACENAME M_AXI_S2MM_ARESETN, POLARITY ACTIVE_LOW, INSERT_VIP 0";
@@ -59489,7 +59435,7 @@ architecture STRUCTURE of gemm_system_axi_datamover_0_0 is
   attribute x_interface_info of m_axi_s2mm_wvalid : signal is "xilinx.com:interface:aximm:1.0 M_AXI_S2MM WVALID";
   attribute x_interface_info of m_axis_mm2s_cmdsts_aclk : signal is "xilinx.com:signal:clock:1.0 M_AXIS_MM2S_CMDSTS_ACLK CLK";
   attribute x_interface_mode of m_axis_mm2s_cmdsts_aclk : signal is "slave M_AXIS_MM2S_CMDSTS_ACLK";
-  attribute x_interface_parameter of m_axis_mm2s_cmdsts_aclk : signal is "XIL_INTERFACENAME M_AXIS_MM2S_CMDSTS_ACLK, ASSOCIATED_BUSIF S_AXIS_MM2S_CMD:M_AXIS_MM2S_STS, ASSOCIATED_RESET m_axis_mm2s_cmdsts_aresetn, FREQ_HZ 166664993, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute x_interface_parameter of m_axis_mm2s_cmdsts_aclk : signal is "XIL_INTERFACENAME M_AXIS_MM2S_CMDSTS_ACLK, ASSOCIATED_BUSIF S_AXIS_MM2S_CMD:M_AXIS_MM2S_STS, ASSOCIATED_RESET m_axis_mm2s_cmdsts_aresetn, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
   attribute x_interface_info of m_axis_mm2s_cmdsts_aresetn : signal is "xilinx.com:signal:reset:1.0 M_AXIS_MM2S_CMDSTS_ARESETN RST";
   attribute x_interface_mode of m_axis_mm2s_cmdsts_aresetn : signal is "slave M_AXIS_MM2S_CMDSTS_ARESETN";
   attribute x_interface_parameter of m_axis_mm2s_cmdsts_aresetn : signal is "XIL_INTERFACENAME M_AXIS_MM2S_CMDSTS_ARESETN, POLARITY ACTIVE_LOW, INSERT_VIP 0";
@@ -59497,7 +59443,7 @@ architecture STRUCTURE of gemm_system_axi_datamover_0_0 is
   attribute x_interface_info of m_axis_mm2s_sts_tready : signal is "xilinx.com:interface:axis:1.0 M_AXIS_MM2S_STS TREADY";
   attribute x_interface_info of m_axis_mm2s_sts_tvalid : signal is "xilinx.com:interface:axis:1.0 M_AXIS_MM2S_STS TVALID";
   attribute x_interface_mode of m_axis_mm2s_sts_tvalid : signal is "master M_AXIS_MM2S_STS";
-  attribute x_interface_parameter of m_axis_mm2s_sts_tvalid : signal is "XIL_INTERFACENAME M_AXIS_MM2S_STS, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 166664993, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute x_interface_parameter of m_axis_mm2s_sts_tvalid : signal is "XIL_INTERFACENAME M_AXIS_MM2S_STS, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 199998001, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute x_interface_info of m_axis_mm2s_tlast : signal is "xilinx.com:interface:axis:1.0 M_AXIS_MM2S TLAST";
   attribute x_interface_info of m_axis_mm2s_tready : signal is "xilinx.com:interface:axis:1.0 M_AXIS_MM2S TREADY";
   attribute x_interface_info of m_axis_mm2s_tvalid : signal is "xilinx.com:interface:axis:1.0 M_AXIS_MM2S TVALID";
@@ -59506,20 +59452,20 @@ architecture STRUCTURE of gemm_system_axi_datamover_0_0 is
   attribute x_interface_parameter of m_axis_s2mm_cmdsts_aresetn : signal is "XIL_INTERFACENAME M_AXIS_S2MM_CMDSTS_ARESETN, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute x_interface_info of m_axis_s2mm_cmdsts_awclk : signal is "xilinx.com:signal:clock:1.0 M_AXIS_S2MM_CMDSTS_AWCLK CLK";
   attribute x_interface_mode of m_axis_s2mm_cmdsts_awclk : signal is "slave M_AXIS_S2MM_CMDSTS_AWCLK";
-  attribute x_interface_parameter of m_axis_s2mm_cmdsts_awclk : signal is "XIL_INTERFACENAME M_AXIS_S2MM_CMDSTS_AWCLK, ASSOCIATED_BUSIF S_AXIS_S2MM_CMD:M_AXIS_S2MM_STS, ASSOCIATED_RESET m_axis_s2mm_cmdsts_aresetn, FREQ_HZ 166664993, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute x_interface_parameter of m_axis_s2mm_cmdsts_awclk : signal is "XIL_INTERFACENAME M_AXIS_S2MM_CMDSTS_AWCLK, ASSOCIATED_BUSIF S_AXIS_S2MM_CMD:M_AXIS_S2MM_STS, ASSOCIATED_RESET m_axis_s2mm_cmdsts_aresetn, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
   attribute x_interface_info of m_axis_s2mm_sts_tlast : signal is "xilinx.com:interface:axis:1.0 M_AXIS_S2MM_STS TLAST";
   attribute x_interface_info of m_axis_s2mm_sts_tready : signal is "xilinx.com:interface:axis:1.0 M_AXIS_S2MM_STS TREADY";
   attribute x_interface_info of m_axis_s2mm_sts_tvalid : signal is "xilinx.com:interface:axis:1.0 M_AXIS_S2MM_STS TVALID";
   attribute x_interface_mode of m_axis_s2mm_sts_tvalid : signal is "master M_AXIS_S2MM_STS";
-  attribute x_interface_parameter of m_axis_s2mm_sts_tvalid : signal is "XIL_INTERFACENAME M_AXIS_S2MM_STS, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 166664993, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute x_interface_parameter of m_axis_s2mm_sts_tvalid : signal is "XIL_INTERFACENAME M_AXIS_S2MM_STS, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 199998001, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute x_interface_info of s_axis_mm2s_cmd_tready : signal is "xilinx.com:interface:axis:1.0 S_AXIS_MM2S_CMD TREADY";
   attribute x_interface_info of s_axis_mm2s_cmd_tvalid : signal is "xilinx.com:interface:axis:1.0 S_AXIS_MM2S_CMD TVALID";
   attribute x_interface_mode of s_axis_mm2s_cmd_tvalid : signal is "slave S_AXIS_MM2S_CMD";
-  attribute x_interface_parameter of s_axis_mm2s_cmd_tvalid : signal is "XIL_INTERFACENAME S_AXIS_MM2S_CMD, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 166664993, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute x_interface_parameter of s_axis_mm2s_cmd_tvalid : signal is "XIL_INTERFACENAME S_AXIS_MM2S_CMD, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 199998001, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute x_interface_info of s_axis_s2mm_cmd_tready : signal is "xilinx.com:interface:axis:1.0 S_AXIS_S2MM_CMD TREADY";
   attribute x_interface_info of s_axis_s2mm_cmd_tvalid : signal is "xilinx.com:interface:axis:1.0 S_AXIS_S2MM_CMD TVALID";
   attribute x_interface_mode of s_axis_s2mm_cmd_tvalid : signal is "slave S_AXIS_S2MM_CMD";
-  attribute x_interface_parameter of s_axis_s2mm_cmd_tvalid : signal is "XIL_INTERFACENAME S_AXIS_S2MM_CMD, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 166664993, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute x_interface_parameter of s_axis_s2mm_cmd_tvalid : signal is "XIL_INTERFACENAME S_AXIS_S2MM_CMD, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 199998001, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute x_interface_info of s_axis_s2mm_tlast : signal is "xilinx.com:interface:axis:1.0 S_AXIS_S2MM TLAST";
   attribute x_interface_info of s_axis_s2mm_tready : signal is "xilinx.com:interface:axis:1.0 S_AXIS_S2MM TREADY";
   attribute x_interface_info of s_axis_s2mm_tvalid : signal is "xilinx.com:interface:axis:1.0 S_AXIS_S2MM TVALID";
@@ -59528,7 +59474,7 @@ architecture STRUCTURE of gemm_system_axi_datamover_0_0 is
   attribute x_interface_info of m_axi_mm2s_arcache : signal is "xilinx.com:interface:aximm:1.0 M_AXI_MM2S ARCACHE";
   attribute x_interface_info of m_axi_mm2s_arid : signal is "xilinx.com:interface:aximm:1.0 M_AXI_MM2S ARID";
   attribute x_interface_mode of m_axi_mm2s_arid : signal is "master M_AXI_MM2S";
-  attribute x_interface_parameter of m_axi_mm2s_arid : signal is "XIL_INTERFACENAME M_AXI_MM2S, NUM_READ_OUTSTANDING 2, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 166664993, ID_WIDTH 4, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 4, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_ONLY, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 0, HAS_BRESP 0, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 16, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute x_interface_parameter of m_axi_mm2s_arid : signal is "XIL_INTERFACENAME M_AXI_MM2S, NUM_READ_OUTSTANDING 2, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 199998001, ID_WIDTH 4, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 4, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_ONLY, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 0, HAS_BRESP 0, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 16, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   attribute x_interface_info of m_axi_mm2s_arlen : signal is "xilinx.com:interface:aximm:1.0 M_AXI_MM2S ARLEN";
   attribute x_interface_info of m_axi_mm2s_arprot : signal is "xilinx.com:interface:aximm:1.0 M_AXI_MM2S ARPROT";
   attribute x_interface_info of m_axi_mm2s_arsize : signal is "xilinx.com:interface:aximm:1.0 M_AXI_MM2S ARSIZE";
@@ -59540,7 +59486,7 @@ architecture STRUCTURE of gemm_system_axi_datamover_0_0 is
   attribute x_interface_info of m_axi_s2mm_awcache : signal is "xilinx.com:interface:aximm:1.0 M_AXI_S2MM AWCACHE";
   attribute x_interface_info of m_axi_s2mm_awid : signal is "xilinx.com:interface:aximm:1.0 M_AXI_S2MM AWID";
   attribute x_interface_mode of m_axi_s2mm_awid : signal is "master M_AXI_S2MM";
-  attribute x_interface_parameter of m_axi_s2mm_awid : signal is "XIL_INTERFACENAME M_AXI_S2MM, NUM_WRITE_OUTSTANDING 2, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 166664993, ID_WIDTH 4, ADDR_WIDTH 32, AWUSER_WIDTH 4, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE WRITE_ONLY, HAS_BURST 1, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 0, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 2, MAX_BURST_LENGTH 16, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute x_interface_parameter of m_axi_s2mm_awid : signal is "XIL_INTERFACENAME M_AXI_S2MM, NUM_WRITE_OUTSTANDING 2, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 199998001, ID_WIDTH 4, ADDR_WIDTH 32, AWUSER_WIDTH 4, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE WRITE_ONLY, HAS_BURST 1, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 0, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 2, MAX_BURST_LENGTH 16, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   attribute x_interface_info of m_axi_s2mm_awlen : signal is "xilinx.com:interface:aximm:1.0 M_AXI_S2MM AWLEN";
   attribute x_interface_info of m_axi_s2mm_awprot : signal is "xilinx.com:interface:aximm:1.0 M_AXI_S2MM AWPROT";
   attribute x_interface_info of m_axi_s2mm_awsize : signal is "xilinx.com:interface:aximm:1.0 M_AXI_S2MM AWSIZE";
@@ -59552,7 +59498,7 @@ architecture STRUCTURE of gemm_system_axi_datamover_0_0 is
   attribute x_interface_info of m_axis_mm2s_sts_tkeep : signal is "xilinx.com:interface:axis:1.0 M_AXIS_MM2S_STS TKEEP";
   attribute x_interface_info of m_axis_mm2s_tdata : signal is "xilinx.com:interface:axis:1.0 M_AXIS_MM2S TDATA";
   attribute x_interface_mode of m_axis_mm2s_tdata : signal is "master M_AXIS_MM2S";
-  attribute x_interface_parameter of m_axis_mm2s_tdata : signal is "XIL_INTERFACENAME M_AXIS_MM2S, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 166664993, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute x_interface_parameter of m_axis_mm2s_tdata : signal is "XIL_INTERFACENAME M_AXIS_MM2S, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 199998001, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute x_interface_info of m_axis_mm2s_tkeep : signal is "xilinx.com:interface:axis:1.0 M_AXIS_MM2S TKEEP";
   attribute x_interface_info of m_axis_s2mm_sts_tdata : signal is "xilinx.com:interface:axis:1.0 M_AXIS_S2MM_STS TDATA";
   attribute x_interface_info of m_axis_s2mm_sts_tkeep : signal is "xilinx.com:interface:axis:1.0 M_AXIS_S2MM_STS TKEEP";
@@ -59560,7 +59506,7 @@ architecture STRUCTURE of gemm_system_axi_datamover_0_0 is
   attribute x_interface_info of s_axis_s2mm_cmd_tdata : signal is "xilinx.com:interface:axis:1.0 S_AXIS_S2MM_CMD TDATA";
   attribute x_interface_info of s_axis_s2mm_tdata : signal is "xilinx.com:interface:axis:1.0 S_AXIS_S2MM TDATA";
   attribute x_interface_mode of s_axis_s2mm_tdata : signal is "slave S_AXIS_S2MM";
-  attribute x_interface_parameter of s_axis_s2mm_tdata : signal is "XIL_INTERFACENAME S_AXIS_S2MM, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 166664993, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute x_interface_parameter of s_axis_s2mm_tdata : signal is "XIL_INTERFACENAME S_AXIS_S2MM, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 199998001, PHASE 0.0, CLK_DOMAIN gemm_system_zynq_ultra_ps_e_0_0_pl_clk0, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute x_interface_info of s_axis_s2mm_tkeep : signal is "xilinx.com:interface:axis:1.0 S_AXIS_S2MM TKEEP";
 begin
   m_axi_mm2s_arburst(1) <= \<const0>\;

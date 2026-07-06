@@ -61,7 +61,6 @@ set_param general.usePosixSpawnForFork 1
 set_param chipscope.maxJobs 4
 set_param physdb.placeDBImplUsesPlaceStorage 0
 set_param power.enableUnconnectedCarry8PinPower 1
-set_param bd.open.in_stealth_mode 3
 set_param power.enableCarry8RouteBelPower 1
 set_param power.enableLutRouteBelPower 1
 set_msg_config -id {HDL-1065} -limit 10000

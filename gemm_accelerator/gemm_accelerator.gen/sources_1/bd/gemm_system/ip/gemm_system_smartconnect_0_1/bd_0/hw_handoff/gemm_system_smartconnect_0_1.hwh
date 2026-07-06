@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Jul  4 15:09:57 2026" VIVADOVERSION="2025.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Jul  5 22:44:26 2026" VIVADOVERSION="2025.2">
 
   <SYSTEMINFO ARCH="zynquplus" BOARD="xilinx.com:kv260_som:part0:1.4" DEVICE="xck26" NAME="bd_6dc6" PACKAGE="sfvc784" SPEEDGRADE="-2LV"/>
 
@@ -174,7 +174,7 @@
         <CONNECTION INSTANCE="s00_entry_pipeline_s00_mmu" PORT="s_axi_rvalid"/>
       </CONNECTIONS>
     </PORT>
-    <PORT CLKFREQUENCY="166664993" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
+    <PORT CLKFREQUENCY="199998001" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
       <CONNECTIONS>
         <CONNECTION INSTANCE="s00_entry_pipeline_s00_mmu" PORT="aclk"/>
         <CONNECTION INSTANCE="s00_entry_pipeline_s00_si_converter" PORT="aclk"/>
@@ -204,7 +204,7 @@
       <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
       <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
       <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-      <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
+      <PARAMETER NAME="FREQ_HZ" VALUE="199998001"/>
       <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
       <PARAMETER NAME="HAS_BURST" VALUE="0"/>
       <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -259,7 +259,7 @@
       <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
       <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
       <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-      <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
+      <PARAMETER NAME="FREQ_HZ" VALUE="199998001"/>
       <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
       <PARAMETER NAME="HAS_BURST" VALUE="1"/>
       <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -371,7 +371,7 @@
         <PORT DIR="O" NAME="mb_reset" POLARITY="ACTIVE_HIGH" SIGIS="rst"/>
         <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst"/>
         <PORT DIR="O" LEFT="0" NAME="peripheral_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>
-        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="slowest_sync_clk" SIGIS="clk" SIGNAME="External_Ports_aclk">
+        <PORT CLKFREQUENCY="199998001" DIR="I" NAME="slowest_sync_clk" SIGIS="clk" SIGNAME="External_Ports_aclk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="aclk"/>
           </CONNECTIONS>
@@ -708,7 +708,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="BUS"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
+        <PORT CLKFREQUENCY="199998001" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="aclk"/>
           </CONNECTIONS>
@@ -892,7 +892,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="199998001"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
           <PARAMETER NAME="HAS_BURST" VALUE="0"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -944,7 +944,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="199998001"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
           <PARAMETER NAME="HAS_BURST" VALUE="1"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -1035,7 +1035,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="BUS"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
+        <PORT CLKFREQUENCY="199998001" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="aclk"/>
           </CONNECTIONS>
@@ -1202,7 +1202,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="199998001"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
           <PARAMETER NAME="HAS_BURST" VALUE="0"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -1294,7 +1294,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="BUS"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
+        <PORT CLKFREQUENCY="199998001" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="aclk"/>
           </CONNECTIONS>
@@ -1461,7 +1461,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="199998001"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
           <PARAMETER NAME="HAS_BURST" VALUE="0"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -3624,7 +3624,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="BUS"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
+        <PORT CLKFREQUENCY="199998001" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="aclk"/>
           </CONNECTIONS>
@@ -3828,7 +3828,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="199998001"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
           <PARAMETER NAME="HAS_BURST" VALUE="1"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -3881,7 +3881,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="199998001"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
           <PARAMETER NAME="HAS_BURST" VALUE="1"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -5282,7 +5282,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="BUS"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
+        <PORT CLKFREQUENCY="199998001" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="aclk"/>
           </CONNECTIONS>
@@ -5477,7 +5477,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="199998001"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
           <PARAMETER NAME="HAS_BURST" VALUE="0"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -5530,7 +5530,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="199998001"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
           <PARAMETER NAME="HAS_BURST" VALUE="0"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -5627,7 +5627,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="BUS"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
+        <PORT CLKFREQUENCY="199998001" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="aclk"/>
           </CONNECTIONS>
@@ -5832,7 +5832,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="199998001"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
           <PARAMETER NAME="HAS_BURST" VALUE="1"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -5886,7 +5886,7 @@
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="gemm_system_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="128"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="166664993"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="199998001"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="0"/>
           <PARAMETER NAME="HAS_BURST" VALUE="1"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
@@ -6045,7 +6045,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="BUS"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="m_sc_aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
+        <PORT CLKFREQUENCY="199998001" DIR="I" NAME="m_sc_aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="aclk"/>
           </CONNECTIONS>
@@ -6080,7 +6080,7 @@
             <CONNECTION INSTANCE="m00_sc2axi" PORT="s_sc_ar_send"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="s_sc_aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
+        <PORT CLKFREQUENCY="199998001" DIR="I" NAME="s_sc_aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="aclk"/>
           </CONNECTIONS>
@@ -6248,7 +6248,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="BUS"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="m_sc_aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
+        <PORT CLKFREQUENCY="199998001" DIR="I" NAME="m_sc_aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="aclk"/>
           </CONNECTIONS>
@@ -6283,7 +6283,7 @@
             <CONNECTION INSTANCE="s00_axi2sc" PORT="s_sc_r_send"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="166664993" DIR="I" NAME="s_sc_aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
+        <PORT CLKFREQUENCY="199998001" DIR="I" NAME="s_sc_aclk" SIGIS="clk" SIGNAME="External_Ports_aclk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="aclk"/>
           </CONNECTIONS>
