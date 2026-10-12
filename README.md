@@ -56,7 +56,7 @@ flowchart LR
   * `512x512.c` – functional test with bit-exact check against a CPU reference.
   * `5120x1280x5120.c` – large benchmark against the CPU baseline.
 * **Target Model:** Based on the **Qwen2-Audio** implementation from [Audio_Speech_Conversation](https://github.com/tranquangchung/Audio_Speech_Conversation).
-* **Quantization & Verification:** [Kaggle Notebook](https://www.kaggle.com/code/duynguynngphng/testmodel?scriptVersionId=322782601)
+* **Quantization & Verification:** [Kaggle Notebook](https://www.kaggle.com/code/duynguynngphng/qwen2-analysis)
 
 ---
 
