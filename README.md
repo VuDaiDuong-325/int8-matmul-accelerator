@@ -6,7 +6,7 @@ An efficient hardware-accelerated solution designed to speed up the inference of
 
 General Matrix Multiplication (GEMM) dominates the computational workload of Transformer-based LLMs. This project implements a high-performance **INT8 GEMM Hardware Accelerator** using a $16 \times 16$ **Systolic Array** in the Programmable Logic (PL) of the Xilinx Zynq UltraScale+ MPSoC.
 
-Data is moved between DDR and the accelerator by an **AXI DataMover**, driven by a hardware **two-level tiling** engine. This lets the accelerator process large LLM matrices (e.g. $5120 \times 1280 \times 5120$) with no CPU involvement during a run.
+Data is moved between DDR and the accelerator by an **AXI DataMover**, driven by a hardware two-level tiling engine. This lets the accelerator process large LLM matrices (e.g. $5120 \times 1280 \times 5120$) with no CPU involvement during a run.
 
 ```mermaid
 flowchart LR
