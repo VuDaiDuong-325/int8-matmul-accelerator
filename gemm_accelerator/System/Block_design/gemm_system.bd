@@ -400,27 +400,22 @@
           },
           "cfg_m_total_i": {
             "direction": "I",
-            "left": "15",
+            "left": "19",
             "right": "0"
           },
           "cfg_n_total_i": {
             "direction": "I",
-            "left": "15",
+            "left": "19",
             "right": "0"
           },
           "cfg_k_total_i": {
             "direction": "I",
-            "left": "15",
+            "left": "19",
             "right": "0"
           },
           "cfg_k_dim_i": {
             "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "cfg_num_k_tiles_per_block_i": {
-            "direction": "I",
-            "left": "15",
+            "left": "19",
             "right": "0"
           },
           "cfg_base_a_i": {
@@ -438,19 +433,39 @@
             "left": "31",
             "right": "0"
           },
-          "cfg_n_stride_i": {
+          "cfg_base_c32_i": {
             "direction": "I",
-            "left": "15",
+            "left": "31",
             "right": "0"
           },
-          "cfg_scale_shift_i": {
+          "cfg_base_param_i": {
             "direction": "I",
-            "left": "4",
+            "left": "31",
             "right": "0"
           },
-          "cfg_zero_point_i": {
+          "cfg_lda_i": {
             "direction": "I",
-            "left": "7",
+            "left": "31",
+            "right": "0"
+          },
+          "cfg_ldb_i": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "cfg_ldc_i": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "cfg_ldc32_i": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "cfg_out_mode_i": {
+            "direction": "I",
+            "left": "1",
             "right": "0"
           },
           "start_i": {
@@ -460,6 +475,9 @@
             "direction": "O"
           },
           "done_o": {
+            "direction": "O"
+          },
+          "err_o": {
             "direction": "O"
           }
         }
@@ -733,27 +751,22 @@
           },
           "cfg_m_total_o": {
             "direction": "O",
-            "left": "15",
+            "left": "19",
             "right": "0"
           },
           "cfg_n_total_o": {
             "direction": "O",
-            "left": "15",
+            "left": "19",
             "right": "0"
           },
           "cfg_k_total_o": {
             "direction": "O",
-            "left": "15",
+            "left": "19",
             "right": "0"
           },
           "cfg_k_dim_o": {
             "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "cfg_num_k_tiles_per_block_o": {
-            "direction": "O",
-            "left": "15",
+            "left": "19",
             "right": "0"
           },
           "cfg_base_a_o": {
@@ -771,19 +784,39 @@
             "left": "31",
             "right": "0"
           },
-          "cfg_n_stride_o": {
+          "cfg_base_c32_o": {
             "direction": "O",
-            "left": "15",
+            "left": "31",
             "right": "0"
           },
-          "cfg_scale_shift_o": {
+          "cfg_base_param_o": {
             "direction": "O",
-            "left": "4",
+            "left": "31",
             "right": "0"
           },
-          "cfg_zero_point_o": {
+          "cfg_lda_o": {
             "direction": "O",
-            "left": "7",
+            "left": "31",
+            "right": "0"
+          },
+          "cfg_ldb_o": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "cfg_ldc_o": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "cfg_ldc32_o": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "cfg_out_mode_o": {
+            "direction": "O",
+            "left": "1",
             "right": "0"
           },
           "start_o": {
@@ -795,26 +828,11 @@
           "done_i": {
             "direction": "I"
           },
+          "err_i": {
+            "direction": "I"
+          },
           "irq_o": {
-            "direction": "O",
-            "parameters": {
-              "SENSITIVITY": {
-                "value": "LEVEL_HIGH",
-                "value_src": "const_prop"
-              },
-              "PortWidth": {
-                "value": "1",
-                "value_src": "default_prop"
-              },
-              "PortType": {
-                "value": "intr",
-                "value_src": "ip_prop"
-              },
-              "PortType.PROP_SRC": {
-                "value": "false",
-                "value_src": "ip_prop"
-              }
-            }
+            "direction": "O"
           }
         }
       },
@@ -2481,10 +2499,22 @@
           "gemm_top_l2_0/cfg_base_b_i"
         ]
       },
+      "gemm_l2_axi_lite_regs_0_cfg_base_c32_o": {
+        "ports": [
+          "gemm_l2_axi_lite_regs_0/cfg_base_c32_o",
+          "gemm_top_l2_0/cfg_base_c32_i"
+        ]
+      },
       "gemm_l2_axi_lite_regs_0_cfg_base_c_o1": {
         "ports": [
           "gemm_l2_axi_lite_regs_0/cfg_base_c_o",
           "gemm_top_l2_0/cfg_base_c_i"
+        ]
+      },
+      "gemm_l2_axi_lite_regs_0_cfg_base_param_o": {
+        "ports": [
+          "gemm_l2_axi_lite_regs_0/cfg_base_param_o",
+          "gemm_top_l2_0/cfg_base_param_i"
         ]
       },
       "gemm_l2_axi_lite_regs_0_cfg_k_dim_o1": {
@@ -2499,16 +2529,34 @@
           "gemm_top_l2_0/cfg_k_total_i"
         ]
       },
+      "gemm_l2_axi_lite_regs_0_cfg_lda_o": {
+        "ports": [
+          "gemm_l2_axi_lite_regs_0/cfg_lda_o",
+          "gemm_top_l2_0/cfg_lda_i"
+        ]
+      },
+      "gemm_l2_axi_lite_regs_0_cfg_ldb_o": {
+        "ports": [
+          "gemm_l2_axi_lite_regs_0/cfg_ldb_o",
+          "gemm_top_l2_0/cfg_ldb_i"
+        ]
+      },
+      "gemm_l2_axi_lite_regs_0_cfg_ldc32_o": {
+        "ports": [
+          "gemm_l2_axi_lite_regs_0/cfg_ldc32_o",
+          "gemm_top_l2_0/cfg_ldc32_i"
+        ]
+      },
+      "gemm_l2_axi_lite_regs_0_cfg_ldc_o": {
+        "ports": [
+          "gemm_l2_axi_lite_regs_0/cfg_ldc_o",
+          "gemm_top_l2_0/cfg_ldc_i"
+        ]
+      },
       "gemm_l2_axi_lite_regs_0_cfg_m_total_o1": {
         "ports": [
           "gemm_l2_axi_lite_regs_0/cfg_m_total_o",
           "gemm_top_l2_0/cfg_m_total_i"
-        ]
-      },
-      "gemm_l2_axi_lite_regs_0_cfg_n_stride_o1": {
-        "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_n_stride_o",
-          "gemm_top_l2_0/cfg_n_stride_i"
         ]
       },
       "gemm_l2_axi_lite_regs_0_cfg_n_total_o1": {
@@ -2517,22 +2565,10 @@
           "gemm_top_l2_0/cfg_n_total_i"
         ]
       },
-      "gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block_o1": {
+      "gemm_l2_axi_lite_regs_0_cfg_out_mode_o": {
         "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_num_k_tiles_per_block_o",
-          "gemm_top_l2_0/cfg_num_k_tiles_per_block_i"
-        ]
-      },
-      "gemm_l2_axi_lite_regs_0_cfg_scale_shift_o1": {
-        "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_scale_shift_o",
-          "gemm_top_l2_0/cfg_scale_shift_i"
-        ]
-      },
-      "gemm_l2_axi_lite_regs_0_cfg_zero_point_o1": {
-        "ports": [
-          "gemm_l2_axi_lite_regs_0/cfg_zero_point_o",
-          "gemm_top_l2_0/cfg_zero_point_i"
+          "gemm_l2_axi_lite_regs_0/cfg_out_mode_o",
+          "gemm_top_l2_0/cfg_out_mode_i"
         ]
       },
       "gemm_l2_axi_lite_regs_0_irq": {
@@ -2559,6 +2595,12 @@
           "gemm_l2_axi_lite_regs_0/done_i"
         ]
       },
+      "gemm_top_l2_0_err_o": {
+        "ports": [
+          "gemm_top_l2_0/err_o",
+          "gemm_l2_axi_lite_regs_0/err_i"
+        ]
+      },
       "rst_ps8_0_99M_peripheral_aresetn": {
         "ports": [
           "rst_ps8_0_99M/peripheral_aresetn",
@@ -2569,8 +2611,8 @@
           "smartconnect_0/aresetn",
           "smartconnect_1/aresetn",
           "axi_datamover_0/m_axis_mm2s_cmdsts_aresetn",
-          "gemm_l2_axi_lite_regs_0/S_AXI_ARESETN",
-          "gemm_top_l2_0/RST_i"
+          "gemm_top_l2_0/RST_i",
+          "gemm_l2_axi_lite_regs_0/S_AXI_ARESETN"
         ]
       },
       "xlconcat_0_dout": {
@@ -2584,17 +2626,17 @@
           "zynq_ultra_ps_e_0/pl_clk0",
           "axi_datamover_0/m_axi_mm2s_aclk",
           "smartconnect_0/aclk",
-          "gemm_top_l2_0/CLK_i",
           "axi_datamover_0/m_axi_s2mm_aclk",
           "smartconnect_1/aclk",
           "axi_datamover_0/m_axis_s2mm_cmdsts_awclk",
-          "gemm_l2_axi_lite_regs_0/S_AXI_ACLK",
           "axi_smc/aclk",
           "rst_ps8_0_99M/slowest_sync_clk",
           "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk",
           "zynq_ultra_ps_e_0/saxihpc0_fpd_aclk",
           "zynq_ultra_ps_e_0/saxihpc1_fpd_aclk",
-          "axi_datamover_0/m_axis_mm2s_cmdsts_aclk"
+          "axi_datamover_0/m_axis_mm2s_cmdsts_aclk",
+          "gemm_top_l2_0/CLK_i",
+          "gemm_l2_axi_lite_regs_0/S_AXI_ACLK"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {
