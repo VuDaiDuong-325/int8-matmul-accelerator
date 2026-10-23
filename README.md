@@ -65,7 +65,7 @@ The built-in `--sweep` (1x1x1, 256³, 512³, 17x33x19, 257³, 2048x32x2048) pass
 
 * **Hardware (RTL):** `mac_core`, `pe_wrapper`, `systolic_array_os`, `skew_network`, `systolic_dataflow_ctrl`, `output_serializer`, `post_accumulator`, `gemm_compute_core`, `int32_int8_rescale` (requant), `l2_tiling_agu` (L2 tiling / DMA engine), `gemm_top_l2`, `gemm_l2_axi_lite_regs`.
 * **Block design:** `gemm_system.bd` (Zynq PS, SmartConnect, AXI DataMover, control registers, accelerator).
-* **Software:** `npu_driver.h` (Linux driver via `/dev/mem`), `gemm_test.c` (verification and benchmark: `sudo ./gemm_test M K N [-m 1|2|3] [--sweep] [--nocpu]`).
+* **Software:** `npu_driver.h` (Linux driver via `/dev/mem`), `gemm_test.c`.
 
 ## Software Options (`gemm_test`)
 
