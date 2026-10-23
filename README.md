@@ -1,62 +1,98 @@
 # INT8 GEMM Accelerator for Qwen2
 
-An efficient hardware-accelerated solution designed to speed up the inference of Large Language Models (LLMs), specifically the **Qwen2** series, on the AMD Kria KV260 Vision AI Starter Kit.
+A hardware accelerator that speeds up **INT8 matrix multiplication** (the dominant workload in LLM inference, here the **Qwen2** series) on the AMD Kria KV260. It uses a $16 \times 16$ **systolic array** in the Programmable Logic of the Zynq UltraScale+ MPSoC.
 
 ## Overview
 
-General Matrix Multiplication (GEMM) dominates the computational workload of Transformer-based LLMs. This project implements a high-performance **INT8 GEMM Hardware Accelerator** using a $16 \times 16$ **Systolic Array** in the Programmable Logic (PL) of the Xilinx Zynq UltraScale+ MPSoC.
-
-Data is moved between DDR and the accelerator by an **AXI DataMover**, driven by a hardware two-level tiling engine. This lets the accelerator process large LLM matrices (e.g. $5120 \times 1280 \times 5120$) with no CPU involvement during a run.
+Two INT8 matrices $A_{M \times K}$ and $B_{K \times N}$ are read from DDR by an **AXI DataMover**. A hardware tiling engine computes $C = \mathrm{requant}(A \cdot B)$ and writes back an **INT8** result and/or the raw **INT32** accumulators (for error checking). Once started, no CPU involvement is needed.
 
 ```mermaid
 flowchart LR
-    DDR[(DDR)] -- "MM2S (A, B)" --> DM[AXI DataMover]
+    DDR[(DDR)] -- "MM2S (A, B, params)" --> DM[AXI DataMover]
     DM --> AGU["L2 Tiling Engine<br/>(double-buffered BRAM)"]
     AGU --> CORE["16x16 Systolic Array<br/>(output-stationary)"]
     CORE --> ACC["INT32 Accumulator<br/>(UltraRAM)"]
-    ACC --> RS["Rescale<br/>INT32 to INT8"]
+    ACC --> RS["Per-channel Requant<br/>INT32 to INT8"]
     RS --> DM
+    ACC -- "raw INT32" --> DM
     DM -- "S2MM (C)" --> DDR
     PS["PS (ARM Cortex-A53)"] -- "AXI4-Lite" --> REG[Control Registers]
     REG --> AGU
 ```
 
----
-
 ## Key Features
 
-* **Systolic Array Core:** A $16 \times 16$ output-stationary PE grid with DSP-based INT8 MACs and INT32 accumulation (peak 102.4 GOPS at 200 MHz).
-* **Two-Level Tiling:** $256 \times 256 \times 256$ L2 blocks stream from DDR into on-chip buffers; $16 \times 16$ tiles are computed in the array. Partial sums over K are accumulated on-chip.
-* **AXI DataMover I/O:** 128-bit MM2S/S2MM channels with commands generated in hardware; `done` is asserted only after all output writes are confirmed.
-* **Overlapped Fetch/Compute:** Double-buffered L2 buffers let data fetch and computation run in parallel.
-* **Quantization & Rescale:** Built-in hardware rescale pipeline (Round/Shift/Saturate) using the AbsMax symmetric quantization method to map FP32 weights/activations down to INT8.
-* **Simple Control:** AXI4-Lite register block (config, start, busy/done, IRQ) driven by a C program on Linux.
+* **Systolic array:** $16 \times 16$ output-stationary PEs, DSP48E2-based INT8 MACs with INT32 accumulation (peak 102.4 GOPS at 200 MHz).
+* **Arbitrary sizes:** M, K, N from 1 to 1,048,575; edge tiles handled in hardware (rows only need 16-byte alignment).
+* **Two-level tiling:** $256 \times 256 \times 256$ blocks stream from DDR into on-chip buffers, $16 \times 16$ tiles run in the array, partial sums over K accumulate on-chip.
+* **Overlapped fetch/compute:** double-buffered (ping-pong) input buffers.
+* **Per-channel requantization:** `bias / mult / shift / zero_point` per output column, with round and saturate to INT8.
+* **INT32 debug output:** raw $A \cdot B$ accumulators, for checking numerical error.
+* **AXI DataMover I/O:** 128-bit MM2S/S2MM, commands generated in hardware; `done` is raised only after all writes are confirmed.
+* **Simple control:** AXI4-Lite registers (config, start, busy/done/err, IRQ) driven by a C program on Linux.
 
----
+## Results
 
-## Performance & Accuracy Evaluation
+Measured directly on the KV260 over SSH (PL clock 200 MHz, random edge-biased INT8 input). **PASS** = bit-exact match with the CPU reference for both INT8 and INT32 outputs.
 
-* **Hardware Acceleration:** Significantly **faster** than the pure CPU ARM Cortex-A53 baseline.
+| Test | HW throughput | Speed-up vs. ARM A53 (compute / total) | Result |
+|---|---:|---:|---|
+| 5120 x 3550 x 264 (INT8) | 16.9 GOPS | 32.1x / 30.9x | PASS |
+| 5120 x 3550 x 264 (INT8 + INT32) | 16.6 GOPS | 31.6x / 28.8x | PASS |
+| 512 x 512 x 512 | 14.3 GOPS | 28.1x / 19.4x | PASS |
+| 256 x 256 x 256 | 11.8 GOPS | 23.8x / 13.8x | PASS |
 
-| Test | Throughput | Speed-up vs. ARM |
+The built-in `--sweep` (1x1x1, 256³, 512³, 17x33x19, 257³, 2048x32x2048) passes **6/6** cases.
+
+<p align="center">
+  <img src="docs/images/sweep_6_cases.jpg" alt="gemm_test --sweep" width="100%"><br>
+  <em><code>sudo ./gemm_test --sweep -m 3 -q 1 -r 127 -s 42</code></em>
+</p>
+<p align="center">
+  <img src="docs/images/bench_5120x3550x264_int8_int32_verified.jpg" alt="5120x3550x264 INT8+INT32" width="100%"><br>
+  <em>5120 x 3550 x 264, INT8 + INT32, verified.</em>
+</p>
+<p align="center">
+  <img src="docs/images/bench_5120x3550x264_int8_verified.jpg" alt="5120x3550x264 INT8" width="100%"><br>
+  <em>5120 x 3550 x 264, INT8, verified.</em>
+</p>
+<p align="center">
+  <img src="docs/images/bench_5120x3550x264_int8_nocpu.jpg" alt="5120x3550x264 nocpu" width="100%"><br>
+  <em>5120 x 3550 x 264, INT8, <code>--nocpu</code> (hardware timing only).</em>
+</p>
+
+## Project Structure
+
+* **Hardware (RTL):** `mac_core`, `pe_wrapper`, `systolic_array_os`, `skew_network`, `systolic_dataflow_ctrl`, `output_serializer`, `post_accumulator`, `gemm_compute_core`, `int32_int8_rescale` (requant), `l2_tiling_agu` (L2 tiling / DMA engine), `gemm_top_l2`, `gemm_l2_axi_lite_regs`.
+* **Block design:** `gemm_system.bd` (Zynq PS, SmartConnect, AXI DataMover, control registers, accelerator).
+* **Software:** `npu_driver.h` (Linux driver via `/dev/mem`), `gemm_test.c` (verification and benchmark: `sudo ./gemm_test M K N [-m 1|2|3] [--sweep] [--nocpu]`).
+
+## Software Options (`gemm_test`)
+
+```bash
+sudo ./gemm_test M K N [-m mode] [-q style] [-r range] [-s seed] [--nocpu] [--sweep] [--dump prefix] [--csv file] [--uniform]
+```
+
+| Option | Description | Default |
 |---|---|---|
-| $512 \times 512 \times 512$ | ~16 GOPS | ~147x |
-| $5120 \times 1280 \times 5120$ | ~17 GOPS | ~174x |
+| `M K N` | Matrix sizes: $A_{M \times K} \cdot B_{K \times N}$ | – |
+| `-m mode` | Output mode: `1` = INT8, `2` = raw INT32, `3` = both | `1` |
+| `-q style` | Requant parameters: `0` = per-tensor (`bias=0, mult=1, shift=8, zp=0`), `1` = random per-channel | `1` |
+| `-r range` | Input amplitude, values in $[-r, r]$ (1 to 127) | `127` |
+| `-s seed` | Random number generator seed | `42` |
+| `--uniform` | Uniform random inputs instead of edge-biased ones (`-128, -127, 126, 127`) | off |
+| `--nocpu` | Skip the CPU reference (hardware timing only, result shown as `UNVERIFIED`) | off |
+| `--sweep` | Run 6 built-in sizes: 1x1x1, 256³, 512³, 17x33x19, 257³, 2048x32x2048 | off |
+| `--dump prefix` | Write CPU golden data to `prefix_A.bin`, `_B.bin`, `_params.bin`, `_C8.bin`, `_C32.bin` (no hardware needed) | off |
+| `--csv file` | CSV report path | `gemm_benchmark.csv` |
 
-* **Bit-True Precision:** Hardware outputs deliver a **100% Bit-True match** against the CPU/PyTorch golden reference.
-* **Quantization Quality:** Evaluation metrics (such as Cosine Similarity and SQNR) **fully pass** industry-standard LLM profiles.
+Each run checks the INT8 output, the INT32 output, and that padding bytes in DDR are untouched.
 
----
+## Links
 
-## Project Structure & Source Code
-
-* **Hardware (RTL):** Synthesizable Verilog, including the PE/MAC pipeline, skew network, dataflow controller, L2 tiling engine, AXI4-Lite registers and rescale pipeline.
-* **Block Design:** `gemm_system.bd` (Zynq PS, SmartConnect, AXI DataMover, control registers, accelerator).
-* **Software:** C test programs using `/dev/mem`:
-  * `512x512.c` – functional test with bit-exact check against a CPU reference.
-  * `5120x1280x5120.c` – large benchmark against the CPU baseline.
-* **Target Model:** Based on the **Qwen2-Audio** implementation from [Audio_Speech_Conversation](https://github.com/tranquangchung/Audio_Speech_Conversation).
-* **Quantization & Verification:** [Kaggle Notebook](https://www.kaggle.com/code/duynguynngphng/qwen2-analysis)
+* **Target model:** Qwen2-Audio, from [Audio_Speech_Conversation](https://github.com/tranquangchung/Audio_Speech_Conversation)
+* **Testbench (Kaggle):** [design-test](https://www.kaggle.com/code/dduong325/design-test)
+* **Quantization & verification (Kaggle):** [qwen2-analysis](https://www.kaggle.com/code/duynguynngphng/qwen2-analysis)
 
 ---
 
