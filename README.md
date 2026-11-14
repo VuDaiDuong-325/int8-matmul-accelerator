@@ -76,20 +76,6 @@ int8-matmul-accelerator/
         ├── cma_probe.c                # Contiguous physical memory inspector
         └── ddr_bench.c                # Multi-threaded ARMv8 NEON DDR bandwidth benchmark
 ```
-
-### Quick Start (`gemm_test`)
-
-```bash
-cd software/benchmarks
-gcc -O3 -Wall -DNPU_DMAHEAP -I../drivers gemm_test.c -o gemm_test
-
-# Run the 6-case verification & benchmark sweep
-sudo ./gemm_test --sweep
-
-# Run a custom matrix size M K N (e.g., 1500 x 1280 x 5120, INT8 only)
-sudo ./gemm_test 1500 1280 5120 -m 1
-```
-
 ---
 
 ## Links
