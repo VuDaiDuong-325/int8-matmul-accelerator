@@ -19,7 +19,8 @@
       "rst_ps8_0_99M": "",
       "smartconnect_0": "",
       "smartconnect_1": "",
-      "axi_smc": ""
+      "axi_smc": "",
+      "clk_wiz_0": ""
     },
     "components": {
       "gemm_top_l2_0": {
@@ -73,11 +74,15 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "199998001",
-                "value_src": "user_prop"
+                "value": "199998000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
               },
               "CLK_DOMAIN": {
-                "value": "gemm_system_zynq_ultra_ps_e_0_0_pl_clk0",
+                "value": "gemm_system_clk_wiz_0_0_clk_out1",
                 "value_src": "default_prop"
               }
             },
@@ -140,11 +145,15 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "199998001",
-                "value_src": "user_prop"
+                "value": "199998000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
               },
               "CLK_DOMAIN": {
-                "value": "gemm_system_zynq_ultra_ps_e_0_0_pl_clk0",
+                "value": "gemm_system_clk_wiz_0_0_clk_out1",
                 "value_src": "default_prop"
               }
             },
@@ -203,11 +212,15 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "199998001",
-                "value_src": "user_prop"
+                "value": "199998000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
               },
               "CLK_DOMAIN": {
-                "value": "gemm_system_zynq_ultra_ps_e_0_0_pl_clk0",
+                "value": "gemm_system_clk_wiz_0_0_clk_out1",
                 "value_src": "default_prop"
               }
             },
@@ -276,11 +289,15 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "199998001",
-                "value_src": "user_prop"
+                "value": "199998000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
               },
               "CLK_DOMAIN": {
-                "value": "gemm_system_zynq_ultra_ps_e_0_0_pl_clk0",
+                "value": "gemm_system_clk_wiz_0_0_clk_out1",
                 "value_src": "default_prop"
               }
             },
@@ -339,11 +356,15 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "199998001",
-                "value_src": "user_prop"
+                "value": "199998000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
               },
               "CLK_DOMAIN": {
-                "value": "gemm_system_zynq_ultra_ps_e_0_0_pl_clk0",
+                "value": "gemm_system_clk_wiz_0_0_clk_out1",
                 "value_src": "default_prop"
               }
             },
@@ -379,11 +400,15 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "199998001",
-                "value_src": "user_prop"
+                "value": "199998000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
               },
               "CLK_DOMAIN": {
-                "value": "gemm_system_zynq_ultra_ps_e_0_0_pl_clk0",
+                "value": "gemm_system_clk_wiz_0_0_clk_out1",
                 "value_src": "default_prop"
               }
             }
@@ -509,8 +534,8 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "199998001",
-                "value_src": "user_prop"
+                "value": "199998000",
+                "value_src": "ip_prop"
               },
               "ID_WIDTH": {
                 "value": "0",
@@ -596,8 +621,12 @@
                 "value": "1",
                 "value_src": "auto"
               },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
               "CLK_DOMAIN": {
-                "value": "gemm_system_zynq_ultra_ps_e_0_0_pl_clk0",
+                "value": "gemm_system_clk_wiz_0_0_clk_out1",
                 "value_src": "default_prop"
               },
               "NUM_READ_THREADS": {
@@ -730,11 +759,15 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "199998001",
-                "value_src": "user_prop"
+                "value": "199998000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
               },
               "CLK_DOMAIN": {
-                "value": "gemm_system_zynq_ultra_ps_e_0_0_pl_clk0",
+                "value": "gemm_system_clk_wiz_0_0_clk_out1",
                 "value_src": "default_prop"
               }
             }
@@ -1406,9 +1439,6 @@
           "PSU__CRF_APB__DBG_FPD_CTRL__SRCSEL": {
             "value": "IOPLL"
           },
-          "PSU__CRF_APB__DBG_TRACE_CTRL__FREQMHZ": {
-            "value": "250"
-          },
           "PSU__CRF_APB__DBG_TRACE_CTRL__SRCSEL": {
             "value": "IOPLL"
           },
@@ -1566,10 +1596,10 @@
             "value": "IOPLL"
           },
           "PSU__CRL_APB__PL0_REF_CTRL__ACT_FREQMHZ": {
-            "value": "199.998001"
+            "value": "99.999001"
           },
           "PSU__CRL_APB__PL0_REF_CTRL__FREQMHZ": {
-            "value": "200"
+            "value": "100"
           },
           "PSU__CRL_APB__PL0_REF_CTRL__SRCSEL": {
             "value": "IOPLL"
@@ -1867,6 +1897,16 @@
           },
           "PSU__PRESET_APPLIED": {
             "value": "1"
+          },
+          "PSU__PROTECTION__FPD_SEGMENTS": {
+            "value": [
+              "SA:0xFD1A0000; SIZE:1280; UNIT:KB; RegionTZ:Secure; WrAllowed:Read/Write; subsystemId:PMU Firmware |  SA:0xFD000000; SIZE:64; UNIT:KB; RegionTZ:Secure; WrAllowed:Read/Write; subsystemId:PMU Firmware |",
+              " SA:0xFD010000; SIZE:64; UNIT:KB; RegionTZ:Secure; WrAllowed:Read/Write; subsystemId:PMU Firmware |  SA:0xFD020000; SIZE:64; UNIT:KB; RegionTZ:Secure; WrAllowed:Read/Write; subsystemId:PMU Firmware | ",
+              "SA:0xFD030000; SIZE:64; UNIT:KB; RegionTZ:Secure; WrAllowed:Read/Write; subsystemId:PMU Firmware |  SA:0xFD040000; SIZE:64; UNIT:KB; RegionTZ:Secure; WrAllowed:Read/Write; subsystemId:PMU Firmware | ",
+              "SA:0xFD050000; SIZE:64; UNIT:KB; RegionTZ:Secure; WrAllowed:Read/Write; subsystemId:PMU Firmware |  SA:0xFD610000; SIZE:512; UNIT:KB; RegionTZ:Secure; WrAllowed:Read/Write; subsystemId:PMU Firmware | ",
+              "SA:0xFD5D0000; SIZE:64; UNIT:KB; RegionTZ:Secure; WrAllowed:Read/Write; subsystemId:PMU Firmware | SA:0xFD1A0000 ; SIZE:1280; UNIT:KB; RegionTZ:Secure ; WrAllowed:Read/Write; subsystemId:Secure",
+              "Subsystem"
+            ]
           },
           "PSU__PROTECTION__MASTERS": {
             "value": "USB1:NonSecure;0|USB0:NonSecure;0|S_AXI_LPD:NA;0|S_AXI_HPC1_FPD:NA;1|S_AXI_HPC0_FPD:NA;1|S_AXI_HP3_FPD:NA;0|S_AXI_HP2_FPD:NA;0|S_AXI_HP1_FPD:NA;0|S_AXI_HP0_FPD:NA;0|S_AXI_ACP:NA;0|S_AXI_ACE:NA;0|SD1:NonSecure;0|SD0:NonSecure;0|SATA1:NonSecure;0|SATA0:NonSecure;0|RPU1:Secure;1|RPU0:Secure;1|QSPI:NonSecure;1|PMU:NA;1|PCIe:NonSecure;0|NAND:NonSecure;0|LDMA:NonSecure;1|GPU:NonSecure;1|GEM3:NonSecure;0|GEM2:NonSecure;0|GEM1:NonSecure;0|GEM0:NonSecure;0|FDMA:NonSecure;1|DP:NonSecure;0|DAP:NA;1|Coresight:NA;1|CSU:NA;1|APU:NA;1"
@@ -2184,16 +2224,16 @@
       "rst_ps8_0_99M": {
         "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
         "ip_revision": "17",
-        "xci_name": "gemm_system_rst_ps8_0_99M_1",
-        "xci_path": "ip\\gemm_system_rst_ps8_0_99M_1\\gemm_system_rst_ps8_0_99M_1.xci",
+        "xci_name": "gemm_system_rst_ps8_0_99M_0",
+        "xci_path": "ip\\gemm_system_rst_ps8_0_99M_0\\gemm_system_rst_ps8_0_99M_0.xci",
         "inst_hier_path": "rst_ps8_0_99M",
         "has_run_ip_tcl": "true"
       },
       "smartconnect_0": {
         "vlnv": "xilinx.com:ip:smartconnect:1.0",
         "ip_revision": "28",
-        "xci_name": "gemm_system_smartconnect_0_1",
-        "xci_path": "ip\\gemm_system_smartconnect_0_1\\gemm_system_smartconnect_0_1.xci",
+        "xci_name": "gemm_system_smartconnect_0_0",
+        "xci_path": "ip\\gemm_system_smartconnect_0_0\\gemm_system_smartconnect_0_0.xci",
         "inst_hier_path": "smartconnect_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -2348,8 +2388,8 @@
       "axi_smc": {
         "vlnv": "xilinx.com:ip:smartconnect:1.0",
         "ip_revision": "28",
-        "xci_name": "gemm_system_axi_smc_2",
-        "xci_path": "ip\\gemm_system_axi_smc_2\\gemm_system_axi_smc_2.xci",
+        "xci_name": "gemm_system_axi_smc_0",
+        "xci_path": "ip\\gemm_system_axi_smc_0\\gemm_system_axi_smc_0.xci",
         "inst_hier_path": "axi_smc",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -2414,6 +2454,34 @@
                 "value_src": "default"
               }
             }
+          }
+        }
+      },
+      "clk_wiz_0": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "ip_revision": "17",
+        "xci_name": "gemm_system_clk_wiz_0_0",
+        "xci_path": "ip\\gemm_system_clk_wiz_0_0\\gemm_system_clk_wiz_0_0.xci",
+        "inst_hier_path": "clk_wiz_0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "CLKOUT1_JITTER": {
+            "value": "102.087"
+          },
+          "CLKOUT1_PHASE_ERROR": {
+            "value": "87.181"
+          },
+          "CLKOUT1_REQUESTED_OUT_FREQ": {
+            "value": "200"
+          },
+          "MMCM_CLKOUT0_DIVIDE_F": {
+            "value": "6.000"
+          },
+          "PRIM_SOURCE": {
+            "value": "Global_buffer"
+          },
+          "USE_RESET": {
+            "value": "false"
           }
         }
       }
@@ -2487,6 +2555,30 @@
       }
     },
     "nets": {
+      "clk_wiz_0_clk_out1": {
+        "ports": [
+          "clk_wiz_0/clk_out1",
+          "axi_smc/aclk",
+          "gemm_l2_axi_lite_regs_0/S_AXI_ACLK",
+          "smartconnect_1/aclk",
+          "axi_datamover_0/m_axi_mm2s_aclk",
+          "axi_datamover_0/m_axi_s2mm_aclk",
+          "axi_datamover_0/m_axis_s2mm_cmdsts_awclk",
+          "smartconnect_0/aclk",
+          "gemm_top_l2_0/CLK_i",
+          "axi_datamover_0/m_axis_mm2s_cmdsts_aclk",
+          "rst_ps8_0_99M/slowest_sync_clk",
+          "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk",
+          "zynq_ultra_ps_e_0/saxihpc0_fpd_aclk",
+          "zynq_ultra_ps_e_0/saxihpc1_fpd_aclk"
+        ]
+      },
+      "clk_wiz_0_locked": {
+        "ports": [
+          "clk_wiz_0/locked",
+          "rst_ps8_0_99M/dcm_locked"
+        ]
+      },
       "gemm_l2_axi_lite_regs_0_cfg_base_a_o1": {
         "ports": [
           "gemm_l2_axi_lite_regs_0/cfg_base_a_o",
@@ -2611,8 +2703,8 @@
           "smartconnect_0/aresetn",
           "smartconnect_1/aresetn",
           "axi_datamover_0/m_axis_mm2s_cmdsts_aresetn",
-          "gemm_top_l2_0/RST_i",
-          "gemm_l2_axi_lite_regs_0/S_AXI_ARESETN"
+          "gemm_l2_axi_lite_regs_0/S_AXI_ARESETN",
+          "gemm_top_l2_0/RST_i"
         ]
       },
       "xlconcat_0_dout": {
@@ -2624,19 +2716,7 @@
       "zynq_ultra_ps_e_0_pl_clk0": {
         "ports": [
           "zynq_ultra_ps_e_0/pl_clk0",
-          "axi_datamover_0/m_axi_mm2s_aclk",
-          "smartconnect_0/aclk",
-          "axi_datamover_0/m_axi_s2mm_aclk",
-          "smartconnect_1/aclk",
-          "axi_datamover_0/m_axis_s2mm_cmdsts_awclk",
-          "axi_smc/aclk",
-          "rst_ps8_0_99M/slowest_sync_clk",
-          "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk",
-          "zynq_ultra_ps_e_0/saxihpc0_fpd_aclk",
-          "zynq_ultra_ps_e_0/saxihpc1_fpd_aclk",
-          "axi_datamover_0/m_axis_mm2s_cmdsts_aclk",
-          "gemm_top_l2_0/CLK_i",
-          "gemm_l2_axi_lite_regs_0/S_AXI_ACLK"
+          "clk_wiz_0/clk_in1"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

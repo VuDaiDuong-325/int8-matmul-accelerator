@@ -1,98 +1,101 @@
-# INT8 GEMM Accelerator for Qwen2
+# INT8 GEMM Hardware Accelerator (Kria KV260 / KR260)
 
-A hardware accelerator that speeds up **INT8 matrix multiplication** (the dominant workload in LLM inference, here the **Qwen2** series) on the AMD Kria KV260. It uses a $16 \times 16$ **systolic array** in the Programmable Logic of the Zynq UltraScale+ MPSoC.
+A Programmable Logic (PL) hardware accelerator for **INT8 matrix multiplication (`GEMM`)** on the AMD/Xilinx Zynq UltraScale+ MPSoC (Kria KV260 / KR260). It uses a $16 \times 16$ **Output-Stationary Systolic Array** running at **200 MHz** (peak **102.4 GOPS**) to accelerate dense linear layers in LLM and Audio-LLM inference.
+
+---
 
 ## Overview
 
-Two INT8 matrices $A_{M \times K}$ and $B_{K \times N}$ are read from DDR by an **AXI DataMover**. A hardware tiling engine computes $C = \mathrm{requant}(A \cdot B)$ and writes back an **INT8** result and/or the raw **INT32** accumulators (for error checking). Once started, no CPU involvement is needed.
+Given two row-major INT8 matrices $A_{M \times K}$ and $B_{K \times N}$ in DDR4 memory, an **AXI DataMover** streams matrix blocks into on-chip BRAM buffers. A hardware tiling engine computes $C = \mathrm{requant}(A \cdot B)$ in INT32 precision, applies per-channel requantization, and writes back the **INT8** output and/or raw **INT32** accumulators directly to DDR without CPU intervention.
 
 ```mermaid
 flowchart LR
-    DDR[(DDR)] -- "MM2S (A, B, params)" --> DM[AXI DataMover]
-    DM --> AGU["L2 Tiling Engine<br/>(double-buffered BRAM)"]
-    AGU --> CORE["16x16 Systolic Array<br/>(output-stationary)"]
+    DDR[(DDR4)] -- "MM2S (A, B, params)" --> DM[AXI DataMover]
+    DM --> AGU["L2 Tiling Engine<br/>(Ping-Pong BRAM)"]
+    AGU --> CORE["16x16 Systolic Array<br/>(Output-Stationary)"]
     CORE --> ACC["INT32 Accumulator<br/>(UltraRAM)"]
-    ACC --> RS["Per-channel Requant<br/>INT32 to INT8"]
+    ACC --> RS["Per-Channel Requant<br/>INT32 to INT8"]
     RS --> DM
     ACC -- "raw INT32" --> DM
-    DM -- "S2MM (C)" --> DDR
-    PS["PS (ARM Cortex-A53)"] -- "AXI4-Lite" --> REG[Control Registers]
+    DM -- "S2MM (C8 / C32)" --> DDR
+    PS["ARM Cortex-A53 PS"] -- "AXI4-Lite" --> REG[Control Registers]
     REG --> AGU
 ```
 
-## Key Features
+### Key Features
 
-* **Systolic array:** $16 \times 16$ output-stationary PEs, DSP48E2-based INT8 MACs with INT32 accumulation (peak 102.4 GOPS at 200 MHz).
-* **Arbitrary sizes:** M, K, N from 1 to 1,048,575; edge tiles handled in hardware (rows only need 16-byte alignment).
-* **Two-level tiling:** $256 \times 256 \times 256$ blocks stream from DDR into on-chip buffers, $16 \times 16$ tiles run in the array, partial sums over K accumulate on-chip.
-* **Overlapped fetch/compute:** double-buffered (ping-pong) input buffers.
-* **Per-channel requantization:** `bias / mult / shift / zero_point` per output column, with round and saturate to INT8.
-* **INT32 debug output:** raw $A \cdot B$ accumulators, for checking numerical error.
-* **AXI DataMover I/O:** 128-bit MM2S/S2MM, commands generated in hardware; `done` is raised only after all writes are confirmed.
-* **Simple control:** AXI4-Lite registers (config, start, busy/done/err, IRQ) driven by a C program on Linux.
+* **$16 \times 16$ Systolic Array:** 256 DSP48E2-based Output-Stationary PEs performing 256 INT8 MACs/cycle with INT32 accumulation (peak **102.4 GOPS** at 200 MHz).
+* **Arbitrary Matrix Dimensions:** Supports $M, K, N \in [1, 1\,048\,575]$ with automatic hardware zero-padding and boundary masking (only DDR row strides require 16-byte alignment).
+* **Two-Level Tiling & Ping-Pong Buffering:** Streams $256 \times 256 \times 256$ L2 blocks from DDR into double-buffered BRAMs while computing $16 \times 16 \times k_{\text{dim}}$ tiles in the systolic array.
+* **Per-Channel Requantization & Raw INT32 Output:** Hardware `bias / mult / shift / zp` scaling per output column (`mode=1`), raw INT32 accumulator write-back (`mode=2`), or both (`mode=3`).
+* **Zero-Copy CMA DMA-BUF Driver:** Allocates contiguous cacheable DDR buffers via `/dev/dma_heap/reserved` with user-space ARMv8 cache maintenance (`dc cvac` / `dc civac`).
 
-## Results
+---
 
-Measured directly on the KV260 over SSH (PL clock 200 MHz, random edge-biased INT8 input). **PASS** = bit-exact match with the CPU reference for both INT8 and INT32 outputs.
+## On-Board Verification & Benchmark Results (`Kria KR260 @ 200 MHz`)
 
-| Test | HW throughput | Speed-up vs. ARM A53 (compute / total) | Result |
-|---|---:|---:|---|
-| 5120 x 3550 x 264 (INT8) | 16.9 GOPS | 32.1x / 30.9x | PASS |
-| 5120 x 3550 x 264 (INT8 + INT32) | 16.6 GOPS | 31.6x / 28.8x | PASS |
-| 512 x 512 x 512 | 14.3 GOPS | 28.1x / 19.4x | PASS |
-| 256 x 256 x 256 | 11.8 GOPS | 23.8x / 13.8x | PASS |
+Measured directly on the **Xilinx Kria KR260** (`sudo ./gemm_test --sweep`, `mode=3` verifying both **INT8** and **raw INT32** outputs against the CPU reference, edge-biased random inputs in $[-128, 127]$, `seed=42`). **PASS** indicates a 100% bit-exact match on all output elements and untouched DDR padding bytes.
 
-The built-in `--sweep` (1x1x1, 256³, 512³, 17x33x19, 257³, 2048x32x2048) passes **6/6** cases.
+| Case | Matrix Shape ($M \times K \times N$) | $k_{\text{dim}}$ | CPU Ref (ms) | Transfer In (ms) | HW Exec (ms) | Transfer Out (ms) | Total HW (ms) | HW Throughput (GOPS) | Speedup (Total / Compute) | Status |
+| :-: | :--- | :-: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | :-: |
+| 1 | `1 x 1 x 1` | 32 | 0.010 | 0.004 | 0.002 | 0.001 | 0.007 | 0.0008 | **1.49x / 4.24x** | **PASS** |
+| 2 | `256 x 256 x 256` | 128 | 67.492 | 0.041 | 0.809 | 0.412 | 1.262 | **41.45** | **53.48x / 83.38x** | **PASS** |
+| 3 | `512 x 512 x 512` | 128 | 522.766 | 0.274 | 4.297 | 1.719 | 6.290 | **62.47** | **83.11x / 121.65x** | **PASS** |
+| 4 | `17 x 33 x 19` | 64 | 0.061 | 0.002 | 0.009 | 0.003 | 0.014 | 2.25 | **4.27x / 6.42x** | **PASS** |
+| 5 | `257 x 257 x 257` | 64 | 67.691 | 0.046 | 0.979 | 0.201 | 1.226 | **34.68** | **55.23x / 69.14x** | **PASS** |
+| 6 | `2048 x 32 x 2048` | 32 | 736.532 | 0.134 | 30.637 | 30.293 | 61.064 | 8.76 | **12.06x / 24.04x** | **PASS** |
 
 <p align="center">
-  <img src="docs/images/sweep_6_cases.jpg" alt="gemm_test --sweep" width="100%"><br>
-  <em><code>sudo ./gemm_test --sweep -m 3 -q 1 -r 127 -s 42</code></em>
+  <img src="docs/images/sweep_result.png" alt="gemm_test --sweep on Kria KR260" width="100%"><br>
+  <em>On-board execution of <code>sudo ./gemm_test --sweep</code> on Kria KR260 (6/6 bit-exact PASS, up to 62.47 GOPS and 121.65x compute speedup in simultaneous INT8 + INT32 mode).</em>
 </p>
-<p align="center">
-  <img src="docs/images/bench_5120x3550x264_int8_int32_verified.jpg" alt="5120x3550x264 INT8+INT32" width="100%"><br>
-  <em>5120 x 3550 x 264, INT8 + INT32, verified.</em>
-</p>
-<p align="center">
-  <img src="docs/images/bench_5120x3550x264_int8_verified.jpg" alt="5120x3550x264 INT8" width="100%"><br>
-  <em>5120 x 3550 x 264, INT8, verified.</em>
-</p>
-<p align="center">
-  <img src="docs/images/bench_5120x3550x264_int8_nocpu.jpg" alt="5120x3550x264 nocpu" width="100%"><br>
-  <em>5120 x 3550 x 264, INT8, <code>--nocpu</code> (hardware timing only).</em>
-</p>
+
+---
 
 ## Project Structure
 
-* **Hardware (RTL):** `mac_core`, `pe_wrapper`, `systolic_array_os`, `skew_network`, `systolic_dataflow_ctrl`, `output_serializer`, `post_accumulator`, `gemm_compute_core`, `int32_int8_rescale` (requant), `l2_tiling_agu` (L2 tiling / DMA engine), `gemm_top_l2`, `gemm_l2_axi_lite_regs`.
-* **Block design:** `gemm_system.bd` (Zynq PS, SmartConnect, AXI DataMover, control registers, accelerator).
-* **Software:** `npu_driver.h` (Linux driver via `/dev/mem`), `gemm_test.c`.
-
-## Software Options (`gemm_test`)
-
-```bash
-sudo ./gemm_test M K N [-m mode] [-q style] [-r range] [-s seed] [--nocpu] [--sweep] [--dump prefix] [--csv file] [--uniform]
+```text
+int8-matmul-accelerator/
+├── LICENSE
+├── README.md
+├── docs/
+│   └── images/
+│       └── sweep_result.png           # On-board KR260 sweep benchmark screenshot
+├── hardware/
+│   ├── rtl_ip/                        # Verilog RTL core (Systolic Array, L2 Tiling AGU, Requant, AXI-Lite)
+│   ├── system/                        # Top-level wrapper & Vivado Block Design (gemm_system.bd, gemm_bd.tcl)
+│   └── tb/                            # Verilog simulation testbenches (tb_gemm.v, tb_orig.v, xpm_models.v)
+└── software/
+    ├── drivers/
+    │   ├── kr260_npu_driver.h         # CMA DMA-BUF (/dev/dma_heap/reserved) + ARMv8 cache driver (KR260)
+    │   └── npu_driver.h               # Direct /dev/mem reserved-memory driver (KV260)
+    └── benchmarks/
+        ├── gemm_test.c                # Bit-true INT8/INT32 verification & 6-case boundary sweep
+        ├── regver.c                   # Hardware VERSION register (0xA0000040) check
+        ├── dmaheap_probe.c            # CMA allocation & user-space cache flush/invalidate probe
+        ├── cma_probe.c                # Contiguous physical memory inspector
+        └── ddr_bench.c                # Multi-threaded ARMv8 NEON DDR bandwidth benchmark
 ```
 
-| Option | Description | Default |
-|---|---|---|
-| `M K N` | Matrix sizes: $A_{M \times K} \cdot B_{K \times N}$ | – |
-| `-m mode` | Output mode: `1` = INT8, `2` = raw INT32, `3` = both | `1` |
-| `-q style` | Requant parameters: `0` = per-tensor (`bias=0, mult=1, shift=8, zp=0`), `1` = random per-channel | `1` |
-| `-r range` | Input amplitude, values in $[-r, r]$ (1 to 127) | `127` |
-| `-s seed` | Random number generator seed | `42` |
-| `--uniform` | Uniform random inputs instead of edge-biased ones (`-128, -127, 126, 127`) | off |
-| `--nocpu` | Skip the CPU reference (hardware timing only, result shown as `UNVERIFIED`) | off |
-| `--sweep` | Run 6 built-in sizes: 1x1x1, 256³, 512³, 17x33x19, 257³, 2048x32x2048 | off |
-| `--dump prefix` | Write CPU golden data to `prefix_A.bin`, `_B.bin`, `_params.bin`, `_C8.bin`, `_C32.bin` (no hardware needed) | off |
-| `--csv file` | CSV report path | `gemm_benchmark.csv` |
+### Quick Start (`gemm_test`)
 
-Each run checks the INT8 output, the INT32 output, and that padding bytes in DDR are untouched.
+```bash
+cd software/benchmarks
+gcc -O3 -Wall -DNPU_DMAHEAP -I../drivers gemm_test.c -o gemm_test
+
+# Run the 6-case verification & benchmark sweep
+sudo ./gemm_test --sweep
+
+# Run a custom matrix size M K N (e.g., 1500 x 1280 x 5120, INT8 only)
+sudo ./gemm_test 1500 1280 5120 -m 1
+```
+
+---
 
 ## Links
 
-* **Target model:** Qwen2-Audio, from [Audio_Speech_Conversation](https://github.com/tranquangchung/Audio_Speech_Conversation)
-* **Testbench (Kaggle):** [design-test](https://www.kaggle.com/code/dduong325/design-test)
-* **Quantization & verification (Kaggle):** [qwen2-analysis](https://www.kaggle.com/code/duynguynngphng/qwen2-analysis)
+* **RTL Simulation Testbench (Kaggle):** [design-test](https://www.kaggle.com/code/dduong325/design-test)
+* **End-to-End Application (Qwen2-Audio Dialogue Acceleration on Kria KR260):** [`qwen2-audio-fpga-accelerator`](https://github.com/VuDaiDuong-325/qwen2-audio-fpga-accelerator)
 
 ---
 

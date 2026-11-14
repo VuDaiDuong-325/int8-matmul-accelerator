@@ -7,6 +7,7 @@
 //                         [--uniform]
 //
 //   -m  1 = INT8 (default), 2 = raw INT32, 3 = both
+//   -k  k_dim: auto (default: npu_pick_kdim(K)) hoac 32/64/128/256 de ep co dinh
 //   -q  0 = legacy per-tensor quantization; 1 = randomized per-channel (default)
 //   -r  input amplitude; range is normally [-r, r], default 127
 //   -s  RNG seed (default 42)
@@ -24,16 +25,20 @@
 //   total_ms        = transfer_in_ms + execute_ms + transfer_out_ms
 //   speedup         = cpu_ms / total_ms (end-to-end for the measured phases)
 //
-// Build:
-//   gcc -O2 -Wall -Wextra -o gemm_test gemm_test.c
+// Build (KR260 CMA dma-heap):
+//   gcc -O2 -Wall -Wextra -DNPU_DMAHEAP -o gemm_test gemm_test.c
 //   gcc -O2 -Wall -Wextra -DSW_ONLY -o gemm_ref gemm_test.c
 // =============================================================================
-#include "npu_driver.h"
+#if !defined(SW_ONLY) && !defined(NPU_DMAHEAP)
+#define NPU_DMAHEAP 1
+#endif
+#include "kr260_npu_driver.h"
 #include <errno.h>
 #include <inttypes.h>
 #include <limits.h>
 
 static uint32_t rng_state = 42;
+static uint32_t g_kdim = NPU_KDIM_AUTO;     // -k : 0 = tu chon theo K
 static uint32_t rnd(void) {
     rng_state = rng_state * 1664525u + 1013904223u;
     return rng_state >> 8;
@@ -197,8 +202,10 @@ static int run_case(npu_t *d, uint32_t M, uint32_t K, uint32_t N,
     }
 
     // Sentinels are set outside the transfer-in interval.
-    memset(d->ddr + l.off_c,   0xA5, (size_t)M * l.ldc);
-    memset(d->ddr + l.off_c32, 0x5A, (size_t)M * l.ldc32);
+    npu_dev_fill(d->ddr + l.off_c,   0xA5, (size_t)M * l.ldc);
+    npu_dev_fill(d->ddr + l.off_c32, 0x5A, (size_t)M * l.ldc32);
+    npu_cache_flush_inv(d->ddr + l.off_c,   (size_t)M * l.ldc);
+    npu_cache_flush_inv(d->ddr + l.off_c32, (size_t)M * l.ldc32);
 
     // This is CPU software copy into memory-mapped reserved DDR, not DMA time.
     double t_in = npu_now();
@@ -208,7 +215,8 @@ static int run_case(npu_t *d, uint32_t M, uint32_t K, uint32_t N,
     transfer_in_ms = (npu_now() - t_in) * 1e3;
 
     d->last_hw_ms = -1.0;  // prevent a previous case's time leaking into a timeout row
-    int hw_rc = npu_run(d, &l, M, K, N, NPU_KDIM_DEFAULT, (uint32_t)mode, 600.0);
+    const uint32_t kd_used = g_kdim ? g_kdim : npu_pick_kdim(K);
+    int hw_rc = npu_run(d, &l, M, K, N, kd_used, (uint32_t)mode, 600.0);
     execute_ms = d->last_hw_ms;
     if (hw_rc != 0) {
         fprintf(stderr, "  [ERROR] hardware run failed (rc=%d)\n", hw_rc);
@@ -219,6 +227,10 @@ static int run_case(npu_t *d, uint32_t M, uint32_t K, uint32_t N,
     }
     if (execute_ms > 0.0)
         hw_gops = (2.0 * (double)M * K * N) / (execute_ms * 1e6);
+
+    // Ensure non-enabled output regions are also invalidated before sentinel check.
+    if (!(mode & NPU_OUT_INT8))  npu_cache_flush_inv(d->ddr + l.off_c,   (size_t)M * l.ldc);
+    if (!(mode & NPU_OUT_INT32)) npu_cache_flush_inv(d->ddr + l.off_c32, (size_t)M * l.ldc32);
 
     // Measure copies of enabled output(s) from mapped DDR into ordinary CPU buffers.
     double t_out = npu_now();
@@ -287,7 +299,7 @@ static int run_case(npu_t *d, uint32_t M, uint32_t K, uint32_t N,
         if (mismatches != 0) result = mismatches;
     }
 
-    printf("  GEMM %ux%ux%u mode=%d | ", M, K, N, mode);
+    printf("  GEMM %ux%ux%u mode=%d kd=%u | ", M, K, N, mode, kd_used);
     print_ms("CPU", cpu_ms);
     print_ms("In", transfer_in_ms);
     print_ms("Exec", execute_ms);
@@ -334,6 +346,7 @@ int main(int argc, char **argv) {
     for (int i = 1; i < argc; i++) {
         if (!strcmp(argv[i], "-m") && i + 1 < argc) mode = atoi(argv[++i]);
         else if (!strcmp(argv[i], "-q") && i + 1 < argc) style = atoi(argv[++i]);
+        else if (!strcmp(argv[i], "-k") && i + 1 < argc) { i++; g_kdim = !strcmp(argv[i], "auto") ? NPU_KDIM_AUTO : (uint32_t)atoi(argv[i]); }
         else if (!strcmp(argv[i], "-r") && i + 1 < argc) range = atoi(argv[++i]);
         else if (!strcmp(argv[i], "-s") && i + 1 < argc) rng_state = (uint32_t)atoi(argv[++i]);
         else if (!strcmp(argv[i], "--nocpu")) do_cpu = 0;
@@ -399,6 +412,39 @@ int main(int argc, char **argv) {
     fprintf(stderr, "Build SW_ONLY: chi ho tro --dump\n");
     return 1;
 #else
+    if (!sweep && (!M || !K || !N)) {
+        fprintf(stderr, "Usage: %s M K N [-m mode] [-k auto|N] [-q style] [-r range] [-s seed] "
+                        "[--nocpu] [--sweep] [--dump prefix] [--csv file] [--uniform]\n",
+                argv[0]);
+        return 1;
+    }
+
+    // Tu dong xac nhan PL da nap neu fpga0 dang o trang thai 'operating' (sau './kr260_check.sh bit')
+    if (!getenv("NPU_PL_OK")) {
+        FILE *fp_st = fopen("/sys/class/fpga_manager/fpga0/state", "r");
+        if (fp_st) {
+            char st_buf[64] = {0};
+            if (fgets(st_buf, sizeof(st_buf), fp_st) && strncmp(st_buf, "operating", 9) == 0) {
+                setenv("NPU_PL_OK", "1", 0);
+            }
+            fclose(fp_st);
+        }
+    }
+
+    // Mac dinh xin 32 MB CMA (nhu DDRMB=32 trong kr260_check.sh) de tranh loi phan manh CMA,
+    // hoac tu dong tang neu kich thuoc M, K, N yeu cau > 32 MB.
+    if (!getenv("NPU_DDR_MB")) {
+        size_t need_mb = 32;
+        if (!sweep && M && K && N) {
+            npu_layout_t req = npu_layout(M, K, N);
+            size_t req_mb = (size_t)((req.total + (1ULL << 20) - 1) >> 20);
+            if (req_mb > need_mb) need_mb = req_mb;
+        }
+        char mb_str[32];
+        snprintf(mb_str, sizeof(mb_str), "%zu", need_mb);
+        setenv("NPU_DDR_MB", mb_str, 0);
+    }
+
     npu_t dev;
     if (npu_open(&dev) < 0) return 1;
     printf("  HW version reg = 0x%08x\n", dev.regs[NPU_REG_VERSION]);
@@ -437,14 +483,6 @@ int main(int argc, char **argv) {
         }
         printf("\n  SWEEP: %zu cases, %d FAIL/ERROR\n", cases, bad);
     } else {
-        if (!M || !K || !N) {
-            fprintf(stderr, "Usage: %s M K N [-m mode] [-q style] [-r range] [-s seed] "
-                            "[--nocpu] [--sweep] [--dump prefix] [--csv file] [--uniform]\n",
-                    argv[0]);
-            fclose(csv);
-            npu_close(&dev);
-            return 1;
-        }
         bad = run_case(&dev, M, K, N, mode, style, range, edge_data, do_cpu, 1, csv);
         if (bad < 0) bad = 1;
     }

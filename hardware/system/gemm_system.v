@@ -2,15 +2,15 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-//Date        : Sun Jul  5 22:44:05 2026
-//Host        : ZUYYYY running 64-bit major release  (build 9200)
+//Date        : Sun Nov  8 21:59:23 2026
+//Host        : VuDuong-32 running 64-bit major release  (build 9200)
 //Command     : generate_target gemm_system.bd
 //Design      : gemm_system
 //Purpose     : IP block netlist
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "gemm_system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=gemm_system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=9,numReposBlks=9,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_clkrst_cnt=21,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "gemm_system.hwdef" *) 
+(* CORE_GENERATION_INFO = "gemm_system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=gemm_system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=10,numReposBlks=10,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_clkrst_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "gemm_system.hwdef" *) 
 module gemm_system
    ();
 
@@ -73,21 +73,27 @@ module gemm_system
   wire axi_smc_M00_AXI_WREADY;
   wire [3:0]axi_smc_M00_AXI_WSTRB;
   wire axi_smc_M00_AXI_WVALID;
+  wire clk_wiz_0_clk_out1;
+  wire clk_wiz_0_locked;
   wire [31:0]gemm_l2_axi_lite_regs_0_cfg_base_a_o1;
   wire [31:0]gemm_l2_axi_lite_regs_0_cfg_base_b_o1;
+  wire [31:0]gemm_l2_axi_lite_regs_0_cfg_base_c32_o;
   wire [31:0]gemm_l2_axi_lite_regs_0_cfg_base_c_o1;
-  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_k_dim_o1;
-  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_k_total_o1;
-  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_m_total_o1;
-  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_n_stride_o1;
-  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_n_total_o1;
-  wire [15:0]gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block_o1;
-  wire [4:0]gemm_l2_axi_lite_regs_0_cfg_scale_shift_o1;
-  wire [7:0]gemm_l2_axi_lite_regs_0_cfg_zero_point_o1;
+  wire [31:0]gemm_l2_axi_lite_regs_0_cfg_base_param_o;
+  wire [19:0]gemm_l2_axi_lite_regs_0_cfg_k_dim_o1;
+  wire [19:0]gemm_l2_axi_lite_regs_0_cfg_k_total_o1;
+  wire [31:0]gemm_l2_axi_lite_regs_0_cfg_lda_o;
+  wire [31:0]gemm_l2_axi_lite_regs_0_cfg_ldb_o;
+  wire [31:0]gemm_l2_axi_lite_regs_0_cfg_ldc32_o;
+  wire [31:0]gemm_l2_axi_lite_regs_0_cfg_ldc_o;
+  wire [19:0]gemm_l2_axi_lite_regs_0_cfg_m_total_o1;
+  wire [19:0]gemm_l2_axi_lite_regs_0_cfg_n_total_o1;
+  wire [1:0]gemm_l2_axi_lite_regs_0_cfg_out_mode_o;
   wire gemm_l2_axi_lite_regs_0_irq;
   wire gemm_l2_axi_lite_regs_0_start_o1;
   wire gemm_top_l2_0_busy_o1;
   wire gemm_top_l2_0_done_o1;
+  wire gemm_top_l2_0_err_o;
   wire [71:0]gemm_top_l2_0_mm2s_cmd_TDATA;
   wire gemm_top_l2_0_mm2s_cmd_TREADY;
   wire gemm_top_l2_0_mm2s_cmd_TVALID;
@@ -179,7 +185,7 @@ module gemm_system
   wire zynq_ultra_ps_e_0_pl_resetn0;
 
   gemm_system_axi_datamover_0_0 axi_datamover_0
-       (.m_axi_mm2s_aclk(zynq_ultra_ps_e_0_pl_clk0),
+       (.m_axi_mm2s_aclk(clk_wiz_0_clk_out1),
         .m_axi_mm2s_araddr(axi_datamover_0_M_AXI_MM2S_ARADDR),
         .m_axi_mm2s_arburst(axi_datamover_0_M_AXI_MM2S_ARBURST),
         .m_axi_mm2s_arcache(axi_datamover_0_M_AXI_MM2S_ARCACHE),
@@ -196,7 +202,7 @@ module gemm_system
         .m_axi_mm2s_rready(axi_datamover_0_M_AXI_MM2S_RREADY),
         .m_axi_mm2s_rresp(axi_datamover_0_M_AXI_MM2S_RRESP),
         .m_axi_mm2s_rvalid(axi_datamover_0_M_AXI_MM2S_RVALID),
-        .m_axi_s2mm_aclk(zynq_ultra_ps_e_0_pl_clk0),
+        .m_axi_s2mm_aclk(clk_wiz_0_clk_out1),
         .m_axi_s2mm_aresetn(rst_ps8_0_99M_peripheral_aresetn),
         .m_axi_s2mm_awaddr(axi_datamover_0_M_AXI_S2MM_AWADDR),
         .m_axi_s2mm_awburst(axi_datamover_0_M_AXI_S2MM_AWBURST),
@@ -216,7 +222,7 @@ module gemm_system
         .m_axi_s2mm_wready(axi_datamover_0_M_AXI_S2MM_WREADY),
         .m_axi_s2mm_wstrb(axi_datamover_0_M_AXI_S2MM_WSTRB),
         .m_axi_s2mm_wvalid(axi_datamover_0_M_AXI_S2MM_WVALID),
-        .m_axis_mm2s_cmdsts_aclk(zynq_ultra_ps_e_0_pl_clk0),
+        .m_axis_mm2s_cmdsts_aclk(clk_wiz_0_clk_out1),
         .m_axis_mm2s_cmdsts_aresetn(rst_ps8_0_99M_peripheral_aresetn),
         .m_axis_mm2s_sts_tready(1'b1),
         .m_axis_mm2s_tdata(axi_datamover_0_M_AXIS_MM2S_TDATA),
@@ -224,7 +230,7 @@ module gemm_system
         .m_axis_mm2s_tready(axi_datamover_0_M_AXIS_MM2S_TREADY),
         .m_axis_mm2s_tvalid(axi_datamover_0_M_AXIS_MM2S_TVALID),
         .m_axis_s2mm_cmdsts_aresetn(rst_ps8_0_99M_peripheral_aresetn),
-        .m_axis_s2mm_cmdsts_awclk(zynq_ultra_ps_e_0_pl_clk0),
+        .m_axis_s2mm_cmdsts_awclk(clk_wiz_0_clk_out1),
         .m_axis_s2mm_sts_tdata(axi_datamover_0_M_AXIS_S2MM_STS_TDATA),
         .m_axis_s2mm_sts_tready(axi_datamover_0_M_AXIS_S2MM_STS_TREADY),
         .m_axis_s2mm_sts_tvalid(axi_datamover_0_M_AXIS_S2MM_STS_TVALID),
@@ -239,7 +245,7 @@ module gemm_system
         .s_axis_s2mm_tlast(gemm_top_l2_0_s2mm_TLAST),
         .s_axis_s2mm_tready(gemm_top_l2_0_s2mm_TREADY),
         .s_axis_s2mm_tvalid(gemm_top_l2_0_s2mm_TVALID));
-  gemm_system_axi_smc_2 axi_smc
+  gemm_system_axi_smc_0 axi_smc
        (.M00_AXI_araddr(axi_smc_M00_AXI_ARADDR),
         .M00_AXI_arprot(axi_smc_M00_AXI_ARPROT),
         .M00_AXI_arready(axi_smc_M00_AXI_ARREADY),
@@ -298,10 +304,14 @@ module gemm_system
         .S00_AXI_wready(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WREADY),
         .S00_AXI_wstrb(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WSTRB),
         .S00_AXI_wvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WVALID),
-        .aclk(zynq_ultra_ps_e_0_pl_clk0),
+        .aclk(clk_wiz_0_clk_out1),
         .aresetn(rst_ps8_0_99M_peripheral_aresetn));
+  gemm_system_clk_wiz_0_0 clk_wiz_0
+       (.clk_in1(zynq_ultra_ps_e_0_pl_clk0),
+        .clk_out1(clk_wiz_0_clk_out1),
+        .locked(clk_wiz_0_locked));
   gemm_system_gemm_l2_axi_lite_regs_0_0 gemm_l2_axi_lite_regs_0
-       (.S_AXI_ACLK(zynq_ultra_ps_e_0_pl_clk0),
+       (.S_AXI_ACLK(clk_wiz_0_clk_out1),
         .S_AXI_ARADDR(axi_smc_M00_AXI_ARADDR),
         .S_AXI_ARESETN(rst_ps8_0_99M_peripheral_aresetn),
         .S_AXI_ARPROT(axi_smc_M00_AXI_ARPROT),
@@ -325,34 +335,42 @@ module gemm_system
         .busy_i(gemm_top_l2_0_busy_o1),
         .cfg_base_a_o(gemm_l2_axi_lite_regs_0_cfg_base_a_o1),
         .cfg_base_b_o(gemm_l2_axi_lite_regs_0_cfg_base_b_o1),
+        .cfg_base_c32_o(gemm_l2_axi_lite_regs_0_cfg_base_c32_o),
         .cfg_base_c_o(gemm_l2_axi_lite_regs_0_cfg_base_c_o1),
+        .cfg_base_param_o(gemm_l2_axi_lite_regs_0_cfg_base_param_o),
         .cfg_k_dim_o(gemm_l2_axi_lite_regs_0_cfg_k_dim_o1),
         .cfg_k_total_o(gemm_l2_axi_lite_regs_0_cfg_k_total_o1),
+        .cfg_lda_o(gemm_l2_axi_lite_regs_0_cfg_lda_o),
+        .cfg_ldb_o(gemm_l2_axi_lite_regs_0_cfg_ldb_o),
+        .cfg_ldc32_o(gemm_l2_axi_lite_regs_0_cfg_ldc32_o),
+        .cfg_ldc_o(gemm_l2_axi_lite_regs_0_cfg_ldc_o),
         .cfg_m_total_o(gemm_l2_axi_lite_regs_0_cfg_m_total_o1),
-        .cfg_n_stride_o(gemm_l2_axi_lite_regs_0_cfg_n_stride_o1),
         .cfg_n_total_o(gemm_l2_axi_lite_regs_0_cfg_n_total_o1),
-        .cfg_num_k_tiles_per_block_o(gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block_o1),
-        .cfg_scale_shift_o(gemm_l2_axi_lite_regs_0_cfg_scale_shift_o1),
-        .cfg_zero_point_o(gemm_l2_axi_lite_regs_0_cfg_zero_point_o1),
+        .cfg_out_mode_o(gemm_l2_axi_lite_regs_0_cfg_out_mode_o),
         .done_i(gemm_top_l2_0_done_o1),
+        .err_i(gemm_top_l2_0_err_o),
         .irq_o(gemm_l2_axi_lite_regs_0_irq),
         .start_o(gemm_l2_axi_lite_regs_0_start_o1));
   gemm_system_gemm_top_l2_0_0 gemm_top_l2_0
-       (.CLK_i(zynq_ultra_ps_e_0_pl_clk0),
+       (.CLK_i(clk_wiz_0_clk_out1),
         .RST_i(rst_ps8_0_99M_peripheral_aresetn),
         .busy_o(gemm_top_l2_0_busy_o1),
         .cfg_base_a_i(gemm_l2_axi_lite_regs_0_cfg_base_a_o1),
         .cfg_base_b_i(gemm_l2_axi_lite_regs_0_cfg_base_b_o1),
+        .cfg_base_c32_i(gemm_l2_axi_lite_regs_0_cfg_base_c32_o),
         .cfg_base_c_i(gemm_l2_axi_lite_regs_0_cfg_base_c_o1),
+        .cfg_base_param_i(gemm_l2_axi_lite_regs_0_cfg_base_param_o),
         .cfg_k_dim_i(gemm_l2_axi_lite_regs_0_cfg_k_dim_o1),
         .cfg_k_total_i(gemm_l2_axi_lite_regs_0_cfg_k_total_o1),
+        .cfg_lda_i(gemm_l2_axi_lite_regs_0_cfg_lda_o),
+        .cfg_ldb_i(gemm_l2_axi_lite_regs_0_cfg_ldb_o),
+        .cfg_ldc32_i(gemm_l2_axi_lite_regs_0_cfg_ldc32_o),
+        .cfg_ldc_i(gemm_l2_axi_lite_regs_0_cfg_ldc_o),
         .cfg_m_total_i(gemm_l2_axi_lite_regs_0_cfg_m_total_o1),
-        .cfg_n_stride_i(gemm_l2_axi_lite_regs_0_cfg_n_stride_o1),
         .cfg_n_total_i(gemm_l2_axi_lite_regs_0_cfg_n_total_o1),
-        .cfg_num_k_tiles_per_block_i(gemm_l2_axi_lite_regs_0_cfg_num_k_tiles_per_block_o1),
-        .cfg_scale_shift_i(gemm_l2_axi_lite_regs_0_cfg_scale_shift_o1),
-        .cfg_zero_point_i(gemm_l2_axi_lite_regs_0_cfg_zero_point_o1),
+        .cfg_out_mode_i(gemm_l2_axi_lite_regs_0_cfg_out_mode_o),
         .done_o(gemm_top_l2_0_done_o1),
+        .err_o(gemm_top_l2_0_err_o),
         .mm2s_cmd_tdata(gemm_top_l2_0_mm2s_cmd_TDATA),
         .mm2s_cmd_tready(gemm_top_l2_0_mm2s_cmd_TREADY),
         .mm2s_cmd_tvalid(gemm_top_l2_0_mm2s_cmd_TVALID),
@@ -372,14 +390,14 @@ module gemm_system
         .s2mm_tready(gemm_top_l2_0_s2mm_TREADY),
         .s2mm_tvalid(gemm_top_l2_0_s2mm_TVALID),
         .start_i(gemm_l2_axi_lite_regs_0_start_o1));
-  gemm_system_rst_ps8_0_99M_1 rst_ps8_0_99M
+  gemm_system_rst_ps8_0_99M_0 rst_ps8_0_99M
        (.aux_reset_in(1'b1),
-        .dcm_locked(1'b1),
+        .dcm_locked(clk_wiz_0_locked),
         .ext_reset_in(zynq_ultra_ps_e_0_pl_resetn0),
         .mb_debug_sys_rst(1'b0),
         .peripheral_aresetn(rst_ps8_0_99M_peripheral_aresetn),
-        .slowest_sync_clk(zynq_ultra_ps_e_0_pl_clk0));
-  gemm_system_smartconnect_0_1 smartconnect_0
+        .slowest_sync_clk(clk_wiz_0_clk_out1));
+  gemm_system_smartconnect_0_0 smartconnect_0
        (.M00_AXI_araddr(smartconnect_0_M00_AXI_ARADDR),
         .M00_AXI_arburst(smartconnect_0_M00_AXI_ARBURST),
         .M00_AXI_arcache(smartconnect_0_M00_AXI_ARCACHE),
@@ -413,7 +431,7 @@ module gemm_system
         .S00_AXI_rready(axi_datamover_0_M_AXI_MM2S_RREADY),
         .S00_AXI_rresp(axi_datamover_0_M_AXI_MM2S_RRESP),
         .S00_AXI_rvalid(axi_datamover_0_M_AXI_MM2S_RVALID),
-        .aclk(zynq_ultra_ps_e_0_pl_clk0),
+        .aclk(clk_wiz_0_clk_out1),
         .aresetn(rst_ps8_0_99M_peripheral_aresetn));
   gemm_system_smartconnect_1_0 smartconnect_1
        (.M00_AXI_awaddr(smartconnect_1_M00_AXI_AWADDR),
@@ -455,7 +473,7 @@ module gemm_system
         .S00_AXI_wready(axi_datamover_0_M_AXI_S2MM_WREADY),
         .S00_AXI_wstrb(axi_datamover_0_M_AXI_S2MM_WSTRB),
         .S00_AXI_wvalid(axi_datamover_0_M_AXI_S2MM_WVALID),
-        .aclk(zynq_ultra_ps_e_0_pl_clk0),
+        .aclk(clk_wiz_0_clk_out1),
         .aresetn(rst_ps8_0_99M_peripheral_aresetn));
   gemm_system_xlconcat_0_0 xlconcat_0
        (.In0(gemm_l2_axi_lite_regs_0_irq),
@@ -500,7 +518,7 @@ module gemm_system
         .maxigp0_wready(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WREADY),
         .maxigp0_wstrb(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WSTRB),
         .maxigp0_wvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WVALID),
-        .maxihpm0_fpd_aclk(zynq_ultra_ps_e_0_pl_clk0),
+        .maxihpm0_fpd_aclk(clk_wiz_0_clk_out1),
         .pl_clk0(zynq_ultra_ps_e_0_pl_clk0),
         .pl_ps_irq0(xlconcat_0_dout),
         .pl_resetn0(zynq_ultra_ps_e_0_pl_resetn0),
@@ -569,6 +587,6 @@ module gemm_system
         .saxigp1_wready(smartconnect_1_M00_AXI_WREADY),
         .saxigp1_wstrb(smartconnect_1_M00_AXI_WSTRB),
         .saxigp1_wvalid(smartconnect_1_M00_AXI_WVALID),
-        .saxihpc0_fpd_aclk(zynq_ultra_ps_e_0_pl_clk0),
-        .saxihpc1_fpd_aclk(zynq_ultra_ps_e_0_pl_clk0));
+        .saxihpc0_fpd_aclk(clk_wiz_0_clk_out1),
+        .saxihpc1_fpd_aclk(clk_wiz_0_clk_out1));
 endmodule

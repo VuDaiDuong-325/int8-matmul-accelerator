@@ -30,6 +30,11 @@
 //     Bảng được nạp bằng chính DMA MM2S (xen kẽ với fetch A/B, có trọng tài trong
 //     fetch FSM), cho mỗi block N (tối đa 256 kênh = 4 KB), ngay khi block tính
 //     K cuối cùng bắt đầu, nên latency nạp được che bởi compute.
+//
+// [v7] FEED-AHEAD: bo cap du lieu (GBUF -> bram_input_buffer, "generator" g_*) tach khoi bo nhan
+//     ket qua (recv, c_*/C_RECV). Tile ke bat dau cap ngay sau tile truoc (khong cho C_RECV), GBUF
+//     slot duoc nha ngay khi cap xong K-block. Bo nhan chay doc lap va nhan ket qua theo thu tu.
+//     Bao ve tran FIFO C: gemm_compute_core dung stall_i theo muc day cua FIFO.
 //==============================================================================
 
 module l2_tiling_agu #(
@@ -102,10 +107,12 @@ module l2_tiling_agu #(
                      F_B_CMD = 4'd4, F_B_DATA = 4'd5, F_DONE = 4'd6,
                      F_P_CMD = 4'd7, F_P_DATA = 4'd8;
 
-    localparam [4:0] C_IDLE = 5'd0,  C_PREP = 5'd1,  C_WAIT_SLOT = 5'd2, C_FEED_AB = 5'd3,
-                     C_RECV = 5'd4,  C_RELEASE = 5'd5, C_PWAIT = 5'd6,
+    // Bo NHAN (recv) + DRAIN. (v7: C_PREP / C_WAIT_SLOT / C_FEED_AB da chuyen sang generator G_*)
+    localparam [4:0] C_IDLE = 5'd0,  C_RECV = 5'd4,  C_BLKEND = 5'd5, C_PWAIT = 5'd6,
                      C_DRAIN = 5'd7, C_NEXT_BLOCK = 5'd8,
                      C_WAIT_STS = 5'd9, C_DONE_ST = 5'd10;
+    // Generator cap du lieu A/B vao compute core
+    localparam [2:0] G_IDLE = 3'd0, G_WAIT = 3'd1, G_RUN = 3'd2, G_FIN = 3'd3, G_END = 3'd4;
 
     // Bộ GHI (writer) trong pha drain
     localparam [2:0] W_IDLE = 3'd0, W_CMD = 3'd1, W_DATA = 3'd2,
@@ -166,10 +173,19 @@ module l2_tiling_agu #(
     reg [DIM_W-1:0] c_m_blk_cnt_r, c_n_blk_cnt_r, c_k_blk_cnt_r;
     reg [ADDR_W-1:0] c_addr_c_mblk_r,   c_addr_c_tile_r;
     reg [ADDR_W-1:0] c_addr_c32_mblk_r, c_addr_c32_tile_r;
-    reg [3:0] mi_cnt_r, ni_cnt_r;
+    reg [3:0] mi_cnt_r, ni_cnt_r;          // bo NHAN: chi so tile dang nhan ket qua
     reg [7:0] a_col_k_r, b_step_k_r;
     reg a_send_done_r, b_send_done_r;
     reg [3:0] recv_row_r;
+
+    // --- Generator (cap du lieu) ---
+    reg [2:0]       g_state_r;
+    reg             g_sel_r;                          // GBUF slot dang doc
+    reg [DIM_W-1:0] g_m_blk_r, g_n_blk_r, g_k_blk_r;
+    reg [3:0]       ga_mi_r, ga_ni_r, gb_mi_r, gb_ni_r;   // moi stream (A, B) co chi so tile rieng
+    reg [3:0]       g_mi_last_r, g_ni_last_r;
+    reg [7:0]       g_flen_m1_r;                      // so buoc feed cua K-block - 1
+    reg [8:0]       g_kv_r;                           // K hop le cua K-block
 
     // --- Pha DRAIN = bộ PHÁT (producer) + bộ GHI (writer) chạy song song, nối bằng FIFO nhỏ ---
     //   Producer: mỗi chu kỳ đọc 1 hàng (16 lane) từ C_ACCUM, cho qua requant theo kênh (pipeline 7 tầng),
@@ -203,6 +219,37 @@ module l2_tiling_agu #(
     // Số tile 16x16 hợp lệ trong block compute: chỉ số cuối = ceil(v/16)-1 = (v-1)>>4
     wire [3:0] mi_last_w = (c_mv_w - 9'd1) >> 4;
     wire [3:0] ni_last_w = (c_nv_w - 9'd1) >> 4;
+
+    // ---- Kich thuoc block phia generator (g_*), giong cong thuc c_* nhung theo bo dem generator
+    wire [31:0] g_m_rem_w = m32_w - ({{(32-DIM_W){1'b0}}, g_m_blk_r} << LOG2BLK);
+    wire [31:0] g_n_rem_w = n32_w - ({{(32-DIM_W){1'b0}}, g_n_blk_r} << LOG2BLK);
+    wire [31:0] g_k_rem_w = k32_w - ({{(32-DIM_W){1'b0}}, g_k_blk_r} << LOG2BLK);
+    wire [8:0]  g_mv_w = (g_m_rem_w > M_BLK) ? M_BLK[8:0] : g_m_rem_w[8:0];
+    wire [8:0]  g_nv_w = (g_n_rem_w > N_BLK) ? N_BLK[8:0] : g_n_rem_w[8:0];
+    wire [8:0]  g_kv_w = (g_k_rem_w > K_BLK) ? K_BLK[8:0] : g_k_rem_w[8:0];
+    wire [3:0]  g_mi_last_w = (g_mv_w - 9'd1) >> 4;
+    wire [3:0]  g_ni_last_w = (g_nv_w - 9'd1) >> 4;
+
+    // ---- k_dim = 2^kd_sh ; so chunk/block ; flen = lam tron len boi cua k_dim
+    function [3:0] f_log2;
+        input [8:0] v;
+        begin
+            f_log2 = v[8] ? 4'd8 : v[7] ? 4'd7 : v[6] ? 4'd6 : v[5] ? 4'd5 :
+                     v[4] ? 4'd4 : v[3] ? 4'd3 : v[2] ? 4'd2 : v[1] ? 4'd1 : 4'd0;
+        end
+    endfunction
+    wire [3:0] kd_sh_w = f_log2(cfg_k_dim_i[8:0]);
+    wire [9:0] g_flen_w = ((({1'b0, g_kv_w} + {1'b0, cfg_k_dim_i[8:0]} - 10'd1) >> kd_sh_w) << kd_sh_w);
+
+    // so chunk moi tile cua K-block: day (256/k_dim) va K-block cuoi (kv_tail)
+    wire [31:0] k_tail_rem_w = k32_w - ({{(32-DIM_W){1'b0}}, k_blk_last_w} << LOG2BLK);
+    wire [8:0]  kv_tail_w    = (k_tail_rem_w > K_BLK) ? K_BLK[8:0] : k_tail_rem_w[8:0];
+    wire [8:0]  nch_full_w   = K_BLK[8:0] >> kd_sh_w;
+    wire [9:0]  nch_tail_sum_w = {1'b0, kv_tail_w} + {1'b0, cfg_k_dim_i[8:0]} - 10'd1;
+    wire [8:0]  nch_tail_w   = nch_tail_sum_w[9:0] >> kd_sh_w;
+    // nch cua K-block KE TIEP trong chuoi (sau K-block c_k_blk_cnt_r; vong ve 0 khi het output block)
+    wire [DIM_W-1:0] c_k_next_w = (c_k_blk_cnt_r < k_blk_last_w) ? (c_k_blk_cnt_r + 1'b1) : {DIM_W{1'b0}};
+    wire [8:0]  nch_next_w   = (c_k_next_w == k_blk_last_w) ? nch_tail_w : nch_full_w;
 
     // BTT (byte) của 1 hàng A / B đọc từ DDR, làm tròn lên 16 byte
     wire [9:0] a_btt_w = ((f_kv_w + 10'd15) >> 4) << 4;
@@ -271,7 +318,7 @@ module l2_tiling_agu #(
                 .clka(CLK_i), .clkb(CLK_i), .ena(1'b1),
                 .enb(core_a_tready_w || !core_a_tvalid_d1_r),
                 .wea(wea_w), .addra({fetch_sel_r, a_recv_row_r[7:4], a_beat_cnt_r}), .dina(mm2s_tdata),
-                .addrb({compute_sel_r, mi_cnt_r, a_col_k_r[7:4]}), .doutb(gbufa_dout_w[gr]),
+                .addrb({g_sel_r, ga_mi_r, a_col_k_r[7:4]}), .doutb(gbufa_dout_w[gr]),
                 .sleep(1'b0), .regceb(1'b1), .injectsbiterra(1'b0), .injectdbiterra(1'b0)
             );
         end
@@ -301,19 +348,22 @@ module l2_tiling_agu #(
         .clka(CLK_i), .clkb(CLK_i), .ena(1'b1),
         .enb(core_b_tready_w || !core_b_tvalid_d1_r),
         .wea(we_b_w), .addra({fetch_sel_r, b_beat_cnt_r, b_recv_row_r[7:0]}), .dina(mm2s_tdata),
-        .addrb({compute_sel_r, ni_cnt_r, b_step_k_r}), .doutb(core_b_tdata_w),
+        .addrb({g_sel_r, gb_ni_r, b_step_k_r}), .doutb(core_b_tdata_w),
         .sleep(1'b0), .regceb(1'b1), .injectsbiterra(1'b0), .injectdbiterra(1'b0)
     );
 
-    // -- 3. PIPELINE FEED A/B --
-    //   Số bước K của block hiện tại = c_flen = c_nch * k_dim (bội của k_dim)
-    reg [7:0] c_flen_m1_r;            // (số bước feed) - 1
-    reg [8:0] c_nch_r;                // số chunk k_dim trong block hiện tại (<= K_BLK/k_dim, tối đa 256 khi k_dim=1)
-    reg [8:0] c_acc_r;                // bộ tích lũy trong C_PREP
+    // -- 3. PIPELINE FEED A/B (v7: moi stream co chi so tile rieng, tile ke chay khong co bong bóng) --
+    //   Moi tile phat flen = nch*k_dim buoc (g_flen_m1_r + 1). Het tile -> tile ke (ni++, roi mi++) NGAY
+    //   chu ky sau; stream dung (req_done) khi het tile cuoi cua K-block. tlast chi o beat cuoi cua K-block.
+    reg [8:0] c_nch_r;                // so chunk/tile cua K-block dang NHAN, dua cho post_accumulator
 
     reg a_req_done_r, b_req_done_r;
-    wire req_a_w = (compute_state_r == C_FEED_AB) && !a_req_done_r;
-    wire req_b_w = (compute_state_r == C_FEED_AB) && !b_req_done_r;
+    wire req_a_w = (g_state_r == G_RUN) && !a_req_done_r;
+    wire req_b_w = (g_state_r == G_RUN) && !b_req_done_r;
+    wire a_last_in_tile_w = (a_col_k_r  == g_flen_m1_r);
+    wire b_last_in_tile_w = (b_step_k_r == g_flen_m1_r);
+    wire a_last_tile_w = (ga_ni_r == g_ni_last_r) && (ga_mi_r == g_mi_last_r);
+    wire b_last_tile_w = (gb_ni_r == g_ni_last_r) && (gb_mi_r == g_mi_last_r);
 
     always @(posedge CLK_i) begin
         if (!RST_i) begin
@@ -321,36 +371,46 @@ module l2_tiling_agu #(
             a_send_done_r <= 0; b_send_done_r <= 0;
             a_req_done_r <= 0; b_req_done_r <= 0;
             a_col_k_r <= 0; b_step_k_r <= 0;
+            ga_mi_r <= 0; ga_ni_r <= 0; gb_mi_r <= 0; gb_ni_r <= 0;
             a_mask_d1_r <= 0;
         end else begin
-            if (compute_state_r == C_WAIT_SLOT || compute_state_r == C_RECV) begin
+            if (g_state_r != G_RUN) begin
                 a_send_done_r <= 0; b_send_done_r <= 0;
                 a_req_done_r <= 0; b_req_done_r <= 0;
                 a_col_k_r <= 0; b_step_k_r <= 0;
+                ga_mi_r <= 0; ga_ni_r <= 0; gb_mi_r <= 0; gb_ni_r <= 0;
                 core_a_tvalid_d1_r <= 0; core_b_tvalid_d1_r <= 0;
             end else begin
-                // Băng chuyền A
+                // Bang chuyen A
                 if (core_a_tready_w || !core_a_tvalid_d1_r) begin
                     if (req_a_w) begin
                         core_a_tvalid_d1_r <= 1'b1;
-                        core_a_tlast_d1_r  <= (a_col_k_r == c_flen_m1_r);
+                        core_a_tlast_d1_r  <= a_last_in_tile_w && a_last_tile_w;
                         a_rd_byte_d1_r     <= a_col_k_r[3:0];
-                        a_mask_d1_r        <= ({1'b0, a_col_k_r} < c_kv_w);
-                        if (a_col_k_r == c_flen_m1_r) a_req_done_r <= 1'b1;
-                        a_col_k_r <= a_col_k_r + 8'd1;
+                        a_mask_d1_r        <= ({1'b0, a_col_k_r} < g_kv_r);
+                        if (a_last_in_tile_w) begin
+                            a_col_k_r <= 8'd0;
+                            if (ga_ni_r < g_ni_last_r) ga_ni_r <= ga_ni_r + 4'd1;
+                            else if (ga_mi_r < g_mi_last_r) begin ga_mi_r <= ga_mi_r + 4'd1; ga_ni_r <= 4'd0; end
+                            else a_req_done_r <= 1'b1;
+                        end else a_col_k_r <= a_col_k_r + 8'd1;
                     end else begin
                         core_a_tvalid_d1_r <= 1'b0;
                     end
                 end
                 if (core_a_tvalid_d1_r && core_a_tready_w && core_a_tlast_d1_r) a_send_done_r <= 1'b1;
 
-                // Băng chuyền B
+                // Bang chuyen B
                 if (core_b_tready_w || !core_b_tvalid_d1_r) begin
                     if (req_b_w) begin
                         core_b_tvalid_d1_r <= 1'b1;
-                        core_b_tlast_d1_r  <= (b_step_k_r == c_flen_m1_r);
-                        if (b_step_k_r == c_flen_m1_r) b_req_done_r <= 1'b1;
-                        b_step_k_r <= b_step_k_r + 8'd1;
+                        core_b_tlast_d1_r  <= b_last_in_tile_w && b_last_tile_w;
+                        if (b_last_in_tile_w) begin
+                            b_step_k_r <= 8'd0;
+                            if (gb_ni_r < g_ni_last_r) gb_ni_r <= gb_ni_r + 4'd1;
+                            else if (gb_mi_r < g_mi_last_r) begin gb_mi_r <= gb_mi_r + 4'd1; gb_ni_r <= 4'd0; end
+                            else b_req_done_r <= 1'b1;
+                        end else b_step_k_r <= b_step_k_r + 8'd1;
                     end else begin
                         core_b_tvalid_d1_r <= 1'b0;
                     end
@@ -383,10 +443,6 @@ module l2_tiling_agu #(
                 c_k_0_d1_r   <= (c_k_blk_cnt_r == 0);
             end else begin
                 c_valid_d1_r <= 0;
-                if (compute_state_r == C_RELEASE || compute_state_r == C_WAIT_SLOT ||
-                    compute_state_r == C_FEED_AB || compute_state_r == C_PREP) begin
-                    c_k_0_d1_r <= 1'b0;
-                end
             end
         end
     end
@@ -457,7 +513,20 @@ module l2_tiling_agu #(
     wire [N*32-1:0] raw_head_w = raw_mem[raw_rp_r[3:0]];
     wire [N*8-1:0]  i8_head_w  = i8_mem [i8_rp_r[3:0]];
     wire       iss_fire_w = (compute_state_r == C_DRAIN) && !iss_done_r && credit_ok_w;
-    wire       pop_w      = (compute_state_r == C_DRAIN) && (w_state_r == W_ADV);
+    // ---- Writer che do HANG (INT8-only): 1 lenh S2MM / hang C, cac beat 16 byte stream 1 beat/chu ky ----
+    wire       row_mode_w = out_int8_w && !out_int32_w;
+    reg  [8:0]            wc_row_r;      // hang dang phat lenh
+    reg  [ADDR_W-1:0]     wc_addr_r;     // dia chi dau hang dang phat lenh
+    reg                   wc_done_r;     // da phat het lenh cac hang
+    reg                   wd_done_r;     // da nap beat cuoi (hang cuoi) vao thanh ghi S2MM
+    reg  [9:0]            wc_acc_r;      // so lenh da duoc DMA nhan (handshake)
+    reg  [9:0]            wr_start_r;    // so hang da bat dau nap du lieu
+    wire       out_free_w = !s2mm_tvalid || s2mm_tready;
+    // beat dau tien cua hang chi duoc nap khi lenh cua hang do da duoc DMA nhan (lenh luon di truoc du lieu)
+    wire       cmd_ok_w   = (wr_ni_r != 4'd0) || (wc_acc_r != wr_start_r);
+    wire       ld_w       = row_mode_w && (compute_state_r == C_DRAIN) && !wd_done_r &&
+                            out_free_w && (i8_cnt_w != 5'd0) && cmd_ok_w;
+    wire       pop_w      = (compute_state_r == C_DRAIN) && ((w_state_r == W_ADV) || ld_w);
     integer    fi;
     initial begin
         for (fi = 0; fi < 16; fi = fi + 1) begin raw_mem[fi] = {N*32{1'b0}}; i8_mem[fi] = {N*8{1'b0}}; end
@@ -510,12 +579,16 @@ module l2_tiling_agu #(
             busy_o <= 0; done_o <= 0; err_o <= 0;
             mm2s_cmd_tvalid <= 0; s2mm_cmd_tvalid <= 0; s2mm_tvalid <= 0; s2mm_tlast <= 0;
             s2mm_tkeep_r <= {N{1'b1}};
-            buf_ready_r[0] <= 0; buf_ready_r[1] <= 0; fetch_sel_r <= 0; compute_sel_r <= 0;
+            buf_ready_r[0] <= 0; buf_ready_r[1] <= 0; fetch_sel_r <= 0; g_sel_r <= 0;
+            g_state_r <= G_IDLE;
+            g_m_blk_r <= 0; g_n_blk_r <= 0; g_k_blk_r <= 0;
+            g_mi_last_r <= 0; g_ni_last_r <= 0; g_flen_m1_r <= 0; g_kv_r <= 0;
             s2mm_sts_expected_r <= 0; s2mm_sts_received_r <= 0;
             p_req_r <= 0; p_ack_r <= 0; p_ret_done_r <= 0; p_idx_r <= 0;
-            c_nch_r <= 0; c_acc_r <= 0; c_flen_m1_r <= 0;
+            c_nch_r <= 0;
             raw_wp_r <= 0; raw_rp_r <= 0; i8_wp_r <= 0; i8_rp_r <= 0; occ_r <= 0;
             iss_v_d1_r <= 0; iss_done_r <= 1; w_state_r <= W_IDLE;
+            wc_row_r <= 0; wc_addr_r <= 0; wc_done_r <= 1; wd_done_r <= 1; wc_acc_r <= 0; wr_start_r <= 0;
         end else begin
             done_o <= 1'b0;
 
@@ -647,7 +720,41 @@ module l2_tiling_agu #(
                 default: fetch_state_r <= F_IDLE;
             endcase
 
-            // --- COMPUTE PROCESS ---
+            // --- GENERATOR (cap du lieu A/B vao compute core; chay truoc bo nhan) ---
+            case (g_state_r)
+                G_IDLE, G_END: begin
+                    if (start_i && cfg_ok_w) begin
+                        g_m_blk_r <= 0; g_n_blk_r <= 0; g_k_blk_r <= 0; g_sel_r <= 0;
+                        g_state_r <= G_WAIT;
+                    end
+                end
+                G_WAIT: begin
+                    // cho GBUF slot day (fetch da nap xong K-block nay)
+                    if (buf_ready_r[g_sel_r]) begin
+                        g_mi_last_r <= g_mi_last_w; g_ni_last_r <= g_ni_last_w;
+                        g_flen_m1_r <= g_flen_w[7:0] - 8'd1;
+                        g_kv_r      <= g_kv_w;
+                        g_state_r   <= G_RUN;
+                    end
+                end
+                G_RUN: begin
+                    if (a_send_done_r && b_send_done_r) g_state_r <= G_FIN;
+                end
+                G_FIN: begin
+                    // da doc xong GBUF slot nay -> nha ngay cho fetch, doi slot, sang K-block/block ke
+                    buf_ready_r[g_sel_r] <= 0; g_sel_r <= !g_sel_r;
+                    if (g_k_blk_r < k_blk_last_w) begin
+                        g_k_blk_r <= g_k_blk_r + 1; g_state_r <= G_WAIT;
+                    end else if (g_n_blk_r < n_blk_last_w) begin
+                        g_k_blk_r <= 0; g_n_blk_r <= g_n_blk_r + 1; g_state_r <= G_WAIT;
+                    end else if (g_m_blk_r < m_blk_last_w) begin
+                        g_k_blk_r <= 0; g_n_blk_r <= 0; g_m_blk_r <= g_m_blk_r + 1; g_state_r <= G_WAIT;
+                    end else g_state_r <= G_END;
+                end
+                default: g_state_r <= G_IDLE;
+            endcase
+
+            // --- RECV / DRAIN PROCESS ---
             case (compute_state_r)
                 C_IDLE: begin
                     if (start_i) begin
@@ -656,60 +763,50 @@ module l2_tiling_agu #(
                             c_m_blk_cnt_r <= 0; c_n_blk_cnt_r <= 0; c_k_blk_cnt_r <= 0;
                             c_addr_c_mblk_r   <= cfg_base_c_i;   c_addr_c_tile_r   <= cfg_base_c_i;
                             c_addr_c32_mblk_r <= cfg_base_c32_i; c_addr_c32_tile_r <= cfg_base_c32_i;
-                            compute_sel_r <= 0; mi_cnt_r <= 0; ni_cnt_r <= 0;
-                            c_acc_r <= 0; c_nch_r <= 0;
+                            mi_cnt_r <= 0; ni_cnt_r <= 0; recv_row_r <= 0;
+                            // nch cua K-block dau tien (= K-block cuoi neu chi co 1 block)
+                            c_nch_r <= (k_blk_last_w == 0) ? nch_tail_w : nch_full_w;
                             s2mm_sts_expected_r <= 0; s2mm_sts_received_r <= 0;
-                            p_req_r <= 0;
-                            compute_state_r <= C_PREP;
+                            // yeu cau nap bang tham so ngay neu K-block dau cung la K-block cuoi
+                            p_req_r <= (out_int8_w && (k_blk_last_w == 0));
+                            compute_state_r <= C_RECV;
                         end else begin
                             // Cấu hình sai: không chạy, báo lỗi
                             err_o <= 1'b1; done_o <= 1'b1;
                         end
                     end
                 end
-                // Tính số chunk K của block hiện tại: nch = ceil(kv / k_dim), flen = nch*k_dim
-                C_PREP: begin
-                    if (c_acc_r < c_kv_w) begin
-                        c_acc_r <= c_acc_r + cfg_k_dim_i[8:0];
-                        c_nch_r <= c_nch_r + 9'd1;
-                    end else begin
-                        c_flen_m1_r <= c_acc_r[7:0] - 8'd1;
-                        // Block K cuối của block output: yêu cầu nạp bảng tham số (che latency)
-                        if (out_int8_w && (c_k_blk_cnt_r == k_blk_last_w)) p_req_r <= 1'b1;
-                        compute_state_r <= C_WAIT_SLOT;
-                    end
-                end
-                C_WAIT_SLOT: begin
-                    if (buf_ready_r[compute_sel_r]) compute_state_r <= C_FEED_AB;
-                end
-                C_FEED_AB: begin
-                    if (a_send_done_r && b_send_done_r) begin
-                        recv_row_r <= 0; compute_state_r <= C_RECV;
-                    end
-                end
                 C_RECV: begin
                     if (core_c32_tvalid_w) begin
                         if (core_c32_tlast_w) begin
+                            recv_row_r <= 0;
                             if (ni_cnt_r < ni_last_w) begin
-                                ni_cnt_r <= ni_cnt_r + 1; compute_state_r <= C_FEED_AB;
+                                ni_cnt_r <= ni_cnt_r + 1;
                             end else if (mi_cnt_r < mi_last_w) begin
-                                mi_cnt_r <= mi_cnt_r + 1; ni_cnt_r <= 0; compute_state_r <= C_FEED_AB;
-                            end else compute_state_r <= C_RELEASE;
+                                mi_cnt_r <= mi_cnt_r + 1; ni_cnt_r <= 0;
+                            end else begin
+                                // tile cuoi cua K-block: dat truoc nch cho K-block ke (post_accumulator
+                                // dang o S_RECV cua tile ke; so sanh nch chi xay ra sau >= 16 hang)
+                                c_nch_r <= nch_next_w;
+                                compute_state_r <= C_BLKEND;
+                            end
                         end else recv_row_r <= recv_row_r + 1;
                     end
                 end
-                C_RELEASE: begin
-                    buf_ready_r[compute_sel_r] <= 0; compute_sel_r <= !compute_sel_r; mi_cnt_r <= 0; ni_cnt_r <= 0;
+                C_BLKEND: begin
+                    mi_cnt_r <= 0; ni_cnt_r <= 0; recv_row_r <= 0;
                     if (c_k_blk_cnt_r < k_blk_last_w) begin
                         c_k_blk_cnt_r <= c_k_blk_cnt_r + 1;
-                        c_acc_r <= 0; c_nch_r <= 0;
-                        compute_state_r <= C_PREP;
+                        // vao K-block cuoi cua output block -> yeu cau nap bang tham so (che latency)
+                        if (out_int8_w && ((c_k_blk_cnt_r + 1'b1) == k_blk_last_w)) p_req_r <= 1'b1;
+                        compute_state_r <= C_RECV;
                     end else begin
                         // Khởi tạo pha drain
                         iss_row_r <= 0; iss_ni_r <= 0; iss_done_r <= 1'b0;
                         wr_row_r  <= 0; wr_ni_r  <= 0; w_state_r <= W_IDLE;
                         r_addr_c_drow_r   <= c_addr_c_tile_r;
                         r_addr_c32_drow_r <= c_addr_c32_tile_r;
+                        wc_row_r <= 0; wc_addr_r <= c_addr_c_tile_r; wc_done_r <= 1'b0; wd_done_r <= 1'b0; wc_acc_r <= 0; wr_start_r <= 0;
                         compute_state_r <= out_int8_w ? C_PWAIT : C_DRAIN;
                     end
                 end
@@ -734,7 +831,38 @@ module l2_tiling_agu #(
                         end
                     end
 
-                    // ---------------- WRITER ----------------
+                    // ---------------- WRITER (che do hang, INT8-only) ----------------
+                    if (row_mode_w) begin
+                        // (a) tien trinh LENH: 1 lenh / hang, btt = so cot hop le cua block (<= 256)
+                        if (s2mm_cmd_tvalid && s2mm_cmd_tready) begin
+                            s2mm_cmd_tvalid <= 1'b0; wc_acc_r <= wc_acc_r + 10'd1;
+                        end else if (!s2mm_cmd_tvalid && !wc_done_r) begin
+                            s2mm_cmd_tvalid <= 1'b1;
+                            s2mm_cmd_tdata  <= mk_cmd(wc_addr_r, {14'b0, c_nv_w});
+                            s2mm_sts_expected_r <= s2mm_sts_expected_r + 32'd1;
+                            wc_addr_r <= wc_addr_r + cfg_ldc_i;
+                            if ({1'b0, wc_row_r} == {1'b0, c_mv_w} - 10'd1) wc_done_r <= 1'b1;
+                            else wc_row_r <= wc_row_r + 9'd1;
+                        end
+                        // (b) tien trinh DU LIEU: stream cac segment 16 byte, tlast o segment cuoi moi hang
+                        if (ld_w) begin
+                            s2mm_tvalid  <= 1'b1;
+                            s2mm_tdata   <= i8_head_w;
+                            s2mm_tkeep_r <= (nt_w == 5'd16) ? 16'hFFFF : ((16'h0001 << nt_w) - 16'h0001);
+                            s2mm_tlast   <= (wr_ni_r == ni_last_w);
+                            if (wr_ni_r == 4'd0) wr_start_r <= wr_start_r + 10'd1;
+                            if (wr_ni_r < ni_last_w) wr_ni_r <= wr_ni_r + 1;
+                            else begin
+                                wr_ni_r <= 0;
+                                if ({1'b0, wr_row_r} == {1'b0, c_mv_w} - 10'd1) wd_done_r <= 1'b1;
+                                else wr_row_r <= wr_row_r + 9'd1;
+                            end
+                        end else if (s2mm_tvalid && s2mm_tready) begin
+                            s2mm_tvalid <= 1'b0; s2mm_tlast <= 1'b0;
+                        end
+                        // (c) xong khi beat cuoi cua hang cuoi duoc DMA nhan
+                        if (wd_done_r && s2mm_tvalid && s2mm_tready) compute_state_r <= C_NEXT_BLOCK;
+                    end else
                     case (w_state_r)
                         W_IDLE: begin
                             if (op_avail_w) begin
@@ -806,19 +934,24 @@ module l2_tiling_agu #(
                     endcase
                 end
                 C_NEXT_BLOCK: begin
-                    c_k_blk_cnt_r <= 0; c_acc_r <= 0; c_nch_r <= 0;
+                    c_k_blk_cnt_r <= 0;
+                    mi_cnt_r <= 0; ni_cnt_r <= 0; recv_row_r <= 0;
+                    // (c_nch_r da duoc dat = nch cua K-block 0 khi nhan tile cuoi cua K-block cuoi)
+                    // chi yeu cau bang tham so khi con output block ke tiep (tranh nap thua o cuoi lenh)
+                    if (out_int8_w && (k_blk_last_w == 0) &&
+                        ((c_n_blk_cnt_r < n_blk_last_w) || (c_m_blk_cnt_r < m_blk_last_w))) p_req_r <= 1'b1;
                     if (c_n_blk_cnt_r < n_blk_last_w) begin
                         c_n_blk_cnt_r <= c_n_blk_cnt_r + 1;
                         c_addr_c_tile_r   <= c_addr_c_tile_r   + N_BLK_ADDR;
                         c_addr_c32_tile_r <= c_addr_c32_tile_r + (N_BLK_ADDR << 2);
-                        compute_state_r <= C_PREP;
+                        compute_state_r <= C_RECV;
                     end else if (c_m_blk_cnt_r < m_blk_last_w) begin
                         c_m_blk_cnt_r <= c_m_blk_cnt_r + 1; c_n_blk_cnt_r <= 0;
                         c_addr_c_mblk_r   <= c_addr_c_mblk_r   + r_c_mblk_step_w;
                         c_addr_c_tile_r   <= c_addr_c_mblk_r   + r_c_mblk_step_w;
                         c_addr_c32_mblk_r <= c_addr_c32_mblk_r + r_c32_mblk_step_w;
                         c_addr_c32_tile_r <= c_addr_c32_mblk_r + r_c32_mblk_step_w;
-                        compute_state_r <= C_PREP;
+                        compute_state_r <= C_RECV;
                     end else begin
                         compute_state_r <= C_WAIT_STS;     // chờ DMA ghi xong hết
                     end
