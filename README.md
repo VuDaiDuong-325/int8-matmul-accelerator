@@ -32,6 +32,19 @@ flowchart LR
 
 ---
 
+## Design Verification (SystemVerilog Testplan & Simulation)
+
+Prior to on-board FPGA deployment, the RTL hierarchy is verified bottom-up in **Vivado Simulator (`xsim`)** using 4 self-checking **SystemVerilog** testbenches (`hardware/sim/testbench/`) paired with structured CSV verification plans (`hardware/sim/testplan/`, **62 test cases** covering arithmetic corners, protocol assertions, back-pressure, and canary memory guards):
+
+| Testbench (`hardware/sim/testbench/`) | Verification Plan (`hardware/sim/testplan/`) | Target DUT (`hardware/rtl_ip/`) | Test Cases | Key Verification Scope & Simulation Result (`xsim`) |
+| :--- | :--- | :--- | :-: | :--- |
+| [`tb_requant_pc.sv`](hardware/sim/testbench/tb_requant_pc.sv) | [`tb_requant_pc_vp.csv`](hardware/sim/testplan/tb_requant_pc_vp.csv) | `int32_int8_requant_pc` (`int32_int8_rescale.v`) | **16** (`RQ_001..016`) | 7-cycle latency, 33b/65b signed overflow, `shift=0/1/62`, 0.5-LSB round-half-up, saturation clamp $[-128, 127]$. **PASS (`0` errors / 1.61M lane ops)** |
+| [`tb_axil_regs.sv`](hardware/sim/testbench/tb_axil_regs.sv) | [`tb_axil_regs_vp.csv`](hardware/sim/testplan/tb_axil_regs_vp.csv) | `gemm_l2_axi_lite_regs` (`gemm_l2_axi_lite_regs.v`) | **14** (`AXL_001..014`) | Reset defaults, RO/bit-masking, `WSTRB[0]` gating, 1-cycle `start_o`, Clear-on-Read `done_sticky`/`irq_o`, AW/W/RREADY stalls. **PASS (`0` errors / 10.2K txns)** |
+| [`tb_gemm_compute_core.sv`](hardware/sim/testbench/tb_gemm_compute_core.sv) | [`tb_gemm_compute_core_vp.csv`](hardware/sim/testplan/tb_gemm_compute_core_vp.csv) | `gemm_compute_core` (+ 7 submodules) | **16** (`CC_001..016`) | Diagonal skew wavefront, $K=4096$ signed extremes, `MIN_PERIOD=48` guard, zero-bubble ping-pong chaining, FIFO C high-water stall. **PASS (`0` errors / 134 blocks)** |
+| [`tb_gemm_top_l2.sv`](hardware/sim/testbench/tb_gemm_top_l2.sv) | [`tb_gemm_top_l2_vp.csv`](hardware/sim/testplan/tb_gemm_top_l2_vp.csv) | `gemm_top_l2` (`l2_tiling_agu.v`) + `gemm_l2_axi_lite_regs` | **16** (`TOP_001..016`) | All 3 output modes, 14 invalid-config error checks (`err_o`), odd $M/K/N$ padding/tkeep with `0xAA/0xCC` canary guards, 3D tiling, 5-channel DMA back-pressure. **PASS (`0` errors / 69 jobs)** |
+
+---
+
 ## On-Board Verification & Benchmark Results (`Kria KR260 @ 200 MHz`)
 
 Measured directly on the **Xilinx Kria KR260** (`sudo ./gemm_test --sweep`, `mode=3` verifying both **INT8** and **raw INT32** outputs against the CPU reference, edge-biased random inputs in $[-128, 127]$, `seed=42`). **PASS** indicates a 100% bit-exact match on all output elements and untouched DDR padding bytes.
@@ -59,22 +72,17 @@ int8-matmul-accelerator/
 ├── LICENSE
 ├── README.md
 ├── docs/
-│   └── images/
-│       └── sweep_result.png           # On-board KR260 sweep benchmark screenshot
+│   └── images/                # On-board KR260 benchmark screenshots
 ├── hardware/
-│   ├── rtl_ip/                        # Verilog RTL core (Systolic Array, L2 Tiling AGU, Requant, AXI-Lite)
-│   ├── system/                        # Top-level wrapper & Vivado Block Design (gemm_system.bd, gemm_bd.tcl)
-│   └── tb/                            # Verilog simulation testbenches (tb_gemm.v, tb_orig.v, xpm_models.v)
+│   ├── rtl_ip/                # Verilog RTL core (Systolic Array, L2 Tiling AGU, Requant, AXI-Lite)
+│   ├── sim/
+│   │   ├── testplan/          # CSV verification plans (*_vp.csv, 62 test cases across 4 modules)
+│   │   └── testbench/         # Self-checking SystemVerilog testbenches for Vivado xsim
+│   └── system/
+│       └── Block_design/      # Vivado Block Design (.bd, .tcl) and top-level system wrappers
 └── software/
-    ├── drivers/
-    │   ├── kr260_npu_driver.h         # CMA DMA-BUF (/dev/dma_heap/reserved) + ARMv8 cache driver (KR260)
-    │   └── npu_driver.h               # Direct /dev/mem reserved-memory driver (KV260)
-    └── benchmarks/
-        ├── gemm_test.c                # Bit-true INT8/INT32 verification & 6-case boundary sweep
-        ├── regver.c                   # Hardware VERSION register (0xA0000040) check
-        ├── dmaheap_probe.c            # CMA allocation & user-space cache flush/invalidate probe
-        ├── cma_probe.c                # Contiguous physical memory inspector
-        └── ddr_bench.c                # Multi-threaded ARMv8 NEON DDR bandwidth benchmark
+    ├── drivers/               # User-space CMA DMA-BUF (/dev/dma_heap) and /dev/mem NPU drivers
+    └── benchmarks/            # On-board C verification suites and DDR bandwidth probes
 ```
 
 ---
