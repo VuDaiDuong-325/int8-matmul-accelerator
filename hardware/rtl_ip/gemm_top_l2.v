@@ -1,11 +1,13 @@
 `timescale 1ns / 1ps
 //==============================================================================
-// Module   : gemm_top_l2_v3
-// Project  : INT8 GEMM Accelerator - KV260 / Qwen2 MLP Block
-// Date     : June 2026
+// Module   : gemm_top_l2   (v6)
+// Project  : INT8 GEMM Accelerator - KV260 / LLM
 //
-// TOP-LEVEL BẢN TỐI ƯU - Double-buffered L2 (fetch/compute song song)
-// Thin wrapper, toàn bộ logic nằm trong l2_tiling_agu_v3.v
+// Thin wrapper cho l2_tiling_agu. Thay đổi so với v5:
+//   - DIM_W = 20 (M/K/N tối đa 1,048,575)
+//   - Thêm: lda, ldb, ldc, ldc32, base_c32, base_param, out_mode, err_o
+//   - Bỏ  : num_k_tiles_per_block (tự tính theo block), scale_shift, zero_point
+//           (thay bằng bảng tham số requant theo kênh trong DDR)
 //==============================================================================
 
 module gemm_top_l2 #(
@@ -14,7 +16,7 @@ module gemm_top_l2 #(
     parameter N_BLK      = 256,
     parameter K_BLK      = 256,
     parameter ADDR_W     = 32,
-    parameter DIM_W      = 16,
+    parameter DIM_W      = 20,
     parameter FIFO_DEPTH = 1024,
     parameter BRAM_DEPTH = 1024
 )(
@@ -28,17 +30,21 @@ module gemm_top_l2 #(
     input  wire [DIM_W-1:0]   cfg_n_total_i,
     input  wire [DIM_W-1:0]   cfg_k_total_i,
     input  wire [DIM_W-1:0]   cfg_k_dim_i,
-    input  wire [DIM_W-1:0]   cfg_num_k_tiles_per_block_i,
     input  wire [ADDR_W-1:0]  cfg_base_a_i,
     input  wire [ADDR_W-1:0]  cfg_base_b_i,
     input  wire [ADDR_W-1:0]  cfg_base_c_i,
-    input  wire [DIM_W-1:0]   cfg_n_stride_i,
-    input  wire [4:0]          cfg_scale_shift_i,
-    input  wire [7:0]          cfg_zero_point_i,
+    input  wire [ADDR_W-1:0]  cfg_base_c32_i,
+    input  wire [ADDR_W-1:0]  cfg_base_param_i,
+    input  wire [ADDR_W-1:0]  cfg_lda_i,
+    input  wire [ADDR_W-1:0]  cfg_ldb_i,
+    input  wire [ADDR_W-1:0]  cfg_ldc_i,
+    input  wire [ADDR_W-1:0]  cfg_ldc32_i,
+    input  wire [1:0]         cfg_out_mode_i,
 
     input  wire   start_i,
     output wire   busy_o,
     output wire   done_o,
+    output wire   err_o,
 
     output wire [71:0]      mm2s_cmd_tdata,
     output wire              mm2s_cmd_tvalid,
@@ -71,14 +77,17 @@ module gemm_top_l2 #(
         .cfg_n_total_i(cfg_n_total_i),
         .cfg_k_total_i(cfg_k_total_i),
         .cfg_k_dim_i(cfg_k_dim_i),
-        .cfg_num_k_tiles_per_block_i(cfg_num_k_tiles_per_block_i),
         .cfg_base_a_i(cfg_base_a_i),
         .cfg_base_b_i(cfg_base_b_i),
         .cfg_base_c_i(cfg_base_c_i),
-        .cfg_n_stride_i(cfg_n_stride_i),
-        .cfg_scale_shift_i(cfg_scale_shift_i),
-        .cfg_zero_point_i(cfg_zero_point_i),
-        .start_i(start_i), .busy_o(busy_o), .done_o(done_o),
+        .cfg_base_c32_i(cfg_base_c32_i),
+        .cfg_base_param_i(cfg_base_param_i),
+        .cfg_lda_i(cfg_lda_i),
+        .cfg_ldb_i(cfg_ldb_i),
+        .cfg_ldc_i(cfg_ldc_i),
+        .cfg_ldc32_i(cfg_ldc32_i),
+        .cfg_out_mode_i(cfg_out_mode_i),
+        .start_i(start_i), .busy_o(busy_o), .done_o(done_o), .err_o(err_o),
         .mm2s_cmd_tdata(mm2s_cmd_tdata),
         .mm2s_cmd_tvalid(mm2s_cmd_tvalid),
         .mm2s_cmd_tready(mm2s_cmd_tready),
