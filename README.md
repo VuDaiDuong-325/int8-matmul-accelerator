@@ -34,7 +34,7 @@ flowchart LR
 
 ## Design Verification (SystemVerilog Testplan & Simulation)
 
-Prior to on-board FPGA deployment, the RTL hierarchy is verified bottom-up in **Vivado Simulator (`xsim`)** using 4 self-checking **SystemVerilog** testbenches (`hardware/sim/testbench/`) paired with structured CSV verification plans (`hardware/sim/testplan/`, **62 test cases** covering arithmetic corners, protocol assertions, back-pressure, and canary memory guards):
+Prior to on-board FPGA deployment, the RTL hierarchy is verified bottom-up in **Vivado Simulator (`xsim`)** using 4 self-checking **SystemVerilog** testbenches paired with structured CSV verification plans (**62 test cases** covering arithmetic corners, protocol assertions, back-pressure, and canary memory guards):
 
 | Testbench (`hardware/sim/testbench/`) | Verification Plan (`hardware/sim/testplan/`) | Target DUT (`hardware/rtl_ip/`) | Test Cases | Key Verification Scope & Simulation Result (`xsim`) |
 | :--- | :--- | :--- | :-: | :--- |
