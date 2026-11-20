@@ -88,8 +88,6 @@ int8-matmul-accelerator/
 ---
 
 ## Links
-
-* **RTL Simulation Testbench (Kaggle):** [design-test](https://www.kaggle.com/code/dduong325/design-test)
 * **End-to-End Application (Qwen2-Audio Dialogue Acceleration on Kria KR260):** [`qwen2-audio-fpga-accelerator`](https://github.com/VuDaiDuong-325/qwen2-audio-fpga-accelerator)
 
 ---
